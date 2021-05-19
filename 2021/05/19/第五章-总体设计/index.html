@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      5.6k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      52
+      56
        分钟
     </span>
   
@@ -328,7 +328,7 @@
 <blockquote>
 <p>决定模块效率化的因素:</p>
 <ol>
-<li>模块化的数量；</li>
+<li>模块的数量；</li>
 <li>模块之间的接口；</li>
 </ol>
 </blockquote>
@@ -725,7 +725,45 @@
 </ul>
 </blockquote>
 <hr>
-<h3 id="4-软件结构的图形工具：层次图（H图）、HIPO图、结构图；"><a href="#4-软件结构的图形工具：层次图（H图）、HIPO图、结构图；" class="headerlink" title="4. 软件结构的图形工具：层次图（H图）、HIPO图、结构图；"></a>4. 软件结构的图形工具：层次图（H图）、HIPO图、结构图；</h3><hr>
+<h3 id="4-软件结构的图形工具：层次图（H图）、HIPO图、结构图；"><a href="#4-软件结构的图形工具：层次图（H图）、HIPO图、结构图；" class="headerlink" title="4. 软件结构的图形工具：层次图（H图）、HIPO图、结构图；"></a>4. 软件结构的图形工具：层次图（H图）、HIPO图、结构图；</h3><h4 id="1-层次图-H图"><a href="#1-层次图-H图" class="headerlink" title="1. 层次图(H图)"></a>1. 层次图(H图)</h4><blockquote>
+<p>层次图用来描绘软件的层次结构。很适于在自顶向下设计软件的过程中使用。</p>
+</blockquote>
+<blockquote>
+<p>层次图和层次方框图的区别：<br>||层次图|层次方框图|<br>|:—:|:—:|:—:|<br>|作用|描绘软件结构|描绘数据结构|<br>|矩形框|模块|数据元素|<br>|连线|调用关系|组成关系|</p>
+</blockquote>
+<blockquote>
+<p><img src="/img/soft_intro_c3/%E6%AD%A3%E6%96%87%E5%8A%A0%E5%B7%A5%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E5%9B%BE.png" alt="正文加工系统的层次图"></p>
+</blockquote>
+<h4 id="2-HIPO图"><a href="#2-HIPO图" class="headerlink" title="2. HIPO图"></a>2. HIPO图</h4><blockquote>
+<ul>
+<li>HIPO图是美国IBM公司发明的“层次图+输入/处理/输出图”的英文缩写。</li>
+<li>为了能使HIPO图具有可追踪性，在H图(层次图)里除了最顶层的方框之外，每个方框都加了编号。<br><img src="/img/soft_intro_c3/HIPO%E5%9B%BE.png" alt="HIPO图"><br>和H图中每个方框相对应，应该有一张IPO图描绘这个方框代表的模块的处理过程。模块在H图中的编号便于追踪了解这个模块在软件结构中的位置。</li>
+</ul>
+</blockquote>
+<h4 id="3-结构图"><a href="#3-结构图" class="headerlink" title="3. 结构图"></a>3. 结构图</h4><blockquote>
+<p><strong>基本符号:</strong></p>
+<ul>
+<li>方框代表一个模块；</li>
+<li>方框之间的直线表示模块的调用关系；</li>
+<li>尾部是空心圆箭头表示传递的是数据；</li>
+<li>尾部是实心圆箭头表示传递的是控制信息。<br><img src="/img/soft_intro_c3/%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="结构图"></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>附加符号:</strong><br><img src="../img/soft_intro_c3/%E7%BB%93%E6%9E%84%E5%9B%BE%E9%99%84%E5%8A%A0%E7%AC%A6%E5%8F%B7.png" alt="结构图附加符号"></p>
+<ul>
+<li>选择调用: 判定为真时调用 A，为假时调用 B。</li>
+<li>模块 M 循环调用模块 A、B、C。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>注意:</strong></p>
+<ul>
+<li>层次图和结构图并不严格表示模块的调用次序，多数人习惯从做到右化模块；</li>
+<li>层次图和结构图并不指明合适调用下层模块；<br>层次图和结构图只表明一个模块调用哪些模块，没有表示模块内还有没有其他成分；<br>通常用层次图作为描绘软件结构的文档；<br>由层次图导出结构图的过程可以作为检查设计正确性和评价模块独立性的好方法。</li>
+</ul>
+</blockquote>
+<hr>
 <h3 id="5-面向数据流的设计方法：变换流和事务流，"><a href="#5-面向数据流的设计方法：变换流和事务流，" class="headerlink" title="5. 面向数据流的设计方法：变换流和事务流，"></a>5. 面向数据流的设计方法：变换流和事务流，</h3><p>变换分析步骤：(1) 复查基本系统模型；(2) 复查并精化数据流图；<br>(3) 确定数据流图具有变换特性还是事务特性；<br>(4) 确定输入流和输出流的边界，从而孤立出变换中心；<br>(5) 完成“第一级分解”；(6) 完成“第二级分解”；<br>(7) 使用设计度量和启发式规则对第一次分割得到的软件结构进一步精化<br>5. 面向数据流的设计方法：变换流和事务流，<br>   事务分析的设计步骤和变换分析的设计步骤大部分相同或类似，主要差别仅在于由数据流图到软件结构的映射方法不同：<br>   由事务流映射成的软件结构包括一个接收分支和一个发送分支；<br>   映射出接收分支结构的方法和变换分析映射出输入结构的方法很相像，即从事务中心的边界开始，把沿着接收流通路的处理映射成模块；<br>   发送分支的结构包含一个调度模块，它控制下层的所有活动模块；然后把数据流图中的每个活动流通路映射成与它的流特征相对应的结构。 </p>
 
             </div>
