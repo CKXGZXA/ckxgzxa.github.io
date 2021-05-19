@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      4.4k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      44
        分钟
     </span>
   
@@ -312,7 +312,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="2-设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）"><a href="#2-设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）" class="headerlink" title="2. 设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）"></a>2. 设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）</h3><h4 id="模块化："><a href="#模块化：" class="headerlink" title="模块化："></a>模块化：</h4><blockquote>
+<h3 id="2-设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）"><a href="#2-设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）" class="headerlink" title="2. 设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）"></a>2. 设计原理：模块化、抽象、逐步求精、信息隐藏和局部化，和模块独立（耦合和内聚）</h3><h4 id="1-模块化："><a href="#1-模块化：" class="headerlink" title="1. 模块化："></a>1. 模块化：</h4><blockquote>
 <ul>
 <li>模块：由边界元素限定的相邻程序元素的序列，还有一个总体标识符代表</li>
 <li>模块化：把程序划分成独立命名且可独立访问的模块，每个模块完成一个子功能，把这些模块集成起来构成一个整体，可以完成指定的功能满足用户的需求。</li>
@@ -348,8 +348,320 @@
 <li>采用模块化原理可以使软件结构清晰,不仅容易设计也容易阅读和理解。</li>
 <li>模块化使软件容易测试和调试, 因而有助于提高软件的可靠性。</li>
 <li>模块化能够提高软件的可修改性。</li>
-<li>模块化也有助于软件开发工程的组织管理</li>
+<li>模块化也有助于软件开发工程的组织管理。</li>
 </ul>
+</blockquote>
+<h4 id="2-抽象"><a href="#2-抽象" class="headerlink" title="2. 抽象"></a>2. 抽象</h4><blockquote>
+<ul>
+<li><strong>抽象:</strong> 现实世界中一定事物、状态或过程之间总存在着某些相似的方面(共性)。把这些相似的方面集中和概括起来，暂时忽略它们之间的差异，这就是抽象。</li>
+<li>抽象就是抽出事物本质特性而暂时不考虑细节。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>一般抽象过程:</strong></p>
+<ul>
+<li>处理复杂系统的惟一有效的方法是用层次的方式构造和分析它。</li>
+<li>一个复杂的动态系统首先可以用一些高级的抽象概念构造和理解，这些高级概念又可以用一些较低级的概念构造和理解，如此进行下去，直至最低层次的具体元素。 </li>
+<li>例：过程抽象、数据抽象</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>软件工程抽象过程: 软件工程过程的每一步都是对软件解法的抽象层次的一次精化。</p>
+<ul>
+<li>在可行性研究阶段，软件作为系统的一个完整部件；</li>
+<li>在需求分析期间，软件解法是使用在问题环境内熟悉的方式描述的；</li>
+<li>当由总体设计向详细设计过渡时，抽象的程度也就随之减少了；</li>
+<li>最后，当源程序写出来以后，也就达到了抽象的最低层。 </li>
+</ul>
+</blockquote>
+<h4 id="3-逐步求精"><a href="#3-逐步求精" class="headerlink" title="3. 逐步求精"></a>3. 逐步求精</h4><blockquote>
+<p>为了能集中精力解决主要问题而尽量推迟对问题细节的考虑。逐步求精是人类解决复杂问题时采用的基本方法，也是许多软件工程技术的基础。</p>
+</blockquote>
+<blockquote>
+<p><strong>作用:</strong> </p>
+<ul>
+<li>帮助软件工程师把精力集中在与当前开发阶段最相关的那些方面上，而忽略那些对整体解决方案来说虽然是必要的，然而目前还不需要考虑的细节。</li>
+<li>确保每个问题都将被解决，而且每个问题都将在适当的时候被解决，但是，在任何时候一个人都不需要同时处理7个以上知识块。 </li>
+</ul>
+</blockquote>
+<h4 id="4-信息隐藏和局部化"><a href="#4-信息隐藏和局部化" class="headerlink" title="4. 信息隐藏和局部化"></a>4. 信息隐藏和局部化</h4><blockquote>
+<ul>
+<li><strong>信息隐藏:</strong> 应该这样设计和确定模块，使得一个模块内包含的信息(过程和数据)对于不需要这些信息的模块来说，是不能访问的。</li>
+<li><strong>局部化:</strong> 局部化的概念和信息隐藏概念是密切相关的。所谓局部化是指把一些关系密切的软件元素物理地放得彼此靠近。显然，局部化有助于实现信息隐藏。 </li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>信息隐藏和局部化的作用:</strong></p>
+<ul>
+<li>“隐藏”意味着有效的模块化可以通过定义一组独立的模块而实现，这些独立的模块彼此间仅仅交换那些为了完成系统功能而必须交换的信息。</li>
+<li>使用信息隐藏原理作为模块化系统设计的标准就会带来极大好处。因为绝大多数数据和过程对于软件的其他部分而言是隐藏的，在修改期间由于疏忽而引入的错误就很少可能传播到软件的其他部分。 </li>
+</ul>
+</blockquote>
+<h4 id="5-模块独立"><a href="#5-模块独立" class="headerlink" title="5. 模块独立"></a>5. 模块独立</h4><blockquote>
+<p>模块独立的概念是模块化、抽象、信息隐藏和局部化概念的直接结果。<br>希望这样设计软件结构，使得每个模块完成一个相对独立的特定子功能，并且和其他模块之间的关系很简单。 </p>
+</blockquote>
+<blockquote>
+<ul>
+<li>重要性:<ul>
+<li>有效的模块化的软件比较容易开发出来。</li>
+<li>独立的模块比较容易测试和维护。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>模块独立程度的两个定性标准度量:</strong><ul>
+<li><strong>耦合</strong>衡量不同模块彼此间互相依赖(连接)的紧密程度。耦合要低，即每个模块和其他模块之间的关系要简单；</li>
+<li><strong>内聚</strong>衡量一个模块内部各个元素彼此结合的紧密程度。内聚要高，每个模块完成一个相对独立的子功能。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="1-耦合"><a href="#1-耦合" class="headerlink" title="1. 耦合"></a>1. 耦合</h5><blockquote>
+<ul>
+<li>耦合:是对一个软件结构内不同模块之间互连程度的度量。</li>
+<li>要求：在软件设计中应该追求尽可能松散耦合的系统。</li>
+<li>可以研究、测试或维护任何一个模块，而不需要对系统的其他模块有很多了解；</li>
+<li>模块间联系简单，发生在一处的错误传播到整个系统的可能性很小；</li>
+<li>模块间的耦合程度强烈影响系统的可理解性、可测试性、可靠性和可维护性。 </li>
+</ul>
+</blockquote>
+<h6 id="耦合程度的度量"><a href="#耦合程度的度量" class="headerlink" title="耦合程度的度量:"></a>耦合程度的度量:</h6><blockquote>
+<ol>
+<li><p>非直接耦合/完全独立(no direct coupling)</p>
+<blockquote>
+<p>如果两个模块中的每一个都能独立地工作而不需要另一个模块的存在，那么它们完全独立。在一个软件系统中不可能所有模块之间都没有任何连接。</p>
+</blockquote>
+</li>
+<li><p>数据耦合(data coupling)</p>
+<blockquote>
+<p>如果两个模块彼此间通过参数交换信息，而且交换的信息仅仅是数据，那么这种耦合称为数据耦合。</p>
+</blockquote>
+<blockquote>
+<p>评价:</p>
+<ul>
+<li>系统中至少必须存在这种耦合。一般说来，一个系统内可以只包含数据耦合。$\qquad$数据耦合是理想的目标。</li>
+<li>维护更容易，对一个模块的修改不会是另一个模块产生退化错误。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>控制耦合(control coupling)</p>
+<blockquote>
+<p>如果两个模块彼此间传递的信息中有控制信息，这种耦合成为控制耦合。</p>
+</blockquote>
+<blockquote>
+<p><strong>评价:</strong></p>
+<ul>
+<li>控制耦合往往是多余的,把模块适当分解之后通常可以用数据耦合代替它。</li>
+<li>被调用的模块需知道调用模块的内部结构和逻辑，降低了重用的可能性。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>特征耦合(stamp coupling)</p>
+<blockquote>
+<p>当把整个数据结构作为参数传递而被调用的模块只需要使用其中一部分数据元素时，就出现了特征耦合。<br>评价：</p>
+</blockquote>
+<blockquote>
+<p>被调用的模块可使用的数据多于它确实需要的数据，这将导致对数据的访问失去控制，从而给计算机犯罪提供了机会。<br>无论何时把指针作为参数进行传递，都应该仔细检查该耦合。</p>
+</blockquote>
+</li>
+<li><p>公共环境耦合(common coupling)</p>
+<blockquote>
+<p>当两个或多个模块通过一个公共数据环境相互作用时，它们之间的耦合称为公共环境耦合。公共环境可以是全程变量、共享的通信区、内存的公共覆盖区、任何存储介质上的文件、物理设备等等。</p>
+</blockquote>
+<blockquote>
+<p>类型:<br><img src="/img/soft_intro_c3/%E5%85%AC%E5%85%B1%E7%8E%AF%E5%A2%83%E8%80%A6%E5%90%88.png" alt="公共环境耦合的两种类型"></p>
+<ul>
+<li>一个模块往公告环境送数据,另一个模块从公共环境取数据。数据耦合的一种形式，是比较松散的耦合。</li>
+<li>两个模块都既往公共环境送数据又从里面取数据，这种耦合比较紧密，介于数据耦合和控制耦合之间。 </li>
+</ul>
+</blockquote>
+</li>
+<li><p>内容耦合(content coupling)</p>
+<blockquote>
+<p>最高程度的耦合是内容耦合。如果出现下列情况之一，两个模块间就发生了内容耦合：</p>
+<ul>
+<li>一个模块访问另一个模块的内部数据；</li>
+<li>一个模块不通过正常入口转到另一个模块的内部；</li>
+<li>两个模块有一部分程序代码重叠；</li>
+<li>一个模块有多个入口。 </li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>耦合是影响软件复杂程度的一个重要因素。</p>
+</blockquote>
+<blockquote>
+<p>应该采取下述设计原则:</p>
+<ul>
+<li><strong>尽量使用数据耦合，</strong></li>
+<li><strong>少用控制耦合和特征耦合，</strong></li>
+<li><strong>限制公共环境耦合的范围，</strong></li>
+<li><strong>完全不用内容耦合。</strong></li>
+</ul>
+</blockquote>
+<h5 id="2-内聚"><a href="#2-内聚" class="headerlink" title="2. 内聚"></a>2. 内聚</h5><blockquote>
+<ul>
+<li>内聚: 标志一个模块内各个元素彼此结合的紧密程度，它是信息隐藏和局部化概念的自然扩展。简单地说，理想内聚的模块只做一件事情。</li>
+<li>要求:设计时应该力求做到高内聚，通常中等程度的内聚也是可以采用的，而且效果和高内聚相差不多；但是，低内聚不要使用。</li>
+<li>内聚和耦合是密切相关的，模块内的高内聚往往意味着模块间的松耦合。实践表明内聚更重要，应该把更多注意力集中到提高模块的内聚程度上。</li>
+</ul>
+</blockquote>
+<h6 id="内聚程度的度量"><a href="#内聚程度的度量" class="headerlink" title="内聚程度的度量:"></a>内聚程度的度量:</h6><ol>
+<li>偶然内聚(coincidental cohesion)————低内聚<blockquote>
+<p>如果一个模块完成一组任务,  这些任务彼此间即使有关系, 关系也是很松散的, 就叫做偶然内聚。<br><img src="/img/soft_intro_c3/%E5%81%B6%E7%84%B6%E5%86%85%E8%81%9A.png" alt="偶然内聚"></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>评价:</p>
+<ul>
+<li>模块内各元素之间没有实质性联系，很可能在一种应用场合需要修改这个模块，在另一种应用场合又不允许这种修改，从而陷入困境；</li>
+<li>可理解性差，可维护性产生退化；</li>
+<li>模块是不可重用的。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>解决方案:将模块分成更小的模块, 每个小模块执行一个操作。</p>
+</blockquote>
+<ol start="2">
+<li>逻辑内聚（logical cohesion）————低内聚<blockquote>
+<p>如果一个模块完成的任务在逻辑上属于相同或相似的一类，则称为逻辑内聚。<br><img src="/img/soft_intro_c3/%E9%80%BB%E8%BE%91%E5%86%85%E8%81%9A.png"></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>评价:</p>
+<ul>
+<li>接口难以理解, 造成整体上不易理解；</li>
+<li>完成多个操作的代码互相纠缠在一起，即使局部功能的修改有时也会影响全局，导致严重的维护问题；</li>
+<li>难以重用。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>解决方案: 模块分解。<br><img src="/img/soft_intro_c3/%E6%A8%A1%E5%9D%97%E5%88%86%E8%A7%A3.png" alt="模块分解示意"></p>
+</blockquote>
+<ol start="3">
+<li>时间内聚(temporal cohesion)————低内聚<blockquote>
+<p>如果一个模块包含的任务必须在同一段时间内执行，就叫时间内聚。<br><img src="/img/soft_intro_c3/%E6%97%B6%E9%97%B4%E5%86%85%E8%81%9A.png" alt="模块独立"></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>评价:</p>
+<ul>
+<li>时间关系在一定程度上反映了程序某些实质，所以时间内聚比逻辑内聚好一些。</li>
+<li>模块内操作之间的关系很弱，与其他模块的操作却有很强的关联。</li>
+<li>时间内聚的模块不太可能重用。 </li>
+</ul>
+</blockquote>
+<ol start="4">
+<li>过程内聚(procedural cohesion)<blockquote>
+<ul>
+<li>如果一个模块内的处理元素是相关的，而且必须以特定次序执行，则称为过程内聚。</li>
+<li>使用程序流程图作为工具设计软件时，常常通过研究流程图确定模块的划分，这样得到的往往是过程内聚的模块。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>评价:</p>
+<ul>
+<li>比时间内聚好，至少操作之间是过程关联的。</li>
+<li>仍是弱连接，不太可能重用模块。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>解决方案：分割为单独的模块，每个模块执行一个操作</p>
+</blockquote>
+<ol start="5">
+<li>通信内聚（communicational cohesion）</li>
+</ol>
+<blockquote>
+<p>如果模块中所有元素都使用同一个输入数据和(或)产生同一个输出数据，则称为通信内聚。即在同一个数据结构上操作。</p>
+</blockquote>
+<blockquote>
+<p>评价：模块中各操作紧密相连，比过程内聚更好。不能重用。</p>
+</blockquote>
+<blockquote>
+<p>解决方案：分成多个模块，每个模块执行一个操作。</p>
+</blockquote>
+<ol start="6">
+<li>顺序内聚(sequential cohesion)</li>
+</ol>
+<blockquote>
+<p>如果一个模块内的处理元素和同一个功能密切相关，而且这些处理必须顺序执行，则称为顺序内聚。</p>
+</blockquote>
+<blockquote>
+<p>评价：根据数据流图划分模块时，通常得到顺序内聚的模块，这种模块彼此间的连接往往比较简单。 </p>
+</blockquote>
+<ol start="7">
+<li>功能内聚(functional cohesion)</li>
+</ol>
+<blockquote>
+<p>如果模块内所有处理元素属于一个整体，完成一个单一的功能，则称为功能内聚。功能内聚是最高程度的内聚。</p>
+</blockquote>
+<blockquote>
+<p>评价：</p>
+<ul>
+<li>模块可重用，应尽可能重用；</li>
+<li>可隔离错误，维护更容易；</li>
+<li>扩充产品功能时更容易。</li>
+</ul>
+</blockquote>
+<h6 id="七种内聚的优劣评分结果"><a href="#七种内聚的优劣评分结果" class="headerlink" title="七种内聚的优劣评分结果"></a>七种内聚的优劣评分结果</h6><blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">类型</th>
+<th align="center">分数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>高内聚</strong></td>
+<td align="center"><strong>功能内聚</strong></td>
+<td align="center"><strong>10分</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>顺序内聚</strong></td>
+<td align="center"><strong>9分</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>中内聚</strong></td>
+<td align="center"><strong>通信内聚</strong></td>
+<td align="center"><strong>7分</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>过程内聚</strong></td>
+<td align="center"><strong>5分</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>低内聚</strong></td>
+<td align="center"><strong>时间内聚</strong></td>
+<td align="center"><strong>3分</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>逻辑内聚</strong></td>
+<td align="center"><strong>1分</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>偶然内聚</strong></td>
+<td align="center"><strong>0分</strong></td>
+</tr>
+<tr>
+<td align="center">设计时力争做到高内聚，并且能够辨认出低内聚的模块。</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 </blockquote>
 <hr>
 <ol>
