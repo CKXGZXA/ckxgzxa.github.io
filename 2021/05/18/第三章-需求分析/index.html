@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.9k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      29
        分钟
     </span>
   
@@ -231,7 +231,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月19日 凌晨
+                  本文最后更新于：2021年5月19日 上午
                 
               </p>
             
@@ -466,9 +466,47 @@
 <p>需要时可以为事件指定参数表。活动表中的动作表达式描述应做的具体动作。</p>
 </blockquote>
 </li>
+<li><p><strong>事件表达式的语法格式</strong></p>
+<blockquote>
+<p>状态转换: 状态图中两个状态之间带箭头的连线，箭头指明了传播方向<br>状态变迁: 通常由事件触发, 在此情况下, 应在表示状态转换的箭头线上标出触发状态转换的事件表达式。如果未标明,则表示自动触发。</p>
+</blockquote>
+<blockquote>
+<p>语法: <strong>事件说明[守卫条件] / 动作表达式</strong></p>
+<ul>
+<li>时间说明的语法为: 事件名(参数表)。</li>
+<li>守卫条件是一个布尔表达式。如果同时使用时间说明和守卫条件，则当且仅当事件发生且布尔表达式为真时，状态转换才会发生。如果只有守卫条件没有事件说明，则只要守卫条件为真状态转换就发生。</li>
+<li>动作表达式是一个过程表达式,当状态转换开始时执行该表达式<br><img src="/img/soft_intro_c3/%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE%E4%BE%8B01.png"><br><img src="/img/soft_intro_c3/%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE%E4%BE%8B021.png"><br><img src="/img/soft_intro_c3/%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE%E4%BE%8B022.png"></li>
+</ul>
+</blockquote>
+</li>
 </ul>
 <hr>
-<h4 id="其他图形工具：层次方框图、Warnier图、IPO图"><a href="#其他图形工具：层次方框图、Warnier图、IPO图" class="headerlink" title="其他图形工具：层次方框图、Warnier图、IPO图"></a>其他图形工具：层次方框图、Warnier图、IPO图</h4>
+<h4 id="其他图形工具：层次方框图、Warnier图、IPO图"><a href="#其他图形工具：层次方框图、Warnier图、IPO图" class="headerlink" title="其他图形工具：层次方框图、Warnier图、IPO图"></a>其他图形工具：层次方框图、Warnier图、IPO图</h4><ul>
+<li><p><strong>层次方框图</strong></p>
+<blockquote>
+<p><strong>层次方框图:</strong> 用树形结构的一系列多层次的矩形框来描绘数据的层次结构。<br><img src="/img/soft_intro_c3/%E5%B1%82%E6%AC%A1%E6%96%B9%E6%A1%86%E5%9B%BE.png" alt="层次方框图"></p>
+<ul>
+<li>树形结构的顶层是一个单独的矩形框,它代表完整的数据结构；</li>
+<li>下面的各层矩形框代表这个数据的子集；</li>
+<li>最底层的各个框代表组成这个数据的实际数据元素(不能再分割的元素)。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>Warnier图</strong></p>
+<blockquote>
+<p><strong>Warnier图:</strong> 和层次方框图类似, Waarnier图也用树形结构描绘信息, 但是这种图形工具比层次方框图提供了更丰富的描绘手段。<br><img src="/img/soft_intro_c3/%E8%BD%AF%E4%BB%B6%E4%BA%A7%E5%93%81%E7%9A%84Warnier%E5%9B%BE.png"><br><strong>特点:</strong> 用Warnier图可以表明信息的逻辑组织，也可以表示特定信息在某一类信息中是有条件地出现的。因为重复和条件约束是说明软件处理过程的基础，所以很容易把Warnier图转变成软件设计的工具。 </p>
+</blockquote>
+</li>
+<li><p><strong>IPO图</strong></p>
+<blockquote>
+<p>IPO图: 是输入、处理、输出图的简称，它是美国IBM公司发展完善起来的一种图形工具，能够方便地描绘输入数据、对数据的处理和输出数据之间的关系。<br>基本形式: 是在左边的框中列出有关的输入数据，在中间的框内列出主要的处理，在右边的框内列出产生的输出数据。在IPO图中还用类似向量符号的粗大箭头清楚地指出数据通信的情况。<br><img src="/img/soft_intro_c3/IPO%E5%9B%BE%E4%BE%8B%E5%AD%90.png" alt="IPO图例子"></p>
+</blockquote>
+<blockquote>
+<p><strong>改进的IPO图:</strong> 这种图中包含某些附加的信息, 在软件设计过程中将比原始的IPO图更有用。<br><img src="/img/soft_intro_c3/IPO%E5%9B%BE_%E6%94%B9%E8%BF%9B.png" alt="改进的IPO图"><br>在需求分析阶段可以使用IPO图简略地描述系统的主要算法(即数据流图中各个处理的基本算法)。</p>
+</blockquote>
+</li>
+</ul>
+
             </div>
             <hr>
             <div>
