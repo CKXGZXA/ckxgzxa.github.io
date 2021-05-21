@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      3.6k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      37
        分钟
     </span>
   
@@ -231,7 +231,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月21日 下午
+                  本文最后更新于：2021年5月21日 晚上
                 
               </p>
             
@@ -424,7 +424,93 @@
 <p>不如图形工具直观，描述复杂的条件组合与动作间的对应关系时，不如判定表清晰简单。</p>
 </blockquote>
 <hr>
-<h2 id="面向数据结构的设计方法-Jackson图，和步骤"><a href="#面向数据结构的设计方法-Jackson图，和步骤" class="headerlink" title="面向数据结构的设计方法-Jackson图，和步骤"></a>面向数据结构的设计方法-Jackson图，和步骤</h2><hr>
+<h2 id="面向数据结构的设计方法-Jackson图，和步骤"><a href="#面向数据结构的设计方法-Jackson图，和步骤" class="headerlink" title="面向数据结构的设计方法-Jackson图，和步骤"></a>面向数据结构的设计方法-Jackson图，和步骤</h2><ul>
+<li>数据结构既影响程序的结构又影响程序的处理过程<ul>
+<li>重复出现的数据通常由具有循环控制结构的程序来处理</li>
+<li>选择数据要用带有分支控制结构的程序来处理</li>
+<li>层次的数据组织通常和使用这些数据的程序的层次结构十分相似。</li>
+</ul>
+</li>
+<li>面向数据结构的设计方法的最终目标是的出队程序处理过程的描述。</li>
+</ul>
+<h3 id="Jackson图"><a href="#Jackson图" class="headerlink" title="Jackson图"></a>Jackson图</h3><h4 id="数据结构中数据元素彼此间的逻辑关系："><a href="#数据结构中数据元素彼此间的逻辑关系：" class="headerlink" title="数据结构中数据元素彼此间的逻辑关系："></a>数据结构中数据元素彼此间的逻辑关系：</h4><blockquote>
+<ul>
+<li><p>顺序结构，顺序结构的数据由一个或多个数据元素组成，每个元素按确定次序出现一次。<br><img src="/img/soft_intro_c6/Jackson%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84.png" alt="顺序结构"></p>
+</li>
+<li><p>选择结构，选择结构的数据包含两个或多个元素，每次使用这个数据时按一定条件从这些数据元素中选择一个。<br><img src="/img/soft_intro_c6/Jackson%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84.png" alt="选择结构"></p>
+</li>
+<li><p>重复结构，重复结构的数据，根据使用时的条件由一个数据元素出现零次或多次构成。<br><img src="/img/soft_intro_c6/Jackson%E9%87%8D%E5%A4%8D%E7%BB%93%E6%9E%84.png" alt="重复结构"></p>
+</li>
+</ul>
+</blockquote>
+<h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><blockquote>
+<ul>
+<li>便于表示层次结构，而且是对结构进行自顶向下分解的有力工具；</li>
+<li>形象直观可读性好；</li>
+<li>技能表示数据结构也能表示程序结构。</li>
+</ul>
+</blockquote>
+<h4 id="缺点：-2"><a href="#缺点：-2" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<p>表示选择或重复结构时，选择条件或循环结束条件不能直接在图上表示出来，影响了图的表达能力，也不易直接把图翻译成程序；<br>框间连线为斜线，不易在行式打印机上输出。</p>
+</blockquote>
+<h3 id="改进的Jackson图"><a href="#改进的Jackson图" class="headerlink" title="改进的Jackson图"></a>改进的Jackson图</h3><blockquote>
+<p><img src="/img/soft_intro_c6/%E6%94%B9%E8%BF%9B%E7%9A%84Jackson%E5%9B%BE.png" alt="改进的Jackson图"><br>(a) 顺序结构，B、C、D中任一个都不能是选择出现或重复出现的数据元素（即不能是右上角有小圆圈或星号标记的元素；<br>(b) 选择结构，S 右面括号中的数字 i 是分支条件的编号；<br>(c) 可选结构，A 或者是元素 B 或者不出现（可选结构是选择结构的一种常见的特殊形式）；<br>(d) 重复结构，循环结束条件的编号为 i 。</p>
+</blockquote>
+<h3 id="Jackson程序设计方法由5个步骤组成："><a href="#Jackson程序设计方法由5个步骤组成：" class="headerlink" title="Jackson程序设计方法由5个步骤组成："></a>Jackson程序设计方法由5个步骤组成：</h3><ol>
+<li><p>分析并确定输入数据和输出数据的逻辑结构，用 Jackson 图描绘数据结构。</p>
+</li>
+<li><p>找出输入数据结构和输出数据结构中有对应关系的数据单元。所谓有对应关系是指有直接的因果关系，在程序中可以同时处理的数据单元（对于重复出现的数据单元必须重复的次序和次序都相同才可能有对应关系）。</p>
+</li>
+<li><p>用下述规则从庙会数据结构的 Jackson 图导出描绘程序结构的 Jackson 图：</p>
+<blockquote>
+<ul>
+<li>第一，为每对有对应关系的数据单元，按照它们在数据结构图中的层次在程序结构图的相应层次画一个处理框(层次不同时与图中层次低的那个对应)；</li>
+<li>第二，根据输入数据结构中剩余的每个数据单元所处的层次，在程序结构图的相应层次分别为它们画上对应的处理框；</li>
+<li>第三，根据输出数据结构中剩余的每个数据单元所处的层次，在程序结构图的相应层次分别为它们画上对应的处理框。</li>
+<li>改进的Jackson图规定在构成顺序结构的元素中不能有重复出现或选择出现的元素，因此可能需要增加中间层次的处理框。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>列出所有操作和条件（包括分支条件和循环结束条件），并且把它们分配到程序结构图的适当位置。</p>
+</li>
+<li><p>用伪码表示程序。</p>
+</li>
+</ol>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">顺序结构</th>
+<th align="left">选择结构</th>
+<th align="left">循环结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A seq</br>B</br>C</br>D</br>A end</td>
+<td align="left">A select cond1</br>$\quad$B</br>A or cond2</br>$\quad$C</br>A or cond3</br>$\quad$D</br>A end</td>
+<td align="left">A iter until(或while) cond</br>$\quad$B</br>A end$\quad$</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="设计步骤如下："><a href="#设计步骤如下：" class="headerlink" title="设计步骤如下："></a>设计步骤如下：</h3><ol>
+<li>用Jackson图描绘的输入输出结构。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="输入输出结构"></p>
+</blockquote>
+<ol start="2">
+<li>分析确定在输入数据结构和输出数据结构中有对应关系的数据单元。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8D%95%E5%85%83.png" alt="对应关系的数据单元"></p>
+</blockquote>
+<ol start="3">
+<li>从数据结构图导出程序结构图。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E4%BB%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9B%BE%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE.png" alt="从数据结构图导出程序结构图"></p>
+</blockquote>
+<hr>
 <h2 id="Jackson、层次图和层次方框图的区别"><a href="#Jackson、层次图和层次方框图的区别" class="headerlink" title="Jackson、层次图和层次方框图的区别"></a>Jackson、层次图和层次方框图的区别</h2><hr>
 
             </div>
