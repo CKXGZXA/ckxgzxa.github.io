@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      2.6k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      26
        分钟
     </span>
   
@@ -231,7 +231,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月21日 中午
+                  本文最后更新于：2021年5月21日 下午
                 
               </p>
             
@@ -298,26 +298,132 @@
 <li>基本要求：不论是哪类工具，<strong>对它们的基本要求都是能提供对设计的无歧义的描述，</strong> 也就是应该指明控制流程、处理功能、数据组织以及其他方面的实现细节，从而在编码阶段能把对设计的描述直接翻译成程序代码。</li>
 </ul>
 </blockquote>
-<h3 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h3><blockquote>
+<h3 id="1-程序流程图"><a href="#1-程序流程图" class="headerlink" title="1. 程序流程图"></a>1. 程序流程图</h3><blockquote>
 <ul>
 <li>程序流程图又称为程序框图，它是历史最悠久、使用最广泛的描述过程设计的方法。</li>
 <li>它的主要优点是对控制流程的描绘很直观，便于初学者掌握。</li>
 <li>程序流程图历史悠久，至今仍在广泛使用着。</li>
 </ul>
 </blockquote>
-<blockquote>
+<h4 id="程序流程图的符号"><a href="#程序流程图的符号" class="headerlink" title="程序流程图的符号"></a>程序流程图的符号</h4><blockquote>
 <p><img src="/img/soft_intro_c6/%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%AC%A6%E5%8F%B7.png" alt="程序流程图符号"></p>
 </blockquote>
-<blockquote>
-<p><strong>程序流程图的主要缺点：</strong></p>
+<h4 id="程序流程图的主要缺点："><a href="#程序流程图的主要缺点：" class="headerlink" title="程序流程图的主要缺点："></a>程序流程图的主要缺点：</h4><blockquote>
 <ul>
 <li>程序流程图本质上不是逐步求精的好工具，它诱使程序员过早地考虑程序的控制流程，而不去考虑程序的全局结构。</li>
 <li>程序流程图中用箭头代表控制流，因此程序员不受任何约束，可以完全不顾结构程序设计的精神，随意转移控制。</li>
 <li>程序流程图不易表示数据结构。</li>
 </ul>
 </blockquote>
+<h3 id="2-盒图（N-S图）"><a href="#2-盒图（N-S图）" class="headerlink" title="2. 盒图（N-S图）"></a>2. 盒图（N-S图）</h3><h4 id="盒图的特点："><a href="#盒图的特点：" class="headerlink" title="盒图的特点："></a>盒图的特点：</h4><blockquote>
+<ul>
+<li>功能域明确。</li>
+<li>不可能任意转移控制。</li>
+<li>很容易确定局部和全称数据的作用域。</li>
+<li>很容易表示嵌套关系，也可以表示模块的层次结构。</li>
+</ul>
+</blockquote>
+<h4 id="盒图的基本符号"><a href="#盒图的基本符号" class="headerlink" title="盒图的基本符号:"></a>盒图的基本符号:</h4><blockquote>
+<p><img src="/img/soft_intro_c6/%E7%9B%92%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7.png" alt="盒图的基本符号"><br>(a) 顺序；(b) IF_THEN_ELSE型分支；(c) CASE型多分支；(d) 循环；(e) 调用子程序 A</p>
+</blockquote>
+<h3 id="3-PAD图"><a href="#3-PAD图" class="headerlink" title="3. PAD图"></a>3. PAD图</h3><blockquote>
+<ul>
+<li>PAD是问题分析图(problem analysis diagram)的英文缩写，自1973年由日本日立公司发明以后，已得到一定程度的推广。</li>
+<li>它用二维树形结构的图来表示程序的控制流，将这种图翻译成程序代码比较容易。</li>
+</ul>
+</blockquote>
+<h4 id="PAD图的基本符号："><a href="#PAD图的基本符号：" class="headerlink" title="PAD图的基本符号："></a>PAD图的基本符号：</h4><blockquote>
+<p><img src="/img/soft_intro_c6/PAD%E5%9B%BE%E7%AC%A6%E5%8F%B7.png" alt="PAD图的基本符号"><br>(a)顺序（先执行P1后执行P2）；(b)选择（IF C THEN P1 ELSE P2）；(c)CASE型多分支(d)WHILE型循环（WHILE C DO P）；(e)UNTIL型循环（REPEAT P UNTIL C）;(f)语句标号；(g)定义</p>
+</blockquote>
+<h4 id="PAD图的主要优点："><a href="#PAD图的主要优点：" class="headerlink" title="PAD图的主要优点："></a>PAD图的主要优点：</h4><blockquote>
+<ul>
+<li>使用表示结构化控制结构的PAD符号设计出来的程序必然是结构化程序。</li>
+<li>PAD图所描绘的程序结构十分清晰。</li>
+<li>PAD图表现程序逻辑易读、易懂、易记。</li>
+<li>容易将PAD图转换成高级语言源程序，这种转换可用软件工具自动完成。</li>
+<li>既可表示程序逻辑，也可描绘数据结构。</li>
+<li>PAD图的符号支持自顶向下、逐步求精方法的使用。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>使用PAD提供的定义功能来逐步求精的例子<br><img src="/img/soft_intro_c6/PAD_%E9%80%90%E6%AD%A5%E6%B1%82%E7%B2%BE.png" alt="使用PAD提供的定义功能逐步求精_例"></p>
+</blockquote>
+<h3 id="4-判定表"><a href="#4-判定表" class="headerlink" title="4. 判定表"></a>4. 判定表</h3><blockquote>
+<ul>
+<li>当算法中包含 <strong>多重嵌套的条件选择</strong> 时，用程序流程图、盒图、PAD图或后面即将介绍的过程设计语言（PDL）都不易清楚地描述。</li>
+<li>判定表能够清晰地表示复杂的条件组合与应做的动作之间的对应关系。</li>
+</ul>
+</blockquote>
+<h4 id="判定表组成（4部分）"><a href="#判定表组成（4部分）" class="headerlink" title="判定表组成（4部分）"></a>判定表组成（4部分）</h4><blockquote>
+<ul>
+<li>左上部列出所有条件；</li>
+<li>左下部是所有可能做的动作；</li>
+<li>右上部是表示各种条件组合的一个矩阵；</li>
+<li>右下部是和每种条件组合相对应的动作。</li>
+</ul>
+<p><img src="/img/soft_intro_c3/%E5%88%A4%E5%AE%9A%E8%A1%A8%E7%BB%84%E6%88%90.png" alt="判定表组成"></p>
+</blockquote>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><blockquote>
+<p>能清晰地表示复杂的条件组合与应做的动作之间的对应关系。</p>
+</blockquote>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<ul>
+<li>判定表的含义不是一眼就能看出来的，初次接触这种工具的人理解它需要有一个简短的学习过程。</li>
+<li>当数据元素的值多于两个时，判定表的简洁程度也将下降。</li>
+</ul>
+</blockquote>
+<h3 id="5-判定树"><a href="#5-判定树" class="headerlink" title="5. 判定树"></a>5. 判定树</h3><blockquote>
+<ul>
+<li>判定树是判定表的变种，也能清晰地表示复杂的条件组合与应做的动作之间的对应关系。</li>
+<li>多年来判定树一直受到人们的重视，是一种比较常用的系统分析和设计的工具。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><img src="/img/soft_intro_c6/%E5%88%A4%E5%AE%9A%E6%A0%91%E4%BE%8B%E5%AD%90.png" alt="判定树例子"></p>
+</blockquote>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h4><blockquote>
+<p>形式简单，一眼就可以看出其含义，因此易于掌握和使用。</p>
+</blockquote>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<ul>
+<li>简洁性不如判定表，数据元素的同一个值往往要重复写多遍，而且越接近树的叶端重复次数越多。</li>
+<li>画判定树时分枝的次序可能对最终画出的判定树的简洁程度有较大影响。</li>
+</ul>
+</blockquote>
+<h3 id="6-过程设计语言"><a href="#6-过程设计语言" class="headerlink" title="6. 过程设计语言"></a>6. 过程设计语言</h3><hr>
+<h2 id="过程设计语言（PDL）：伪码"><a href="#过程设计语言（PDL）：伪码" class="headerlink" title="过程设计语言（PDL）：伪码"></a>过程设计语言（PDL）：伪码</h2><blockquote>
+<ul>
+<li>过程设计语言(PDL)也称为伪码，它是用正文形式表示数据和处理过程的设计工具。</li>
+<li>PDL具有严格的关键字外部语法，用于定义控制结构和数据结构；另一方面，PDL表示实际操作和条件的内部语法通常又是灵活自由的，可以适应各种工程项目的需要。</li>
+<li>PDL是一种“混杂”语言，它使用一种语言的词汇，同时却使用另一种语言的语法。 </li>
+</ul>
+</blockquote>
+<h3 id="伪代码的基本控制结构："><a href="#伪代码的基本控制结构：" class="headerlink" title="伪代码的基本控制结构："></a>伪代码的基本控制结构：</h3><blockquote>
+<ul>
+<li>简单陈述句结构：避免复合语句。</li>
+<li>判定结构：IF_THEN_ELSE 或 CASE_OF 结构。</li>
+<li>选择结构：WHILE_DO或REPEAT_UNTIL 结构</li>
+</ul>
+</blockquote>
+<h3 id="PDL的特点："><a href="#PDL的特点：" class="headerlink" title="PDL的特点："></a>PDL的特点：</h3><blockquote>
+<ol>
+<li>关键字的固定用法，它提供了结构化控制结构、数据说明和模块化的特点。</li>
+<li>自然语言的自由语言，它描绘处理特点。</li>
+<li>数据说明的手段。应该既包括简单的数据结构，又包括复杂的数据结构。</li>
+<li>模块定义和调用的技术，应该提供各种接口描述模式。</li>
+</ol>
+</blockquote>
+<h3 id="PDL的优点："><a href="#PDL的优点：" class="headerlink" title="PDL的优点："></a>PDL的优点：</h3><blockquote>
+<ul>
+<li>可以作为注释直接插在源程序中间。有助于保持文档和程序的一致性，提高了文档的质量。</li>
+<li>可以使用普通的正文编辑程序或文字处理系统，很方便地完成PDL的书写和编辑工作。</li>
+<li>已经有自动处理程序存在，并且可以自动由PDL生成代码。</li>
+</ul>
+</blockquote>
+<h3 id="PDL的缺点："><a href="#PDL的缺点：" class="headerlink" title="PDL的缺点："></a>PDL的缺点：</h3><blockquote>
+<p>不如图形工具直观，描述复杂的条件组合与动作间的对应关系时，不如判定表清晰简单。</p>
+</blockquote>
 <hr>
-<h2 id="过程设计语言（PDL）：伪码"><a href="#过程设计语言（PDL）：伪码" class="headerlink" title="过程设计语言（PDL）：伪码"></a>过程设计语言（PDL）：伪码</h2><hr>
 <h2 id="面向数据结构的设计方法-Jackson图，和步骤"><a href="#面向数据结构的设计方法-Jackson图，和步骤" class="headerlink" title="面向数据结构的设计方法-Jackson图，和步骤"></a>面向数据结构的设计方法-Jackson图，和步骤</h2><hr>
 <h2 id="Jackson、层次图和层次方框图的区别"><a href="#Jackson、层次图和层次方框图的区别" class="headerlink" title="Jackson、层次图和层次方框图的区别"></a>Jackson、层次图和层次方框图的区别</h2><hr>
 
