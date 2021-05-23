@@ -231,7 +231,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月21日 下午
+                  本文最后更新于：2021年5月23日 晚上
                 
               </p>
             
@@ -535,7 +535,7 @@
 <li>逻辑内聚（logical cohesion）————低内聚</li>
 </ol>
 <blockquote>
-<p>如果一个模块完成的任务在逻辑上属于相同或相似的一类，则称为逻辑内聚。<br><img src="/img/soft_intro_c5/%E9%80%BB%E8%BE%91%E5%86%85%E8%81%9A.png"></p>
+<p>如果一个模块完成的任务在逻辑上属于相同或相似的一类，则称为逻辑内聚。<br><img src="/img/soft_intro_c5/%E9%80%BB%E8%BE%91%E5%86%85%E8%81%9A.png" alt="逻辑内聚"></p>
 </blockquote>
 <blockquote>
 <p>评价:</p>
@@ -552,7 +552,7 @@
 <li>时间内聚(temporal cohesion)————低内聚</li>
 </ol>
 <blockquote>
-<p>如果一个模块包含的任务必须在同一段时间内执行，就叫时间内聚。<br><img src="/img/soft_intro_c5/%E6%97%B6%E9%97%B4%E5%86%85%E8%81%9A.png" alt="模块独立"></p>
+<p>如果一个模块包含的任务必须在同一段时间内执行，就叫时间内聚。<br><img src="/img/soft_intro_c5/%E6%97%B6%E9%97%B4%E5%86%85%E8%81%9A.png" alt="时间内聚"></p>
 </blockquote>
 <blockquote>
 <p>评价:</p>
@@ -706,19 +706,17 @@
 <h4 id="5-力争降低模块接口的复杂程度"><a href="#5-力争降低模块接口的复杂程度" class="headerlink" title="5. 力争降低模块接口的复杂程度"></a>5. 力争降低模块接口的复杂程度</h4><blockquote>
 <p>模块接口复杂是软件发生错误的一个主要原因。应该仔细设计模块接口，使得信息传递简单并且和模块的功能一致。</p>
 </blockquote>
-<blockquote>
 <p><strong>例:解一元二次方程的函数</strong></p>
 <ul>
-<li><p>[] <strong>QUAD_ROOT(TBL, X)</strong></p>
+<li><input disabled="" type="checkbox"> <strong>QUAD_ROOT(TBL, X)</strong><blockquote>
 <ul>
 <li>其中数组 TBL 传送方程的系数</li>
-<li>数组 X 送回求得的根</li>
-</ul>
-</li>
-<li><p><strong>QUAD_ROOT(A, B, C, ROOT1, ROOT2)</strong></p>
-</li>
+<li>数组 X 送回求得的根  </li>
 </ul>
 </blockquote>
+</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>QUAD_ROOT(A, B, C, ROOT1, ROOT2)</strong></li>
+</ul>
 <h4 id="6-设计单入口单出口的模块"><a href="#6-设计单入口单出口的模块" class="headerlink" title="6. 设计单入口单出口的模块"></a>6. 设计单入口单出口的模块</h4><blockquote>
 <p>警告软件工程师不要使模块间出现内容耦合。当从顶部进入模块并且从底部退出来时，软件是比较容易理解的，因此也是比较容易维护的。</p>
 </blockquote>
