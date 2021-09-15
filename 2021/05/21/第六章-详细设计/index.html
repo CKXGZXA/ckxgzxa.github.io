@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>第六章 详细设计 - 残魁斜罡的空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="残魁斜罡的空间" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/soft_intro_c6/banner_img.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="第六章 详细设计">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-21 01:36" pubdate>
+        2021年5月21日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第六章 详细设计</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年5月24日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="第六章-详细设计"><a href="#第六章-详细设计" class="headerlink" title="第六章_详细设计"></a>第六章_详细设计</h1><hr>
+<blockquote>
+<p><strong>概要设计说明书</strong><br>该说明书是概要实际阶段的工作成果，它应说明功能分配、模块划分、程序的总体结构、输入输出以及接口设计、运行设计、数据结构设计和出错处理设计等，为详细设计提供基础。</p>
+</blockquote>
+<hr>
+<h2 id="什么是结构化程序设计？经典、扩展和修正的控制结构；"><a href="#什么是结构化程序设计？经典、扩展和修正的控制结构；" class="headerlink" title="什么是结构化程序设计？经典、扩展和修正的控制结构；"></a>什么是结构化程序设计？经典、扩展和修正的控制结构；</h2><h3 id="经典定义"><a href="#经典定义" class="headerlink" title="经典定义"></a>经典定义</h3><blockquote>
+<p>如果一个程序的代码块仅仅通过<strong>顺序、选择和循环</strong>这三种基本控制结构进行链接，并且每个代码块只有一个入口和一个出口，则称这个程序是结构化的。<br><img src="/img/soft_intro_c6/3%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84.png" alt="3种基本的控制结构"></p>
+</blockquote>
+<h3 id="更全面定义"><a href="#更全面定义" class="headerlink" title="更全面定义"></a>更全面定义</h3><blockquote>
+<p>结构程序设计是尽可能少用 GOTO 语句的程序设计方法。最好仅在检测出错误时才使用 GOTO 语句，而且应该总是使用前向 GOTO 语句。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>为了实际使用方便起见，常常还允许使用 DO-UNTIL 和 DO-CASE 两种控制结构。<br><img src="/img/soft_intro_c6/%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84.png" alt="其他常用的控制结构"></li>
+<li>有时需要立即从循环（甚至嵌套的循环）中转移出来，允许使用 LEAVE（或 BREAK）结构。LEAVE 或 BREAK 结构实质上是受限制的 GOTO 语句，用于转移到循环结构后面</li>
+</ul>
+</blockquote>
+<h3 id="经典的结构程序设计"><a href="#经典的结构程序设计" class="headerlink" title="经典的结构程序设计"></a>经典的结构程序设计</h3><blockquote>
+<p>只允许使用顺序、IF-THEN-ELSE型分支和DO-WHILE型循环这三种基本控制结构；</p>
+</blockquote>
+<h3 id="扩展的结构程序设计"><a href="#扩展的结构程序设计" class="headerlink" title="扩展的结构程序设计"></a>扩展的结构程序设计</h3><blockquote>
+<p>如果除了上述3中基本控制结构之外，还允许使用DO-CASE型多分支结构和DO-UNTIL型循环结构；</p>
+</blockquote>
+<h3 id="修正的结构程序设计"><a href="#修正的结构程序设计" class="headerlink" title="修正的结构程序设计"></a>修正的结构程序设计</h3><blockquote>
+<p>再加上允许使用LEAVE（或BREAK）结构。</p>
+</blockquote>
+<hr>
+<h2 id="人机界面设计遇到的4个问题：系统响应时间（长度和易变性）、用户帮助设施、出错信息处理、命令交互；"><a href="#人机界面设计遇到的4个问题：系统响应时间（长度和易变性）、用户帮助设施、出错信息处理、命令交互；" class="headerlink" title="人机界面设计遇到的4个问题：系统响应时间（长度和易变性）、用户帮助设施、出错信息处理、命令交互；"></a>人机界面设计遇到的4个问题：系统响应时间（长度和易变性）、用户帮助设施、出错信息处理、命令交互；</h2><blockquote>
+<ul>
+<li>人机界面设计是接口设计的重要组成部分。对于交互式系统来说，人机界面设计和数据设计、体系结构设计及过程设计一样重要。</li>
+<li>人机界面的设计质量，直接影响用户对软件产品的评价，从而影响软件产品的竞争力和寿命，必须对人机界面设计给予足够重视。</li>
+</ul>
+</blockquote>
+<h3 id="设计人机界面过程中会遇到的4个问题"><a href="#设计人机界面过程中会遇到的4个问题" class="headerlink" title="设计人机界面过程中会遇到的4个问题:"></a>设计人机界面过程中会遇到的4个问题:</h3><h4 id="1-系统响应时间"><a href="#1-系统响应时间" class="headerlink" title="1. 系统响应时间:"></a>1. 系统响应时间:</h4><blockquote>
+<p>系统相应时间指从用户完成某个控制动作，到软件给出预期的相应之间的这段时间。系统响应时间有两个重要属性：长度和易变性。</p>
+<ul>
+<li><strong>长度：</strong> 如果系统响应时间过长，用户就会感到紧张</li>
+<li><strong>易变性：</strong> 指系统响应时间相对于平均相应时间的偏差，即使系统响应时间较长，响应时间易变性低也有助于用户建立起稳定的工作节奏。</li>
+</ul>
+</blockquote>
+<h4 id="2-用户帮助设施"><a href="#2-用户帮助设施" class="headerlink" title="2. 用户帮助设施"></a>2. 用户帮助设施</h4><blockquote>
+<p>大多数现代软件都提供联机帮助设施，用户无须离开用户界面就能解决自己的问题。常见的帮助设施可分为集成的和附加的两类。</p>
+<ul>
+<li><strong>集成的帮助设施</strong> 设计在软件里面，它对用户工作内容是敏感的，用户可以从与刚刚完成的操作有关的主题中选择一个请求帮助。</li>
+<li><strong>附加的帮助设施</strong> 是在系统建成后再添加到软件中的，它实际上是一种查询能力有限的联机用户手册。</li>
+</ul>
+<p>集成的帮助设施优于附加的帮助设施。</p>
+</blockquote>
+<h4 id="3-出错信息处理"><a href="#3-出错信息处理" class="headerlink" title="3. 出错信息处理"></a>3. 出错信息处理</h4><blockquote>
+<p>出错信息和警告信息，是出现问题时交互式系统给出的“坏消息”。</p>
+</blockquote>
+<h4 id="4-命令交互"><a href="#4-命令交互" class="headerlink" title="4. 命令交互"></a>4. 命令交互</h4><blockquote>
+<p>多数情况下，用户既可以从菜单中选择软件功能，也可以通过键盘命令序列调用软件功能。<br>在理想的情况下，所有应用软件都有一致的命令使用方法。</p>
+</blockquote>
+<hr>
+<h2 id="过程设计的工具：图形、表格和语言。程序流程图、盒图（N-S图）、PAD图、判定表、判定树"><a href="#过程设计的工具：图形、表格和语言。程序流程图、盒图（N-S图）、PAD图、判定表、判定树" class="headerlink" title="过程设计的工具：图形、表格和语言。程序流程图、盒图（N-S图）、PAD图、判定表、判定树"></a>过程设计的工具：图形、表格和语言。程序流程图、盒图（N-S图）、PAD图、判定表、判定树</h2><blockquote>
+<ul>
+<li>定义：描述程序处理工程的工具</li>
+<li>分类：图形、表格和语言</li>
+<li>基本要求：不论是哪类工具，<strong>对它们的基本要求都是能提供对设计的无歧义的描述，</strong> 也就是应该指明控制流程、处理功能、数据组织以及其他方面的实现细节，从而在编码阶段能把对设计的描述直接翻译成程序代码。</li>
+</ul>
+</blockquote>
+<h3 id="1-程序流程图"><a href="#1-程序流程图" class="headerlink" title="1. 程序流程图"></a>1. 程序流程图</h3><blockquote>
+<ul>
+<li>程序流程图又称为程序框图，它是历史最悠久、使用最广泛的描述过程设计的方法。</li>
+<li>它的主要优点是对控制流程的描绘很直观，便于初学者掌握。</li>
+<li>程序流程图历史悠久，至今仍在广泛使用着。</li>
+</ul>
+</blockquote>
+<h4 id="程序流程图的符号"><a href="#程序流程图的符号" class="headerlink" title="程序流程图的符号"></a>程序流程图的符号</h4><blockquote>
+<p><img src="/img/soft_intro_c6/%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%AC%A6%E5%8F%B7.png" alt="程序流程图符号"></p>
+</blockquote>
+<h4 id="程序流程图的主要缺点："><a href="#程序流程图的主要缺点：" class="headerlink" title="程序流程图的主要缺点："></a>程序流程图的主要缺点：</h4><blockquote>
+<ul>
+<li>程序流程图本质上不是逐步求精的好工具，它诱使程序员过早地考虑程序的控制流程，而不去考虑程序的全局结构。</li>
+<li>程序流程图中用箭头代表控制流，因此程序员不受任何约束，可以完全不顾结构程序设计的精神，随意转移控制。</li>
+<li>程序流程图不易表示数据结构。</li>
+</ul>
+</blockquote>
+<h3 id="2-盒图（N-S图）"><a href="#2-盒图（N-S图）" class="headerlink" title="2. 盒图（N-S图）"></a>2. 盒图（N-S图）</h3><h4 id="盒图的特点："><a href="#盒图的特点：" class="headerlink" title="盒图的特点："></a>盒图的特点：</h4><blockquote>
+<ul>
+<li>功能域明确。</li>
+<li>不可能任意转移控制。</li>
+<li>很容易确定局部和全称数据的作用域。</li>
+<li>很容易表示嵌套关系，也可以表示模块的层次结构。</li>
+</ul>
+</blockquote>
+<h4 id="盒图的基本符号"><a href="#盒图的基本符号" class="headerlink" title="盒图的基本符号:"></a>盒图的基本符号:</h4><blockquote>
+<p><img src="/img/soft_intro_c6/%E7%9B%92%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7.png" alt="盒图的基本符号"><br>(a) 顺序；(b) IF_THEN_ELSE型分支；(c) CASE型多分支；(d) 循环；(e) 调用子程序 A</p>
+</blockquote>
+<h3 id="3-PAD图"><a href="#3-PAD图" class="headerlink" title="3. PAD图"></a>3. PAD图</h3><blockquote>
+<ul>
+<li>PAD是问题分析图(problem analysis diagram)的英文缩写，自1973年由日本日立公司发明以后，已得到一定程度的推广。</li>
+<li>它用二维树形结构的图来表示程序的控制流，将这种图翻译成程序代码比较容易。</li>
+</ul>
+</blockquote>
+<h4 id="PAD图的基本符号："><a href="#PAD图的基本符号：" class="headerlink" title="PAD图的基本符号："></a>PAD图的基本符号：</h4><blockquote>
+<p><img src="/img/soft_intro_c6/PAD%E5%9B%BE%E7%AC%A6%E5%8F%B7.png" alt="PAD图的基本符号"><br>(a)顺序（先执行P1后执行P2）；(b)选择（IF C THEN P1 ELSE P2）；(c)CASE型多分支(d)WHILE型循环（WHILE C DO P）；(e)UNTIL型循环（REPEAT P UNTIL C）;(f)语句标号；(g)定义</p>
+</blockquote>
+<h4 id="PAD图的主要优点："><a href="#PAD图的主要优点：" class="headerlink" title="PAD图的主要优点："></a>PAD图的主要优点：</h4><blockquote>
+<ul>
+<li>使用表示结构化控制结构的PAD符号设计出来的程序必然是结构化程序。</li>
+<li>PAD图所描绘的程序结构十分清晰。</li>
+<li>PAD图表现程序逻辑易读、易懂、易记。</li>
+<li>容易将PAD图转换成高级语言源程序，这种转换可用软件工具自动完成。</li>
+<li>既可表示程序逻辑，也可描绘数据结构。</li>
+<li>PAD图的符号支持自顶向下、逐步求精方法的使用。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>使用PAD提供的定义功能来逐步求精的例子<br><img src="/img/soft_intro_c6/PAD_%E9%80%90%E6%AD%A5%E6%B1%82%E7%B2%BE.png" alt="使用PAD提供的定义功能逐步求精_例"></p>
+</blockquote>
+<h3 id="4-判定表"><a href="#4-判定表" class="headerlink" title="4. 判定表"></a>4. 判定表</h3><blockquote>
+<ul>
+<li>当算法中包含 <strong>多重嵌套的条件选择</strong> 时，用程序流程图、盒图、PAD图或后面即将介绍的过程设计语言（PDL）都不易清楚地描述。</li>
+<li>判定表能够清晰地表示复杂的条件组合与应做的动作之间的对应关系。</li>
+</ul>
+</blockquote>
+<h4 id="判定表组成（4部分）"><a href="#判定表组成（4部分）" class="headerlink" title="判定表组成（4部分）"></a>判定表组成（4部分）</h4><blockquote>
+<ul>
+<li>左上部列出所有条件；</li>
+<li>左下部是所有可能做的动作；</li>
+<li>右上部是表示各种条件组合的一个矩阵；</li>
+<li>右下部是和每种条件组合相对应的动作。</li>
+</ul>
+<p><img src="/img/soft_intro_c6/%E5%88%A4%E5%AE%9A%E8%A1%A8%E7%BB%84%E6%88%90.png" alt="判定表组成"></p>
+</blockquote>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><blockquote>
+<p>能清晰地表示复杂的条件组合与应做的动作之间的对应关系。</p>
+</blockquote>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<ul>
+<li>判定表的含义不是一眼就能看出来的，初次接触这种工具的人理解它需要有一个简短的学习过程。</li>
+<li>当数据元素的值多于两个时，判定表的简洁程度也将下降。</li>
+</ul>
+</blockquote>
+<h3 id="5-判定树"><a href="#5-判定树" class="headerlink" title="5. 判定树"></a>5. 判定树</h3><blockquote>
+<ul>
+<li>判定树是判定表的变种，也能清晰地表示复杂的条件组合与应做的动作之间的对应关系。</li>
+<li>多年来判定树一直受到人们的重视，是一种比较常用的系统分析和设计的工具。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><img src="/img/soft_intro_c6/%E5%88%A4%E5%AE%9A%E6%A0%91%E4%BE%8B%E5%AD%90.png" alt="判定树例子"></p>
+</blockquote>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h4><blockquote>
+<p>形式简单，一眼就可以看出其含义，因此易于掌握和使用。</p>
+</blockquote>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<ul>
+<li>简洁性不如判定表，数据元素的同一个值往往要重复写多遍，而且越接近树的叶端重复次数越多。</li>
+<li>画判定树时分枝的次序可能对最终画出的判定树的简洁程度有较大影响。</li>
+</ul>
+</blockquote>
+<h3 id="6-过程设计语言"><a href="#6-过程设计语言" class="headerlink" title="6. 过程设计语言"></a>6. 过程设计语言</h3><hr>
+<h2 id="过程设计语言（PDL）：伪码"><a href="#过程设计语言（PDL）：伪码" class="headerlink" title="过程设计语言（PDL）：伪码"></a>过程设计语言（PDL）：伪码</h2><blockquote>
+<ul>
+<li>过程设计语言(PDL)也称为伪码，它是用正文形式表示数据和处理过程的设计工具。</li>
+<li>PDL具有严格的关键字外部语法，用于定义控制结构和数据结构；另一方面，PDL表示实际操作和条件的内部语法通常又是灵活自由的，可以适应各种工程项目的需要。</li>
+<li>PDL是一种“混杂”语言，它使用一种语言的词汇，同时却使用另一种语言的语法。 </li>
+</ul>
+</blockquote>
+<h3 id="伪代码的基本控制结构："><a href="#伪代码的基本控制结构：" class="headerlink" title="伪代码的基本控制结构："></a>伪代码的基本控制结构：</h3><blockquote>
+<ul>
+<li>简单陈述句结构：避免复合语句。</li>
+<li>判定结构：IF_THEN_ELSE 或 CASE_OF 结构。</li>
+<li>选择结构：WHILE_DO或REPEAT_UNTIL 结构</li>
+</ul>
+</blockquote>
+<h3 id="PDL的特点："><a href="#PDL的特点：" class="headerlink" title="PDL的特点："></a>PDL的特点：</h3><blockquote>
+<ol>
+<li>关键字的固定用法，它提供了结构化控制结构、数据说明和模块化的特点。</li>
+<li>自然语言的自由语言，它描绘处理特点。</li>
+<li>数据说明的手段。应该既包括简单的数据结构，又包括复杂的数据结构。</li>
+<li>模块定义和调用的技术，应该提供各种接口描述模式。</li>
+</ol>
+</blockquote>
+<h3 id="PDL的优点："><a href="#PDL的优点：" class="headerlink" title="PDL的优点："></a>PDL的优点：</h3><blockquote>
+<ul>
+<li>可以作为注释直接插在源程序中间。有助于保持文档和程序的一致性，提高了文档的质量。</li>
+<li>可以使用普通的正文编辑程序或文字处理系统，很方便地完成PDL的书写和编辑工作。</li>
+<li>已经有自动处理程序存在，并且可以自动由PDL生成代码。</li>
+</ul>
+</blockquote>
+<h3 id="PDL的缺点："><a href="#PDL的缺点：" class="headerlink" title="PDL的缺点："></a>PDL的缺点：</h3><blockquote>
+<p>不如图形工具直观，描述复杂的条件组合与动作间的对应关系时，不如判定表清晰简单。</p>
+</blockquote>
+<hr>
+<h2 id="面向数据结构的设计方法-Jackson图，和步骤"><a href="#面向数据结构的设计方法-Jackson图，和步骤" class="headerlink" title="面向数据结构的设计方法-Jackson图，和步骤"></a>面向数据结构的设计方法-Jackson图，和步骤</h2><ul>
+<li>数据结构既影响程序的结构又影响程序的处理过程<ul>
+<li>重复出现的数据通常由具有循环控制结构的程序来处理</li>
+<li>选择数据要用带有分支控制结构的程序来处理</li>
+<li>层次的数据组织通常和使用这些数据的程序的层次结构十分相似。</li>
+</ul>
+</li>
+<li>面向数据结构的设计方法的最终目标是得出对程序处理过程的描述。</li>
+</ul>
+<h3 id="Jackson图"><a href="#Jackson图" class="headerlink" title="Jackson图"></a>Jackson图</h3><h4 id="数据结构中数据元素彼此间的逻辑关系："><a href="#数据结构中数据元素彼此间的逻辑关系：" class="headerlink" title="数据结构中数据元素彼此间的逻辑关系："></a>数据结构中数据元素彼此间的逻辑关系：</h4><blockquote>
+<ul>
+<li><p>顺序结构，顺序结构的数据由一个或多个数据元素组成，每个元素按确定次序出现一次。<br><img src="/img/soft_intro_c6/Jackson%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84.png" alt="顺序结构"></p>
+</li>
+<li><p>选择结构，选择结构的数据包含两个或多个元素，每次使用这个数据时按一定条件从这些数据元素中选择一个。<br><img src="/img/soft_intro_c6/Jackson%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84.png" alt="选择结构"></p>
+</li>
+<li><p>重复结构，重复结构的数据，根据使用时的条件由一个数据元素出现零次或多次构成。<br><img src="/img/soft_intro_c6/Jackson%E9%87%8D%E5%A4%8D%E7%BB%93%E6%9E%84.png" alt="重复结构"></p>
+</li>
+</ul>
+</blockquote>
+<h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><blockquote>
+<ul>
+<li>便于表示层次结构，而且是对结构进行自顶向下分解的有力工具；</li>
+<li>形象直观可读性好；</li>
+<li>技能表示数据结构也能表示程序结构。</li>
+</ul>
+</blockquote>
+<h4 id="缺点：-2"><a href="#缺点：-2" class="headerlink" title="缺点："></a>缺点：</h4><blockquote>
+<p>表示选择或重复结构时，选择条件或循环结束条件不能直接在图上表示出来，影响了图的表达能力，也不易直接把图翻译成程序；<br>框间连线为斜线，不易在行式打印机上输出。</p>
+</blockquote>
+<h3 id="改进的Jackson图"><a href="#改进的Jackson图" class="headerlink" title="改进的Jackson图"></a>改进的Jackson图</h3><blockquote>
+<p><img src="/img/soft_intro_c6/%E6%94%B9%E8%BF%9B%E7%9A%84Jackson%E5%9B%BE.png" alt="改进的Jackson图"><br>(a) 顺序结构，B、C、D中任一个都不能是选择出现或重复出现的数据元素（即不能是右上角有小圆圈或星号标记的元素；<br>(b) 选择结构，S 右面括号中的数字 i 是分支条件的编号；<br>(c) 可选结构，A 或者是元素 B 或者不出现（可选结构是选择结构的一种常见的特殊形式）；<br>(d) 重复结构，循环结束条件的编号为 i 。</p>
+</blockquote>
+<h3 id="Jackson程序设计方法由5个步骤组成："><a href="#Jackson程序设计方法由5个步骤组成：" class="headerlink" title="Jackson程序设计方法由5个步骤组成："></a>Jackson程序设计方法由5个步骤组成：</h3><ol>
+<li><p>分析并确定输入数据和输出数据的逻辑结构，用 Jackson 图描绘数据结构。</p>
+</li>
+<li><p>找出输入数据结构和输出数据结构中有对应关系的数据单元。所谓有对应关系是指有直接的因果关系，在程序中可以同时处理的数据单元（对于重复出现的数据单元必须重复的次序和次序都相同才可能有对应关系）。</p>
+</li>
+<li><p>用下述规则从描绘数据结构的 Jackson 图导出描绘程序结构的 Jackson 图：</p>
+<blockquote>
+<ul>
+<li>第一，为每对有对应关系的数据单元，按照它们在数据结构图中的层次在程序结构图的相应层次画一个处理框(层次不同时与图中层次低的那个对应)；</li>
+<li>第二，根据输入数据结构中剩余的每个数据单元所处的层次，在程序结构图的相应层次分别为它们画上对应的处理框；</li>
+<li>第三，根据输出数据结构中剩余的每个数据单元所处的层次，在程序结构图的相应层次分别为它们画上对应的处理框。</li>
+<li>改进的Jackson图规定在构成顺序结构的元素中不能有重复出现或选择出现的元素，因此可能需要增加中间层次的处理框。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>列出所有操作和条件（包括分支条件和循环结束条件），并且把它们分配到程序结构图的适当位置。</p>
+</li>
+<li><p>用伪码表示程序。</p>
+</li>
+</ol>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">顺序结构</th>
+<th align="left">选择结构</th>
+<th align="left">循环结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A seq</br>B</br>C</br>D</br>A end</td>
+<td align="left">A select cond1</br>$\quad$B</br>A or cond2</br>$\quad$C</br>A or cond3</br>$\quad$D</br>A end</td>
+<td align="left">A iter until(或while) cond</br>$\quad$B</br>A end$\quad$</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="设计步骤如下："><a href="#设计步骤如下：" class="headerlink" title="设计步骤如下："></a>设计步骤如下：</h3><ol>
+<li>用Jackson图描绘的输入输出结构。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="输入输出结构"></p>
+</blockquote>
+<ol start="2">
+<li>分析确定在输入数据结构和输出数据结构中有对应关系的数据单元。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8D%95%E5%85%83.png" alt="对应关系的数据单元"></p>
+</blockquote>
+<ol start="3">
+<li>从数据结构图导出程序结构图。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/Jackson_%E4%BB%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9B%BE%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE.png" alt="从数据结构图导出程序结构图"></p>
+</blockquote>
+<ol start="4">
+<li>列出所有操作和条件，并且把它们分配到程序结构图的适当位置。</li>
+</ol>
+<blockquote>
+<p><img src="/img/soft_intro_c6/%E6%93%8D%E4%BD%9C%E5%92%8C%E6%9D%A1%E4%BB%B6%E5%88%86%E6%95%A3%E5%88%B0%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%9B%BE%E9%80%82%E5%BD%93%E7%9A%84%E4%BD%8D%E7%BD%AE.png"></p>
+</blockquote>
+<ol start="5">
+<li>用伪码表示程序处理程序。</li>
+</ol>
+<hr>
+<h2 id="Jackson、层次图和层次方框图的区别"><a href="#Jackson、层次图和层次方框图的区别" class="headerlink" title="Jackson、层次图和层次方框图的区别"></a>Jackson、层次图和层次方框图的区别</h2><blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Jackson图</th>
+<th align="center">层次图</th>
+<th align="center">层次方框图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">作用</td>
+<td align="center">1. 描述数据结构</br>2. 描绘程序结构</td>
+<td align="center">描绘软件结构</td>
+<td align="center">描绘数据结构</td>
+</tr>
+<tr>
+<td align="center">矩形框</td>
+<td align="center">1. 数据结构</br>2. 几个语句</td>
+<td align="center">模块</td>
+<td align="center">数据元素</td>
+</tr>
+<tr>
+<td align="center">连线</td>
+<td align="center">组成关系</td>
+<td align="center">调用关系</td>
+<td align="center">组成关系</td>
+</tr>
+</tbody></table>
+</blockquote>
+<hr>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">软件工程导论</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/22/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第七章 实现</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/19/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/">
+                        <span class="hidden-mobile">第五章_总体设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>第二章 可行性研究 - 残魁斜罡的空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="残魁斜罡的空间" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/soft_intro_c2/banner_img.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="第二章 可行性研究">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-16 10:46" pubdate>
+        2021年5月16日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第二章 可行性研究</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年5月19日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="第二章-可行性研究"><a href="#第二章-可行性研究" class="headerlink" title="第二章 可行性研究"></a>第二章 可行性研究</h1><hr>
+<h4 id="可行性研究的内容"><a href="#可行性研究的内容" class="headerlink" title="可行性研究的内容"></a>可行性研究的内容</h4><p><strong>1. 技术可行性:</strong></p>
+<blockquote>
+<p>使用现有的技术能否实现这个系统？<br>是否有胜任开发该项目的熟练技术人员？<br>能否按期得到开发该项目所需的软件、硬件资源？</p>
+</blockquote>
+<p><strong>2. 经济可行性:</strong></p>
+<blockquote>
+<p>这个系统的经济效益能否超过它的开发成本？<br>需要对项目进行价格/利益分析，即“投入/产出”分析。<br>由于利益分析取决于软件系统的特点，因此在软件开发之前，很难对新系统产生的效益作出精确的定量描述，所以往往采用一些估算方法。</p>
+</blockquote>
+<p><strong>3. 操作可行性:</strong></p>
+<blockquote>
+<p>操作可行性评价系统运行后会引起的各方面变化，如：对组织机构管理模式、用户工作环境等产生的影响。</p>
+</blockquote>
+<p><strong>4. 社会可行性:</strong></p>
+<blockquote>
+<p>社会可行性主要讨论法律方面和使用方面的可行性。<br>例如，被开发软件的权利归属问题、软件所使用的技术是否会造成侵权等问题。</p>
+</blockquote>
+<hr>
+<h4 id="可行性研究过程-7步骤"><a href="#可行性研究过程-7步骤" class="headerlink" title="可行性研究过程(7步骤)"></a>可行性研究过程(7步骤)</h4><ol>
+<li>复查定义，确定系统规模和目标；<blockquote>
+<p>确认目标问题（用户需要的是否等于我们认为用户需要的）</p>
+</blockquote>
+</li>
+<li>研究目前正在使用的系统；<blockquote>
+<p>确认成本，缺点，流程图，接口等</p>
+</blockquote>
+</li>
+<li>导出新系统的高层逻辑模型（数据流图、数据字典）；<blockquote>
+<p>输入输出，数据格式</p>
+</blockquote>
+</li>
+<li>重新定义问题；</li>
+</ol>
+<blockquote>
+<p>前 4 个步骤实质上构成一个循环</p>
+</blockquote>
+<ol start="5">
+<li>导出和评价供选择的解法（物理解决方案）；<blockquote>
+<p>技术、操作、经济和市场上接受同时满足，给出供选择的方案。</p>
+</blockquote>
+</li>
+<li>推荐行动方案；<blockquote>
+<p>哪一种方案最好，为什么，给出定论和原因。</p>
+</blockquote>
+</li>
+<li>草拟开发计划（粗略）；<blockquote>
+<ul>
+<li>任务分解，确定负责人</li>
+<li>大致进度规划</li>
+<li>财务预算</li>
+<li>风险分析及对策</li>
+</ul>
+</blockquote>
+</li>
+<li>书写文档提交审查。 （作为下一个阶段工作的基础）</li>
+</ol>
+<p><strong>可行性报告，必须给出明确结论：</strong></p>
+<ul>
+<li>行或不行。</li>
+<li>或者给出系统开始前需要首先具备哪些条件</li>
+<li>或系统目标需要先行修改等。</li>
+</ul>
+<hr>
+<h4 id="系统流程图概念，特点、符号和应用；"><a href="#系统流程图概念，特点、符号和应用；" class="headerlink" title="系统流程图概念，特点、符号和应用；"></a>系统流程图概念，特点、符号和应用；</h4><ul>
+<li>概念和特点:<blockquote>
+<p>系统流程图是概括的描述物理系统的传统工具。<br>系统流程图反映的是信息在系统各部分之间流动的情况；<br>系统流程图 $\neq$ 控制、处理信息（不同于程序流程图）</p>
+</blockquote>
+</li>
+<li>符号:<br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7.png" alt="基本符号"><br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E7%B3%BB%E7%BB%9F%E7%AC%A6%E5%8F%B7.png" alt="系统符号"></li>
+<li>应用</li>
+<li>分层:<blockquote>
+<p>面对复杂的系统时,一个比较好的方法是分层次地描绘这个系统。首先用一张高层次的系统流程图描绘系统总体概貌,表明系统的关键功能。然后分别把每个关键功能扩展到适当的详细程度,画在单独的一页纸上。这种分层次的描绘方法便于阅读者按从抽象到具体的过程逐步深入地了解一个复杂的系统。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="数据流图概念、要素、特点、符号和应用；"><a href="#数据流图概念、要素、特点、符号和应用；" class="headerlink" title="数据流图概念、要素、特点、符号和应用；"></a>数据流图概念、要素、特点、符号和应用；</h4><ul>
+<li>定义:<blockquote>
+<p>数据流图是系统逻辑功能的图形表示, 图中没有任何具体的物理部件。<br>数据流图描绘数据在软件系统内从输入移动到输出过程中所经受的变换。通常用数据流图建立软件结构的功能模型。</p>
+</blockquote>
+</li>
+<li>要素及符号:<br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%BA%90%E7%82%B9or%E7%BB%88%E7%82%B9.png"><br><img src="/img/soft_intro_c2/DFD_%E5%A4%84%E7%90%86.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%B5%81.png" alt="基本符号"><br><img src="/img/soft_intro_c2/DFD_%E9%99%84%E5%8A%A0%E7%AC%A6%E5%8F%B7.png" alt="附加符号"></li>
+</ul>
+<p><strong>注意:</strong></p>
+<blockquote>
+<ul>
+<li>“处理”可表示：单个程序、一系列程序、程序的一个模块、人工处理过程等等；</li>
+<li>“数据存储”可表示：一个文件、文件的一部分、数据库记录等等；</li>
+<li>数据流图 <strong>忽略</strong> 出错处理、打开文件、关闭文件。</li>
+</ul>
+</blockquote>
+<ul>
+<li>特点:<blockquote>
+<p>抽象性，概括性，层次性</p>
+</blockquote>
+</li>
+<li>应用:<blockquote>
+<p>见课本</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>怎样画数据流图?</strong></p>
+<blockquote>
+<ol>
+<li>提取数据流图的4种成分<ol>
+<li><strong>考虑数据的源点和终点</strong></li>
+<li><strong>考虑处理</strong></li>
+<li><strong>考虑数据流和数据存储</strong></li>
+</ol>
+</li>
+<li>画出基本系统模型并将其细化, 描绘系统的主要功能<br>   一旦把数据流程图中的四种成份都分离出来之后，就可着手绘制系统的数据流程图了。数据流程图的绘制也是采用自顶向下的方法，由粗到细，逐层细化，最后形成一套完整的拟建系统的数据流程图。 </li>
+</ol>
+</blockquote>
+<p><strong>命名:</strong></p>
+<blockquote>
+<ol>
+<li><strong>为数据流(或数据存储)命名</strong><ol>
+<li>名字应该代表整个数据流(或数据存储)的内容；</li>
+<li> 不要使用空洞的、缺乏具体含义的名字（如“数据”、“输入”）；</li>
+<li>如果为某个数据流（或数据存储）起名字时遇到困难，则很可能是因为对数据流图的分解不恰当造成的，应该试试重新分解数据流图； </li>
+</ol>
+</li>
+<li><strong>为处理命名</strong><ol>
+<li>通常先为数据流命名，然后再为与之相关联的处理命名；</li>
+<li>名字应该反映整个处理的功能；</li>
+<li>应该尽量避免空洞笼统的动词做名字，如“处理”、“加工”；</li>
+<li>通常用一个动词命名，如果必须用两个动词才能描述整个处理的功能，则可能要把这个处理分解成两个处理更恰当；</li>
+<li>如果在为某个处理命名时遇到困难，则很可能是发现了分解不当的情况，应考虑重新分解。</li>
+</ol>
+</li>
+<li><strong>数据源点/终点并不需要在开发目标系统的过程中设计和实现,它并不属于数据流图的核心内容,只不过是目标系统的外围环境部分(可能是人员、计算机外部设备或传感器装置)。通常,为数据源点/终点命名时采用它们在问题域中习惯使用的名字(如“采购员”、“仓库管理员”等)。</strong></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>作用:</p>
+<ul>
+<li>利用它作为交流信息的工具；</li>
+<li>作为软件分析和设计的工具。</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="数据字典定义、包含内容："><a href="#数据字典定义、包含内容：" class="headerlink" title="数据字典定义、包含内容："></a>数据字典定义、包含内容：</h4><blockquote>
+<p>关于数据的信息的集合，也就是对数据流图中包含元素的定义的集合。<br>与数据流图共同构成系统的 <strong>逻辑模型</strong></p>
+<p>数据字典由下列四类元素的定义组成：</p>
+<ul>
+<li>数据流；</li>
+<li>数据流分量（即数据元素）</li>
+<li>数据存储；</li>
+<li>处理。</li>
+</ul>
+</blockquote>
+<h5 id="定义数据的方法"><a href="#定义数据的方法" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h5><ol>
+<li><strong>数据元素字典</strong> 定义基本内容:<ul>
+<li>数据元素编号、名称及其含义；</li>
+<li>数据类型和长度；</li>
+<li>合理取值；</li>
+<li>其他内容，如它和其它数据的逻辑关系等。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据元素字典定义实例"></li>
+</ul>
+</li>
+<li><strong>数据流字典</strong> 定义基本内容：<ul>
+<li>数据流编号及名称；</li>
+<li>数据流来源；</li>
+<li>数据流去处；</li>
+<li>数据流的组成； </li>
+<li>流通量；</li>
+<li>峰值。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据流字典定义实例"></li>
+</ul>
+</li>
+<li><strong>数据存储</strong> 字典定义基本内容:<ul>
+<li>数据存储编号及名称；</li>
+<li>数据存储的组成；</li>
+<li>其它要求。</li>
+</ul>
+</li>
+<li><strong>数据处理</strong> 字典定义基本内容:<ul>
+<li>数据处理编号及名称；</li>
+<li>简单描述；</li>
+<li>输入/输出；</li>
+<li>功能描述；</li>
+<li>有关数据存储。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据处理字典定义实例"></li>
+</ul>
+</li>
+<li>数据元素组成数据的表示方法：<ul>
+<li>顺序：即以确定次序连接两个或多个分量。</li>
+<li>选择：即从两个或多个可能的元素中选取一个。</li>
+<li>重复：即把指定的分量重复零次或多次。</li>
+<li>可选：即一个分量是可有可无的(重复零次或一次)。</li>
+</ul>
+</li>
+</ol>
+<h5 id="数据字典的用途"><a href="#数据字典的用途" class="headerlink" title="数据字典的用途:"></a>数据字典的用途:</h5><ol>
+<li>作为分析阶段的重要工具；</li>
+<li>数据元素的控制信息非常有用；</li>
+<li>有助于开发数据库。</li>
+</ol>
+<hr>
+<h4 id="定义数据的方法-1"><a href="#定义数据的方法-1" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h4><p><img src="/img/soft_intro_c2/%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95.png" alt="定义数据的方法"></p>
+<hr>
+<h4 id="成本估算技术"><a href="#成本估算技术" class="headerlink" title="成本估算技术"></a>成本估算技术</h4><h5 id="1-代码行技术"><a href="#1-代码行技术" class="headerlink" title="1. 代码行技术"></a>1. 代码行技术</h5><blockquote>
+<p>软件成本 = 每行代码的平均成本×估计的源代码总行数</p>
+</blockquote>
+<h5 id="2-任务分解技术"><a href="#2-任务分解技术" class="headerlink" title="2. 任务分解技术"></a>2. 任务分解技术</h5><blockquote>
+<p>软件开发项目分解为若干个相对独立的任务，分别估计每个单独任务的成本；<br>单独任务成本 = 任务所需人力估计值×每人每月平均工资；<br>软件开发项目总成本估计 = 各个单独任务成本估计值之和。<br><img src="/img/soft_intro_c2/%E4%BB%BB%E5%8A%A1%E5%88%86%E8%A7%A3%E6%8A%80%E6%9C%AF.png" alt="任务分解技术"></p>
+</blockquote>
+<h5 id="3-自动估计成本技术"><a href="#3-自动估计成本技术" class="headerlink" title="3. 自动估计成本技术"></a>3. 自动估计成本技术</h5><blockquote>
+<p>采用自动估计成本的软件工具估计</p>
+</blockquote>
+<h5 id="成本-效应分析的方法"><a href="#成本-效应分析的方法" class="headerlink" title="成本/效应分析的方法"></a>成本/效应分析的方法</h5><p><strong>1. 货币的时间价值</strong></p>
+<blockquote>
+<p>假设年利率为i,如果现在存入P元钱，则n年以后可以得到的钱数为：<br>$$F = P(1+i)^n$$</p>
+<p>反之，如果 <strong>n</strong> 年后能收入 <strong>F</strong> 元钱，那么这些钱现在的价值是：<br>$$P = F/(1+i)^n$$</p>
+</blockquote>
+<p><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B01.png"><br><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B02.png"><br><strong>2. 投资回收期</strong></p>
+<blockquote>
+<ul>
+<li>第一、第二年回收：4225元</li>
+<li>第三年回收投资要：(5000 - 4225)/1779 = 0.44 年</li>
+<li>总的投资回收期 = 2.44 年</li>
+</ul>
+</blockquote>
+<p><strong>3. 纯收入:</strong> 9011.94 - 5000 = 4011.94 (元)<br><strong>4. 投资回收率</strong><br>$$P = \frac{F_1}{(1+j)} + \frac{F_2}{(1+j)^2} +···+\frac{F_n}{(1+n)^n}$$</p>
+<p>其中:</p>
+<blockquote>
+<p>P是现在的投资额；<br>Fi是第i年年底的效益（i=1,2,3,…,n）;<br>n是系统的使用寿命（一般假设n=5）；<br>j是投资回收率。</p>
+</blockquote>
+<p>上述修改系统的工程的投资回收率是41%-42%</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">软件工程导论</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/18/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第三章 需求分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/15/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0/">
+                        <span class="hidden-mobile">第一章 软件工程概述</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
