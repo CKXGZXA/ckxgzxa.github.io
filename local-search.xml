@@ -8,7 +8,7 @@
     <link href="/2021/10/26/TransmissionDelayandProgationDelay/"/>
     <url>/2021/10/26/TransmissionDelayandProgationDelay/</url>
     
-    <content type="html"><![CDATA[<h1 id="传输延迟和传播延迟的区别"><a href="#传输延迟和传播延迟的区别" class="headerlink" title="传输延迟和传播延迟的区别"></a>传输延迟和传播延迟的区别</h1><blockquote><p>类比: 车队</p></blockquote><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/20211026232700.png"></p><ul><li>车速为 100 km/hr ~ 信号传播速度</li><li>收费站放行一台车用时 12 秒 ~ 比特传输时间</li><li>车 ~ 比特；车队 ~ 分组</li><li>车队通过收费站时间 ~ <strong>==传输延迟==</strong> （120秒）</li><li>每台车从第一个收费站跑到第二个收费站用时 ~ <strong>==传播延迟==</strong> （1小时）</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="传输延迟和传播延迟的区别"><a href="#传输延迟和传播延迟的区别" class="headerlink" title="传输延迟和传播延迟的区别"></a>传输延迟和传播延迟的区别</h1><blockquote><p>类比: 车队</p></blockquote><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/20211026232700.png"></p><ul><li>车速为 100 km/hr ~ 信号传播速度</li><li>收费站放行一台车用时 12 秒 ~ 比特传输时间</li><li>车 ~ 比特；车队 ~ 分组</li><li>车队通过收费站时间 ~ <strong>传输延迟</strong> （120秒）</li><li>每台车从第一个收费站跑到第二个收费站用时 ~ <strong>传播延迟</strong> （1小时）</li></ul>]]></content>
     
     
     <categories>
