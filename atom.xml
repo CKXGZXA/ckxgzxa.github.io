@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-22T16:10:15.515Z</updated>
+  <updated>2021-10-26T15:27:17.318Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>传输延迟和传播延迟的区别</title>
+    <link href="http://example.com/2021/10/26/TransmissionDelayandProgationDelay/"/>
+    <id>http://example.com/2021/10/26/TransmissionDelayandProgationDelay/</id>
+    <published>2021-10-26T15:19:23.000Z</published>
+    <updated>2021-10-26T15:27:17.318Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="传输延迟和传播延迟的区别"><a href="#传输延迟和传播延迟的区别" class="headerlink" title="传输延迟和传播延迟的区别"></a>传输延迟和传播延迟的区别</h1><blockquote><p>类比: 车队</p></blockquote><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/20211026232700.png"></p><ul><li>车速为 100 km/hr ~ 信号传播速度</li><li>收费站放行一台车用时 12 秒 ~ 比特传输时间</li><li>车 ~ 比特；车队 ~ 分组</li><li>车队通过收费站时间 ~ <strong>==传输延迟==</strong> （120秒）</li><li>每台车从第一个收费站跑到第二个收费站用时 ~ <strong>==传播延迟==</strong> （1小时）</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;传输延迟和传播延迟的区别&quot;&gt;&lt;a href=&quot;#传输延迟和传播延迟的区别&quot; class=&quot;headerlink&quot; title=&quot;传输延迟和传播延迟的区别&quot;&gt;&lt;/a&gt;传输延迟和传播延迟的区别&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;类比: 车队&lt;/p&gt;
+&lt;/bloc</summary>
+      
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="计算机网络" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>中秋之行_下午_故宫博物院</title>
