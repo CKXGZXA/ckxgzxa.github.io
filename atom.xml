@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-27T09:18:05.207Z</updated>
+  <updated>2021-10-27T11:30:40.696Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯云新号注册教程</title>
+    <link href="http://example.com/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/</id>
+    <published>2021-10-27T11:30:06.000Z</published>
+    <updated>2021-10-27T11:30:40.696Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202110271929381.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://gitee.com/ZXA200009/BlogPictures/raw/master/202110271929381.png&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>计算机网络习题第一章(网络体系结构)</title>
