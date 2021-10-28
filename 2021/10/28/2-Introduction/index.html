@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>本书导读 - 残魁斜罡的空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="残魁斜罡的空间" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/OnJava8/OnJava8_banner.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="本书导读">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-28 14:53" pubdate>
+        2021年10月28日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">本书导读</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月28日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="本书导读"><a href="#本书导读" class="headerlink" title="本书导读"></a>本书导读</h1><blockquote>
+<p>“我的语言之局限，即我的世界之局限。”</p>
+<p>​                                                   ——Ludwig Wittgenstein（1889—1951）</p>
+</blockquote>
+<p>这句话不仅适用于我们日常读写的语言，也适用于编程语言。很微妙的一件事是，一门语言会悄然无息地引导你进入某种思维模式，同时远离其他思维模式。Java尤其如此。</p>
+<p>Java是一门派生语言。当时的情况是，早期的语言设计师不想用C++来开发项目，于是创建了一门和C++极为相似的新编程语言，不过也做出了一些改进（遗憾的是，他们的项目最终没有上线）。这种新编程语言最主要的改动是加入了<strong>虚拟机</strong>和<strong>垃圾收集</strong>机制，本书后续章节会对这两点进行详细介绍。此外，Java还在其他方面推动着行业的持续发展，比如现在大多数语言应该支持文档标记语法，以及生成HTML文档的工具。</p>
+<p>Java最主要的概念之一来自SmallTalk，这门语言强调“对象”（详细内容请见第1章）是编程的基本单位，所以任何一个东西都必须是对象。经历过长时间的洗礼之后，这个概念被证明是有些激进的，有些人甚至断定对象的概念是彻头彻尾的失败，应该果断丢弃。我个人认为，把所有内容都封装为对象不仅是一种负担，而且还会将许多程序设计推向错误的方向。然而不可否认的是，在一些情况下对象依然十分有用。所以，将一切都封装为对象（尤其是深入到最底层的时候）是一种设计失误，而完全抛弃对象同样太过极端。</p>
+<p>Java还有一些决策也没有达成预期目标。关于这一点，本书中会陆续加以说明，以确保你不但可以理解这些语言特性，还能明白为什么你会觉得如鲠在喉。我并不是要将Java盖棺定论为一门优秀或拙劣的语言，我想表达的是，当了解了一门语言的不足之处和局限性之后，你将能够做到以下两点。</p>
+<ol>
+<li>当遇到某个语言特性不可用时，不会被卡住以致无法继续。</li>
+<li>因为了解局限性所在，所以可以更好地进行程序设计和编程。</li>
+</ol>
+<p>编程是一门管理复杂性的艺术，而问题的复杂程度取决于机器的复杂程度。由于这种复杂性的存在，导致了大多数编程项目的失败。</p>
+<p>许多编程语言在设计时充分考虑了复杂性的问题，然而有时候，其他问题才是更为本质的问题。几乎不可避免的是，那些“其他问题”才是让使用该语言的程序员最终碰壁的原因。例如，C++语言不得不向后兼容C语言（这是为了让C语言程序员更容易上手），同时还要保证运行效率。不可否认的是，这两者都是非常实用的设计目标，并且成了C++语言获得成功的功臣。但是随之也带来了大量额外的复杂性，使得许多项目因此而失败。当然，你可以责备程序员技艺不精或者管理方式有问题，但是如果一门语言可以协助你捕获程序中的错误，那么何乐而不为呢？</p>
+<p>Visual Basic（VB）语言依赖于BASIC语言，而BASIC语言本身并不是一种扩展性良好的语言。这导致VB在扩展时经常出现各种非常难以维护的语法。Perl语言能够向后兼容<code>awk</code>、<code>sed</code>、<code>grep</code>以及其他UNIX工具，然而这些旧时代的工具本身就是需要被替换和更新的。结果就是，Perl程序里面充斥着大量的“只读代码”（意思是你自己都搞不懂自己写的代码是什么意思）。不过话说回来，C++、VB、Perl以及其他一些语言（比如SmallTalk）都提供了一些能够处理复杂性的设计方案，并且从解决特定问题的角度来看，它们做得还相当不错。</p>
+<p>信息革命让我们所有人可以更为便捷地交流，不管是一对一、群组对群组还是星球对星球。我听说下一次革命将促生一个由足够多的人和连接组合而成的全球化的大脑。Java会不会成为这种革命所需的工具之一呢？一切皆有可能。</p>
+<h2 id="阅读前提"><a href="#阅读前提" class="headerlink" title="阅读前提"></a>阅读前提</h2><p>本书假设你有一定的编程基础，即你应该了解以下内容。</p>
+<ul>
+<li>程序是一些计算机语句的集合。</li>
+<li>子程序、函数、宏的概念。</li>
+<li>了解<code>if</code>等控制语句，以及<code>while</code>等循环结构的用法。</li>
+<li>其他相关知识点。</li>
+</ul>
+<p>也许你已经通过学校、图书或者互联网掌握了以上知识点。只要你能够理解编程的基本概念，就可以顺畅地阅读本书了。</p>
+<p>如果你对以上基本概念不甚了解的话，可以通过On Java 8网站上的免费多媒体课程“Thinking in C”获取学习Java语言所需的基础知识。本书会重点介绍面向对象编程（Object-Oriented Programming, OOP）的概念，以及Java语言的基本控制机制。</p>
+<p>我偶尔会提及一些C和C++的语言特性（有时也会提及其他语言），但是并不代表你必须熟悉C/C++语言，其目的是帮助大家理解和对比Java与两者的异同，毕竟Java是在它们的基础上发展而来的。我会尽量用简单的方式来引用这些概念，同时也会对非C/C++程序员所不熟悉的概念进行讲解。</p>
+<h2 id="JDK-HTML文档"><a href="#JDK-HTML文档" class="headerlink" title="JDK HTML文档"></a>JDK HTML文档</h2><p>Oracle公司为Java开发工具集（Java Development Kit, JDK）提供了电子文档，你用Web浏览器就可以查看。除非必要，本书不会重复文档的内容，因为你用浏览器查看一个类的详细说明要比在本书中查找快得多（此外，在线文档的内容还是即时更新的）。所以在本书中，通常我只会提及需要参考“JDK文档”。除非需要补充文档内容才能让你理解某个特定的示例，否则一般情况下我不会提供额外的说明。</p>
+<h2 id="“Thinking-in-C”课程"><a href="#“Thinking-in-C”课程" class="headerlink" title="“Thinking in C”课程"></a>“Thinking in C”课程</h2><p>“Thinking in C”课程介绍了C语言的一些基础知识，如语法、运算符、函数等，而这些内容同样也是Java语言的基础知识。此外，该课程还提供了一些编程的入门级知识，这些知识点适用于编程经验甚至比本书读者还要少的学生。</p>
+<p>我委托Chuck Allison开发了“Thinking in C”这门独立的课程，之后将其收录在光碟里，再后来它变成了免费下载的形式。通过在网络上免费提供该课程，我可以确保所有人都具备阅读本书的知识基础。</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>本书所有源代码都属于受版权保护的自由软件，并且都可以在GitHub网站上获取：<a target="_blank" rel="noopener" href="https://github.com/BruceEckel/Onjava8-examples%E3%80%82%E4%B8%BA%E4%BA%86%E7%A1%AE%E4%BF%9D%E4%BD%A0%E4%BD%BF%E7%94%A8%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E6%98%AF%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%EF%BC%8C%E8%AF%B7%E8%AE%A4%E5%87%86%E8%BF%99%E4%B8%AA%E5%AE%98%E6%96%B9%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E3%80%82%E8%BF%99%E4%BA%9B%E6%BA%90%E4%BB%A3%E7%A0%81%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%A0%A1%E5%AD%A6%E4%B9%A0%E6%88%96%E8%80%85%E6%95%99%E8%82%B2%E7%94%A8%E9%80%94%E3%80%82">https://github.com/BruceEckel/Onjava8-examples。为了确保你使用的源代码是最新版本，请认准这个官方下载地址。这些源代码可以用于在校学习或者教育用途。</a></p>
+<p>源代码的版权保护主要是为了确保这些源代码可以被正确地引用，以及防止在未经授权的情况下被随意发布。（只要是本书中引用了版权信息的源代码，在大多数情况下，使用是没有问题的。）</p>
+<p>在所有源代码文件里，你都会发现类似以下的版权信息说明：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>P14-P16代码<br></code></pre></td></tr></table></figure>
+
+<p>在编程过程中，只要你在每一个源代码文件里都保留了上面提及的版权信息，这些源代码就可以用于在校学习或者教育用途（包括幻灯片演示等文件）。</p>
+<h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><p>在本书中，各种标识符（关键字、方法名、变量名、类名等）会以等宽字体显示。</p>
+<p>本书示例会采用一种特定的编程风格。在尽可能满足本书格式要求的前提下，这种编程风格和Oracle网站上提供的编程风格几乎完全一致，同时能够兼容大多数Java开发环境。鉴于编程风格这个话题足以引发长达数小时的激烈争论，我需要在此澄清的是，我并没有试图通过我的代码示例来指导何为正确的编程风格，我使用的编程风格完全只是根据自己的意愿而为之。Java是一种形态自由的编程语言，所以你可以按照自己的喜好选择编程风格。此外，在使用诸如IntelliJ IDEA、Eclipse或者NetBeans等IDE（Integrated Development Environment，集成开发环境）时，你可以设置自己熟悉的编程风格，以此解决编程风格不一致的问题。</p>
+<p>本书的源代码都通过了自动化测试，最新版本的Java应该可以正常运行这些源代码（除了被特别标识的内容以外）。</p>
+<p>本书的内容聚焦于Java 8，并且所有源代码都在Java 8环境下测试通过。如果你一心想要学习本书未曾提及的Java早期版本的内容，也可以在On Java 8网站下载《Java编程思想》（第4版）。</p>
+<h2 id="bug反馈"><a href="#bug反馈" class="headerlink" title="bug反馈"></a>bug反馈</h2><p>就算作者本人用尽各种办法来检测编程错误，依然可能会有漏网之鱼，通常新的读者可能会有所发现。在阅读本书的过程中，只要你确信自己发现了某处错误，不管是文字还是代码示例问题，请第一时间将该错误以及你修正后的内容提交到：<a target="_blank" rel="noopener" href="https://github.com/BruceEckel/Onjava8-examples/issues%E3%80%82%E6%84%9F%E8%B0%A2%E4%BD%A0%E7%9A%84%E5%B8%AE%E5%8A%A9%EF%BC%81">https://github.com/BruceEckel/Onjava8-examples/issues。感谢你的帮助！</a></p>
+<h2 id="邮件列表"><a href="#邮件列表" class="headerlink" title="邮件列表"></a>邮件列表</h2><p>如果你希望获取相关新闻和通知，可以在On Java 8网站上订阅一个只包含少量内容的邮件列表。我不会发送任何广告，并且我会尽我所能保持其内容的正确性。</p>
+<h2 id="图形用户界面"><a href="#图形用户界面" class="headerlink" title="图形用户界面"></a>图形用户界面</h2><p>对于Java而言，图形用户界面（GUI）和桌面编程代表着一段动荡甚至有些悲惨的历史。</p>
+<p>在Java 1.0时代，GUI库最初的设计目的是让程序员可以创建一种在所有平台上看起来都光鲜亮丽的GUI。遗憾的是，这个目标并没有达成。取而代之的是，Java 1.0通过<strong>抽象窗口工具集</strong>（Abstract Windowing Toolkit, AWT）创建了一种在所有平台上都表现平平的GUI。不仅如此，这套GUI还有一些局限性。比如，你最多只能使用4种字体，而且你不能调用操作系统中任何成熟的GUI组件。此外，Java 1.0 AWT的编程模式最令人尴尬的是，它甚至不支持面向对象编程。我的研讨班中的一名学生（他曾经在Sun公司经历过最初创造Java语言的那段时光）曾经对此情况做出过解释：最初的AWT是在一个月之内构想、设计和实现出来的。这样的产能效率纵然让人称奇，却也是体现框架设计重要性的一份反面教材。</p>
+<p>随后发展到Java 1.1 AWT事件模型的时期，情况终于有所改善。这次的AWT使用一种更为清晰且面向对象的编程方式，同时添加了一种名为JavaBeans的组件编程模式（现在已经不复存在），其目的是可以轻松创建可视化的编程环境。到了Java 2（也叫Java 1.2）时代，Java不再继续改进Java 1.0 AWT，而是用<strong>Java基础类</strong>（Java Foundation Classes, JFC）重写了一切，其中GUI部分称为“Swing”。通过JavaBeans及其丰富的代码库，用户可以创建出效果不错的GUI。只不过这一次，软件产业的“三个版本定律”（只有改良到第三个版本的才是好产品）似乎在编程语言领域也适用了。</p>
+<p>Swing看起来似乎是Java语言GUI库的最终解决方案，然而这个假设最终也不攻自破了。随后，Sun公司又做出了最后一次努力，推出了JavaFX。当Oracle公司收购Sun公司后，Java的设计者们将这个野心勃勃的项目（其中甚至还包含了一种脚本语言）调整为Java的一个库，现在它似乎是唯一一个得以继续开发的UI工具包（详细请参考维基百科关于JavaFX的文章）。然而即便是这种程度的开发力度也难以为继，于是JavaFX和它的几个前辈一样，最终也难逃覆灭的命运。</p>
+<p>现如今，Swing依然是Java的一部分（不过只是维护而没有再开发新内容）。由于Java现在已经是开源项目，所以也可以轻松获取到Swing。此外，Swing和JavaFX之间有一些有限的交互，其原本的目的是将Swing的功能移植到JavaFX中。</p>
+<p>归根结底，Java在桌面领域从未真正强大过，甚至从未触及设计师的雄心壮志。至于其他，比如JavaBeans，也总是雷声大雨点小（不幸的是，有不少作者花费了大量心血来编写关于Swing的书，甚至是仅仅关于JavaBeans的书），始终没有获得大众的青睐。结果就是，Java在桌面领域的大多数应用场景是IDE以及一些企业内部的应用程序。虽然人们确实也会用Java开发用户界面，但是你要清楚地意识到这只是Java语言的一个小众需求。</p>
+<p>如果你一定要学习Swing，可以在On Java 8网站上免费下载《Java编程思想》（第4版）并学习相关内容，或者参考其他专门讲解Swing的图书。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Books/">Books</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OnJava8/">OnJava8</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/">
+                        <span class="hidden-mobile">腾讯云新号注册教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
