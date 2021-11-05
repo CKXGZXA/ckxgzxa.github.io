@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>第七章 实现 - 残魁斜罡的空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="残魁斜罡的空间" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/soft_intro_c7/banner_img.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="第七章 实现">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-22 00:44" pubdate>
+        2021年5月22日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第七章 实现</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年5月23日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="第七章-实现"><a href="#第七章-实现" class="headerlink" title="第七章 实现"></a>第七章 实现</h1><hr>
+<h2 id="实现包括：编码和测试"><a href="#实现包括：编码和测试" class="headerlink" title="实现包括：编码和测试"></a>实现包括：编码和测试</h2><blockquote>
+<p>编码：把软件设计结果翻译成程序。<br>测试：检测程序并改正错误的过程。</p>
+</blockquote>
+<hr>
+<h2 id="白盒测试和黑盒测试的定义"><a href="#白盒测试和黑盒测试的定义" class="headerlink" title="白盒测试和黑盒测试的定义"></a>白盒测试和黑盒测试的定义</h2><h3 id="白盒测试（也称结构测试）"><a href="#白盒测试（也称结构测试）" class="headerlink" title="白盒测试（也称结构测试）"></a>白盒测试（也称结构测试）</h3><blockquote>
+<p>如果知道软件内部工作过程，可以通过测试来检验软件内部动作是否按照规格说明书的规定正常进行，这种测试称为白盒测试。</p>
+</blockquote>
+<h3 id="黑盒测试（也称功能测试）"><a href="#黑盒测试（也称功能测试）" class="headerlink" title="黑盒测试（也称功能测试）"></a>黑盒测试（也称功能测试）</h3><blockquote>
+<p>如果已经知道软件应该具有的功能，可以通过测试来检验是否每个功能都能正常使用，这种测试称黑盒测试。也称功能测试。</p>
+</blockquote>
+<hr>
+<h2 id="软件测试的步骤"><a href="#软件测试的步骤" class="headerlink" title="软件测试的步骤"></a>软件测试的步骤</h2><h3 id="1-模块测试（测试编码和详细设计的错误）"><a href="#1-模块测试（测试编码和详细设计的错误）" class="headerlink" title="1. 模块测试（测试编码和详细设计的错误）"></a>1. 模块测试（测试编码和详细设计的错误）</h3><blockquote>
+<p>模块测试又称单元测试，它把每个模块作为单独的实体来测试。</p>
+</blockquote>
+<h3 id="2-子系统测试（测试模块接口）"><a href="#2-子系统测试（测试模块接口）" class="headerlink" title="2. 子系统测试（测试模块接口）"></a>2. 子系统测试（测试模块接口）</h3><blockquote>
+<p>子系统测试是把警告单元测试的模块放在一起形成一个子系统来测试。</p>
+</blockquote>
+<h3 id="3-系统测试"><a href="#3-系统测试" class="headerlink" title="3. 系统测试"></a>3. 系统测试</h3><blockquote>
+<p>系统测试是把经过测试的子系统装配成一个完整的系统来测试。<br>子系统测试测试和系统测试，通常称为集成测试。</p>
+</blockquote>
+<h3 id="4-验收测试"><a href="#4-验收测试" class="headerlink" title="4. 验收测试"></a>4. 验收测试</h3><blockquote>
+<p>验收测试把软件系统作为单一的实体进行测试（利用用户的实际数据测试）。</p>
+</blockquote>
+<h3 id="5-平行运行"><a href="#5-平行运行" class="headerlink" title="5.平行运行"></a>5.平行运行</h3><blockquote>
+<p>平行运行是同时运行新开发出来的系统和将被它取代的旧系统，以便比较新旧两个系统的处理结果。</p>
+</blockquote>
+<hr>
+<h2 id="单元测试-计算机测试（驱动程序和存根程序）"><a href="#单元测试-计算机测试（驱动程序和存根程序）" class="headerlink" title="单元测试-计算机测试（驱动程序和存根程序）"></a>单元测试-计算机测试（驱动程序和存根程序）</h2><blockquote>
+<p>单元测试集中检测软件的设计的最小单元—模块。单元测试和编码属于软件工程的同一阶段。一般方法是：</p>
+<ul>
+<li>首先通过编译系统检查并改正程序中所有的语法错误；</li>
+<li>然后用详细设计模块说明为指南，对重要的控制路径进行测试，以便发现模块内部的错误。</li>
+<li>通常，单元测试使用白盒测试技术。</li>
+</ul>
+</blockquote>
+<h3 id="测试重点"><a href="#测试重点" class="headerlink" title="测试重点"></a>测试重点</h3><ol>
+<li>模块接口</li>
+</ol>
+<blockquote>
+<p>应该对穿过模块接口的数据流进行检测，以保证正确的输入和输出。</p>
+</blockquote>
+<ol start="2">
+<li>局部数据结构</li>
+</ol>
+<blockquote>
+<p>这是错误的主要来源，应该设计相应的测试用例，以便发现数据结构方面的错误。</p>
+</blockquote>
+<ol start="3">
+<li>重要的执行路径</li>
+</ol>
+<blockquote>
+<p>由于不可能进行穷尽测试，因此选择测试路径是非常关键的。</p>
+</blockquote>
+<ol start="4">
+<li>出错处理通路和边界条件</li>
+</ol>
+<h3 id="代码审查"><a href="#代码审查" class="headerlink" title="代码审查"></a>代码审查</h3><h3 id="计算机测试"><a href="#计算机测试" class="headerlink" title="计算机测试"></a>计算机测试</h3><blockquote>
+<p>由于软件模块不是一个独立的系统，不能独立运行，要依靠其他模块调用，或需要调用其他模块。因此，必须要为测试的单元开发驱动程序或存根程序。</p>
+<p>1.驱动程序</p>
+<blockquote>
+<p>相当于一个“主程序”，用来把测试数据传送给被测试的模块，并打印有关结果。</p>
+</blockquote>
+<ol start="2">
+<li>存根程序</li>
+</ol>
+<blockquote>
+<p>用来代替被测试模块所调用的模块，相当于“虚拟子程序”。</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="集成测试：非渐增测试和渐增式测试"><a href="#集成测试：非渐增测试和渐增式测试" class="headerlink" title="集成测试：非渐增测试和渐增式测试"></a>集成测试：非渐增测试和渐增式测试</h2><blockquote>
+<p>集成测试是组装软件的系统化技术，它将经过单元测试的模块联系在一起进行测试。</p>
+</blockquote>
+<p>由模块组装成程序时有两种方法：</p>
+<h3 id="1-非渐增式测试方法"><a href="#1-非渐增式测试方法" class="headerlink" title="1. 非渐增式测试方法"></a>1. 非渐增式测试方法</h3><blockquote>
+<p>先分别测试每个模块，再把所有模块按设计要求放在一起结合成所要的程序。</p>
+</blockquote>
+<h3 id="2-渐增式测试方法"><a href="#2-渐增式测试方法" class="headerlink" title="2. 渐增式测试方法"></a>2. 渐增式测试方法</h3><blockquote>
+<p>每次增加一个待测试模块，把它同已经测试好的那些模块结合起来进行测试，反复进行直到完成所有模块测试的方法。<br>使用渐增式测试方法把模块结合到软件系统中去时，有自顶向下和自底向上两种集成方法。  </p>
+</blockquote>
+<hr>
+<h2 id="确认测试：Alpha和Beta测试"><a href="#确认测试：Alpha和Beta测试" class="headerlink" title="确认测试：Alpha和Beta测试"></a>确认测试：Alpha和Beta测试</h2><h3 id="Alpha测试"><a href="#Alpha测试" class="headerlink" title="Alpha测试"></a>Alpha测试</h3><blockquote>
+<p>用户在开发者的场所进行测试，并且在开发者的指导下进行，测试在受控环境中进行，开发者记录发现的错误和问题；</p>
+</blockquote>
+<h3 id="Beta测试"><a href="#Beta测试" class="headerlink" title="Beta测试"></a>Beta测试</h3><blockquote>
+<p>用户在一个或多个客户场所进行测试，不受开发者控制，测试者记录发现的问题和错误，定期将问题报告发送给开发者。</p>
+</blockquote>
+<hr>
+<h2 id="白盒测试技术"><a href="#白盒测试技术" class="headerlink" title="白盒测试技术"></a>白盒测试技术</h2><h3 id="1-语句覆盖"><a href="#1-语句覆盖" class="headerlink" title="1. 语句覆盖"></a>1. 语句覆盖</h3><blockquote>
+<p>设计的测试用例能使程序中每条语句至少执行一次。</p>
+</blockquote>
+<h3 id="2-判定覆盖"><a href="#2-判定覆盖" class="headerlink" title="2. 判定覆盖"></a>2. 判定覆盖</h3><blockquote>
+<p>判定覆盖是指：选取足够的测试用例，使得程序中每个判断的可能结果都至少执行一次，也就是说使程序的每个判断分支至少通过一次。</p>
+</blockquote>
+<h3 id="3-条件覆盖"><a href="#3-条件覆盖" class="headerlink" title="3. 条件覆盖"></a>3. 条件覆盖</h3><blockquote>
+<p>条件覆盖是指：选择足够的测试用例，使得程序中每个判定表达式的每个条件都取到各种可能的结果。</p>
+</blockquote>
+<blockquote>
+<p>条件覆盖通常比判定覆盖强，但是条件覆盖不一定包含判定覆盖。</p>
+</blockquote>
+<h3 id="4-判定-条件覆盖"><a href="#4-判定-条件覆盖" class="headerlink" title="4. 判定/条件覆盖"></a>4. 判定/条件覆盖</h3><blockquote>
+<p>选取足够的测试用例使得同时满足判定覆盖和条件覆盖的要求。</p>
+</blockquote>
+<h3 id="5-条件组合覆盖"><a href="#5-条件组合覆盖" class="headerlink" title="5. 条件组合覆盖"></a>5. 条件组合覆盖</h3><blockquote>
+<p>选取足够的测试用例，使得每个判定表达式中条件的各种可能的组合都至少出现一次。</p>
+</blockquote>
+<p>如果从对程序路径的覆盖程度分析，可以提出下面一些逻辑覆盖标准：</p>
+<h3 id="6-点覆盖"><a href="#6-点覆盖" class="headerlink" title="6. 点覆盖"></a>6. 点覆盖</h3><blockquote>
+<p>选取足够多的测试用例，使得程序执行路径至少经过程序图中每个节点一次。</p>
+</blockquote>
+<h3 id="7-边覆盖"><a href="#7-边覆盖" class="headerlink" title="7.  边覆盖"></a>7.  边覆盖</h3><blockquote>
+<p>边覆盖是指：选取足够多的测试用例，使得程序执行路径至少经过程序图中每条边一次。</p>
+</blockquote>
+<h3 id="8-路径覆盖"><a href="#8-路径覆盖" class="headerlink" title="8. 路径覆盖"></a>8. 路径覆盖</h3><blockquote>
+<p>路径覆盖是指：选取足够多的测试用例，使得程序的每条可能路径都至少执行一次。</p>
+</blockquote>
+<hr>
+<h2 id="黑盒测试：等价划分、边界值检测和错误推测"><a href="#黑盒测试：等价划分、边界值检测和错误推测" class="headerlink" title="黑盒测试：等价划分、边界值检测和错误推测"></a>黑盒测试：等价划分、边界值检测和错误推测</h2><hr>
+<h2 id="调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）"><a href="#调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）" class="headerlink" title="调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）"></a>调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">软件工程导论</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">摩尔庄园手游NPC喜好</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1.html">
+                        <span class="hidden-mobile">第六章 详细设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

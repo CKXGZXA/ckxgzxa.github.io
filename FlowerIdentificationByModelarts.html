@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>ModelArts平台花卉分类识别实验报告 - 残魁斜罡的空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="残魁斜罡的空间" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052231951.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ModelArts平台花卉分类识别实验报告">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-05 14:45" pubdate>
+        2021年11月5日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ModelArts平台花卉分类识别实验报告</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年11月5日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="华为云ModelArts平台花卉分类识别实验报告"><a href="#华为云ModelArts平台花卉分类识别实验报告" class="headerlink" title="华为云ModelArts平台花卉分类识别实验报告"></a>华为云ModelArts平台花卉分类识别实验报告</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=5a4cbb43-f85f-4427-ba12-3630ac71d4fe&utm_source=Y2t4Z3p4YWJlc3Q==&utm_medium=cps&utm_campaign=201905">【华为云11.11上云嘉年华，注册领10000元上云礼包，满额送华为X2折叠屏】</a></p>
+</blockquote>
+<h2 id="1-准备数据集"><a href="#1-准备数据集" class="headerlink" title="1. 准备数据集"></a>1. 准备数据集</h2><p>​        我们在官网下载好TensorFlow官网提供的[花卉数据集](<a target="_blank" rel="noopener" href="https://www.tensorflow.org/datasets/catalog/tf_flowers">tf_flowers  | TensorFlow Datasets</a>)并在我们电脑上解压, </p>
+<p>发现 文件的结构如下所示:</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111051955239.png" alt="image-20211105195521063"></p>
+<p>flower_photos内共有5个文件夹,分别是雏菊(daisy)，dandelion(蒲公英)， roses(玫瑰)， sunflowers(向日葵)， tulips(郁金香)， 每个文件夹中存放有若干张该分类的图片。</p>
+<h2 id="2-创建OBS桶"><a href="#2-创建OBS桶" class="headerlink" title="2. 创建OBS桶"></a>2. 创建OBS桶</h2><p>用ModelArts训练需要华为的对象存储服务OBS来保存我们的数据，</p>
+<ul>
+<li><p>首先在华为云搜索obs服务，然后点击进入</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052031054.png" alt="image-20211105203119822"></p>
+</li>
+<li><p>进入之后点击创建桶</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052030323.png" alt="image-20211105203016075"></p>
+<ul>
+<li><p>然后选择单AZ存储，地区选择离你最近的地区即可，选择好之后点击立即创建：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052036482.png" alt="image-20211105203646291"></p>
+</li>
+<li><p>这样我们的OBS桶就创建好了</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052041210.png" alt="image-20211105204107093"></p>
+</li>
+</ul>
+<h2 id="3-获取访问密钥"><a href="#3-获取访问密钥" class="headerlink" title="3. 获取访问密钥"></a>3. 获取访问密钥</h2><p>需要获取访问密钥然后用访问密钥登录obs-brower来方便的将我们的训练数据上传到OBS桶</p>
+<ul>
+<li><p>获取OBS密钥</p>
+<ol>
+<li><p>点击我的凭证</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052113742.png" alt="image-20211105211345664"></p>
+</li>
+<li><p>点击新增访问密钥</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052114923.png" alt="image-20211105211453706"></p>
+</li>
+<li><p>输入密钥名称就可以下载一个名为credentials.csv的文件，里面存放的就是访问密钥，请不要泄露</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052117971.png"></p>
+</li>
+</ol>
+<h2 id="4-获取OBS-Browser-工具"><a href="#4-获取OBS-Browser-工具" class="headerlink" title="4. 获取OBS Browser+ 工具"></a>4. 获取OBS Browser+ 工具</h2><ol>
+<li><p>随后我们进入如下的网址下载 obs browser+ 工具</p>
+<p>下载OBS Browser+：<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html">https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html</a></p>
+<p>下载安装好之后我们打开它之后使用上一步获取到的密钥登录：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052121218.png" alt="image-20211105212127102"></p>
+</li>
+<li><p>随后我们在桶内新建4个文件夹(flower_photos, flower_input, flower_output, train_output)用于接下来的实验</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052122159.png" alt="image-20211105212256032"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="5-上传数据集"><a href="#5-上传数据集" class="headerlink" title="5. 上传数据集"></a>5. 上传数据集</h2><p>在flower_photos中上传我们解压出来的花卉数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052128053.png" alt="image-20211105212805937"></p>
+<p>​     </p>
+<h2 id="6-创建数据集"><a href="#6-创建数据集" class="headerlink" title="6. 创建数据集"></a>6. 创建数据集</h2><ul>
+<li><p>进入ModelArts控制台界面，进入数据集管理，然后点击创建数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052131676.png" alt="image-20211105213120461"></p>
+</li>
+<li><p>选择图像分类标注类型，输入为止和输出位置选择我们刚刚在 obs browser中新建的两个空文件夹</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052133067.png" alt="image-20211105213303824"></p>
+</li>
+<li><p>随后点击创建数据集即可</p>
+</li>
+<li><p>返回进入此数据集管理界面，点击导入，由于我已经创建过数据集了，因此里面是有标记数据的</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052135413.png" alt="image-20211105213510211"></p>
+</li>
+<li><p>点击我们刚开始上传花卉数据集的位置确定即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052136171.png" alt="image-20211105213608064"></p>
+</li>
+<li><p>导入完成之后，我们点击发布，设置数据切分训练集比例为0.8即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052137278.png" alt="image-20211105213729194"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052138484.png" alt="image-20211105213811387"></p>
+</li>
+</ul>
+<h2 id="7-使用算法进行模型训练"><a href="#7-使用算法进行模型训练" class="headerlink" title="7. 使用算法进行模型训练"></a>7. 使用算法进行模型训练</h2><ul>
+<li><p>首先进入如下的网址订阅图像分类算法</p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0">图像分类-MobileNet_v2链接</a>：<a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)">https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)</a></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052139825.png" alt="image-20211105213954489"></p>
+</li>
+<li><p>订阅完成之后我们返回ModelArts控制台的训练管理界面，点击创建训练作业</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052143872.png" alt="image-20211105214329543"></p>
+</li>
+<li><p>算法选择刚刚我们刚刚订阅的算法，训练输入选择我们刚刚创建的数据集，训练输出选择我们刚开始创建的输出文件夹即可，下面有免费的GPU资源可以供我们选择。点击提交并等待训练完成。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052145627.png" alt="image-20211105214541511"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052147929.png" alt="image-20211105214734741"></p>
+</li>
+<li><p>模型训练完成大概需要二十多分钟</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052211783.png" alt="image-20211105221118637"></p>
+</li>
+</ul>
+<h2 id="8-模型的部署和验证"><a href="#8-模型的部署和验证" class="headerlink" title="8. 模型的部署和验证"></a>8. 模型的部署和验证</h2><ul>
+<li><p>点击模型管理，然后进行在线服务的部署，选择免费资源即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052153987.png" alt="image-20211105215342790"></p>
+</li>
+<li><p>部署完成之后点击在线服务的预测</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052156506.png" alt="image-20211105215616340"></p>
+<p>在这里可以对应用接口进行调试，同样地你也可以利用POSTMAN等工具对它进行调试，官网有详细的文档可以查看</p>
+</li>
+<li><p>我们上传一些花卉图片对它进行测试</p>
+<ol>
+<li><p>这张图片的结果是玫瑰的可能性是1，识别正确。<img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052159806.png" alt="image-20211105215908408"></p>
+</li>
+<li><p>这张蒲公英的图片也是识别正确的。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052202530.png" alt="image-20211105220235211"></p>
+</li>
+<li><p>这张图片是向日葵的概率也是100%</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052206769.png"></p>
+</li>
+</ol>
+</li>
+<li><p>我们发现这个训练出来的95.87%准确率的花卉分类模型还是能准确分辨这五种花卉图片的，结果不错。</p>
+</li>
+</ul>
+<h2 id="9-注意事项"><a href="#9-注意事项" class="headerlink" title="9. 注意事项"></a>9. 注意事项</h2><ul>
+<li>华为的OBS对象存储服务是要花钱的，不过训练完成之后也只扣了1分钱，其他的服务都是免费的，充值的费用如果没用完也是能提现的，所以不用担心，这点还是非常不错的。</li>
+</ul>
+<h2 id="10-心得和体会"><a href="#10-心得和体会" class="headerlink" title="10. 心得和体会"></a>10. 心得和体会</h2><p>通过这次利用华为云ModelArts平台进行的花卉识别实验，我发现华为ModelArts平台为机器学习与深度学习提供海量数据预处理及交互式智能标注、大规模分布式训练、自动化模型生成等等一些功能，这些功能全是华为云线上帮你完成的，我们用户根本不用编写一些复杂的代码，从而可以帮助用户快速创建和部署模型，即使你毫无编码基础，也能通过这些图形化的界面进行模型的搭建和训练并快速的部署发布到实际应用当中，推进了人工智能和机器学习的普及和大众化，并使用场景化的AI案例，使得AI落地零门槛，这样的话普通人也能利用华为的这个平台使用人工智能技术改变世界。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/3-WhatIsAnObject.html">
+                        <span class="hidden-mobile">第1章 什么是对象?</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
