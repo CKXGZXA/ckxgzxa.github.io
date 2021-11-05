@@ -3,11 +3,11 @@
   <title>残魁斜罡的空间</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://ckxgzxa.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://ckxgzxa.github.io/"/>
   <updated>2021-11-05T15:02:46.298Z</updated>
-  <id>http://example.com/</id>
+  <id>https://ckxgzxa.github.io/</id>
   
   <author>
     <name>残魁斜罡</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>ModelArts平台花卉分类识别实验报告</title>
-    <link href="http://example.com/2021/11/05/FlowerIdentificationByModelarts/"/>
-    <id>http://example.com/2021/11/05/FlowerIdentificationByModelarts/</id>
+    <link href="https://ckxgzxa.github.io/2021/11/05/FlowerIdentificationByModelarts/"/>
+    <id>https://ckxgzxa.github.io/2021/11/05/FlowerIdentificationByModelarts/</id>
     <published>2021-11-05T06:45:43.000Z</published>
     <updated>2021-11-05T15:02:46.298Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="人工智能" scheme="http://example.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    <category term="人工智能" scheme="https://ckxgzxa.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>第1章 什么是对象?</title>
-    <link href="http://example.com/2021/10/28/3-WhatIsAnObject/"/>
-    <id>http://example.com/2021/10/28/3-WhatIsAnObject/</id>
+    <link href="https://ckxgzxa.github.io/2021/10/28/3-WhatIsAnObject/"/>
+    <id>https://ckxgzxa.github.io/2021/10/28/3-WhatIsAnObject/</id>
     <published>2021-10-28T07:02:17.000Z</published>
     <updated>2021-10-28T07:23:09.340Z</updated>
     
@@ -58,17 +58,17 @@
     
     
     
-    <category term="Books" scheme="http://example.com/categories/Books/"/>
+    <category term="Books" scheme="https://ckxgzxa.github.io/categories/Books/"/>
     
     
-    <category term="OnJava8" scheme="http://example.com/tags/OnJava8/"/>
+    <category term="OnJava8" scheme="https://ckxgzxa.github.io/tags/OnJava8/"/>
     
   </entry>
   
   <entry>
     <title>本书导读</title>
-    <link href="http://example.com/2021/10/28/2-Introduction/"/>
-    <id>http://example.com/2021/10/28/2-Introduction/</id>
+    <link href="https://ckxgzxa.github.io/2021/10/28/2-Introduction/"/>
+    <id>https://ckxgzxa.github.io/2021/10/28/2-Introduction/</id>
     <published>2021-10-28T06:53:31.000Z</published>
     <updated>2021-10-28T06:58:01.954Z</updated>
     
@@ -84,17 +84,17 @@
     
     
     
-    <category term="Books" scheme="http://example.com/categories/Books/"/>
+    <category term="Books" scheme="https://ckxgzxa.github.io/categories/Books/"/>
     
     
-    <category term="OnJava8" scheme="http://example.com/tags/OnJava8/"/>
+    <category term="OnJava8" scheme="https://ckxgzxa.github.io/tags/OnJava8/"/>
     
   </entry>
   
   <entry>
     <title>腾讯云新号注册教程</title>
-    <link href="http://example.com/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/</id>
+    <link href="https://ckxgzxa.github.io/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/"/>
+    <id>https://ckxgzxa.github.io/2021/10/27/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B/</id>
     <published>2021-10-27T11:30:06.000Z</published>
     <updated>2021-10-27T12:27:08.233Z</updated>
     
@@ -114,8 +114,8 @@
   
   <entry>
     <title>计算机网络习题第一章(网络体系结构)</title>
-    <link href="http://example.com/2021/10/27/ComputerNetworkingProblem1/"/>
-    <id>http://example.com/2021/10/27/ComputerNetworkingProblem1/</id>
+    <link href="https://ckxgzxa.github.io/2021/10/27/ComputerNetworkingProblem1/"/>
+    <id>https://ckxgzxa.github.io/2021/10/27/ComputerNetworkingProblem1/</id>
     <published>2021-10-27T06:28:56.000Z</published>
     <updated>2021-10-27T09:18:05.207Z</updated>
     
@@ -130,17 +130,17 @@
     
     
     
-    <category term="习题" scheme="http://example.com/categories/%E4%B9%A0%E9%A2%98/"/>
+    <category term="习题" scheme="https://ckxgzxa.github.io/categories/%E4%B9%A0%E9%A2%98/"/>
     
     
-    <category term="计算机网络" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://ckxgzxa.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>传输延迟和传播延迟的区别</title>
-    <link href="http://example.com/2021/10/26/TransmissionDelayandProgationDelay/"/>
-    <id>http://example.com/2021/10/26/TransmissionDelayandProgationDelay/</id>
+    <link href="https://ckxgzxa.github.io/2021/10/26/TransmissionDelayandProgationDelay/"/>
+    <id>https://ckxgzxa.github.io/2021/10/26/TransmissionDelayandProgationDelay/</id>
     <published>2021-10-26T15:19:23.000Z</published>
     <updated>2021-10-26T15:32:38.717Z</updated>
     
@@ -156,17 +156,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="计算机网络" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://ckxgzxa.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>中秋之行_下午_故宫博物院</title>
-    <link href="http://example.com/2021/09/22/2021MidAutumnFestival2/"/>
-    <id>http://example.com/2021/09/22/2021MidAutumnFestival2/</id>
+    <link href="https://ckxgzxa.github.io/2021/09/22/2021MidAutumnFestival2/"/>
+    <id>https://ckxgzxa.github.io/2021/09/22/2021MidAutumnFestival2/</id>
     <published>2021-09-22T08:51:32.000Z</published>
     <updated>2021-09-22T16:10:15.515Z</updated>
     
@@ -181,17 +181,17 @@
     
     
     
-    <category term="个人记实" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%AE%9E/"/>
+    <category term="个人记实" scheme="https://ckxgzxa.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%AE%9E/"/>
     
     
-    <category term="2021中秋节" scheme="http://example.com/tags/2021%E4%B8%AD%E7%A7%8B%E8%8A%82/"/>
+    <category term="2021中秋节" scheme="https://ckxgzxa.github.io/tags/2021%E4%B8%AD%E7%A7%8B%E8%8A%82/"/>
     
   </entry>
   
   <entry>
     <title>中秋之行_上午_中国地质博物馆</title>
-    <link href="http://example.com/2021/09/21/2021MidAutumnFestival1/"/>
-    <id>http://example.com/2021/09/21/2021MidAutumnFestival1/</id>
+    <link href="https://ckxgzxa.github.io/2021/09/21/2021MidAutumnFestival1/"/>
+    <id>https://ckxgzxa.github.io/2021/09/21/2021MidAutumnFestival1/</id>
     <published>2021-09-21T14:19:40.000Z</published>
     <updated>2021-09-22T05:54:15.673Z</updated>
     
@@ -205,17 +205,17 @@
     
     
     
-    <category term="个人记实" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%AE%9E/"/>
+    <category term="个人记实" scheme="https://ckxgzxa.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%AE%9E/"/>
     
     
-    <category term="2021中秋节" scheme="http://example.com/tags/2021%E4%B8%AD%E7%A7%8B%E8%8A%82/"/>
+    <category term="2021中秋节" scheme="https://ckxgzxa.github.io/tags/2021%E4%B8%AD%E7%A7%8B%E8%8A%82/"/>
     
   </entry>
   
   <entry>
     <title>一些绕口令</title>
-    <link href="http://example.com/2021/09/19/%E4%B8%80%E4%BA%9B%E7%BB%95%E5%8F%A3%E4%BB%A4/"/>
-    <id>http://example.com/2021/09/19/%E4%B8%80%E4%BA%9B%E7%BB%95%E5%8F%A3%E4%BB%A4/</id>
+    <link href="https://ckxgzxa.github.io/2021/09/19/%E4%B8%80%E4%BA%9B%E7%BB%95%E5%8F%A3%E4%BB%A4/"/>
+    <id>https://ckxgzxa.github.io/2021/09/19/%E4%B8%80%E4%BA%9B%E7%BB%95%E5%8F%A3%E4%BB%A4/</id>
     <published>2021-09-19T10:49:35.000Z</published>
     <updated>2021-09-19T10:58:54.861Z</updated>
     
@@ -230,15 +230,15 @@
     
     
     
-    <category term="其他" scheme="http://example.com/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://ckxgzxa.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
   </entry>
   
   <entry>
     <title>OnJava8前言</title>
-    <link href="http://example.com/2021/09/15/1-OnJava8Preface/"/>
-    <id>http://example.com/2021/09/15/1-OnJava8Preface/</id>
+    <link href="https://ckxgzxa.github.io/2021/09/15/1-OnJava8Preface/"/>
+    <id>https://ckxgzxa.github.io/2021/09/15/1-OnJava8Preface/</id>
     <published>2021-09-15T13:44:40.000Z</published>
     <updated>2021-10-28T06:54:51.650Z</updated>
     
@@ -255,17 +255,17 @@
     
     
     
-    <category term="Books" scheme="http://example.com/categories/Books/"/>
+    <category term="Books" scheme="https://ckxgzxa.github.io/categories/Books/"/>
     
     
-    <category term="OnJava8" scheme="http://example.com/tags/OnJava8/"/>
+    <category term="OnJava8" scheme="https://ckxgzxa.github.io/tags/OnJava8/"/>
     
   </entry>
   
   <entry>
     <title>摩尔庄园手游NPC喜好</title>
-    <link href="http://example.com/2021/06/19/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD/"/>
-    <id>http://example.com/2021/06/19/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD/</id>
+    <link href="https://ckxgzxa.github.io/2021/06/19/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD/"/>
+    <id>https://ckxgzxa.github.io/2021/06/19/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD/</id>
     <published>2021-06-19T15:42:01.000Z</published>
     <updated>2021-09-19T10:51:05.142Z</updated>
     
@@ -286,14 +286,14 @@
     
     
     
-    <category term="游戏" scheme="http://example.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    <category term="游戏" scheme="https://ckxgzxa.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
   <entry>
     <title>第七章 实现</title>
-    <link href="http://example.com/2021/05/22/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://example.com/2021/05/22/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/22/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://ckxgzxa.github.io/2021/05/22/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0/</id>
     <published>2021-05-21T16:44:15.000Z</published>
     <updated>2021-05-23T12:24:10.749Z</updated>
     
@@ -308,17 +308,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>第六章 详细设计</title>
-    <link href="http://example.com/2021/05/21/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://example.com/2021/05/21/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/21/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://ckxgzxa.github.io/2021/05/21/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/</id>
     <published>2021-05-20T17:36:06.000Z</published>
     <updated>2021-05-23T16:19:21.042Z</updated>
     
@@ -334,17 +334,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>第五章_总体设计</title>
-    <link href="http://example.com/2021/05/19/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://example.com/2021/05/19/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/19/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://ckxgzxa.github.io/2021/05/19/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/</id>
     <published>2021-05-19T04:39:17.000Z</published>
     <updated>2021-05-23T12:32:53.528Z</updated>
     
@@ -360,17 +360,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>第三章 需求分析</title>
-    <link href="http://example.com/2021/05/18/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"/>
-    <id>http://example.com/2021/05/18/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/18/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"/>
+    <id>https://ckxgzxa.github.io/2021/05/18/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</id>
     <published>2021-05-17T16:22:55.000Z</published>
     <updated>2021-05-23T02:27:37.114Z</updated>
     
@@ -385,17 +385,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>第二章 可行性研究</title>
-    <link href="http://example.com/2021/05/16/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%A0%94%E7%A9%B6/"/>
-    <id>http://example.com/2021/05/16/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%A0%94%E7%A9%B6/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/16/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%A0%94%E7%A9%B6/"/>
+    <id>https://ckxgzxa.github.io/2021/05/16/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%A0%94%E7%A9%B6/</id>
     <published>2021-05-16T02:46:43.000Z</published>
     <updated>2021-05-19T04:49:47.965Z</updated>
     
@@ -410,17 +410,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>第一章 软件工程概述</title>
-    <link href="http://example.com/2021/05/15/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0/"/>
-    <id>http://example.com/2021/05/15/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/15/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0/"/>
+    <id>https://ckxgzxa.github.io/2021/05/15/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0/</id>
     <published>2021-05-14T16:53:14.000Z</published>
     <updated>2021-05-19T16:00:24.002Z</updated>
     
@@ -435,17 +435,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://ckxgzxa.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>数据库系统概论第四章第7题</title>
-    <link href="http://example.com/2021/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%AC7%E9%A2%98/"/>
-    <id>http://example.com/2021/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%AC7%E9%A2%98/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%AC7%E9%A2%98/"/>
+    <id>https://ckxgzxa.github.io/2021/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%AC7%E9%A2%98/</id>
     <published>2021-05-13T13:42:24.000Z</published>
     <updated>2021-05-14T18:36:18.428Z</updated>
     
@@ -462,14 +462,14 @@
     
     
     
-    <category term="数据库系统概论" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"/>
+    <category term="数据库系统概论" scheme="https://ckxgzxa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>软件工程导论复习</title>
-    <link href="http://example.com/2021/05/08/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
-    <id>http://example.com/2021/05/08/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/</id>
+    <link href="https://ckxgzxa.github.io/2021/05/08/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <id>https://ckxgzxa.github.io/2021/05/08/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/</id>
     <published>2021-05-08T07:53:45.769Z</published>
     <updated>2021-05-14T17:06:43.018Z</updated>
     
@@ -484,7 +484,7 @@
     
     
     
-    <category term="软件工程导论" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
+    <category term="软件工程导论" scheme="https://ckxgzxa.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
