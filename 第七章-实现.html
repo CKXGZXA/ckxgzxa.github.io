@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>第二章 可行性研究 - 残魁斜罡的空间</title>
+  <title>第七章 实现 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -161,12 +161,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/soft_intro_c2/banner_img.jpg') no-repeat center center;
+         style="background: url('/img/soft_intro_c7/banner_img.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="第二章 可行性研究">
+            <span class="h2" id="subtitle" title="第七章 实现">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-16 10:46" pubdate>
-        2021年5月16日 上午
+      <time datetime="2021-05-22 00:44" pubdate>
+        2021年5月22日 凌晨
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      1.5k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      15
        分钟
     </span>
   
@@ -228,242 +228,135 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">第二章 可行性研究</h1>
+            <h1 style="display: none">第七章 实现</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月19日 下午
+                  本文最后更新于：2021年5月23日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="第二章-可行性研究"><a href="#第二章-可行性研究" class="headerlink" title="第二章 可行性研究"></a>第二章 可行性研究</h1><hr>
-<h4 id="可行性研究的内容"><a href="#可行性研究的内容" class="headerlink" title="可行性研究的内容"></a>可行性研究的内容</h4><p><strong>1. 技术可行性:</strong></p>
-<blockquote>
-<p>使用现有的技术能否实现这个系统？<br>是否有胜任开发该项目的熟练技术人员？<br>能否按期得到开发该项目所需的软件、硬件资源？</p>
-</blockquote>
-<p><strong>2. 经济可行性:</strong></p>
-<blockquote>
-<p>这个系统的经济效益能否超过它的开发成本？<br>需要对项目进行价格/利益分析，即“投入/产出”分析。<br>由于利益分析取决于软件系统的特点，因此在软件开发之前，很难对新系统产生的效益作出精确的定量描述，所以往往采用一些估算方法。</p>
-</blockquote>
-<p><strong>3. 操作可行性:</strong></p>
-<blockquote>
-<p>操作可行性评价系统运行后会引起的各方面变化，如：对组织机构管理模式、用户工作环境等产生的影响。</p>
-</blockquote>
-<p><strong>4. 社会可行性:</strong></p>
-<blockquote>
-<p>社会可行性主要讨论法律方面和使用方面的可行性。<br>例如，被开发软件的权利归属问题、软件所使用的技术是否会造成侵权等问题。</p>
+              <h1 id="第七章-实现"><a href="#第七章-实现" class="headerlink" title="第七章 实现"></a>第七章 实现</h1><hr>
+<h2 id="实现包括：编码和测试"><a href="#实现包括：编码和测试" class="headerlink" title="实现包括：编码和测试"></a>实现包括：编码和测试</h2><blockquote>
+<p>编码：把软件设计结果翻译成程序。<br>测试：检测程序并改正错误的过程。</p>
 </blockquote>
 <hr>
-<h4 id="可行性研究过程-7步骤"><a href="#可行性研究过程-7步骤" class="headerlink" title="可行性研究过程(7步骤)"></a>可行性研究过程(7步骤)</h4><ol>
-<li>复查定义，确定系统规模和目标；<blockquote>
-<p>确认目标问题（用户需要的是否等于我们认为用户需要的）</p>
+<h2 id="白盒测试和黑盒测试的定义"><a href="#白盒测试和黑盒测试的定义" class="headerlink" title="白盒测试和黑盒测试的定义"></a>白盒测试和黑盒测试的定义</h2><h3 id="白盒测试（也称结构测试）"><a href="#白盒测试（也称结构测试）" class="headerlink" title="白盒测试（也称结构测试）"></a>白盒测试（也称结构测试）</h3><blockquote>
+<p>如果知道软件内部工作过程，可以通过测试来检验软件内部动作是否按照规格说明书的规定正常进行，这种测试称为白盒测试。</p>
 </blockquote>
-</li>
-<li>研究目前正在使用的系统；<blockquote>
-<p>确认成本，缺点，流程图，接口等</p>
-</blockquote>
-</li>
-<li>导出新系统的高层逻辑模型（数据流图、数据字典）；<blockquote>
-<p>输入输出，数据格式</p>
-</blockquote>
-</li>
-<li>重新定义问题；</li>
-</ol>
-<blockquote>
-<p>前 4 个步骤实质上构成一个循环</p>
-</blockquote>
-<ol start="5">
-<li>导出和评价供选择的解法（物理解决方案）；<blockquote>
-<p>技术、操作、经济和市场上接受同时满足，给出供选择的方案。</p>
-</blockquote>
-</li>
-<li>推荐行动方案；<blockquote>
-<p>哪一种方案最好，为什么，给出定论和原因。</p>
-</blockquote>
-</li>
-<li>草拟开发计划（粗略）；<blockquote>
-<ul>
-<li>任务分解，确定负责人</li>
-<li>大致进度规划</li>
-<li>财务预算</li>
-<li>风险分析及对策</li>
-</ul>
-</blockquote>
-</li>
-<li>书写文档提交审查。 （作为下一个阶段工作的基础）</li>
-</ol>
-<p><strong>可行性报告，必须给出明确结论：</strong></p>
-<ul>
-<li>行或不行。</li>
-<li>或者给出系统开始前需要首先具备哪些条件</li>
-<li>或系统目标需要先行修改等。</li>
-</ul>
-<hr>
-<h4 id="系统流程图概念，特点、符号和应用；"><a href="#系统流程图概念，特点、符号和应用；" class="headerlink" title="系统流程图概念，特点、符号和应用；"></a>系统流程图概念，特点、符号和应用；</h4><ul>
-<li>概念和特点:<blockquote>
-<p>系统流程图是概括的描述物理系统的传统工具。<br>系统流程图反映的是信息在系统各部分之间流动的情况；<br>系统流程图 $\neq$ 控制、处理信息（不同于程序流程图）</p>
-</blockquote>
-</li>
-<li>符号:<br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7.png" alt="基本符号"><br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E7%B3%BB%E7%BB%9F%E7%AC%A6%E5%8F%B7.png" alt="系统符号"></li>
-<li>应用</li>
-<li>分层:<blockquote>
-<p>面对复杂的系统时,一个比较好的方法是分层次地描绘这个系统。首先用一张高层次的系统流程图描绘系统总体概貌,表明系统的关键功能。然后分别把每个关键功能扩展到适当的详细程度,画在单独的一页纸上。这种分层次的描绘方法便于阅读者按从抽象到具体的过程逐步深入地了解一个复杂的系统。</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h4 id="数据流图概念、要素、特点、符号和应用；"><a href="#数据流图概念、要素、特点、符号和应用；" class="headerlink" title="数据流图概念、要素、特点、符号和应用；"></a>数据流图概念、要素、特点、符号和应用；</h4><ul>
-<li>定义:<blockquote>
-<p>数据流图是系统逻辑功能的图形表示, 图中没有任何具体的物理部件。<br>数据流图描绘数据在软件系统内从输入移动到输出过程中所经受的变换。通常用数据流图建立软件结构的功能模型。</p>
-</blockquote>
-</li>
-<li>要素及符号:<br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%BA%90%E7%82%B9or%E7%BB%88%E7%82%B9.png"><br><img src="/img/soft_intro_c2/DFD_%E5%A4%84%E7%90%86.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%B5%81.png" alt="基本符号"><br><img src="/img/soft_intro_c2/DFD_%E9%99%84%E5%8A%A0%E7%AC%A6%E5%8F%B7.png" alt="附加符号"></li>
-</ul>
-<p><strong>注意:</strong></p>
-<blockquote>
-<ul>
-<li>“处理”可表示：单个程序、一系列程序、程序的一个模块、人工处理过程等等；</li>
-<li>“数据存储”可表示：一个文件、文件的一部分、数据库记录等等；</li>
-<li>数据流图 <strong>忽略</strong> 出错处理、打开文件、关闭文件。</li>
-</ul>
-</blockquote>
-<ul>
-<li>特点:<blockquote>
-<p>抽象性，概括性，层次性</p>
-</blockquote>
-</li>
-<li>应用:<blockquote>
-<p>见课本</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>怎样画数据流图?</strong></p>
-<blockquote>
-<ol>
-<li>提取数据流图的4种成分<ol>
-<li><strong>考虑数据的源点和终点</strong></li>
-<li><strong>考虑处理</strong></li>
-<li><strong>考虑数据流和数据存储</strong></li>
-</ol>
-</li>
-<li>画出基本系统模型并将其细化, 描绘系统的主要功能<br>   一旦把数据流程图中的四种成份都分离出来之后，就可着手绘制系统的数据流程图了。数据流程图的绘制也是采用自顶向下的方法，由粗到细，逐层细化，最后形成一套完整的拟建系统的数据流程图。 </li>
-</ol>
-</blockquote>
-<p><strong>命名:</strong></p>
-<blockquote>
-<ol>
-<li><strong>为数据流(或数据存储)命名</strong><ol>
-<li>名字应该代表整个数据流(或数据存储)的内容；</li>
-<li> 不要使用空洞的、缺乏具体含义的名字（如“数据”、“输入”）；</li>
-<li>如果为某个数据流（或数据存储）起名字时遇到困难，则很可能是因为对数据流图的分解不恰当造成的，应该试试重新分解数据流图； </li>
-</ol>
-</li>
-<li><strong>为处理命名</strong><ol>
-<li>通常先为数据流命名，然后再为与之相关联的处理命名；</li>
-<li>名字应该反映整个处理的功能；</li>
-<li>应该尽量避免空洞笼统的动词做名字，如“处理”、“加工”；</li>
-<li>通常用一个动词命名，如果必须用两个动词才能描述整个处理的功能，则可能要把这个处理分解成两个处理更恰当；</li>
-<li>如果在为某个处理命名时遇到困难，则很可能是发现了分解不当的情况，应考虑重新分解。</li>
-</ol>
-</li>
-<li><strong>数据源点/终点并不需要在开发目标系统的过程中设计和实现,它并不属于数据流图的核心内容,只不过是目标系统的外围环境部分(可能是人员、计算机外部设备或传感器装置)。通常,为数据源点/终点命名时采用它们在问题域中习惯使用的名字(如“采购员”、“仓库管理员”等)。</strong></li>
-</ol>
-</blockquote>
-<blockquote>
-<p>作用:</p>
-<ul>
-<li>利用它作为交流信息的工具；</li>
-<li>作为软件分析和设计的工具。</li>
-</ul>
+<h3 id="黑盒测试（也称功能测试）"><a href="#黑盒测试（也称功能测试）" class="headerlink" title="黑盒测试（也称功能测试）"></a>黑盒测试（也称功能测试）</h3><blockquote>
+<p>如果已经知道软件应该具有的功能，可以通过测试来检验是否每个功能都能正常使用，这种测试称黑盒测试。也称功能测试。</p>
 </blockquote>
 <hr>
-<h4 id="数据字典定义、包含内容："><a href="#数据字典定义、包含内容：" class="headerlink" title="数据字典定义、包含内容："></a>数据字典定义、包含内容：</h4><blockquote>
-<p>关于数据的信息的集合，也就是对数据流图中包含元素的定义的集合。<br>与数据流图共同构成系统的 <strong>逻辑模型</strong></p>
-<p>数据字典由下列四类元素的定义组成：</p>
-<ul>
-<li>数据流；</li>
-<li>数据流分量（即数据元素）</li>
-<li>数据存储；</li>
-<li>处理。</li>
-</ul>
+<h2 id="软件测试的步骤"><a href="#软件测试的步骤" class="headerlink" title="软件测试的步骤"></a>软件测试的步骤</h2><h3 id="1-模块测试（测试编码和详细设计的错误）"><a href="#1-模块测试（测试编码和详细设计的错误）" class="headerlink" title="1. 模块测试（测试编码和详细设计的错误）"></a>1. 模块测试（测试编码和详细设计的错误）</h3><blockquote>
+<p>模块测试又称单元测试，它把每个模块作为单独的实体来测试。</p>
 </blockquote>
-<h5 id="定义数据的方法"><a href="#定义数据的方法" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h5><ol>
-<li><strong>数据元素字典</strong> 定义基本内容:<ul>
-<li>数据元素编号、名称及其含义；</li>
-<li>数据类型和长度；</li>
-<li>合理取值；</li>
-<li>其他内容，如它和其它数据的逻辑关系等。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据元素字典定义实例"></li>
-</ul>
-</li>
-<li><strong>数据流字典</strong> 定义基本内容：<ul>
-<li>数据流编号及名称；</li>
-<li>数据流来源；</li>
-<li>数据流去处；</li>
-<li>数据流的组成； </li>
-<li>流通量；</li>
-<li>峰值。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据流字典定义实例"></li>
-</ul>
-</li>
-<li><strong>数据存储</strong> 字典定义基本内容:<ul>
-<li>数据存储编号及名称；</li>
-<li>数据存储的组成；</li>
-<li>其它要求。</li>
-</ul>
-</li>
-<li><strong>数据处理</strong> 字典定义基本内容:<ul>
-<li>数据处理编号及名称；</li>
-<li>简单描述；</li>
-<li>输入/输出；</li>
-<li>功能描述；</li>
-<li>有关数据存储。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据处理字典定义实例"></li>
-</ul>
-</li>
-<li>数据元素组成数据的表示方法：<ul>
-<li>顺序：即以确定次序连接两个或多个分量。</li>
-<li>选择：即从两个或多个可能的元素中选取一个。</li>
-<li>重复：即把指定的分量重复零次或多次。</li>
-<li>可选：即一个分量是可有可无的(重复零次或一次)。</li>
-</ul>
-</li>
-</ol>
-<h5 id="数据字典的用途"><a href="#数据字典的用途" class="headerlink" title="数据字典的用途:"></a>数据字典的用途:</h5><ol>
-<li>作为分析阶段的重要工具；</li>
-<li>数据元素的控制信息非常有用；</li>
-<li>有助于开发数据库。</li>
-</ol>
+<h3 id="2-子系统测试（测试模块接口）"><a href="#2-子系统测试（测试模块接口）" class="headerlink" title="2. 子系统测试（测试模块接口）"></a>2. 子系统测试（测试模块接口）</h3><blockquote>
+<p>子系统测试是把警告单元测试的模块放在一起形成一个子系统来测试。</p>
+</blockquote>
+<h3 id="3-系统测试"><a href="#3-系统测试" class="headerlink" title="3. 系统测试"></a>3. 系统测试</h3><blockquote>
+<p>系统测试是把经过测试的子系统装配成一个完整的系统来测试。<br>子系统测试测试和系统测试，通常称为集成测试。</p>
+</blockquote>
+<h3 id="4-验收测试"><a href="#4-验收测试" class="headerlink" title="4. 验收测试"></a>4. 验收测试</h3><blockquote>
+<p>验收测试把软件系统作为单一的实体进行测试（利用用户的实际数据测试）。</p>
+</blockquote>
+<h3 id="5-平行运行"><a href="#5-平行运行" class="headerlink" title="5.平行运行"></a>5.平行运行</h3><blockquote>
+<p>平行运行是同时运行新开发出来的系统和将被它取代的旧系统，以便比较新旧两个系统的处理结果。</p>
+</blockquote>
 <hr>
-<h4 id="定义数据的方法-1"><a href="#定义数据的方法-1" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h4><p><img src="/img/soft_intro_c2/%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95.png" alt="定义数据的方法"></p>
-<hr>
-<h4 id="成本估算技术"><a href="#成本估算技术" class="headerlink" title="成本估算技术"></a>成本估算技术</h4><h5 id="1-代码行技术"><a href="#1-代码行技术" class="headerlink" title="1. 代码行技术"></a>1. 代码行技术</h5><blockquote>
-<p>软件成本 = 每行代码的平均成本×估计的源代码总行数</p>
-</blockquote>
-<h5 id="2-任务分解技术"><a href="#2-任务分解技术" class="headerlink" title="2. 任务分解技术"></a>2. 任务分解技术</h5><blockquote>
-<p>软件开发项目分解为若干个相对独立的任务，分别估计每个单独任务的成本；<br>单独任务成本 = 任务所需人力估计值×每人每月平均工资；<br>软件开发项目总成本估计 = 各个单独任务成本估计值之和。<br><img src="/img/soft_intro_c2/%E4%BB%BB%E5%8A%A1%E5%88%86%E8%A7%A3%E6%8A%80%E6%9C%AF.png" alt="任务分解技术"></p>
-</blockquote>
-<h5 id="3-自动估计成本技术"><a href="#3-自动估计成本技术" class="headerlink" title="3. 自动估计成本技术"></a>3. 自动估计成本技术</h5><blockquote>
-<p>采用自动估计成本的软件工具估计</p>
-</blockquote>
-<h5 id="成本-效应分析的方法"><a href="#成本-效应分析的方法" class="headerlink" title="成本/效应分析的方法"></a>成本/效应分析的方法</h5><p><strong>1. 货币的时间价值</strong></p>
-<blockquote>
-<p>假设年利率为i,如果现在存入P元钱，则n年以后可以得到的钱数为：<br>$$F = P(1+i)^n$$</p>
-<p>反之，如果 <strong>n</strong> 年后能收入 <strong>F</strong> 元钱，那么这些钱现在的价值是：<br>$$P = F/(1+i)^n$$</p>
-</blockquote>
-<p><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B01.png"><br><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B02.png"><br><strong>2. 投资回收期</strong></p>
-<blockquote>
+<h2 id="单元测试-计算机测试（驱动程序和存根程序）"><a href="#单元测试-计算机测试（驱动程序和存根程序）" class="headerlink" title="单元测试-计算机测试（驱动程序和存根程序）"></a>单元测试-计算机测试（驱动程序和存根程序）</h2><blockquote>
+<p>单元测试集中检测软件的设计的最小单元—模块。单元测试和编码属于软件工程的同一阶段。一般方法是：</p>
 <ul>
-<li>第一、第二年回收：4225元</li>
-<li>第三年回收投资要：(5000 - 4225)/1779 = 0.44 年</li>
-<li>总的投资回收期 = 2.44 年</li>
+<li>首先通过编译系统检查并改正程序中所有的语法错误；</li>
+<li>然后用详细设计模块说明为指南，对重要的控制路径进行测试，以便发现模块内部的错误。</li>
+<li>通常，单元测试使用白盒测试技术。</li>
 </ul>
 </blockquote>
-<p><strong>3. 纯收入:</strong> 9011.94 - 5000 = 4011.94 (元)<br><strong>4. 投资回收率</strong><br>$$P = \frac{F_1}{(1+j)} + \frac{F_2}{(1+j)^2} +···+\frac{F_n}{(1+n)^n}$$</p>
-<p>其中:</p>
+<h3 id="测试重点"><a href="#测试重点" class="headerlink" title="测试重点"></a>测试重点</h3><ol>
+<li>模块接口</li>
+</ol>
 <blockquote>
-<p>P是现在的投资额；<br>Fi是第i年年底的效益（i=1,2,3,…,n）;<br>n是系统的使用寿命（一般假设n=5）；<br>j是投资回收率。</p>
+<p>应该对穿过模块接口的数据流进行检测，以保证正确的输入和输出。</p>
 </blockquote>
-<p>上述修改系统的工程的投资回收率是41%-42%</p>
-
+<ol start="2">
+<li>局部数据结构</li>
+</ol>
+<blockquote>
+<p>这是错误的主要来源，应该设计相应的测试用例，以便发现数据结构方面的错误。</p>
+</blockquote>
+<ol start="3">
+<li>重要的执行路径</li>
+</ol>
+<blockquote>
+<p>由于不可能进行穷尽测试，因此选择测试路径是非常关键的。</p>
+</blockquote>
+<ol start="4">
+<li>出错处理通路和边界条件</li>
+</ol>
+<h3 id="代码审查"><a href="#代码审查" class="headerlink" title="代码审查"></a>代码审查</h3><h3 id="计算机测试"><a href="#计算机测试" class="headerlink" title="计算机测试"></a>计算机测试</h3><blockquote>
+<p>由于软件模块不是一个独立的系统，不能独立运行，要依靠其他模块调用，或需要调用其他模块。因此，必须要为测试的单元开发驱动程序或存根程序。</p>
+<p>1.驱动程序</p>
+<blockquote>
+<p>相当于一个“主程序”，用来把测试数据传送给被测试的模块，并打印有关结果。</p>
+</blockquote>
+<ol start="2">
+<li>存根程序</li>
+</ol>
+<blockquote>
+<p>用来代替被测试模块所调用的模块，相当于“虚拟子程序”。</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="集成测试：非渐增测试和渐增式测试"><a href="#集成测试：非渐增测试和渐增式测试" class="headerlink" title="集成测试：非渐增测试和渐增式测试"></a>集成测试：非渐增测试和渐增式测试</h2><blockquote>
+<p>集成测试是组装软件的系统化技术，它将经过单元测试的模块联系在一起进行测试。</p>
+</blockquote>
+<p>由模块组装成程序时有两种方法：</p>
+<h3 id="1-非渐增式测试方法"><a href="#1-非渐增式测试方法" class="headerlink" title="1. 非渐增式测试方法"></a>1. 非渐增式测试方法</h3><blockquote>
+<p>先分别测试每个模块，再把所有模块按设计要求放在一起结合成所要的程序。</p>
+</blockquote>
+<h3 id="2-渐增式测试方法"><a href="#2-渐增式测试方法" class="headerlink" title="2. 渐增式测试方法"></a>2. 渐增式测试方法</h3><blockquote>
+<p>每次增加一个待测试模块，把它同已经测试好的那些模块结合起来进行测试，反复进行直到完成所有模块测试的方法。<br>使用渐增式测试方法把模块结合到软件系统中去时，有自顶向下和自底向上两种集成方法。  </p>
+</blockquote>
+<hr>
+<h2 id="确认测试：Alpha和Beta测试"><a href="#确认测试：Alpha和Beta测试" class="headerlink" title="确认测试：Alpha和Beta测试"></a>确认测试：Alpha和Beta测试</h2><h3 id="Alpha测试"><a href="#Alpha测试" class="headerlink" title="Alpha测试"></a>Alpha测试</h3><blockquote>
+<p>用户在开发者的场所进行测试，并且在开发者的指导下进行，测试在受控环境中进行，开发者记录发现的错误和问题；</p>
+</blockquote>
+<h3 id="Beta测试"><a href="#Beta测试" class="headerlink" title="Beta测试"></a>Beta测试</h3><blockquote>
+<p>用户在一个或多个客户场所进行测试，不受开发者控制，测试者记录发现的问题和错误，定期将问题报告发送给开发者。</p>
+</blockquote>
+<hr>
+<h2 id="白盒测试技术"><a href="#白盒测试技术" class="headerlink" title="白盒测试技术"></a>白盒测试技术</h2><h3 id="1-语句覆盖"><a href="#1-语句覆盖" class="headerlink" title="1. 语句覆盖"></a>1. 语句覆盖</h3><blockquote>
+<p>设计的测试用例能使程序中每条语句至少执行一次。</p>
+</blockquote>
+<h3 id="2-判定覆盖"><a href="#2-判定覆盖" class="headerlink" title="2. 判定覆盖"></a>2. 判定覆盖</h3><blockquote>
+<p>判定覆盖是指：选取足够的测试用例，使得程序中每个判断的可能结果都至少执行一次，也就是说使程序的每个判断分支至少通过一次。</p>
+</blockquote>
+<h3 id="3-条件覆盖"><a href="#3-条件覆盖" class="headerlink" title="3. 条件覆盖"></a>3. 条件覆盖</h3><blockquote>
+<p>条件覆盖是指：选择足够的测试用例，使得程序中每个判定表达式的每个条件都取到各种可能的结果。</p>
+</blockquote>
+<blockquote>
+<p>条件覆盖通常比判定覆盖强，但是条件覆盖不一定包含判定覆盖。</p>
+</blockquote>
+<h3 id="4-判定-条件覆盖"><a href="#4-判定-条件覆盖" class="headerlink" title="4. 判定/条件覆盖"></a>4. 判定/条件覆盖</h3><blockquote>
+<p>选取足够的测试用例使得同时满足判定覆盖和条件覆盖的要求。</p>
+</blockquote>
+<h3 id="5-条件组合覆盖"><a href="#5-条件组合覆盖" class="headerlink" title="5. 条件组合覆盖"></a>5. 条件组合覆盖</h3><blockquote>
+<p>选取足够的测试用例，使得每个判定表达式中条件的各种可能的组合都至少出现一次。</p>
+</blockquote>
+<p>如果从对程序路径的覆盖程度分析，可以提出下面一些逻辑覆盖标准：</p>
+<h3 id="6-点覆盖"><a href="#6-点覆盖" class="headerlink" title="6. 点覆盖"></a>6. 点覆盖</h3><blockquote>
+<p>选取足够多的测试用例，使得程序执行路径至少经过程序图中每个节点一次。</p>
+</blockquote>
+<h3 id="7-边覆盖"><a href="#7-边覆盖" class="headerlink" title="7.  边覆盖"></a>7.  边覆盖</h3><blockquote>
+<p>边覆盖是指：选取足够多的测试用例，使得程序执行路径至少经过程序图中每条边一次。</p>
+</blockquote>
+<h3 id="8-路径覆盖"><a href="#8-路径覆盖" class="headerlink" title="8. 路径覆盖"></a>8. 路径覆盖</h3><blockquote>
+<p>路径覆盖是指：选取足够多的测试用例，使得程序的每条可能路径都至少执行一次。</p>
+</blockquote>
+<hr>
+<h2 id="黑盒测试：等价划分、边界值检测和错误推测"><a href="#黑盒测试：等价划分、边界值检测和错误推测" class="headerlink" title="黑盒测试：等价划分、边界值检测和错误推测"></a>黑盒测试：等价划分、边界值检测和错误推测</h2><hr>
+<h2 id="调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）"><a href="#调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）" class="headerlink" title="调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）"></a>调试：蛮干法、回溯法和原因排除法（对分查找、归纳和演绎法）</h2>
             </div>
             <hr>
             <div>
@@ -497,9 +390,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90">
+                      <a href="/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第三章 需求分析</span>
+                        <span class="hidden-mobile">摩尔庄园手游NPC喜好</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -507,8 +400,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0">
-                        <span class="hidden-mobile">第一章 软件工程概述</span>
+                      <a href="/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1.html">
+                        <span class="hidden-mobile">第六章 详细设计</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

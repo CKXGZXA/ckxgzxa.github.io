@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>在服务器上搭建jupyter notebook - 残魁斜罡的空间</title>
+  <title>ModelArts平台花卉分类识别实验报告 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -161,12 +161,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+         style="background: url('https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052231951.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="在服务器上搭建jupyter notebook">
+            <span class="h2" id="subtitle" title="ModelArts平台花卉分类识别实验报告">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-08 21:46" pubdate>
-        2021年11月8日 晚上
+      <time datetime="2021-11-05 14:45" pubdate>
+        2021年11月5日 下午
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      576 字
+      1.3k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      13
        分钟
     </span>
   
@@ -228,88 +228,131 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在服务器上搭建jupyter notebook</h1>
+            <h1 style="display: none">ModelArts平台花卉分类识别实验报告</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年11月8日 晚上
+                  本文最后更新于：2021年11月5日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="如何在服务器上搭建jupyter-notebook"><a href="#如何在服务器上搭建jupyter-notebook" class="headerlink" title="如何在服务器上搭建jupyter notebook"></a>如何在服务器上搭建jupyter notebook</h1><h2 id="1-准备一台Linux云服务器"><a href="#1-准备一台Linux云服务器" class="headerlink" title="1. 准备一台Linux云服务器"></a>1. 准备一台Linux云服务器</h2><h2 id="2-新建一个用户"><a href="#2-新建一个用户" class="headerlink" title="2. 新建一个用户"></a>2. 新建一个用户</h2><p>我的习惯是是不在root用户下运行 jupyter notebook 服务,</p>
-<p>因此我建议新建一个<code>jupyter</code>的用户:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">adduser jupyter</span><br></code></pre></td></tr></table></figure>
-
-<p>然后切换到此用户</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">su jupyter</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="3-安装-Anaconda"><a href="#3-安装-Anaconda" class="headerlink" title="3. 安装 Anaconda"></a>3. 安装 Anaconda</h2><p>下载Anaconda最新安装程序 <a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure>
-
-<p>运行安装程序:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure>
-
-<p>安装过程中敲回车和输入yes同意许可即可</p>
-<p>安装完成重新登录即可</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082211398.png" alt="image-20211108221130339"></p>
-<h2 id="4-搭建-Jupyter-Notebook-环境"><a href="#4-搭建-Jupyter-Notebook-环境" class="headerlink" title="4. 搭建 Jupyter Notebook 环境"></a>4. 搭建 Jupyter Notebook 环境</h2><ul>
-<li>安装jupyter包</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install jupyter <br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>生成默认配置文件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook --generate-config<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>随后我们往配置文件写入一些内容</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 设置可以访问的ip, 默认是localhost, 将其改为 &#x27;*&#x27;</span><br>c.NotebookApp.ip = <span class="hljs-string">&#x27;*&#x27;</span><br><br><span class="hljs-comment"># 笔记本的默认打开目录, 自己设置</span><br>c.NotebookApp.notebook_dir = <span class="hljs-string">&#x27;/home/jupyter/documents/jupyter_notebook&#x27;</span><br><br><span class="hljs-comment"># 笔记本启动后是否打开浏览器, 设为 False即可</span><br>c.NotebookApp.open_browser = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 默认访问端口, 可自己修改</span><br>c.NotebookApp.port = <span class="hljs-number">8888</span><br><br><span class="hljs-comment"># jupyterlab是否显示quit按钮,我设为false以免自己不小心按到把服务停了</span><br>c.NotebookApp.quit_button = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 如果使用root用户运行,将下列值改为True即可, 运行时也可加参数将其改为True</span><br>c.NotebookApp.allow_root = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>修改好配置文件之后, 运行如下命令启动笔记本</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>第一次运行会给出带token的链接, 复制到浏览器中打开, 点击登出</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082241916.png" alt="image-20211108224139818"></p>
-<ul>
-<li><p>随后进入login界面, 输入刚刚链接中的 token值和新密码即可修改密码:</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082243891.png" alt="image-20211108224309795"></p>
-</li>
-<li><p>设置好密码之后我们重启jupyter服务, 再次进入,发现就能用我们刚刚设置的密码登录了</p>
-</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082245031.png" alt="image-20211108224540995"></p>
-<ul>
-<li>随便上传一个笔记本试试</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082326683.png" alt="image-20211108232637635"></p>
-<ul>
-<li>发现已经ok了</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082327360.png" alt="image-20211108232733266"></p>
-<h2 id="5-让-jupyter-在服务器上持久运行"><a href="#5-让-jupyter-在服务器上持久运行" class="headerlink" title="5. 让 jupyter 在服务器上持久运行"></a>5. 让 jupyter 在服务器上持久运行</h2><ul>
-<li>发现断开 SSH 连接之后, jupyter服务就会停止运行,我们利用<code>screen</code> 命令让jupyter服务一直运行</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">screen -S notebook<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>然后启动jupyter服务</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>随后按 <code>Ctrl + A + D </code>将服务挂到后台即可</li>
-</ul>
-<h2 id="6-End"><a href="#6-End" class="headerlink" title="6. End"></a>6. End</h2><p>本次教程简单记录而已, 如有帮助,本人不胜感激.</p>
-<blockquote>
-<p>如有错误或不当之处, 请在下方评论, 我看到将对其进行修改和改进</p>
+              <h1 id="华为云ModelArts平台花卉分类识别实验报告"><a href="#华为云ModelArts平台花卉分类识别实验报告" class="headerlink" title="华为云ModelArts平台花卉分类识别实验报告"></a>华为云ModelArts平台花卉分类识别实验报告</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=5a4cbb43-f85f-4427-ba12-3630ac71d4fe&utm_source=Y2t4Z3p4YWJlc3Q==&utm_medium=cps&utm_campaign=201905">【华为云11.11上云嘉年华，注册领10000元上云礼包，满额送华为X2折叠屏】</a></p>
 </blockquote>
+<h2 id="1-准备数据集"><a href="#1-准备数据集" class="headerlink" title="1. 准备数据集"></a>1. 准备数据集</h2><p>​        我们在官网下载好TensorFlow官网提供的[花卉数据集](<a target="_blank" rel="noopener" href="https://www.tensorflow.org/datasets/catalog/tf_flowers">tf_flowers  | TensorFlow Datasets</a>)并在我们电脑上解压, </p>
+<p>发现 文件的结构如下所示:</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111051955239.png" alt="image-20211105195521063"></p>
+<p>flower_photos内共有5个文件夹,分别是雏菊(daisy)，dandelion(蒲公英)， roses(玫瑰)， sunflowers(向日葵)， tulips(郁金香)， 每个文件夹中存放有若干张该分类的图片。</p>
+<h2 id="2-创建OBS桶"><a href="#2-创建OBS桶" class="headerlink" title="2. 创建OBS桶"></a>2. 创建OBS桶</h2><p>用ModelArts训练需要华为的对象存储服务OBS来保存我们的数据，</p>
+<ul>
+<li><p>首先在华为云搜索obs服务，然后点击进入</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052031054.png" alt="image-20211105203119822"></p>
+</li>
+<li><p>进入之后点击创建桶</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052030323.png" alt="image-20211105203016075"></p>
+<ul>
+<li><p>然后选择单AZ存储，地区选择离你最近的地区即可，选择好之后点击立即创建：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052036482.png" alt="image-20211105203646291"></p>
+</li>
+<li><p>这样我们的OBS桶就创建好了</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052041210.png" alt="image-20211105204107093"></p>
+</li>
+</ul>
+<h2 id="3-获取访问密钥"><a href="#3-获取访问密钥" class="headerlink" title="3. 获取访问密钥"></a>3. 获取访问密钥</h2><p>需要获取访问密钥然后用访问密钥登录obs-brower来方便的将我们的训练数据上传到OBS桶</p>
+<ul>
+<li><p>获取OBS密钥</p>
+<ol>
+<li><p>点击我的凭证</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052113742.png" alt="image-20211105211345664"></p>
+</li>
+<li><p>点击新增访问密钥</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052114923.png" alt="image-20211105211453706"></p>
+</li>
+<li><p>输入密钥名称就可以下载一个名为credentials.csv的文件，里面存放的就是访问密钥，请不要泄露</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052117971.png"></p>
+</li>
+</ol>
+<h2 id="4-获取OBS-Browser-工具"><a href="#4-获取OBS-Browser-工具" class="headerlink" title="4. 获取OBS Browser+ 工具"></a>4. 获取OBS Browser+ 工具</h2><ol>
+<li><p>随后我们进入如下的网址下载 obs browser+ 工具</p>
+<p>下载OBS Browser+：<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html">https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html</a></p>
+<p>下载安装好之后我们打开它之后使用上一步获取到的密钥登录：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052121218.png" alt="image-20211105212127102"></p>
+</li>
+<li><p>随后我们在桶内新建4个文件夹(flower_photos, flower_input, flower_output, train_output)用于接下来的实验</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052122159.png" alt="image-20211105212256032"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="5-上传数据集"><a href="#5-上传数据集" class="headerlink" title="5. 上传数据集"></a>5. 上传数据集</h2><p>在flower_photos中上传我们解压出来的花卉数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052128053.png" alt="image-20211105212805937"></p>
+<p>​     </p>
+<h2 id="6-创建数据集"><a href="#6-创建数据集" class="headerlink" title="6. 创建数据集"></a>6. 创建数据集</h2><ul>
+<li><p>进入ModelArts控制台界面，进入数据集管理，然后点击创建数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052131676.png" alt="image-20211105213120461"></p>
+</li>
+<li><p>选择图像分类标注类型，输入为止和输出位置选择我们刚刚在 obs browser中新建的两个空文件夹</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052133067.png" alt="image-20211105213303824"></p>
+</li>
+<li><p>随后点击创建数据集即可</p>
+</li>
+<li><p>返回进入此数据集管理界面，点击导入，由于我已经创建过数据集了，因此里面是有标记数据的</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052135413.png" alt="image-20211105213510211"></p>
+</li>
+<li><p>点击我们刚开始上传花卉数据集的位置确定即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052136171.png" alt="image-20211105213608064"></p>
+</li>
+<li><p>导入完成之后，我们点击发布，设置数据切分训练集比例为0.8即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052137278.png" alt="image-20211105213729194"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052138484.png" alt="image-20211105213811387"></p>
+</li>
+</ul>
+<h2 id="7-使用算法进行模型训练"><a href="#7-使用算法进行模型训练" class="headerlink" title="7. 使用算法进行模型训练"></a>7. 使用算法进行模型训练</h2><ul>
+<li><p>首先进入如下的网址订阅图像分类算法</p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0">图像分类-MobileNet_v2链接</a>：<a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)">https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)</a></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052139825.png" alt="image-20211105213954489"></p>
+</li>
+<li><p>订阅完成之后我们返回ModelArts控制台的训练管理界面，点击创建训练作业</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052143872.png" alt="image-20211105214329543"></p>
+</li>
+<li><p>算法选择刚刚我们刚刚订阅的算法，训练输入选择我们刚刚创建的数据集，训练输出选择我们刚开始创建的输出文件夹即可，下面有免费的GPU资源可以供我们选择。点击提交并等待训练完成。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052145627.png" alt="image-20211105214541511"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052147929.png" alt="image-20211105214734741"></p>
+</li>
+<li><p>模型训练完成大概需要二十多分钟</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052211783.png" alt="image-20211105221118637"></p>
+</li>
+</ul>
+<h2 id="8-模型的部署和验证"><a href="#8-模型的部署和验证" class="headerlink" title="8. 模型的部署和验证"></a>8. 模型的部署和验证</h2><ul>
+<li><p>点击模型管理，然后进行在线服务的部署，选择免费资源即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052153987.png" alt="image-20211105215342790"></p>
+</li>
+<li><p>部署完成之后点击在线服务的预测</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052156506.png" alt="image-20211105215616340"></p>
+<p>在这里可以对应用接口进行调试，同样地你也可以利用POSTMAN等工具对它进行调试，官网有详细的文档可以查看</p>
+</li>
+<li><p>我们上传一些花卉图片对它进行测试</p>
+<ol>
+<li><p>这张图片的结果是玫瑰的可能性是1，识别正确。<img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052159806.png" alt="image-20211105215908408"></p>
+</li>
+<li><p>这张蒲公英的图片也是识别正确的。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052202530.png" alt="image-20211105220235211"></p>
+</li>
+<li><p>这张图片是向日葵的概率也是100%</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052206769.png"></p>
+</li>
+</ol>
+</li>
+<li><p>我们发现这个训练出来的95.87%准确率的花卉分类模型还是能准确分辨这五种花卉图片的，结果不错。</p>
+</li>
+</ul>
+<h2 id="9-注意事项"><a href="#9-注意事项" class="headerlink" title="9. 注意事项"></a>9. 注意事项</h2><ul>
+<li>华为的OBS对象存储服务是要花钱的，不过训练完成之后也只扣了1分钱，其他的服务都是免费的，充值的费用如果没用完也是能提现的，所以不用担心，这点还是非常不错的。</li>
+</ul>
+<h2 id="10-心得和体会"><a href="#10-心得和体会" class="headerlink" title="10. 心得和体会"></a>10. 心得和体会</h2><p>通过这次利用华为云ModelArts平台进行的花卉识别实验，我发现华为ModelArts平台为机器学习与深度学习提供海量数据预处理及交互式智能标注、大规模分布式训练、自动化模型生成等等一些功能，这些功能全是华为云线上帮你完成的，我们用户根本不用编写一些复杂的代码，从而可以帮助用户快速创建和部署模型，即使你毫无编码基础，也能通过这些图形化的界面进行模型的搭建和训练并快速的部署发布到实际应用当中，推进了人工智能和机器学习的普及和大众化，并使用场景化的AI案例，使得AI落地零门槛，这样的话普通人也能利用华为的这个平台使用人工智能技术改变世界。</p>
 
             </div>
             <hr>
@@ -327,7 +370,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                      <a class="hover-with-bg" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
                     
                   </div>
                 
@@ -344,12 +387,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/buildJupyterOnServer.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在服务器上搭建jupyter notebook</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/FlowerIdentificationByModelarts">
-                        <span class="hidden-mobile">ModelArts平台花卉分类识别实验报告</span>
+                      <a href="/3-WhatIsAnObject.html">
+                        <span class="hidden-mobile">第1章 什么是对象?</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
