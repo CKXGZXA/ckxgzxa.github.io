@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>在服务器上搭建jupyter notebook - 残魁斜罡的空间</title>
+  <title>软件工程导论复习 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -166,7 +166,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="在服务器上搭建jupyter notebook">
+            <span class="h2" id="subtitle" title="软件工程导论复习">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-08 21:46" pubdate>
-        2021年11月8日 晚上
+      <time datetime="2021-07-22 00:08" pubdate>
+        2021年7月22日 凌晨
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      576 字
+      683 字
     </span>
   
 
@@ -228,106 +228,139 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在服务器上搭建jupyter notebook</h1>
+            <h1 style="display: none">软件工程导论复习</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年11月8日 晚上
+                  本文最后更新于：2021年5月15日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="如何在服务器上搭建jupyter-notebook"><a href="#如何在服务器上搭建jupyter-notebook" class="headerlink" title="如何在服务器上搭建jupyter notebook"></a>如何在服务器上搭建jupyter notebook</h1><h2 id="1-准备一台Linux云服务器"><a href="#1-准备一台Linux云服务器" class="headerlink" title="1. 准备一台Linux云服务器"></a>1. 准备一台Linux云服务器</h2><h2 id="2-新建一个用户"><a href="#2-新建一个用户" class="headerlink" title="2. 新建一个用户"></a>2. 新建一个用户</h2><p>我的习惯是是不在root用户下运行 jupyter notebook 服务,</p>
-<p>因此我建议新建一个<code>jupyter</code>的用户:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">adduser jupyter</span><br></code></pre></td></tr></table></figure>
-
-<p>然后切换到此用户</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">su jupyter</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="3-安装-Anaconda"><a href="#3-安装-Anaconda" class="headerlink" title="3. 安装 Anaconda"></a>3. 安装 Anaconda</h2><p>下载Anaconda最新安装程序 <a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure>
-
-<p>运行安装程序:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure>
-
-<p>安装过程中敲回车和输入yes同意许可即可</p>
-<p>安装完成重新登录即可</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082211398.png" alt="image-20211108221130339"></p>
-<h2 id="4-搭建-Jupyter-Notebook-环境"><a href="#4-搭建-Jupyter-Notebook-环境" class="headerlink" title="4. 搭建 Jupyter Notebook 环境"></a>4. 搭建 Jupyter Notebook 环境</h2><ul>
-<li>安装jupyter包</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install jupyter <br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>生成默认配置文件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook --generate-config<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>随后我们往配置文件写入一些内容</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 设置可以访问的ip, 默认是localhost, 将其改为 &#x27;*&#x27;</span><br>c.NotebookApp.ip = <span class="hljs-string">&#x27;*&#x27;</span><br><br><span class="hljs-comment"># 笔记本的默认打开目录, 自己设置</span><br>c.NotebookApp.notebook_dir = <span class="hljs-string">&#x27;/home/jupyter/documents/jupyter_notebook&#x27;</span><br><br><span class="hljs-comment"># 笔记本启动后是否打开浏览器, 设为 False即可</span><br>c.NotebookApp.open_browser = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 默认访问端口, 可自己修改</span><br>c.NotebookApp.port = <span class="hljs-number">8888</span><br><br><span class="hljs-comment"># jupyterlab是否显示quit按钮,我设为false以免自己不小心按到把服务停了</span><br>c.NotebookApp.quit_button = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 如果使用root用户运行,将下列值改为True即可, 运行时也可加参数将其改为True</span><br>c.NotebookApp.allow_root = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>修改好配置文件之后, 运行如下命令启动笔记本</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>第一次运行会给出带token的链接, 复制到浏览器中打开, 点击登出</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082241916.png" alt="image-20211108224139818"></p>
-<ul>
-<li><p>随后进入login界面, 输入刚刚链接中的 token值和新密码即可修改密码:</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082243891.png" alt="image-20211108224309795"></p>
+              <h1 id="软件工程导论"><a href="#软件工程导论" class="headerlink" title="软件工程导论"></a>软件工程导论</h1><h2 id="1-软件工程概论"><a href="#1-软件工程概论" class="headerlink" title="1. 软件工程概论"></a>1. 软件工程概论</h2><h3 id="1-1-软件危机-Soft-Crisis"><a href="#1-1-软件危机-Soft-Crisis" class="headerlink" title="1.1. 软件危机(Soft Crisis)"></a>1.1. 软件危机(Soft Crisis)</h3><ul>
+<li><p>计算机软件的开发和维护过程中遇到的一系列严重问题</p>
 </li>
-<li><p>设置好密码之后我们重启jupyter服务, 再次进入,发现就能用我们刚刚设置的密码登录了</p>
+<li><p>两方面问题</p>
+<ul>
+<li>如何开发软件,满足对软件日益增长的需求</li>
+<li>如何维护数量不断膨胀的已有软件</li>
+</ul>
+</li>
+<li><p>具体表现</p>
+<ul>
+<li><ol>
+<li>对软件开发成本和进度的估计常常很不准确</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>用户不满意的现象经常发生</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>软件产品的质量往往靠不住</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>软件常常是不可维护的</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>软件没有适当的文档资料</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>软件成本在计算机系统总成本占比逐年上升</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>软件开发生产率提高的速度远不及计算机应用迅速普及深入的趋势</li>
+</ol>
 </li>
 </ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082245031.png" alt="image-20211108224540995"></p>
+</li>
+<li><p>产生原因</p>
 <ul>
-<li>随便上传一个笔记本试试</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082326683.png" alt="image-20211108232637635"></p>
+<li><ol>
+<li>与软件本身特点有关</li>
+</ol>
 <ul>
-<li>发现已经ok了</li>
-</ul>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111082327360.png" alt="image-20211108232733266"></p>
-<h2 id="5-让-jupyter-在服务器上持久运行"><a href="#5-让-jupyter-在服务器上持久运行" class="headerlink" title="5. 让 jupyter 在服务器上持久运行"></a>5. 让 jupyter 在服务器上持久运行</h2><ul>
-<li>发现断开 SSH 连接之后, jupyter服务就会停止运行,我们利用<code>screen</code> 命令让jupyter服务一直运行</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">screen -S notebook<br></code></pre></td></tr></table></figure>
-
+<li><p>逻辑部件</p>
 <ul>
-<li>然后启动jupyter服务</li>
+<li>质量难以评价, 管理、开发和维护困难</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure>
-
+</li>
+<li><p>规模庞大</p>
 <ul>
-<li>随后按 <code>Ctrl + A + D </code>将服务挂到后台即可</li>
+<li>开发繁琐，多人分工协作，设计技术和管理等问题</li>
 </ul>
-<h2 id="6-End"><a href="#6-End" class="headerlink" title="6. End"></a>6. End</h2><p>本次教程简单记录而已, 如有帮助,本人不胜感激.</p>
-<blockquote>
-<p>如有错误或不当之处, 请在下方评论, 我看到将对其进行修改和改进</p>
-</blockquote>
+</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>与软件开发与维护不正确有关</li>
+</ol>
+<ul>
+<li>早期软件开发具有个体化特点</li>
+<li>忽视软件需求分析的重要性</li>
+<li>认为软件开发就是写程序并设法使之运行</li>
+<li>轻视软件维护</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>消除途径</p>
+<ul>
+<li>对计算机软件有正确的认识, 消除”软件就是程序”的错误认识. 认识到软件开发是一种组织良好、管理严密、各类人员协同配合、共同完成的工程项目,充分借鉴吸取已有经验</li>
+<li>推广使用在实践中总结出的开发软件的成功技术和方法,并继续研究探索</li>
+<li>开发和使用更好地软件工具</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-软件工程"><a href="#2-1-软件工程" class="headerlink" title="2.1 软件工程"></a>2.1 软件工程</h3><ul>
+<li><p>简介</p>
+<ul>
+<li><p>定义</p>
+<ul>
+<li>指导计算机软件开发和维护的一门工程学科, 该学科的目的是生产出能按期交付的、在预算范围内的、满足用户需求的、质量合格的软件产品</li>
+</ul>
+</li>
+<li><p>本质特性</p>
+<ul>
+<li>关注于大型程序的构造</li>
+<li>中心课题是控制复杂性</li>
+<li>软件经常变化</li>
+<li>开发软件效率非常重要</li>
+<li>和谐地合作是开发软件的关键（标准和规程）</li>
+<li>软件必须有效地支持它的用户（满足各方面需求）</li>
+<li>在软件工程领域中通常由具有一种文化的人替具有另一种文化的人开发产品</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>基本原理</p>
+<ul>
+<li>用分阶段的生命周期计划严格管理</li>
+<li>坚持进行阶段评审</li>
+<li>实行严格的产品控制</li>
+<li>采用现代程序设计技术</li>
+<li>结果应能清楚地审查</li>
+<li>开发小组的人员应该小而精</li>
+</ul>
+</li>
+<li><p>方法学</p>
+</li>
+</ul>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">软件工程导论</a>
                     
                   </div>
                 
@@ -344,12 +377,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/1-OnJava8Preface">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OnJava8前言</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/FlowerIdentificationByModelarts.html">
-                        <span class="hidden-mobile">ModelArts平台花卉分类识别实验报告</span>
+                      <a href="/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD">
+                        <span class="hidden-mobile">摩尔庄园手游NPC喜好</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

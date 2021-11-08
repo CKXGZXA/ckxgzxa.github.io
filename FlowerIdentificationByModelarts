@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>第二章 可行性研究 - 残魁斜罡的空间</title>
+  <title>ModelArts平台花卉分类识别实验报告 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -161,12 +161,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/soft_intro_c2/banner_img.jpg') no-repeat center center;
+         style="background: url('https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052231951.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="第二章 可行性研究">
+            <span class="h2" id="subtitle" title="ModelArts平台花卉分类识别实验报告">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-16 10:46" pubdate>
-        2021年5月16日 上午
+      <time datetime="2021-11-05 14:45" pubdate>
+        2021年11月5日 下午
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      1.3k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      13
        分钟
     </span>
   
@@ -228,241 +228,131 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">第二章 可行性研究</h1>
+            <h1 style="display: none">ModelArts平台花卉分类识别实验报告</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月19日 下午
+                  本文最后更新于：2021年11月5日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="第二章-可行性研究"><a href="#第二章-可行性研究" class="headerlink" title="第二章 可行性研究"></a>第二章 可行性研究</h1><hr>
-<h4 id="可行性研究的内容"><a href="#可行性研究的内容" class="headerlink" title="可行性研究的内容"></a>可行性研究的内容</h4><p><strong>1. 技术可行性:</strong></p>
-<blockquote>
-<p>使用现有的技术能否实现这个系统？<br>是否有胜任开发该项目的熟练技术人员？<br>能否按期得到开发该项目所需的软件、硬件资源？</p>
+              <h1 id="华为云ModelArts平台花卉分类识别实验报告"><a href="#华为云ModelArts平台花卉分类识别实验报告" class="headerlink" title="华为云ModelArts平台花卉分类识别实验报告"></a>华为云ModelArts平台花卉分类识别实验报告</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=5a4cbb43-f85f-4427-ba12-3630ac71d4fe&utm_source=Y2t4Z3p4YWJlc3Q==&utm_medium=cps&utm_campaign=201905">【华为云11.11上云嘉年华，注册领10000元上云礼包，满额送华为X2折叠屏】</a></p>
 </blockquote>
-<p><strong>2. 经济可行性:</strong></p>
-<blockquote>
-<p>这个系统的经济效益能否超过它的开发成本？<br>需要对项目进行价格/利益分析，即“投入/产出”分析。<br>由于利益分析取决于软件系统的特点，因此在软件开发之前，很难对新系统产生的效益作出精确的定量描述，所以往往采用一些估算方法。</p>
-</blockquote>
-<p><strong>3. 操作可行性:</strong></p>
-<blockquote>
-<p>操作可行性评价系统运行后会引起的各方面变化，如：对组织机构管理模式、用户工作环境等产生的影响。</p>
-</blockquote>
-<p><strong>4. 社会可行性:</strong></p>
-<blockquote>
-<p>社会可行性主要讨论法律方面和使用方面的可行性。<br>例如，被开发软件的权利归属问题、软件所使用的技术是否会造成侵权等问题。</p>
-</blockquote>
-<hr>
-<h4 id="可行性研究过程-7步骤"><a href="#可行性研究过程-7步骤" class="headerlink" title="可行性研究过程(7步骤)"></a>可行性研究过程(7步骤)</h4><ol>
-<li>复查定义，确定系统规模和目标；<blockquote>
-<p>确认目标问题（用户需要的是否等于我们认为用户需要的）</p>
-</blockquote>
-</li>
-<li>研究目前正在使用的系统；<blockquote>
-<p>确认成本，缺点，流程图，接口等</p>
-</blockquote>
-</li>
-<li>导出新系统的高层逻辑模型（数据流图、数据字典）；<blockquote>
-<p>输入输出，数据格式</p>
-</blockquote>
-</li>
-<li>重新定义问题；</li>
-</ol>
-<blockquote>
-<p>前 4 个步骤实质上构成一个循环</p>
-</blockquote>
-<ol start="5">
-<li>导出和评价供选择的解法（物理解决方案）；<blockquote>
-<p>技术、操作、经济和市场上接受同时满足，给出供选择的方案。</p>
-</blockquote>
-</li>
-<li>推荐行动方案；<blockquote>
-<p>哪一种方案最好，为什么，给出定论和原因。</p>
-</blockquote>
-</li>
-<li>草拟开发计划（粗略）；<blockquote>
+<h2 id="1-准备数据集"><a href="#1-准备数据集" class="headerlink" title="1. 准备数据集"></a>1. 准备数据集</h2><p>​        我们在官网下载好TensorFlow官网提供的[花卉数据集](<a target="_blank" rel="noopener" href="https://www.tensorflow.org/datasets/catalog/tf_flowers">tf_flowers  | TensorFlow Datasets</a>)并在我们电脑上解压, </p>
+<p>发现 文件的结构如下所示:</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111051955239.png" alt="image-20211105195521063"></p>
+<p>flower_photos内共有5个文件夹,分别是雏菊(daisy)，dandelion(蒲公英)， roses(玫瑰)， sunflowers(向日葵)， tulips(郁金香)， 每个文件夹中存放有若干张该分类的图片。</p>
+<h2 id="2-创建OBS桶"><a href="#2-创建OBS桶" class="headerlink" title="2. 创建OBS桶"></a>2. 创建OBS桶</h2><p>用ModelArts训练需要华为的对象存储服务OBS来保存我们的数据，</p>
 <ul>
-<li>任务分解，确定负责人</li>
-<li>大致进度规划</li>
-<li>财务预算</li>
-<li>风险分析及对策</li>
-</ul>
-</blockquote>
+<li><p>首先在华为云搜索obs服务，然后点击进入</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052031054.png" alt="image-20211105203119822"></p>
 </li>
-<li>书写文档提交审查。 （作为下一个阶段工作的基础）</li>
-</ol>
-<p><strong>可行性报告，必须给出明确结论：</strong></p>
+<li><p>进入之后点击创建桶</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052030323.png" alt="image-20211105203016075"></p>
 <ul>
-<li>行或不行。</li>
-<li>或者给出系统开始前需要首先具备哪些条件</li>
-<li>或系统目标需要先行修改等。</li>
-</ul>
-<hr>
-<h4 id="系统流程图概念，特点、符号和应用；"><a href="#系统流程图概念，特点、符号和应用；" class="headerlink" title="系统流程图概念，特点、符号和应用；"></a>系统流程图概念，特点、符号和应用；</h4><ul>
-<li>概念和特点:<blockquote>
-<p>系统流程图是概括的描述物理系统的传统工具。<br>系统流程图反映的是信息在系统各部分之间流动的情况；<br>系统流程图 $\neq$ 控制、处理信息（不同于程序流程图）</p>
-</blockquote>
+<li><p>然后选择单AZ存储，地区选择离你最近的地区即可，选择好之后点击立即创建：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052036482.png" alt="image-20211105203646291"></p>
 </li>
-<li>符号:<br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7.png" alt="基本符号"><br><img src="/img/soft_intro_c2/%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE_%E7%B3%BB%E7%BB%9F%E7%AC%A6%E5%8F%B7.png" alt="系统符号"></li>
-<li>应用</li>
-<li>分层:<blockquote>
-<p>面对复杂的系统时,一个比较好的方法是分层次地描绘这个系统。首先用一张高层次的系统流程图描绘系统总体概貌,表明系统的关键功能。然后分别把每个关键功能扩展到适当的详细程度,画在单独的一页纸上。这种分层次的描绘方法便于阅读者按从抽象到具体的过程逐步深入地了解一个复杂的系统。</p>
-</blockquote>
+<li><p>这样我们的OBS桶就创建好了</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052041210.png" alt="image-20211105204107093"></p>
 </li>
 </ul>
-<hr>
-<h4 id="数据流图概念、要素、特点、符号和应用；"><a href="#数据流图概念、要素、特点、符号和应用；" class="headerlink" title="数据流图概念、要素、特点、符号和应用；"></a>数据流图概念、要素、特点、符号和应用；</h4><ul>
-<li>定义:<blockquote>
-<p>数据流图是系统逻辑功能的图形表示, 图中没有任何具体的物理部件。<br>数据流图描绘数据在软件系统内从输入移动到输出过程中所经受的变换。通常用数据流图建立软件结构的功能模型。</p>
-</blockquote>
-</li>
-<li>要素及符号:<br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%BA%90%E7%82%B9or%E7%BB%88%E7%82%B9.png"><br><img src="/img/soft_intro_c2/DFD_%E5%A4%84%E7%90%86.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8.png"><br><img src="/img/soft_intro_c2/DFD_%E6%95%B0%E6%8D%AE%E6%B5%81.png" alt="基本符号"><br><img src="/img/soft_intro_c2/DFD_%E9%99%84%E5%8A%A0%E7%AC%A6%E5%8F%B7.png" alt="附加符号"></li>
-</ul>
-<p><strong>注意:</strong></p>
-<blockquote>
+<h2 id="3-获取访问密钥"><a href="#3-获取访问密钥" class="headerlink" title="3. 获取访问密钥"></a>3. 获取访问密钥</h2><p>需要获取访问密钥然后用访问密钥登录obs-brower来方便的将我们的训练数据上传到OBS桶</p>
 <ul>
-<li>“处理”可表示：单个程序、一系列程序、程序的一个模块、人工处理过程等等；</li>
-<li>“数据存储”可表示：一个文件、文件的一部分、数据库记录等等；</li>
-<li>数据流图 <strong>忽略</strong> 出错处理、打开文件、关闭文件。</li>
-</ul>
-</blockquote>
-<ul>
-<li>特点:<blockquote>
-<p>抽象性，概括性，层次性</p>
-</blockquote>
-</li>
-<li>应用:<blockquote>
-<p>见课本</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>怎样画数据流图?</strong></p>
-<blockquote>
+<li><p>获取OBS密钥</p>
 <ol>
-<li>提取数据流图的4种成分<ol>
-<li><strong>考虑数据的源点和终点</strong></li>
-<li><strong>考虑处理</strong></li>
-<li><strong>考虑数据流和数据存储</strong></li>
+<li><p>点击我的凭证</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052113742.png" alt="image-20211105211345664"></p>
+</li>
+<li><p>点击新增访问密钥</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052114923.png" alt="image-20211105211453706"></p>
+</li>
+<li><p>输入密钥名称就可以下载一个名为credentials.csv的文件，里面存放的就是访问密钥，请不要泄露</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052117971.png"></p>
+</li>
+</ol>
+<h2 id="4-获取OBS-Browser-工具"><a href="#4-获取OBS-Browser-工具" class="headerlink" title="4. 获取OBS Browser+ 工具"></a>4. 获取OBS Browser+ 工具</h2><ol>
+<li><p>随后我们进入如下的网址下载 obs browser+ 工具</p>
+<p>下载OBS Browser+：<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html">https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html</a></p>
+<p>下载安装好之后我们打开它之后使用上一步获取到的密钥登录：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052121218.png" alt="image-20211105212127102"></p>
+</li>
+<li><p>随后我们在桶内新建4个文件夹(flower_photos, flower_input, flower_output, train_output)用于接下来的实验</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052122159.png" alt="image-20211105212256032"></p>
+</li>
 </ol>
 </li>
-<li>画出基本系统模型并将其细化, 描绘系统的主要功能<br>   一旦把数据流程图中的四种成份都分离出来之后，就可着手绘制系统的数据流程图了。数据流程图的绘制也是采用自顶向下的方法，由粗到细，逐层细化，最后形成一套完整的拟建系统的数据流程图。 </li>
-</ol>
-</blockquote>
-<p><strong>命名:</strong></p>
-<blockquote>
+</ul>
+<h2 id="5-上传数据集"><a href="#5-上传数据集" class="headerlink" title="5. 上传数据集"></a>5. 上传数据集</h2><p>在flower_photos中上传我们解压出来的花卉数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052128053.png" alt="image-20211105212805937"></p>
+<p>​     </p>
+<h2 id="6-创建数据集"><a href="#6-创建数据集" class="headerlink" title="6. 创建数据集"></a>6. 创建数据集</h2><ul>
+<li><p>进入ModelArts控制台界面，进入数据集管理，然后点击创建数据集</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052131676.png" alt="image-20211105213120461"></p>
+</li>
+<li><p>选择图像分类标注类型，输入为止和输出位置选择我们刚刚在 obs browser中新建的两个空文件夹</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052133067.png" alt="image-20211105213303824"></p>
+</li>
+<li><p>随后点击创建数据集即可</p>
+</li>
+<li><p>返回进入此数据集管理界面，点击导入，由于我已经创建过数据集了，因此里面是有标记数据的</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052135413.png" alt="image-20211105213510211"></p>
+</li>
+<li><p>点击我们刚开始上传花卉数据集的位置确定即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052136171.png" alt="image-20211105213608064"></p>
+</li>
+<li><p>导入完成之后，我们点击发布，设置数据切分训练集比例为0.8即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052137278.png" alt="image-20211105213729194"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052138484.png" alt="image-20211105213811387"></p>
+</li>
+</ul>
+<h2 id="7-使用算法进行模型训练"><a href="#7-使用算法进行模型训练" class="headerlink" title="7. 使用算法进行模型训练"></a>7. 使用算法进行模型训练</h2><ul>
+<li><p>首先进入如下的网址订阅图像分类算法</p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0">图像分类-MobileNet_v2链接</a>：<a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)">https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)</a></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052139825.png" alt="image-20211105213954489"></p>
+</li>
+<li><p>订阅完成之后我们返回ModelArts控制台的训练管理界面，点击创建训练作业</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052143872.png" alt="image-20211105214329543"></p>
+</li>
+<li><p>算法选择刚刚我们刚刚订阅的算法，训练输入选择我们刚刚创建的数据集，训练输出选择我们刚开始创建的输出文件夹即可，下面有免费的GPU资源可以供我们选择。点击提交并等待训练完成。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052145627.png" alt="image-20211105214541511"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052147929.png" alt="image-20211105214734741"></p>
+</li>
+<li><p>模型训练完成大概需要二十多分钟</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052211783.png" alt="image-20211105221118637"></p>
+</li>
+</ul>
+<h2 id="8-模型的部署和验证"><a href="#8-模型的部署和验证" class="headerlink" title="8. 模型的部署和验证"></a>8. 模型的部署和验证</h2><ul>
+<li><p>点击模型管理，然后进行在线服务的部署，选择免费资源即可</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052153987.png" alt="image-20211105215342790"></p>
+</li>
+<li><p>部署完成之后点击在线服务的预测</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052156506.png" alt="image-20211105215616340"></p>
+<p>在这里可以对应用接口进行调试，同样地你也可以利用POSTMAN等工具对它进行调试，官网有详细的文档可以查看</p>
+</li>
+<li><p>我们上传一些花卉图片对它进行测试</p>
 <ol>
-<li><strong>为数据流(或数据存储)命名</strong><ol>
-<li>名字应该代表整个数据流(或数据存储)的内容；</li>
-<li> 不要使用空洞的、缺乏具体含义的名字（如“数据”、“输入”）；</li>
-<li>如果为某个数据流（或数据存储）起名字时遇到困难，则很可能是因为对数据流图的分解不恰当造成的，应该试试重新分解数据流图； </li>
-</ol>
+<li><p>这张图片的结果是玫瑰的可能性是1，识别正确。<img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052159806.png" alt="image-20211105215908408"></p>
 </li>
-<li><strong>为处理命名</strong><ol>
-<li>通常先为数据流命名，然后再为与之相关联的处理命名；</li>
-<li>名字应该反映整个处理的功能；</li>
-<li>应该尽量避免空洞笼统的动词做名字，如“处理”、“加工”；</li>
-<li>通常用一个动词命名，如果必须用两个动词才能描述整个处理的功能，则可能要把这个处理分解成两个处理更恰当；</li>
-<li>如果在为某个处理命名时遇到困难，则很可能是发现了分解不当的情况，应考虑重新分解。</li>
-</ol>
+<li><p>这张蒲公英的图片也是识别正确的。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052202530.png" alt="image-20211105220235211"></p>
 </li>
-<li><strong>数据源点/终点并不需要在开发目标系统的过程中设计和实现,它并不属于数据流图的核心内容,只不过是目标系统的外围环境部分(可能是人员、计算机外部设备或传感器装置)。通常,为数据源点/终点命名时采用它们在问题域中习惯使用的名字(如“采购员”、“仓库管理员”等)。</strong></li>
-</ol>
-</blockquote>
-<blockquote>
-<p>作用:</p>
-<ul>
-<li>利用它作为交流信息的工具；</li>
-<li>作为软件分析和设计的工具。</li>
-</ul>
-</blockquote>
-<hr>
-<h4 id="数据字典定义、包含内容："><a href="#数据字典定义、包含内容：" class="headerlink" title="数据字典定义、包含内容："></a>数据字典定义、包含内容：</h4><blockquote>
-<p>关于数据的信息的集合，也就是对数据流图中包含元素的定义的集合。<br>与数据流图共同构成系统的 <strong>逻辑模型</strong></p>
-<p>数据字典由下列四类元素的定义组成：</p>
-<ul>
-<li>数据流；</li>
-<li>数据流分量（即数据元素）</li>
-<li>数据存储；</li>
-<li>处理。</li>
-</ul>
-</blockquote>
-<h5 id="定义数据的方法"><a href="#定义数据的方法" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h5><ol>
-<li><strong>数据元素字典</strong> 定义基本内容:<ul>
-<li>数据元素编号、名称及其含义；</li>
-<li>数据类型和长度；</li>
-<li>合理取值；</li>
-<li>其他内容，如它和其它数据的逻辑关系等。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据元素字典定义实例"></li>
-</ul>
-</li>
-<li><strong>数据流字典</strong> 定义基本内容：<ul>
-<li>数据流编号及名称；</li>
-<li>数据流来源；</li>
-<li>数据流去处；</li>
-<li>数据流的组成； </li>
-<li>流通量；</li>
-<li>峰值。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据流字典定义实例"></li>
-</ul>
-</li>
-<li><strong>数据存储</strong> 字典定义基本内容:<ul>
-<li>数据存储编号及名称；</li>
-<li>数据存储的组成；</li>
-<li>其它要求。</li>
-</ul>
-</li>
-<li><strong>数据处理</strong> 字典定义基本内容:<ul>
-<li>数据处理编号及名称；</li>
-<li>简单描述；</li>
-<li>输入/输出；</li>
-<li>功能描述；</li>
-<li>有关数据存储。<br><img src="/img/soft_intro_c2/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%AD%97%E5%85%B8%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B.png" alt="数据处理字典定义实例"></li>
-</ul>
-</li>
-<li>数据元素组成数据的表示方法：<ul>
-<li>顺序：即以确定次序连接两个或多个分量。</li>
-<li>选择：即从两个或多个可能的元素中选取一个。</li>
-<li>重复：即把指定的分量重复零次或多次。</li>
-<li>可选：即一个分量是可有可无的(重复零次或一次)。</li>
-</ul>
+<li><p>这张图片是向日葵的概率也是100%</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111052206769.png"></p>
 </li>
 </ol>
-<h5 id="数据字典的用途"><a href="#数据字典的用途" class="headerlink" title="数据字典的用途:"></a>数据字典的用途:</h5><ol>
-<li>作为分析阶段的重要工具；</li>
-<li>数据元素的控制信息非常有用；</li>
-<li>有助于开发数据库。</li>
-</ol>
-<hr>
-<h4 id="定义数据的方法-1"><a href="#定义数据的方法-1" class="headerlink" title="定义数据的方法"></a>定义数据的方法</h4><p><img src="/img/soft_intro_c2/%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95.png" alt="定义数据的方法"></p>
-<hr>
-<h4 id="成本估算技术"><a href="#成本估算技术" class="headerlink" title="成本估算技术"></a>成本估算技术</h4><h5 id="1-代码行技术"><a href="#1-代码行技术" class="headerlink" title="1. 代码行技术"></a>1. 代码行技术</h5><blockquote>
-<p>软件成本 = 每行代码的平均成本×估计的源代码总行数</p>
-</blockquote>
-<h5 id="2-任务分解技术"><a href="#2-任务分解技术" class="headerlink" title="2. 任务分解技术"></a>2. 任务分解技术</h5><blockquote>
-<p>软件开发项目分解为若干个相对独立的任务，分别估计每个单独任务的成本；<br>单独任务成本 = 任务所需人力估计值×每人每月平均工资；<br>软件开发项目总成本估计 = 各个单独任务成本估计值之和。<br><img src="/img/soft_intro_c2/%E4%BB%BB%E5%8A%A1%E5%88%86%E8%A7%A3%E6%8A%80%E6%9C%AF.png" alt="任务分解技术"></p>
-</blockquote>
-<h5 id="3-自动估计成本技术"><a href="#3-自动估计成本技术" class="headerlink" title="3. 自动估计成本技术"></a>3. 自动估计成本技术</h5><blockquote>
-<p>采用自动估计成本的软件工具估计</p>
-</blockquote>
-<h5 id="成本-效应分析的方法"><a href="#成本-效应分析的方法" class="headerlink" title="成本/效应分析的方法"></a>成本/效应分析的方法</h5><p><strong>1. 货币的时间价值</strong></p>
-<blockquote>
-<p>假设年利率为i,如果现在存入P元钱，则n年以后可以得到的钱数为：<br>$$F = P(1+i)^n$$</p>
-<p>反之，如果 <strong>n</strong> 年后能收入 <strong>F</strong> 元钱，那么这些钱现在的价值是：<br>$$P = F/(1+i)^n$$</p>
-</blockquote>
-<p><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B01.png"><br><img src="/img/soft_intro_c2/%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90%E4%BE%8B02.png"><br><strong>2. 投资回收期</strong></p>
-<blockquote>
-<ul>
-<li>第一、第二年回收：4225元</li>
-<li>第三年回收投资要：(5000 - 4225)/1779 = 0.44 年</li>
-<li>总的投资回收期 = 2.44 年</li>
+</li>
+<li><p>我们发现这个训练出来的95.87%准确率的花卉分类模型还是能准确分辨这五种花卉图片的，结果不错。</p>
+</li>
 </ul>
-</blockquote>
-<p><strong>3. 纯收入:</strong> 9011.94 - 5000 = 4011.94 (元)<br><strong>4. 投资回收率</strong><br>$$P = \frac{F_1}{(1+j)} + \frac{F_2}{(1+j)^2} +···+\frac{F_n}{(1+n)^n}$$</p>
-<p>其中:</p>
-<blockquote>
-<p>P是现在的投资额；<br>Fi是第i年年底的效益（i=1,2,3,…,n）;<br>n是系统的使用寿命（一般假设n=5）；<br>j是投资回收率。</p>
-</blockquote>
-<p>上述修改系统的工程的投资回收率是41%-42%</p>
+<h2 id="9-注意事项"><a href="#9-注意事项" class="headerlink" title="9. 注意事项"></a>9. 注意事项</h2><ul>
+<li>华为的OBS对象存储服务是要花钱的，不过训练完成之后也只扣了1分钱，其他的服务都是免费的，充值的费用如果没用完也是能提现的，所以不用担心，这点还是非常不错的。</li>
+</ul>
+<h2 id="10-心得和体会"><a href="#10-心得和体会" class="headerlink" title="10. 心得和体会"></a>10. 心得和体会</h2><p>通过这次利用华为云ModelArts平台进行的花卉识别实验，我发现华为ModelArts平台为机器学习与深度学习提供海量数据预处理及交互式智能标注、大规模分布式训练、自动化模型生成等等一些功能，这些功能全是华为云线上帮你完成的，我们用户根本不用编写一些复杂的代码，从而可以帮助用户快速创建和部署模型，即使你毫无编码基础，也能通过这些图形化的界面进行模型的搭建和训练并快速的部署发布到实际应用当中，推进了人工智能和机器学习的普及和大众化，并使用场景化的AI案例，使得AI落地零门槛，这样的话普通人也能利用华为的这个平台使用人工智能技术改变世界。</p>
 
             </div>
             <hr>
@@ -480,7 +370,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">软件工程导论</a>
+                      <a class="hover-with-bg" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
                     
                   </div>
                 
@@ -497,9 +387,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90.html">
+                      <a href="/buildJupyterOnServer">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第三章 需求分析</span>
+                        <span class="hidden-mobile">在服务器上搭建jupyter notebook</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -507,8 +397,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0.html">
-                        <span class="hidden-mobile">第一章 软件工程概述</span>
+                      <a href="/3-WhatIsAnObject">
+                        <span class="hidden-mobile">第1章 什么是对象?</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

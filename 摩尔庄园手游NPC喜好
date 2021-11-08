@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>计算机网络习题第一章(网络体系结构) - 残魁斜罡的空间</title>
+  <title>摩尔庄园手游NPC喜好 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -166,7 +166,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="计算机网络习题第一章(网络体系结构)">
+            <span class="h2" id="subtitle" title="摩尔庄园手游NPC喜好">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-27 14:28" pubdate>
-        2021年10月27日 下午
+      <time datetime="2021-06-19 23:42" pubdate>
+        2021年6月19日 晚上
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      994 字
+      530 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      5
        分钟
     </span>
   
@@ -228,73 +228,178 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计算机网络习题第一章(网络体系结构)</h1>
+            <h1 style="display: none">摩尔庄园手游NPC喜好</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年10月27日 下午
+                  本文最后更新于：2021年9月19日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
-<li><p>假定有一个通信协议，每个分组都引入100字节的开销用于头和成帧。现在使用这个协议发送 $10^6$ 字节的数据，然而在传送的过程中有一个字节被破坏了，因而包含该字节的那个分组被丢弃。试对于1000字节和20000字节的分组的有效数据大小分别计算“开销+丢失”字节的总数目。分组数据大小的最佳值是多少?</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/IMG_20211027_144348.png"></p>
-</li>
-<li><p>考虑一个最大距离为2km的局域网，当带宽等于多大时 传播延时（传播速度为$2\times10^8m/s$ )等于100B分组的发送延时?对于512B分组结果又当如何?</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/0571ddc1c8ecc9360933b1968027a05.jpg"></p>
-</li>
-<li><p>在两台计算机之间传输一个文件有两种可行的确认策略。第一种策略把文件截成分组，接收方逐个地确认分组，但就整体而言，文件没有得到确认。第二种策略不确认单个分组，但当文件全部收到后，对整个文件予以确认。请讨论这两种方式的优缺点。</p>
-<blockquote>
-<table>
+              <table>
 <thead>
 <tr>
-<th><strong>方案1</strong></th>
-<th>出错后不必从头开始，只传出错的分组</th>
-<th>速度慢,需要分割和拼接</th>
+<th align="center"><strong>NPC</strong></th>
+<th align="center"><strong>位置</strong></th>
+<th><strong>喜好</strong></th>
+<th><strong>厌恶</strong></th>
+<th><strong>好友</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>方案2</strong></td>
-<td><strong>速度较快，不用分割和拼接分组</strong></td>
-<td><strong>出错后整个文件重传</strong></td>
+<td align="center">菩提</td>
+<td align="center">神秘湖(阳光沙滩)码头</td>
+<td>清炒毛毛豆、奇异果、星空鱼、香蕉</td>
+<td>荔枝、狗鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">艾尔</td>
+<td align="center">警署</td>
+<td>鸡蛋、满天星、罗汉鱼、牛奶鱼群汤</td>
+<td>大闸蟹、小龙虾</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">艾米</td>
+<td align="center">报社门口</td>
+<td>锦鲤、月亮海螺、棉花糖、胡萝卜盖饭</td>
+<td>水蜘蛛、奇异果</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">杰西</td>
+<td align="center">城堡喷泉广场</td>
+<td>茄子、小丑鱼、小麦牛奶蛋粥、牛奶</td>
+<td>水蛇、章鱼、葡萄</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">彩虹</td>
+<td align="center">宠物店</td>
+<td>胡萝卜、浆果烧饼、小麦牛奶蛋粥、章鱼</td>
+<td>利齿狗鱼、鲶鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">丝尔特</td>
+<td align="center">服装店门口</td>
+<td>苹果、羊毛、甲鱼南瓜盅、蒲兰花</td>
+<td>大闸蟹、章鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">埃里克斯</td>
+<td align="center">家具店门口</td>
+<td>金鱼、铜矿石、红木、棉花糖豆浆</td>
+<td>南瓜、西瓜</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">梅森</td>
+<td align="center">梅森小屋门口</td>
+<td>南瓜、草莓、向日葵、葫芦炒茄子</td>
+<td>鲶鱼、带鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">克劳</td>
+<td align="center">爱心礼堂</td>
+<td>牛奶鱼群汤、冰激凌鼠、百合花</td>
+<td>水蜘蛛、水蛇</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">尼克</td>
+<td align="center">城堡餐厅门口</td>
+<td>白菜、石榴炸冰虾、鲶鱼、河豚</td>
+<td>百合花</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">汤米</td>
+<td align="center">摩尔拉雅山脚</td>
+<td>水蜜桃、铜矿石、解暑冲饮、茄块狗鱼片</td>
+<td>水煮大闸蟹 、章鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">弗礼德</td>
+<td align="center">游戏小屋(白熊游戏屋)</td>
+<td>葫芦、冰川虾、鲶鱼、香煎雪鱼</td>
+<td>鲤鱼、玉米、香蕉</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">花婶</td>
+<td align="center">淘淘乐街</td>
+<td>毛毛花、七色花、葡萄、椰汁水果捞</td>
+<td>金鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">瑞琪</td>
+<td align="center">前哨站</td>
+<td>小丑鱼、抱抱熊、毛毛爆囧菇</td>
+<td>怪怪鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">凯文</td>
+<td align="center">摩尔拉雅山顶</td>
+<td>小丑鱼、抱抱熊、葫芦烧茄子</td>
+<td>水蛇、水蜘蛛、章鱼</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">洛克</td>
+<td align="center">摩尔城堡大门处</td>
+<td>向日葵、星空鱼、浆果浓汤、椰子</td>
+<td>毛毛豆、怪怪鱼、茄块狗鱼片、麻辣小龙虾</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">琦琦</td>
+<td align="center">派对广场</td>
+<td>南瓜、初恋海星、麻辣小龙虾、水蜜桃</td>
+<td>水蛇、水蜘蛛</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">茜茜</td>
+<td align="center">摩尔拉雅山腰</td>
+<td>水蜘蛛、樱花蛇、麻辣小龙虾</td>
+<td>带鱼、苹果</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">尤尤</td>
+<td align="center">阳光牧场</td>
+<td>毛毛花、向日葵，玫瑰海星、奶油玉米浓汤</td>
+<td>蒜头蛙、粑粑海肠、水蜘蛛</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">贝琪</td>
+<td align="center">摩尔拉雅山顶</td>
+<td>玉米、绿鲤鱼、河童、花香金鱼</td>
+<td>胡萝卜盖饭、胡萝卜、奇异果</td>
+<td></td>
 </tr>
 </tbody></table>
-<p>如果网络容易丢失分组，选方案一，此时仅重传丢失的分组。<br>如果网络高度可靠，那么在不发生差错的情况下，选方案二.从而减少了确认次数，节省了带宽。不过,即使只有单个分组丢失也要重传整个文件,因此更适用于小文件。</p>
-</blockquote>
-</li>
-<li><p>试在下列条件下比较电路交换和分组交换。要传送的报文共x比特。从源点到终点共经过k段链路，每段链路的传播时延为d秒，数据传输速率为b比特每秒。在电路交换时电路的建立时间为s秒。在分组交换时分组长度为p比特，且各结点的排队等待时间可忽略不计。问在怎样的条件下，分组交换的时延比电路交换的要小?(提示:画一下草图观察k段链路共有几个结点。)</p>
-<blockquote>
-<p>电路交换时延:  $s + \frac{x}{b} + k \cdot d$</p>
-<p>分组交换时延: $\frac{p}{b}\cdot k + \frac{p}{b} (\frac{x}{p} - 1) + k \cdot d$</p>
-<p>由 $$ \frac{p}{b}\cdot k + \frac{p}{b} (\frac{x}{p} - 1) + k \cdot d &lt; s + \frac{x}{b} + k \cdot d $$可得:<br>$$<br>k &lt; \frac {\frac{p}{b}+s}{\frac{p}{b}+d-1}<br>$$</p>
-</blockquote>
-</li>
-<li><p>在上题的分组交换网中，设报文长度和分组长度分别为x和( p+h )比特，其中p为分组的数据部分的长度，而h为每个分组所带的控制信息固定长度，与p的大小无关。通信的两端共经过k段链路。链路的数据传输速率为b比特每秒，但传播时延、结点的排队时延和处理时延均可忽略不计。若打算使总的时延为最小，问分组的数据部分长度p应取为多大?</p>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/f165ba22bc8debf251158a105358b4d.jpg"></p>
-</li>
-<li><p>在下列情况下，计算传送1000KB文件所需要的总时间，即从开始传送时起直到文件的最后一位到达目的地为止的时间。假定往返时间RTT为100ms，一个分组是1KB(即1024B)的数据，在开始传送整个文件数据之前进行的起始握手过程需要2RTT的时间。<br>1）带宽是1.5Mb/s，数据分组可连续发送。<br>2）带宽是1.5Mb/s，但在发送完每一个数据分组后，必须等待一个RTT （等待来自接收方的确认）才能发送下一个数据分组。<br>3 )假设带宽是无限大的值，即我们取发送时间为0，并且在等待每个RTT后可以发送多达20个分组。</p>
-</li>
-</ol>
-<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/a25cf59fb4897e1480ab29929476142.jpg"></p>
+<p><img src="/img/others/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%ADNPC.jpg" alt="摩尔庄园NPC"></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E4%B9%A0%E9%A2%98/">习题</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                      <a class="hover-with-bg" href="/tags/%E6%B8%B8%E6%88%8F/">游戏</a>
                     
                   </div>
                 
@@ -311,9 +416,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%96%B0%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%95%99%E7%A8%8B.html">
+                      <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">腾讯云新号注册教程</span>
+                        <span class="hidden-mobile">软件工程导论复习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -321,8 +426,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/TransmissionDelayandProgationDelay.html">
-                        <span class="hidden-mobile">传输延迟和传播延迟的区别</span>
+                      <a href="/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0">
+                        <span class="hidden-mobile">第七章 实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -20,7 +20,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>摩尔庄园手游NPC喜好 - 残魁斜罡的空间</title>
+  <title>一些绕口令 - 残魁斜罡的空间</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -166,7 +166,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="摩尔庄园手游NPC喜好">
+            <span class="h2" id="subtitle" title="一些绕口令">
               
             </span>
 
@@ -176,8 +176,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-19 23:42" pubdate>
-        2021年6月19日 晚上
+      <time datetime="2021-09-19 18:49" pubdate>
+        2021年9月19日 晚上
       </time>
     </span>
   
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      530 字
+      1.5k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      15
        分钟
     </span>
   
@@ -228,7 +228,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">摩尔庄园手游NPC喜好</h1>
+            <h1 style="display: none">一些绕口令</h1>
             
               <p class="note note-info">
                 
@@ -237,171 +237,78 @@
               </p>
             
             <div class="markdown-body">
-              <table>
-<thead>
-<tr>
-<th align="center"><strong>NPC</strong></th>
-<th align="center"><strong>位置</strong></th>
-<th><strong>喜好</strong></th>
-<th><strong>厌恶</strong></th>
-<th><strong>好友</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">菩提</td>
-<td align="center">神秘湖(阳光沙滩)码头</td>
-<td>清炒毛毛豆、奇异果、星空鱼、香蕉</td>
-<td>荔枝、狗鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">艾尔</td>
-<td align="center">警署</td>
-<td>鸡蛋、满天星、罗汉鱼、牛奶鱼群汤</td>
-<td>大闸蟹、小龙虾</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">艾米</td>
-<td align="center">报社门口</td>
-<td>锦鲤、月亮海螺、棉花糖、胡萝卜盖饭</td>
-<td>水蜘蛛、奇异果</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">杰西</td>
-<td align="center">城堡喷泉广场</td>
-<td>茄子、小丑鱼、小麦牛奶蛋粥、牛奶</td>
-<td>水蛇、章鱼、葡萄</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">彩虹</td>
-<td align="center">宠物店</td>
-<td>胡萝卜、浆果烧饼、小麦牛奶蛋粥、章鱼</td>
-<td>利齿狗鱼、鲶鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">丝尔特</td>
-<td align="center">服装店门口</td>
-<td>苹果、羊毛、甲鱼南瓜盅、蒲兰花</td>
-<td>大闸蟹、章鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">埃里克斯</td>
-<td align="center">家具店门口</td>
-<td>金鱼、铜矿石、红木、棉花糖豆浆</td>
-<td>南瓜、西瓜</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">梅森</td>
-<td align="center">梅森小屋门口</td>
-<td>南瓜、草莓、向日葵、葫芦炒茄子</td>
-<td>鲶鱼、带鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">克劳</td>
-<td align="center">爱心礼堂</td>
-<td>牛奶鱼群汤、冰激凌鼠、百合花</td>
-<td>水蜘蛛、水蛇</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">尼克</td>
-<td align="center">城堡餐厅门口</td>
-<td>白菜、石榴炸冰虾、鲶鱼、河豚</td>
-<td>百合花</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">汤米</td>
-<td align="center">摩尔拉雅山脚</td>
-<td>水蜜桃、铜矿石、解暑冲饮、茄块狗鱼片</td>
-<td>水煮大闸蟹 、章鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">弗礼德</td>
-<td align="center">游戏小屋(白熊游戏屋)</td>
-<td>葫芦、冰川虾、鲶鱼、香煎雪鱼</td>
-<td>鲤鱼、玉米、香蕉</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">花婶</td>
-<td align="center">淘淘乐街</td>
-<td>毛毛花、七色花、葡萄、椰汁水果捞</td>
-<td>金鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">瑞琪</td>
-<td align="center">前哨站</td>
-<td>小丑鱼、抱抱熊、毛毛爆囧菇</td>
-<td>怪怪鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">凯文</td>
-<td align="center">摩尔拉雅山顶</td>
-<td>小丑鱼、抱抱熊、葫芦烧茄子</td>
-<td>水蛇、水蜘蛛、章鱼</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">洛克</td>
-<td align="center">摩尔城堡大门处</td>
-<td>向日葵、星空鱼、浆果浓汤、椰子</td>
-<td>毛毛豆、怪怪鱼、茄块狗鱼片、麻辣小龙虾</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">琦琦</td>
-<td align="center">派对广场</td>
-<td>南瓜、初恋海星、麻辣小龙虾、水蜜桃</td>
-<td>水蛇、水蜘蛛</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">茜茜</td>
-<td align="center">摩尔拉雅山腰</td>
-<td>水蜘蛛、樱花蛇、麻辣小龙虾</td>
-<td>带鱼、苹果</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">尤尤</td>
-<td align="center">阳光牧场</td>
-<td>毛毛花、向日葵，玫瑰海星、奶油玉米浓汤</td>
-<td>蒜头蛙、粑粑海肠、水蜘蛛</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">贝琪</td>
-<td align="center">摩尔拉雅山顶</td>
-<td>玉米、绿鲤鱼、河童、花香金鱼</td>
-<td>胡萝卜盖饭、胡萝卜、奇异果</td>
-<td></td>
-</tr>
-</tbody></table>
-<p><img src="/img/others/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%ADNPC.jpg" alt="摩尔庄园NPC"></p>
+              <h1 id="一些绕口令"><a href="#一些绕口令" class="headerlink" title="一些绕口令"></a>一些绕口令</h1><ol>
+<li><p>==八了百了标了兵了奔了北了坡，炮了兵了并了排了北了边了跑， 炮了兵了怕了把了标了兵了碰，标了兵了怕了碰了炮了兵了炮。（双唇及舌）==</p>
+</li>
+<li><p>==巴老爷有八十八棵芭蕉树，来了八十八个把式要在巴老爷八十八棵芭蕉树下住。巴老爷拔了八十八棵芭蕉树，不让八十八个把式在八十八棵芭蕉树下住。八十八个把式烧了八十八棵芭蕉树，巴老爷在八十八棵树边哭。（锻炼唇力）==</p>
+</li>
+<li><p>==门口吊刀，刀倒吊着。……（反复说，锻炼舌的顶力）==</p>
+</li>
+<li><p>==山前有个催粗腿，山后有个催腿粗，俩人山前来比腿，不知是催粗腿比催腿粗的腿粗，还是催腿粗比催粗腿的腿粗。==</p>
+</li>
+<li><p>==粉红墙上画凤凰，凤凰画在粉红墙。红凤凰、粉凤凰，红粉凤凰花凤凰。==</p>
+</li>
+</ol>
+<h3 id="主持人播音员专业八级绕口令考试试卷"><a href="#主持人播音员专业八级绕口令考试试卷" class="headerlink" title="主持人播音员专业八级绕口令考试试卷"></a>主持人播音员专业八级绕口令考试试卷</h3><h4 id="第一题："><a href="#第一题：" class="headerlink" title="第一题："></a>第一题：</h4><p>老龙恼怒闹老农，老农恼怒闹老龙。农怒龙恼农更怒，龙恼农怒龙怕农。</p>
+<h4 id="第二题："><a href="#第二题：" class="headerlink" title="第二题："></a>第二题：</h4><p>牛郎恋刘娘，刘娘念牛郞，牛郎年年念刘娘，刘娘牛年恋牛郎，郎念娘来娘恋娘</p>
+<h4 id="第三题："><a href="#第三题：" class="headerlink" title="第三题："></a>第三题：</h4><p>七巷一个漆匠，西巷一个锡匠。七巷漆匠用了西巷锡匠的锡，西巷锡匠拿了七巷漆匠的漆，七巷漆匠气西巷锡匠用了漆，西巷锡匠讥七巷漆匠拿了锡。</p>
+<h4 id="第四题："><a href="#第四题：" class="headerlink" title="第四题："></a>第四题：</h4><p>初级 大声说20遍(红凤凰)<br>中级 大声说20遍(粉红凤凰)<br>高级 大声说10遍(红凤凰，黄凤凰，粉红凤凰花凤凰)</p>
+<hr>
+<p>丝瓜藤上绕满绳，<br>瓜藤绕着绳架伸。<br>绳长藤伸瓜儿长，<br>绳粗藤壮瓜儿沉。</p>
+<p>风吹银铃叮铃铃<br>小琳琳，爱银铃，<br>琳琳用劲摇银铃，<br>银铃的铃声真好听。<br>风吹银铃叮铃铃，<br>小琳以为铃失灵，<br>银铃笑琳琳真是不机灵！</p>
+<p>蓝教练是女教练，吕教练是男教练<br>蓝教练不是男教练，吕教练不是男教练<br>蓝南是男篮主力，吕楠是女篮主力。吕教练在男篮训练蓝南，蓝教练在女篮训练吕楠。</p>
+<p>小盈林，爱银铃，<br>盈林用劲摇银铃，<br>银铃声音真动听。<br>风吹银铃叮铃铃，<br>盈林心中喜盈盈，<br>笑声尽情赛银玲。</p>
+<hr>
+<ol>
+<li>初入江湖：化肥会挥发</li>
+<li>小有名气：黑化肥发灰，灰化肥发黑</li>
+<li>名动一方：黑化肥发灰会挥发；灰化肥挥发会发黑</li>
+<li>天下闻名：黑化肥挥发发灰会花飞；灰化肥挥发发黑会飞花</li>
+<li>一代宗师：黑灰化肥会挥发发灰黑讳为花飞；灰黑化肥会挥发发黑灰为讳飞花</li>
+<li>超凡入圣：黑灰化肥灰会挥发发灰黑讳为黑灰花会飞；灰黑化肥会会挥发发黑灰为讳飞花化为灰</li>
+<li>天外飞仙：黑化黑灰化肥灰会挥发发灰黑讳为黑灰花会回飞；灰化灰黑化肥会会挥发发黑灰为讳飞花回化为灰</li>
+</ol>
+<h3 id="绕口令"><a href="#绕口令" class="headerlink" title="绕口令"></a>绕口令</h3><h4 id="单韵母练习"><a href="#单韵母练习" class="headerlink" title="单韵母练习"></a>单韵母练习</h4><ol>
+<li>坡上立着一只鹅，坡下就是一条河。宽宽的河，肥肥的鹅，鹅要过河，河要渡鹅，不知是鹅过河，还是河渡鹅？</li>
+<li>山上五棵树，架上五壶醋，林中五只鹿，箱里五条裤。伐了山上树，搬下架上的醋，射死林中的鹿，取出箱中的裤。</li>
+</ol>
+<h4 id="鼻韵母练习"><a href="#鼻韵母练习" class="headerlink" title="鼻韵母练习"></a>鼻韵母练习</h4><ol>
+<li>扁担长，板凳宽，扁担没有板凳宽，板凳没有扁担长，扁担想绑在板凳上，板凳不让扁担绑在板凳上，扁担偏偏绑在板凳上，到底是板凳宽还是扁担长。</li>
+<li>一平盆面，烙一平盆饼，饼碰盆，盆碰饼。</li>
+<li>山前有个严圆眼，山后有个严眼圆，二人山前来比眼，不知是严圆眼的眼圆，还是严眼圆比严圆眼的眼圆？</li>
+</ol>
+<h4 id="复韵母练习"><a href="#复韵母练习" class="headerlink" title="复韵母练习"></a>复韵母练习</h4><ol>
+<li>出南门，走六步，见着六叔和六舅，叫声六叔和六舅，借我六斗六升好绿豆；过了秋，打了豆，还我六叔六舅六十六斗六升好绿豆。</li>
+<li>哥挎瓜筐过宽沟，过沟筐漏瓜滚沟。隔沟挎筐瓜筐扣，瓜滚筐空哥怪沟。</li>
+</ol>
+<h4 id="唇音练习"><a href="#唇音练习" class="headerlink" title="唇音练习"></a>唇音练习</h4><ol>
+<li>老方扛着黄幌子，老黄扛着方幌子。老方要拿老黄的方幌子，老黄要拿老方的黄幌子，末了儿方幌子碰破了黄幌子，黄幌子碰破了方幌子。</li>
+</ol>
+<h4 id="舌尖中音练习"><a href="#舌尖中音练习" class="headerlink" title="舌尖中音练习"></a>舌尖中音练习</h4><ol>
+<li>你会炖炖冻豆腐，你来炖我的炖冻豆腐；你不会炖炖冻豆腐，别胡炖乱炖炖坏了我的炖冻豆腐。</li>
+<li>老罗拉了一车梨，老李拉了一车栗。老罗人称大力罗，老李人称李大力。老罗拉梨做梨酒，老李拉栗去换梨。</li>
+<li>有个面铺门朝南，门上挂着蓝布棉门帘，摘了蓝布棉门帘，面铺门朝南；挂上蓝布棉门帘，面铺还是门朝南。</li>
+<li>大刀对单刀，单刀对大刀，大刀斗单刀，单刀夺大刀。</li>
+</ol>
+<h4 id="舌根音、舌面音练习"><a href="#舌根音、舌面音练习" class="headerlink" title="舌根音、舌面音练习"></a>舌根音、舌面音练习</h4><ol>
+<li>一班有个黄贺，二班有个王克，黄贺、王克二人搞创作，黄贺搞木刻，王克写诗歌。黄贺帮助王克写诗歌，王克帮助黄贺搞木刻。由于二人搞协作，黄贺完成了木刻，王克写好了诗歌。<br>翘舌音、平舌音、练习</li>
+<li>天上有个日头，地下有块石头，嘴里有个舌头，手上有五个手指头。不管是天上的热日头，地下的硬石头，嘴里的软舌头，手上的手指头，还是热日头，硬石头，软舌头，手指头，反正都是练舌头。</li>
+<li>师部司令部指示：四团十连石连长带四十人在十日四时四十四分按时到达师部司令部，师长召开誓师大会。</li>
+<li>早招租，晚招租，总找周邹郑曾朱。</li>
+</ol>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%B8%B8%E6%88%8F/">游戏</a>
+                      <a class="hover-with-bg" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
                     
                   </div>
+                
                 
               </div>
               
@@ -416,9 +323,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA.html">
+                      <a href="/2021MidAutumnFestival1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">软件工程导论复习</span>
+                        <span class="hidden-mobile">中秋之行_上午_中国地质博物馆</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -426,8 +333,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%9E%E7%8E%B0.html">
-                        <span class="hidden-mobile">第七章 实现</span>
+                      <a href="/1-OnJava8Preface">
+                        <span class="hidden-mobile">OnJava8前言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
