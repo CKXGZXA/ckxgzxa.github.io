@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>百度高效研发实战训练营Step3 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的空间</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="百度高效研发实战训练营Step3">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-25 09:00" pubdate>
+        2021年11月25日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      77
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">百度高效研发实战训练营Step3</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年11月28日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="百度高效研发实战训练营Step3"><a href="#百度高效研发实战训练营Step3" class="headerlink" title="百度高效研发实战训练营Step3"></a>百度高效研发实战训练营Step3</h1><h2 id="1-质量意识"><a href="#1-质量意识" class="headerlink" title="1 质量意识"></a>1 质量意识</h2><h3 id="1-1-质量的基本概念"><a href="#1-1-质量的基本概念" class="headerlink" title="1.1 质量的基本概念"></a>1.1 质量的基本概念</h3><h4 id="1-1-1-质量重要性的认识"><a href="#1-1-1-质量重要性的认识" class="headerlink" title="1.1.1 质量重要性的认识"></a>1.1.1 质量重要性的认识</h4><p>随着技术更新，市场竞争的加剧，质量问题成为困扰不少企业的一大难题，也给一些企业造成了巨大的损失，这就使得项目质量的重要性不断凸显。</p>
+<p>通过对于这些失败案例的分析不难发现，项目的质量保证是一个需要<strong>项目全体成员参与</strong>的重要工作，只有在项目团队的共同努力下，才能有效保证项目的质量，为企业和社会创造价值。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281614025.png"></p>
+<p>项目管理三要素为<strong>质量、时间、成本</strong>，三个要素缺一不可、相互制约，一味追求某一要素的做法是不明智的。一个成功的项目必然是在三者的取舍间达成了一个平衡。</p>
+<h4 id="1-1-2-质量保证和测试的关系"><a href="#1-1-2-质量保证和测试的关系" class="headerlink" title="1.1.2 质量保证和测试的关系"></a>1.1.2 质量保证和测试的关系</h4><p>质量问题有很多种，常见的有代码缺陷、产品缺陷、Bug、用户体验差、性能差、服务不稳、安全问题、可兼容性差等。我们经常通过测试来发现问题，并将发现的问题分<strong>功能性测试类问题和用户体验评估类问题。</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281615870.png"></p>
+<p>测试工作是质量保证工作中的重要一环，但是我们应该认识到，质量保证工作不能只依靠测试的反馈，而应该贯穿项目开发的整个过程。</p>
+<h4 id="1-1-3-Bug的基本认识"><a href="#1-1-3-Bug的基本认识" class="headerlink" title="1.1.3 Bug的基本认识"></a>1.1.3 Bug的基本认识</h4><p><strong>Bug</strong>是程序中的缺陷和问题，<strong>属于功能性测试类问题的范畴</strong>， Bug是一种很常见的质量问题，也是我们在项目开发中应该尽量减少或避免的质量问题。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281617228.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281618840.png"></p>
+<p>Bug的修复有一套完整的规定流程。</p>
+<p>首先，测试人员或者用户发现Bug后，将其置为<strong>激活状态</strong>；开发人员收到激活状态的Bug后，对其进行修复，修复过程中， Bug状态为<strong>处理中</strong>；修复完成后，开发人员将其置为<strong>解决状态</strong>；测试人员再对其进行<strong>验证</strong>，若通过，则将其关闭，否则，重新激活Bug即重启状态，交予开发人员继续修复，直至验证通过。</p>
+<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128161942251.png"></p>
+<p>从这一流程可以看到，<strong>Bug有五种状态，Open（激活）、In Process（处理中）、Resolved（解决）、closed（关闭）、Reopen（重启）</strong>。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281621054.png"></p>
+<p>Bug生命周期有一定规律性。以传统软件中的瀑布模型举例，85%的问题在项目初期的编码阶段引入，在后期测试阶段，发现Bug的数量会逐渐增多，与之对应的修复成本也会急剧增加。可见，降低<strong>修复成本最有效的方式，就是在Bug引入的阶段就及时发现并修复Bug。</strong></p>
+<h3 id="1-2-Bug提交方法"><a href="#1-2-Bug提交方法" class="headerlink" title="1.2 Bug提交方法"></a>1.2 Bug提交方法</h3><blockquote>
+<p>Bug提交需要反馈渠道，Bug的反馈渠道分为内部用户反馈渠道和外部用户反馈渠道两种。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281623796.png"></p>
+<ol>
+<li>内部用户反馈渠道包括：产品Icafe空间、产品论坛、Bugs邮件组、Bugs平台。</li>
+<li>外部用户反馈渠道包括：产品自身反馈渠道和产品接入反馈平台。</li>
+</ol>
+</blockquote>
+<p><strong>Bug的提交有严格的格式要求，提交的Bug反馈应包括以下七个方面的内容：</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281624518.png"></p>
+<p>正确提交Bug能确保负责人能够清晰了解问题，直接进行数据挖掘，找到Bug所有的属性，便于后续维护工作的开展。</p>
+<h3 id="1-3-质量保证在项目各阶段的实现"><a href="#1-3-质量保证在项目各阶段的实现" class="headerlink" title="1.3 质量保证在项目各阶段的实现"></a>1.3 质量保证在项目各阶段的实现</h3><p>质量的保证不能仅仅依靠测试人员，而是需要贯穿项目的各个阶段。</p>
+<p>Bug的发现和修复是项目质量保证的一个重要方面，但质量保证工作绝不仅仅是修复Bug这么简单。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281626934.png"></p>
+<p>项目的开发整体路径包括：需求阶段、设计阶段、开发阶段、测试阶段、发布阶段、上线阶段以及线上阶段。</p>
+<p>在一个项目开发的各个不同阶段，质量保证工作的要求和思路均有一定的不同，下面我们来展现质量保证工作在各个阶段的具体实现。</p>
+<h4 id="1-3-1-需求与设计阶段的质量保证工作"><a href="#1-3-1-需求与设计阶段的质量保证工作" class="headerlink" title="1.3.1 需求与设计阶段的质量保证工作"></a>1.3.1 需求与设计阶段的质量保证工作</h4><p>需求与设计阶段是项目开始的重要阶段，只有从客户真正的需求出发，才能设计出真正令客户满意的产品。</p>
+<p>在一阶段，质量保证工作的关键点有三：</p>
+<ol>
+<li><p><strong>需求评审：</strong>站在用户的角度思考和挖掘需求，是设计和开发的前提性条件。</p>
+</li>
+<li><p><strong>需求的变更管理：</strong>用户的需求始终在改变，建立一套完善机制去及时适应需求的变更十分重要。</p>
+</li>
+<li><p><strong>设计评审：</strong>通过评审需求的可行性和设计的相关风险，可以极大降低设计风险，避免人力浪费。</p>
+</li>
+</ol>
+<h4 id="1-3-2-开发与测试阶段的质量保证工作"><a href="#1-3-2-开发与测试阶段的质量保证工作" class="headerlink" title="1.3.2 开发与测试阶段的质量保证工作"></a>1.3.2 开发与测试阶段的质量保证工作</h4><p>在开发阶段，质量保证工作最重要的有两点：<strong>单元测试和代码评审。</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281632782.png"></p>
+<blockquote>
+<p>单元测试的作用很多，主要有：</p>
+<p>（1） 调试代码，确保代码实时可编译。</p>
+<p>（2） 验证逻辑，减少代码中的Bug。</p>
+<p>（3） 作为一个最细粒度回归测试，实时反馈代码的质量。</p>
+</blockquote>
+<blockquote>
+<p>代码评审也同样十分重要，它的作用主要为：</p>
+<p>（1） 保持代码风格的一致和可读性，利于贯彻编程规范。</p>
+<p>（2） 提高代码质量，减少Bug。</p>
+<p>（3） 促进互相交流学习，提升团队的整体研发能力，进而提高企业的整体竞争力。</p>
+</blockquote>
+<p>而在测试阶段，我们的主要任务是<strong>测试功能性测试类问题。</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281632723.png"></p>
+<blockquote>
+<p>测试阶段一般流程为：</p>
+<p>第一步：<strong>撰写测试方案</strong>。由测试人员编写方案并提交开发人员评审。</p>
+<p>第二步：<strong>进行单元测试</strong>。由开发人员编写用例，并交给测试人员评审。</p>
+<p>第三步：<strong>进行功能性测试</strong>。由测试人员设计和编写用例。</p>
+<p>第四步：<strong>进行性能/压力等测试</strong>。测试人员根据项目情况决定是否进行。</p>
+<p>第五步：<strong>自动化和持续集成</strong>。将测试自动化，并把流程加入持续集成。</p>
+<p>第六步：<strong>撰写测试报告</strong>。测试人员要在大版本时编写测试报告。</p>
+</blockquote>
+<p>测试环节涉及很多的内容，包括了：</p>
+<p>（1）测试方案。</p>
+<p>（2）自动化/持续集成。</p>
+<p>（3）测试报告。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281634364.png"></p>
+<p>在这一环节中，<strong>撰写测试方案是对该阶段工作的整体规划。</strong>测试方案描绘了测试和质量保证的各种工作，规划了如何组织测试，方案中包括了：质量目标、风险评估、测试范围、测试优先级、测试方法、测试流程、测试计划和测试设计的内容。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281634848.png"></p>
+<p><strong>常用的测试方法有</strong>：黑盒/白盒、静态测试/动态测试、自动化测试/手工测试、验收测试/α测试/β测试、单元测试/模块测试/集成测试/联调测试/系统测试、功能性测试/性能测试/压力测试/异常测试/安全测试、接口测试/用户场景测试、回归测试、探索性测试等。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281635604.png"></p>
+<p>不同的测试方法有不同的特点和擅长解决的问题。测试的侧重点不同，发现的问题也不同。我们需要根据测试方案，来选择合适的测试方法，提高测试的效率。为此，在前期的测试和设计方案评审时要及早发现问题，避免无效劳动，提高测试效率。</p>
+<p>同样，自动化和持续集成也是有效提高测试效率的方法。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281635791.png"></p>
+<p><strong>自动化包括流程自动化和测试自动化。</strong>流程自动化包括编译、部署、发布、回滚、上线和测试阶段。测试自动化可以降低成本并保证测试结果，降低风险。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281636766.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281637773.png"></p>
+<p>而基于自动化，我们可以搭建串联工作流，即持续集成，可以将代码提交、编译、模块测试、部署、系统测试、发布这一循环性流程集成在一起，从而提高工作效率，保证持续的质量反馈。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281637103.png"></p>
+<p>测试完成后需要撰写详细的测试报告，以方便后期的持续维护和迭代，其内容包括：</p>
+<p>测试结果、质量风险评估、质量评估、测试过程描述、缺陷分析、评估改进意见、测试版本/测试人员/测试时间。</p>
+<h4 id="1-3-3-上线与线上阶段的质量保证工作"><a href="#1-3-3-上线与线上阶段的质量保证工作" class="headerlink" title="1.3.3 上线与线上阶段的质量保证工作"></a>1.3.3 上线与线上阶段的质量保证工作</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281638579.png" alt="image-20211128163800434"></p>
+<p><strong>上线阶段包括上线过程和回滚过程。</strong></p>
+<p>上线阶段的上线方案需要经过评审和测试，对于重点项目，还应有回滚方案和相应的评审和测试工作。</p>
+<p>上线后，我们需要进行线上测试，常用的线上测试有三类：众包测试、用户反馈和业务监控、产品评测。</p>
+<blockquote>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281641413.png"></p>
+<p>（1）<strong>众包测试：</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281642738.png">众包测试的目的是使更多的用户参与测试，降低测试成本。众测服务分为四类：测试类（包括探索性测试、用例组合爆炸测试），产品体验（包括产品建议、Badcase收集）、评估评测（包括大数据量评估标注、降低成本）、用户调研（产品需求调研、用户反馈)。一个众测平台：<a target="_blank" rel="noopener" href="http://test.baidu.com/">http://test.baidu.com</a></p>
+<p>（2）<strong>用户反馈和业务监控</strong>：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281642375.png">目的则是为了实现线上问题闭环，通过用户反馈和业务监控可以解决大部分的线上问题。步骤分为收集、分发、定位和解决。主要平台有反馈平台、Bugs平台和 Monitor平台。</p>
+<p>（3）<strong>产品评测：</strong></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281643572.png"></p>
+<p>包括用户反馈分析、产品Bug分析、Top问题梳理和竞品对比分析。</p>
+<p>→ <strong>用户反馈分析</strong>是指对用户反馈的问题进行分析。→ 产品Bug分析是指对产品的Bug进行分析，然后解决问题最大的Bug。</p>
+<p>→ <strong>Top问题梳理</strong>是指，对问题进行梳理分类，解决最突出的问题。</p>
+<p>→ <strong>竞品对比分析</strong>是指对自家产品和市场上同类型产品进行分析。</p>
+</blockquote>
+<p>从对各个阶段质量保证工作的分析中，我们不难看出，每一个阶段的质量保证工作都需要多方角色的共同参与。可见，项目的出色质量来源于<strong>每个环节的严格把控和每个成员的共同参与，这是团队质量意识的两大核心。</strong></p>
+<h3 id="1-4-质量保证意识的4个核心内容"><a href="#1-4-质量保证意识的4个核心内容" class="headerlink" title="1.4 质量保证意识的4个核心内容"></a>1.4 质量保证意识的4个核心内容</h3><h4 id="1-4-1-质量保证工作存在于每一个环节"><a href="#1-4-1-质量保证工作存在于每一个环节" class="headerlink" title="1.4.1 质量保证工作存在于每一个环节"></a>1.4.1 质量保证工作存在于每一个环节</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281647902.png"></p>
+<h4 id="1-4-2-每一个成员都需要对质量负责"><a href="#1-4-2-每一个成员都需要对质量负责" class="headerlink" title="1.4.2 每一个成员都需要对质量负责"></a>1.4.2 每一个成员都需要对质量负责</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281647522.png"></p>
+<h4 id="1-4-3-测试是一种核心的质量保证工作"><a href="#1-4-3-测试是一种核心的质量保证工作" class="headerlink" title="1.4.3 测试是一种核心的质量保证工作"></a>1.4.3 测试是一种核心的质量保证工作</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281646302.png"></p>
+<h4 id="1-4-4-尽早发现问题，尽早解决问题"><a href="#1-4-4-尽早发现问题，尽早解决问题" class="headerlink" title="1.4.4 尽早发现问题，尽早解决问题"></a>1.4.4 尽早发现问题，尽早解决问题</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281647888.png"></p>
+<h2 id="2-代码单元测试总体介绍"><a href="#2-代码单元测试总体介绍" class="headerlink" title="2 代码单元测试总体介绍"></a>2 代码单元测试总体介绍</h2><h3 id="2-1-单元测试基础"><a href="#2-1-单元测试基础" class="headerlink" title="2.1 单元测试基础"></a>2.1 单元测试基础</h3><h4 id="2-1-1-单元测试的误区"><a href="#2-1-1-单元测试的误区" class="headerlink" title="2.1.1 单元测试的误区"></a>2.1.1 单元测试的误区</h4><p>单元测试存在一些认识上的误区，包括：</p>
+<ol>
+<li>开发单元测试代码的工作量大。</li>
+<li>做单元测试不属于开发人员的职责。</li>
+<li>代码正确率高，进行单元测试必要性不大。</li>
+<li>后期有集成测试，前期进行单元测试必要性不大。</li>
+<li>单元测试无法带来显著收益，效率不高。</li>
+</ol>
+<h4 id="2-1-2-单元测试的概念"><a href="#2-1-2-单元测试的概念" class="headerlink" title="2.1.2 单元测试的概念"></a>2.1.2 单元测试的概念</h4><p><em><strong>在维基百科中，单元测试的定义为：一段代码调用另一段代码，随后检验一些假设的正确性。</strong></em></p>
+<p><em><strong>在百度百科中，单元测试是指对软件中的最小可测试单元进行检查和验证。</strong></em></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281653449.png"></p>
+<p>那么我们不禁要问：一次编写的单元测试是否只是为了验证该次开发过程中对应的代码逻辑的正确性？</p>
+<p>其实不然，单元测试不仅在于实现问题中的功能，优秀的单元测试作用长久，可以减少后续工作的负担，从而提升整体生产力。</p>
+<h4 id="2-1-3-常见的单元测试问题"><a href="#2-1-3-常见的单元测试问题" class="headerlink" title="2.1.3 常见的单元测试问题"></a>2.1.3 常见的单元测试问题</h4><p>目前单元测试中存在一些常见的问题：</p>
+<ol>
+<li>使用System.out输出测试结果，依赖人去判断测试是否正确。</li>
+<li>不使用Assert(断言)对测试结果进行判断。</li>
+</ol>
+<p><em>在以上两种情形都需要依赖人与电脑的交互来判断此case是否成功，人的工作量较大；**在实际的单元测试中，应当使用断言进行判断，使 case运行时自动输出结果。</em></p>
+<ol start="3">
+<li>没有边界检查。</li>
+<li>多个测试分支放入一个单元测试方法中。</li>
+</ol>
+<p><em>这种情况会导致一旦出现运行失败时，难以判断出现错误的分支所在。</em></p>
+<ol start="5">
+<li>测试case环境相关（依赖已知库表、时间）。</li>
+</ol>
+<p><em>对于这种情况，应当做出修改，使输入参数为确定的值。</em></p>
+<ol start="6">
+<li>测试方法执行有先后顺序。</li>
+</ol>
+<p><em>在实际测试过程中，由于不同的用于运行单元测试的测试框架对于case执行顺序有自己的行为，故单元测试实际执行顺序存在不确定性。</em></p>
+<h4 id="2-1-4-优秀的单元测试"><a href="#2-1-4-优秀的单元测试" class="headerlink" title="2.1.4 优秀的单元测试"></a>2.1.4 优秀的单元测试</h4><p>优秀的单元测试需要以下原则：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281655957.png"></p>
+<ol>
+<li>单元测试彼此之间应具备<strong>独立性</strong>。一个单元测试应独立于其它测试及运行它的环境。</li>
+<li>一个优秀的单元测试是<strong>可重复</strong>的。它需要具备多次运行的能力，若不可重复，则不能算作优秀的单元测试。</li>
+<li>优秀的单元测试<strong>可自动化</strong>。自动化具备双重含义：第一，单元测试<strong>可依赖于现有工具自动化运行</strong>；第二，单元测试执行成功与否<strong>可自动进行判断</strong>，而不依赖于人为判断。</li>
+<li>优秀的单元测试是<strong>彻底的</strong>。单元测试对于被测试对象而言需要覆盖全部的分支。</li>
+</ol>
+<h3 id="2-2-单元测试的意义与建议"><a href="#2-2-单元测试的意义与建议" class="headerlink" title="2.2 单元测试的意义与建议"></a>2.2 单元测试的意义与建议</h3><h4 id="2-2-1-什么情况下做单元测试"><a href="#2-2-1-什么情况下做单元测试" class="headerlink" title="2.2.1 什么情况下做单元测试"></a>2.2.1 什么情况下做单元测试</h4><p><strong>（1）单元测试的好处</strong></p>
+<p>①带来<strong>更高的测试覆盖率</strong>：有些分支问题在集成测试过程中很难发现，但在单元测试中极易发现。</p>
+<p>②<strong>提高团队效率</strong>：单元测试在开发完后立即执行，将测试提前一步，不必等集成测试时才发现问题。</p>
+<p>③<strong>自信的重构和改进实现。</strong></p>
+<p>④<strong>将预期的行为文档化</strong>：完整的单元测试是产品代码的最好文档。</p>
+<p><strong>（2）不当的单元测试会降低生产力</strong></p>
+<p>单元测试并不是越多越好，不当的单元测试会降低生产力。</p>
+<p>①单元测试的工作量与普通代码的工作量的比例介于1:1~1.5:1。</p>
+<p>②整体项目的单元测试运行时间随着单元测试case增多线性增长，测试的执行速度影响每次变更等待的时间。</p>
+<p>③单元测试的代码，也需要长期维护。</p>
+<p><strong>（3）如何选择单元测试的对象</strong></p>
+<p>不写单元测试不好，单元测试写多了也不好，这就要求我们要细心选择单元测试的对象。</p>
+<p>在进行单元测试的时候，应<strong>重点关注核心业务逻辑代码、重用性高的代码与调用频繁的代码</strong>，后两者较为相近。</p>
+<h4 id="2-2-2-不同场景下的单元测试tips"><a href="#2-2-2-不同场景下的单元测试tips" class="headerlink" title="2.2.2 不同场景下的单元测试tips"></a>2.2.2 不同场景下的单元测试tips</h4><p>1）Java Web项目底层的BO\DAO大体都是工具自动生成，无需额外单测，但是<strong>Action(Controller)<strong>层不含有较多的业务逻辑，</strong>需要通过集成测试</strong>发现问题。要注意的是<strong>java web项目</strong>的核心业务逻辑主要存在于Service层代码中，需要<strong>着重进行单元测试</strong>。</p>
+<p>（2）平台类Java项目虽然在单独的场景下几乎不会出现问题，但是交叉混合时可能存在问题。而且由于平台类项目更多的兼顾不同的复杂的应用场景，所以在测试时要尽量做到全面。值得注意的是平台类Java项目的分支较多，所以<strong>要求在单元测试时要做到覆盖分支全面</strong>。</p>
+<p>（3）组件类Java项目和平台类项目类似，也需要侧重分支覆盖全面，包括异常调用情况的覆盖。</p>
+<p>（4）Hadoop的MR任务属于特殊的JAVA程序，集成测试成本高，主要体现在时间成本上。在进行单测时，<strong>可以将核心逻辑代码抽取出来，单独测试。</strong></p>
+<h2 id="3-Python单元测试"><a href="#3-Python单元测试" class="headerlink" title="3 Python单元测试"></a>3 Python单元测试</h2><h3 id="3-1-单元测试的概念、工具与方法"><a href="#3-1-单元测试的概念、工具与方法" class="headerlink" title="3.1 单元测试的概念、工具与方法"></a>3.1 单元测试的概念、工具与方法</h3><h4 id="3-1-1-单元测试的概念"><a href="#3-1-1-单元测试的概念" class="headerlink" title="3.1.1 单元测试的概念"></a>3.1.1 单元测试的概念</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281703584.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281704541.png"></p>
+<p>测试具有许多种不同的类型，比如说单元测试、模块测试、联调测试、系统测试、交付测试等。在这些测试之中，<strong>单元测试是最先要完成的</strong>。单元测试通常是由开发者去完成，用来验证代码中的函数是否符合预期。因此，它聚焦于函数的逻辑以及核心的算法是否正确。<em><strong>通常而言，一个单元测试用例是用于判断在某个特定条件或场景下，某个特定函数的行为。</strong></em></p>
+<h4 id="3-1-2-单元测试的意义"><a href="#3-1-2-单元测试的意义" class="headerlink" title="3.1.2 单元测试的意义"></a>3.1.2 单元测试的意义</h4><p><strong>单元测试的意义包括两个方面。</strong></p>
+<p>（1）质量</p>
+<blockquote>
+<p>①单元测试主要针对函数，<strong>颗粒度小、测试针对性强</strong>，bug更容易暴露；</p>
+<p>②由于单元测试覆盖面较窄，无需考虑其它函数或者所依赖的模块，所以它的<strong>场景易构造，核心功能验证更充分</strong>；</p>
+<p>③进行单元测试保证整体代码结构良好，使代码就具有较高的可测性和可维护性。</p>
+</blockquote>
+<p>（2）效率</p>
+<p>单元测试能够提高开发效率，主要表现在：</p>
+<blockquote>
+<p>①单元测试<strong>进行的时间较早，测试场景构建快</strong>，可有效减少调试时间。</p>
+<p>②由于单元测试<strong>只针对修改的代码</strong>展开测试，无需考虑额外内容，所以在较短时间内即可把预期的逻辑测试充分。</p>
+<p>③单元测试<strong>能够在项目开发初期发现的bug</strong>，bug发现的时间越早，所带来的收益越大。由于尽早发现bug能够节省整个项目开发的时间，所以单元测试可加快开发效率，缩短开发周期。</p>
+</blockquote>
+<h4 id="3-1-3-单元测试框架"><a href="#3-1-3-单元测试框架" class="headerlink" title="3.1.3 单元测试框架"></a>3.1.3 单元测试框架</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281706919.png"></p>
+<p><strong>Unitest的基础概念</strong></p>
+<blockquote>
+<p>在做单元测试之前，需要先了解一下Unittest的几个基础概念。</p>
+<p>①**Test(测试用例)**，针对一个特定场景，特定目的具体测试过程。</p>
+<p><em>比如说一个函数通过一组输入测试它，就是一个测试用例；如果一个函数通过三组输入来测试，即为三个测试用例。</em></p>
+<p>②<strong>TestCase（测试类）</strong>，可以包含同一个测试对象的多个测试用例。</p>
+<p><em>如果一个函数通过三组输入来测试，也就是三个测试用例，这三个测试用例可以合成为一个测试类。</em></p>
+<p>③<strong>TestSuite（测试集）</strong>，可以包含多个测试类的多个测试用例。</p>
+<p>④<strong>Assertion（断言）</strong>，必须使用断言判断测试结果。</p>
+<p>⑤<strong>TestFixture</strong>，为测试做统一的准备和清除工作，通常是初始化，连接数据库，准备数据，断开数据库，清除现场等。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281711746.png"></p>
+<p>扩展来说，TestFixture有四种最常使用的作用范围，分别为：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281710167.png"></p>
+<blockquote>
+<ol>
+<li>setUp：在测试类的每个测试用例执行前执行。</li>
+<li>teardown：在测试类的每个测试用例执行后执行。</li>
+<li>setUpClass：在测试类的第一个测试用例执行前执行。</li>
+<li>tearDownClass：在测试类的最后一个测试用例执行后执行。</li>
+</ol>
+</blockquote>
+<p>TestFixture可以让单元测试代码更简单，但并非必须使用，也不要求配对出现。</p>
+</blockquote>
+<h4 id="3-1-4-单元测试的规范"><a href="#3-1-4-单元测试的规范" class="headerlink" title="3.1.4 单元测试的规范"></a>3.1.4 单元测试的规范</h4><p>如下是单元测试涉及的规范。</p>
+<p>（1）所有的单元测试<strong>必须使用断言（assert）判断结果</strong>，禁止出现无断言的测试用例；</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281712364.webp"></p>
+<p>使用断言，不但有利于他人理解，而且一旦出现不符合预期的情况，可以立即找出问题。</p>
+<p>可以使用assertEqual, assertNotEqual 来判断相等或不相等，assertTrue,assertFalse 来判断Boolean, assertRaises 判断抛出的异常是否符合预期。</p>
+<p>（2）测试用例需要具有自表述能力，达到见名知意。</p>
+<p>比如命名test_login_with_invalid_password()，通过它的名字便可知它是用一个非法的密码去测试登录功能，具有自表述能力；但是如果命名为 test_login_case_（），名字减少了很多信息，难以得知它具体在做什么，不具有自表述能力。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281714852.png"></p>
+<p>（3）测试用例之间相互独立，不应相互依赖、相互调用。</p>
+<p>（4）<strong>一个测试用例只测一个函数。</strong>一个测试用例里面可以包含这一个函数的多个场景，但不能包含有多个参数的函数。原因在于，复杂测试用例出现错误时，无法定位问题的出处。</p>
+<h4 id="3-1-5-单元测试对编码的要求"><a href="#3-1-5-单元测试对编码的要求" class="headerlink" title="3.1.5  单元测试对编码的要求"></a>3.1.5  单元测试对编码的要求</h4><p>单元测试中代码需保持一致性，尽量不要出现结果不一致的情况。假设有的代码会带来不一致性，导致单元测试无法稳定运行。针对这种情况，有两种解决方案：</p>
+<p><strong>第一，将带来不一致性的代码抽取出来，</strong>把它作为一种变量传入我们需要调用或使用一致性变量的时候；</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281715404.png"></p>
+<p><strong>第二，借助第三部分即将讲到的一个工具——mock</strong>——来解决这种问题。</p>
+<h3 id="3-2-Coverage-统计单元测试覆盖率的工具"><a href="#3-2-Coverage-统计单元测试覆盖率的工具" class="headerlink" title="3.2 Coverage 统计单元测试覆盖率的工具"></a>3.2 Coverage 统计单元测试覆盖率的工具</h3><p>单元测试做完之后如何评价我们单元测试的效果。此时需要用到覆盖率工具，即Coverage。Coverage是一个第三方的工具，需要提前下载安装。</p>
+<h4 id="3-2-1-统计覆盖率方法"><a href="#3-2-1-统计覆盖率方法" class="headerlink" title="3.2.1 统计覆盖率方法"></a>3.2.1 统计覆盖率方法</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281719654.png"></p>
+<p>把python替换为coverage run-branch，然后会生成coverage文件，文件里会记录所有我们需要的覆盖率信息。</p>
+<h4 id="3-2-2-打印覆盖率信息"><a href="#3-2-2-打印覆盖率信息" class="headerlink" title="3.2.2 打印覆盖率信息"></a>3.2.2 打印覆盖率信息</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281718158.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281716523.webp"></p>
+<p>执行coverage report-m 命令，读取当前目录下.coverage文件，打印覆盖率信息。输出Stmts(总行数), Miss(未覆盖行数), Branch（总分支数）, BrPart （未覆盖分支数）, Cover（覆盖率） , Missing（未覆盖具体信息）等信息。</p>
+<h4 id="3-2-3-覆盖率中排除某些文件"><a href="#3-2-3-覆盖率中排除某些文件" class="headerlink" title="3.2.3 覆盖率中排除某些文件"></a>3.2.3 覆盖率中排除某些文件</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281718278.png"></p>
+<p>执行coverage report-m—omit=file 1[,file 2,……] 命令, 在统计并打印覆盖率时，排除某些文件。若有多个文件用逗号分隔。</p>
+<h4 id="3-2-4-生成HTML格式的覆盖率信息"><a href="#3-2-4-生成HTML格式的覆盖率信息" class="headerlink" title="3.2.4 生成HTML格式的覆盖率信息"></a>3.2.4 生成HTML格式的覆盖率信息</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281718034.png"></p>
+<p>针对代码量较大，查找覆盖率信息难度较大、耗时较长的情况，执行coverage html [–omit=file1[,file2,……]]命令，将覆盖率信息以html格式显示。</p>
+<h3 id="3-3-Mock-简化单元测试的工具"><a href="#3-3-Mock-简化单元测试的工具" class="headerlink" title="3.3 Mock 简化单元测试的工具"></a>3.3 Mock 简化单元测试的工具</h3><h4 id="3-3-1-使用mock工具的原因与其功能"><a href="#3-3-1-使用mock工具的原因与其功能" class="headerlink" title="3.3.1 使用mock工具的原因与其功能"></a>3.3.1 使用mock工具的原因与其功能</h4><p>Mock基于实际进行单元测试的场景而产生，以下三类场景非常具有代表性：</p>
+<ol>
+<li><p><strong>构造模块</strong>。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281724821.png">需要测试模块A,但它要调用的模块B还未开发，可是测试却不容推迟、需按时进行，面对这种情况，我们可以使用Mock生成一个还未写完的代码，即可进行相应的测试。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281724884.png"></p>
+</li>
+<li><p><strong>改变函数逻辑</strong>。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281725807.png">代码中含有结果不可预知的代码，例如time.time()(时间)， random.random()(随机数)。Mock可以改变含有结果不可预知代码的函数的逻辑，强行让其返回我们想要的返回值，使其结果可预知。</p>
+</li>
+<li><p><strong>减少依赖</strong>。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281725930.png" alt="image-20211128172546775">在所有模块代码都已完成，但无法保证代码稳定性的情况下。针对其他模块的质量不可靠的情况，可通过Mock工具构造一个相对稳定的模块，从而规避其他模块的问题。</p>
+</li>
+</ol>
+<h4 id="3-3-2-Mock使用场景"><a href="#3-3-2-Mock使用场景" class="headerlink" title="3.3.2 Mock使用场景"></a>3.3.2 Mock使用场景</h4><p>通过以下10个场景来讲述Mock的常见用法。</p>
+<p>场景01：通过 <strong>return_value</strong>，Mock可以强行修改，永远返回我们想要的返回值，支持的类型包括string,number,Boolean,list,dict等。</p>
+<p>场景02：将前一个例子的<strong>实例名改为类名</strong>，可实现替换类方法的返回值。</p>
+<p>场景03：通过 <strong>side_effect</strong>,根据调用次数返回想要的结果,当超出调用次数时抛StopIteration 异常。</p>
+<p>场景04：通过 <strong>side_effect</strong>可以完全修改函数的逻辑，使用另一个函数来替换它，根据参数返回想要的结果。</p>
+<p>场景05：通过 <strong>side_effect</strong>抛出想要的异常或错误。</p>
+<p>场景06：针对需要mock在特定要求下生效的情况，通过<strong>with.patch.object</strong>设定一个作用域以达到限制mock作用域的目的。</p>
+<p>场景07：<strong>获取调用信息</strong>，如函数是否被调用、函数被调用的次数、函数被调用的形式、函数调用的参数等。</p>
+<p>场景08：通过<strong>create_autospec</strong>在返回值改变的同时，确保api不会因mock而改变。</p>
+<p>场景09：针对需要调用的函数、调用的接口完全没有开发的情况，可以通过<strong>Mock从零构造依赖模块</strong>从而完成测试。</p>
+<p>场景10 ：<strong>替换函数调用链。</strong>比如说用popen去执行一个命令，然后用read函数把它读取出来，再用split去做切分，这就是一个函数调用链(os.popen(cmd).read().split())。</p>
+<h4 id="3-3-3-Mock对编码的要求"><a href="#3-3-3-Mock对编码的要求" class="headerlink" title="3.3.3 Mock对编码的要求"></a>3.3.3 Mock对编码的要求</h4><p>在模块引入方式上，推荐以import XXX的形式引入，以XXX.func()形式调用，不要from.xxx import *,因为需要一个链条指向它，否则无法达到我们的预期。</p>
+<h3 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h3><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281727442.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281727860.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281728367.png"></p>
+<h2 id="4-单元测试实践"><a href="#4-单元测试实践" class="headerlink" title="4 单元测试实践"></a>4 单元测试实践</h2><h3 id="4-1-Unittest-简单应用"><a href="#4-1-Unittest-简单应用" class="headerlink" title="4.1 Unittest 简单应用"></a>4.1 Unittest 简单应用</h3><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281736705.webp"></p>
+<p>如图所示，这是一个要被测试的类，这个类代表了一个人，类中有一个函数为<strong>get_name()，作用是获取这个人的名字</strong>。围绕着这个函数首先想到的测试点就是函数能否正确输出人名。因此就有了如下图所示的单元测试代码。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281738269.webp"></p>
+<p>第一步，将使用到的unittest框架和所需要的函数导入。</p>
+<p>第二步，针对被测试的函数写一个测试类，这里要注意<strong>测试类必须继承自unittest和TestCase。</strong></p>
+<p>第三步，构建实例化的函数，可以理解为生成两个人，一个叫张三，一个叫李四。</p>
+<p>第四步，编写一个用于测试的函数，这里注意<strong>函数名必须是以test开头</strong>。通过图片里的代码可以看到，通过使用assertEqual断言来做相应的测试，断言中包括了两部分，第一部分是预期，第二部分是实际的值。通过对两个值的比较来完成测试。</p>
+<h3 id="4-2-Unittest复杂应用"><a href="#4-2-Unittest复杂应用" class="headerlink" title="4.2 Unittest复杂应用"></a>4.2 Unittest复杂应用</h3><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281736271.webp"></p>
+<p>下面来看一个复杂的例子。如图所示，这个被测试的类是一个公司。这个公司的信息包含了公司的名字、公司的老板、公司的员工数。在这个公司的类中设置了三个函数，老板是谁、雇佣一个新员工、解雇一个员工。通过这些信息，可以想到的测试点有：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281735339.webp"></p>
+<p>（1）who_is_boss()这个函数能够正确的返回老板的姓名；</p>
+<p>（2）使用hire()函数雇佣新人，公司的员工总数+1；</p>
+<p>（3）使用hire()函数重复雇佣一个人，函数会报错或者公司员工数量不变；</p>
+<p>（4）使用fire()函数解雇一个人，公司的员工总数-1；</p>
+<p>（5）使用fire()函数解雇非公司的员工，函数会报错或者员工数量不变。</p>
+<p>针对以上的几个测试点，可以编写出相应的测试类。</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281736693.webp"></p>
+<p>首先将所需要的类库导入，并且测试类要继承自unittest和TestCase。然后使用setUpClass()函数构建一个公司，设置老板的姓名和公司的名字。在这里设置了一个tearDown()清理函数，是为了方便测试的时候将员工全部清理掉。</p>
+<p>通过图片可以看到，下面的三个函数原理基本跟上一个案例相同，都是通过断言来进行测试。测试类编写完成之后，需要运行这个类进行测试。如果需要执行全部的测试用例，如图所示，使用unittest.main()这个函数且不需要添加任何参数。执行完成后会得到如下图所示的结果，测试结果分为几个部分：</p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281736738.webp"></p>
+<p>第一部分的代码展示的是执行测试用例的结果，“.”说明测试用例执行通过，“E”说明测试用例发生了特殊情况异常中断，“F”说明测试用例执行失败。</p>
+<p>第二部分则是打印的报错信息，当出现“E”或者“F”的时候，系统会打印出异常中断和执行失败的原因。</p>
+<p>第三部分为统计信息，包括了共执行了几个测试用例，测试用例执行共花费了多少时间，测试用例执行成功或失败的数量。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%99%BE%E5%BA%A6%E9%AB%98%E6%95%88%E7%A0%94%E5%8F%91%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83%E8%90%A5/">百度高效研发实战训练营</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/bitTraingClub4.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">百度高效研发实战训练营Step4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/bitTraingClub2.html">
+                        <span class="hidden-mobile">百度高效研发实战训练营Step2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
