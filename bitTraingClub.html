@@ -421,7 +421,7 @@
 </li>
 <li><p>针对配置本身的语法，让配置支持合并.</p>
 </li>
-<li><p>减少冗余信。</p>
+<li><p>减少冗余信息。</p>
 </li>
 <li><p>消除信息重复。</p>
 </li>
@@ -539,7 +539,7 @@
 <p>首先<strong>使用卡片在白板上将所有的需求列出来，</strong>这样有助于展现产品全貌，而且将需求转化为可视的卡片能更好的根据用户反馈对任务需求进行排序；</p>
 <p>然后<strong>使用不同的颜色对卡片进行分层。</strong>蓝色卡片是第一层，黄色卡片是第二层，白色卡片是第三层。将颗粒度最小的需求放在白色卡片这一层，低颗粒度的需求更容易被研发人员接受。</p>
 <p>最后通过横向的分组，把迭代计划每一期的每一版本的<strong>需求进行归类分组。</strong>这样有利于打通产品视图和研发计划视图。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211125010128499.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292131175.png"></p>
 <p>通过以上步骤可以得到一个较为完整的用户故事地图。</p>
 <h4 id="3-1-2-迭代计划"><a href="#3-1-2-迭代计划" class="headerlink" title="3.1.2 迭代计划"></a>3.1.2 迭代计划</h4><p>在完成产品的版本规划后，研发团队需要制定相应的迭代计划。敏捷、快速、合理地迭代计划能够更高效地促进项目的迭代。</p>
 <p>基于用户故事地图，可以在制定迭代计划的过程中中直接对需求进行<strong>上下拖拽修改优先级，左右拖拽更改计划。</strong>这样可以更清晰的展现迭代计划，使开发团队更好定位到的里程碑，完善整个迭代计划。</p>
@@ -602,7 +602,7 @@
 </blockquote>
 <p>为了使代码变更流程标准化，需要<strong>使用交付流水线的方式来落地</strong>。通过标准化交付过程从而达到可靠、可重复的作用。交付流水线是<strong>串行执行</strong>的，上一个阶段成功执行后，就会触发下一个阶段。执行阶段由任务组成，这些任务可以是穿行的也可是并行的。任务的执行状态决定阶段执行状态。</p>
 <p><strong>iPipe这一工具目前包含了标准的交付流水线</strong>，用户可以在iPipe中看到流水线的构建情况。在使用交付流水线的过程中，如果当前阶段失败，后面的阶段就不会继续进行，这样可以节省资源并且快速的发现问题，及时修复问题。</p>
-<h4 id="3-3-2-插件化现有工具和服务"><a href="#3-3-2-插件化现有工具和服务" class="headerlink" title="3.3.2 插件化现有工具和服务"></a>3.3.2 插件化现有工具和服务</h4><p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211127033458566.png"></p>
+<h4 id="3-3-2-插件化现有工具和服务"><a href="#3-3-2-插件化现有工具和服务" class="headerlink" title="3.3.2 插件化现有工具和服务"></a>3.3.2 插件化现有工具和服务</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130209.png"></p>
 <p>在交付流水线中执行各种任务时需要依赖很多工具和服务，比如maven，docker、jenkins、git等工具和服务。</p>
 <p>我们通过一套<strong>标准的插件化开发规范</strong>将这些工具和服务集成到了流水线中，用户在使用流水线的过程中就可以很方便的使用这些插件和服务。如果流水线中没有想使用的插件、服务或工具，可以根据效率云提供的插件规范，自行扩展以满足项目需求。</p>
 <h4 id="3-3-3-数据度量驱动过程改进"><a href="#3-3-3-数据度量驱动过程改进" class="headerlink" title="3.3.3 数据度量驱动过程改进"></a>3.3.3 数据度量驱动过程改进</h4><p>通过交付流水线，可以快速获取项目所有的数据和信息，如：一个版本从代码提交到交付上线的周期或者一个项目各个阶段发现的缺陷数量等等。</p>
@@ -714,9 +714,9 @@
 
 <p>常用的交付流水线落地工具有效率云平台中的iPipe工具，在这个工具中可以根据需求创建流水线，并且将相关内容全都关联到流水线中，这样可以让开发人员、测试人员和运维人员在这个工具中直观的看到产品的状态以及质量情况。</p>
 <h3 id="4-3-持续部署"><a href="#4-3-持续部署" class="headerlink" title="4.3 持续部署"></a>4.3 持续部署</h3><p>对于持续交付整体来说，持续部署非常重要。</p>
-<h4 id="4-3-1-持续部署方案"><a href="#4-3-1-持续部署方案" class="headerlink" title="4.3.1 持续部署方案"></a>4.3.1 持续部署方案</h4><p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211127163244920.png"></p>
+<h4 id="4-3-1-持续部署方案"><a href="#4-3-1-持续部署方案" class="headerlink" title="4.3.1 持续部署方案"></a>4.3.1 持续部署方案</h4><p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130946.png"></p>
 <p>容器技术目前是部署中最流行的技术，常用的持续部署方案有Kubernetes+Docker和Matrix系统两种。容器技术一经推出就被广泛的接受和应用，主要原因是对比传统的虚拟机技术有以下几个<strong>优点</strong>：</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211127163313452.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130129.png"></p>
 <ol>
 <li>容器技术上手简单，轻量级架构，体积很小。</li>
 <li>容器技术的集合性更好，能更容易对环境和软件进行打包复制和发布。</li>
@@ -743,7 +743,7 @@
 <p>在早期阶段，软件的部署是在物理机上进行的，每一台服务器的网络、存储、软件环境都是不同的，物理机的不稳定让环境重构变得异常困难。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111271635334.png"></p>
 <p>后来逐渐发展为虚拟机部署，在虚拟机上借助流程化的部署能较好的构建软件环境，但是第三方依赖库的重构不稳定为整体部署带来了困难。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211127163527848.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130431.png"></p>
 <p>现阶段使用容器部署不但继承和优化了虚拟机部署的优点，而且很好的解决了第三方依赖库的重构问题，容器部署就像一个集装箱，直接把所有需要的内容全部打包进行复制和部署。</p>
 <h4 id="4-3-5-蓝绿部署和金丝雀部署"><a href="#4-3-5-蓝绿部署和金丝雀部署" class="headerlink" title="4.3.5 蓝绿部署和金丝雀部署"></a>4.3.5 蓝绿部署和金丝雀部署</h4><p>在部署原则中提到两大部署方式分别为蓝绿部署和金丝雀部署。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111271635700.png"></p>
@@ -800,7 +800,7 @@
 <h3 id="1-4-正确认识代码实践方面的问题"><a href="#1-4-正确认识代码实践方面的问题" class="headerlink" title="1.4 正确认识代码实践方面的问题"></a>1.4 正确认识代码实践方面的问题</h3><h4 id="1-4-1-什么是好代码，好的代码有哪些标准"><a href="#1-4-1-什么是好代码，好的代码有哪些标准" class="headerlink" title="1.4.1 什么是好代码，好的代码有哪些标准"></a>1.4.1 什么是好代码，好的代码有哪些标准</h4><p><strong>好代码的标准是：</strong></p>
 <p>①高效、②鲁棒、③简洁、④简短、⑤可共享、</p>
 <p>⑥可测试、⑦可移植、⑧可监控、⑨可运维、⑩可扩展。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128000420651.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130734.png"></p>
 <blockquote>
 <p>将以上十条标准进行总结精简，可以归纳为：</p>
 <p>（1）代码的正确和性能；</p>
@@ -893,10 +893,10 @@
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280018199.png"></p>
 <p><strong>要点三、清楚需求是系统设计决策的来源</strong></p>
 <p>精确定义需求中的各个细节，以及量的定义，对系统设计的决策起着重要的作用。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128001836116.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130393.png"></p>
 <p><strong>要点四、系统设计的风格与哲学</strong></p>
 <p><em>在同样的需求下，可能出现不同的设计方式。</em>即目的相同，设计不同。比如：复杂指令集和精简指令集的设计差异。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128001850174.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292130655.png"></p>
 <p>一个好的系统是<em>在合适假设下的精确平衡</em>。一个通用的系统在某些方面是不如专用系统的。每个系统每个组件的功能都应该足够的专一和单一。每个组件是指子系统或模块等。功能的单一是复用和扩展的基础。倘若不单一，未来就有可能很难进行复用和扩展。</p>
 <p>子系统或模块之间的关系应该是<em>简单而清晰的</em>。软件中最复杂的是耦合，如果各系统之间的接口定义非常复杂，那么未来便很难控制系统的健康发展。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280019144.png"></p>
@@ -936,7 +936,7 @@
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280041920.png"></p>
 <p><strong>数据类的模块：</strong>主要是要完成<em><strong>对数据的封装</strong></em>。封装往往是通过模块内部变量或类的内部变量来实现的。</p>
 <p><strong>过程类的模块：</strong>本身不含数据。过程类模块可以<em><strong>从文件中去读取一个数据</strong></em>，或者执行一些相关的操作。过程类模块可以调用其他数据类模块或过程类模块。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128004944312.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292131236.png"></p>
 <p>编写程序时，我们需要注意减少模块间的耦合。<em><strong>减少模块间的耦合，有利于降低软件复杂性，明确接口关系</strong>。</em></p>
 <h6 id="2-关于类和函数"><a href="#2-关于类和函数" class="headerlink" title="2. 关于类和函数"></a>2. 关于类和函数</h6><p>类和函数是两种不同的类型，有他们各自适用的范围。另外，遇见和类的成员变量无关的函数时，可以将该函数抽出来，作为一个独立的函数使用，这样便于未来的复用。</p>
 <h6 id="3-关于面向对象"><a href="#3-关于面向对象" class="headerlink" title="3. 关于面向对象"></a>3. 关于面向对象</h6><p>面向对象，是一个优秀的编程方法和范式，但是真正理解的人并不多。</p>
@@ -1172,7 +1172,7 @@
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281618840.png"></p>
 <p>Bug的修复有一套完整的规定流程。</p>
 <p>首先，测试人员或者用户发现Bug后，将其置为<strong>激活状态</strong>；开发人员收到激活状态的Bug后，对其进行修复，修复过程中， Bug状态为<strong>处理中</strong>；修复完成后，开发人员将其置为<strong>解决状态</strong>；测试人员再对其进行<strong>验证</strong>，若通过，则将其关闭，否则，重新激活Bug即重启状态，交予开发人员继续修复，直至验证通过。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128161942251.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292129042.png"></p>
 <p>从这一流程可以看到，<strong>Bug有五种状态，Open（激活）、In Process（处理中）、Resolved（解决）、closed（关闭）、Reopen（重启）</strong>。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111281621054.png"></p>
 <p>Bug生命周期有一定规律性。以传统软件中的瀑布模型举例，85%的问题在项目初期的编码阶段引入，在后期测试阶段，发现Bug的数量会逐渐增多，与之对应的修复成本也会急剧增加。可见，降低<strong>修复成本最有效的方式，就是在Bug引入的阶段就及时发现并修复Bug。</strong></p>
