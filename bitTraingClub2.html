@@ -232,7 +232,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年11月28日 晚上
+                  本文最后更新于：2021年11月29日 晚上
                 
               </p>
             
@@ -279,7 +279,7 @@
 <h3 id="1-4-正确认识代码实践方面的问题"><a href="#1-4-正确认识代码实践方面的问题" class="headerlink" title="1.4 正确认识代码实践方面的问题"></a>1.4 正确认识代码实践方面的问题</h3><h4 id="1-4-1-什么是好代码，好的代码有哪些标准"><a href="#1-4-1-什么是好代码，好的代码有哪些标准" class="headerlink" title="1.4.1 什么是好代码，好的代码有哪些标准"></a>1.4.1 什么是好代码，好的代码有哪些标准</h4><p><strong>好代码的标准是：</strong></p>
 <p>①高效、②鲁棒、③简洁、④简短、⑤可共享、</p>
 <p>⑥可测试、⑦可移植、⑧可监控、⑨可运维、⑩可扩展。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128000420651.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292216019.png"></p>
 <blockquote>
 <p>将以上十条标准进行总结精简，可以归纳为：</p>
 <p>（1）代码的正确和性能；</p>
@@ -334,7 +334,7 @@
 <p>原因是：如果我们开始的设计做错的话，那么后期开发、测试、上线、调试这些成本都会被浪费掉。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280010793.png"></p>
 <p><strong>2. 清楚需求分析和系统设计的差别</strong></p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128001102120.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292216299.png"></p>
 <p>需求分析和系统设计是有泾渭分明的区别的，为了避免这两者相互混杂，我们需要清楚需求分析和系统设计各自的内涵。</p>
 <p><em>需求分析主要是定义系统或软件的黑盒行为，即：外部行为。</em>比如，系统从外部来看能够执行什么功能。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280011809.png"></p>
@@ -372,10 +372,10 @@
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280018199.png"></p>
 <p><strong>要点三、清楚需求是系统设计决策的来源</strong></p>
 <p>精确定义需求中的各个细节，以及量的定义，对系统设计的决策起着重要的作用。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128001836116.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292216422.png"></p>
 <p><strong>要点四、系统设计的风格与哲学</strong></p>
 <p><em>在同样的需求下，可能出现不同的设计方式。</em>即目的相同，设计不同。比如：复杂指令集和精简指令集的设计差异。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128001850174.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292216443.png"></p>
 <p>一个好的系统是<em>在合适假设下的精确平衡</em>。一个通用的系统在某些方面是不如专用系统的。每个系统每个组件的功能都应该足够的专一和单一。每个组件是指子系统或模块等。功能的单一是复用和扩展的基础。倘若不单一，未来就有可能很难进行复用和扩展。</p>
 <p>子系统或模块之间的关系应该是<em>简单而清晰的</em>。软件中最复杂的是耦合，如果各系统之间的接口定义非常复杂，那么未来便很难控制系统的健康发展。</p>
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280019144.png"></p>
@@ -415,7 +415,7 @@
 <p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111280041920.png"></p>
 <p><strong>数据类的模块：</strong>主要是要完成<em><strong>对数据的封装</strong></em>。封装往往是通过模块内部变量或类的内部变量来实现的。</p>
 <p><strong>过程类的模块：</strong>本身不含数据。过程类模块可以<em><strong>从文件中去读取一个数据</strong></em>，或者执行一些相关的操作。过程类模块可以调用其他数据类模块或过程类模块。</p>
-<p><img src="C:\Users\CKXG\AppData\Roaming\Typora\typora-user-images\image-20211128004944312.png"></p>
+<p><img src="https://gitee.com/ZXA200009/BlogPictures/raw/master/202111292217173.png"></p>
 <p>编写程序时，我们需要注意减少模块间的耦合。<em><strong>减少模块间的耦合，有利于降低软件复杂性，明确接口关系</strong>。</em></p>
 <h6 id="2-关于类和函数"><a href="#2-关于类和函数" class="headerlink" title="2. 关于类和函数"></a>2. 关于类和函数</h6><p>类和函数是两种不同的类型，有他们各自适用的范围。另外，遇见和类的成员变量无关的函数时，可以将该函数抽出来，作为一个独立的函数使用，这样便于未来的复用。</p>
 <h6 id="3-关于面向对象"><a href="#3-关于面向对象" class="headerlink" title="3. 关于面向对象"></a>3. 关于面向对象</h6><p>面向对象，是一个优秀的编程方法和范式，但是真正理解的人并不多。</p>
