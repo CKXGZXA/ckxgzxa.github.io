@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2021-12-05T05:42:21.974Z</updated>
+  <updated>2021-12-08T07:53:44.698Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.ckxgzxa.top/SDE01.html"/>
     <id>https://www.ckxgzxa.top/SDE01.html</id>
     <published>2021-11-28T16:10:26.000Z</published>
-    <updated>2021-12-05T05:42:21.974Z</updated>
+    <updated>2021-12-08T07:53:44.698Z</updated>
     
     <content type="html"><![CDATA[<h1 id="计算机网络与信息安全"><a href="#计算机网络与信息安全" class="headerlink" title="计算机网络与信息安全"></a>计算机网络与信息安全</h1><h2 id="课程内容提要"><a href="#课程内容提要" class="headerlink" title="课程内容提要"></a>课程内容提要</h2><ul><li>开放系统互连参考模型$（\star\star）$</li><li>TCP/IP协议族$\color{red}{（\star\star\star\star）}$</li><li>IP地址与子网划分 $\color{red}{（\star\star\star\star\star）}$</li><li>网络规划与设计$（\star）$</li><li>3G 与 4G 标准 $（\star\star）$</li><li>HTML 语言$（\star\star）$</li></ul><h2 id="一、OSI-RM-七层模型"><a href="#一、OSI-RM-七层模型" class="headerlink" title="一、OSI/RM 七层模型"></a>一、OSI/RM 七层模型</h2><table>    <tr>        <th bgcolor="yellow" align = "center">层次</th>        <th bgcolor="yellow" align = "center">名称</th>        <th bgcolor="yellow" align = "center">主要功能</th>        <th bgcolor="yellow" align = "center">主要设备及协议</th>    </tr>    <tr>        <td align = "center">7</td>        <td>应用层</td>        <td>实现具体的应用功能</td>        <td rowspan="3">POP3、FTP、Telnet、</br>SMTP</br>DHCP、TFTP、SNMP、DNS</th>    </tr>    <tr>        <td align = "center">6</td>        <td>表示层</td>        <td>数据的格式与表达、加密、压缩</td>    </tr>    <tr>        <td align = "center">5</td>        <td>会话层</td>        <td>建立、管理和终止会话</td>    </tr>    <tr>        <td align = "center">4</td>        <td>传输层</td>        <td>端到端的连接</td>        <td>TCP、UDP</td>    </tr>    <tr>        <td align = "center">3</td>        <td>网络层</td>        <td>分组传输和路由选择</td>        <td>三层交换机、路由器</br>ARP、RARP、IP、ICMP、IGMP</td>    </tr>    <tr>        <td align = "center">2</td>        <td>数据链路层</td>        <td>传送以帧为单位的信息</td>        <td>网桥、交换机（多端口网桥）、网卡、PPTP、L2TP、SLIP、PPP</td>    </tr>    <tr>        <td align = "center">1</td>        <td>物理层</td>        <td>二进制传输</td>        <td>中继器、集线器（多端口中继器）</td>    </tr></table><h2 id="二、TCP-IP协议族"><a href="#二、TCP-IP协议族" class="headerlink" title="二、TCP/IP协议族"></a>二、TCP/IP协议族</h2><p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111290054003.png"></p><table>    <tr>        <th frame=void align="center">TCP/IP 模型</th>        <th frame=void align="center">OSI 七层模型</th>    </tr>    <tr>        <td align="center" rowspan=3>应用层</td>        <td align="center">应用层</td>    </tr>    <tr>        <td align="center">表示层</td>    </tr>    <tr>        <td align="center">会话层</td>    </tr>    <tr>        <td align="center" bgcolor="yellow">传输层</td>        <td align="center" bgcolor="yellow">传输层</td>    </tr>       <tr>        <td align="center" bgcolor="#9393FF">网际层</td>        <td align="center" bgcolor="#9393FF">网络层</td>    </tr>    <tr>        <td align="center" rowspan="2" bgcolor="pink">网络接口层</td>        <td align="center" bgcolor="pink">数据链路层</td>    </tr>    <tr>        <td align="center" bgcolor="pink">物理层</td>    </tr></table>]]></content>
     
@@ -36,7 +36,7 @@
     <category term="学习笔记" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="软件设计师考试" scheme="https://www.ckxgzxa.top/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E8%80%83%E8%AF%95/"/>
+    <category term="软件设计师考试 Hide" scheme="https://www.ckxgzxa.top/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E8%80%83%E8%AF%95-Hide/"/>
     
   </entry>
   
