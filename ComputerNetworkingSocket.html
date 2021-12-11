@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>Java套接字 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java套接字">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-11 14:11" pubdate>
+        2021年12月11日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java套接字</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年12月11日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h1><h2 id="1-套接字"><a href="#1-套接字" class="headerlink" title="1. 套接字"></a>1. 套接字</h2><p>当两个程序需要通信时,它们可以通过使用Socket类建立套接字对象并连接在一起(端口号与IP地址的组合得出一个网络套接字),本节将讲解怎样将客户端和服务器端的套接字对象连接在一起来交互信息。</p>
+<h2 id="2-客户端套接字"><a href="#2-客户端套接字" class="headerlink" title="2. 客户端套接字"></a>2. 客户端套接字</h2><p>客户端的程序使用 Socket类建立负责连接到服务器的套接字对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>	Socket clientSocket = newSocket(<span class="hljs-string">&quot;http://192.168.0.78&quot;</span>,<span class="hljs-number">2010</span>);<span class="hljs-comment">//[c1]</span><br>   	InputStream inClient = clientSocket.getInputStream();		<span class="hljs-comment">//[c2]</span><br>    OutputStream outClient = clientSocket.getOutputStream();	<span class="hljs-comment">//[c3]</span><br>&#125; <span class="hljs-keyword">catch</span>(IOException e) &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-ServerSocket-对象与服务器端套接字"><a href="#3-ServerSocket-对象与服务器端套接字" class="headerlink" title="3. ServerSocket 对象与服务器端套接字"></a>3. ServerSocket 对象与服务器端套接字</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>	ServerSocket serverForClient = <span class="hljs-keyword">new</span> ServerSocket();			<span class="hljs-comment">//[s1]</span><br>&#125; <span class="hljs-keyword">catch</span>(Exception e) &#123;&#125;<br><span class="hljs-keyword">try</span> &#123;<br>    Socket sc = serverForClient.accept();						<span class="hljs-comment">//[s2]</span><br>    OutputStream outServer = sc.getOutputStream();				<span class="hljs-comment">//[s3]</span><br>    InputStream inServer = sc.getInputStream();					<span class="hljs-comment">//[s4]</span><br>&#125; <span class="hljs-keyword">catch</span>(IOException e) &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-例子"><a href="#4-例子" class="headerlink" title="4. 例子"></a>4. 例子</h2><p>通过一个简单的例子说明上面讲的套接字连接。在例子中,客户端向服务器问了三句话,服务器都一一给出了回答。首先将例子3中服务器端的Server. java编译通过,并运行起来,等待客户的呼叫,然后运行客户端程序</p>
+<p>Client.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.DataInputStream;<br><span class="hljs-keyword">import</span> java.io.DataOutputStream;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Client</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        String [] mess = &#123;<span class="hljs-string">&quot;2014世界杯在哪举行?&quot;</span>, <span class="hljs-string">&quot;巴西进入世界杯了吗?&quot;</span>, <span class="hljs-string">&quot;中国进入世界杯了吗?&quot;</span>&#125;;<br>        Socket mysocket;<br>        DataInputStream in = <span class="hljs-keyword">null</span>;<br>        DataOutputStream out = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            mysocket = <span class="hljs-keyword">new</span> Socket(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2010</span>);<br>            in = <span class="hljs-keyword">new</span> DataInputStream(mysocket.getInputStream());<br>            out = <span class="hljs-keyword">new</span> DataOutputStream(mysocket.getOutputStream());<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; mess.length; i++) &#123;<br>                out.writeUTF(mess[i]);<br>                <span class="hljs-comment">// in读取信息, 状态堵塞</span><br>                String s = in.readUTF();<br>                System.out.println(<span class="hljs-string">&quot;客户收到服务器的回答:&quot;</span> + s);<br>                Thread.sleep(<span class="hljs-number">2000</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;服务器已断开&quot;</span> + e);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>Server.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.DataInputStream;<br><span class="hljs-keyword">import</span> java.io.DataOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Server</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        String[] answer = &#123;<span class="hljs-string">&quot;巴西&quot;</span>, <span class="hljs-string">&quot;进入世界杯了&quot;</span>, <span class="hljs-string">&quot;哈哈...问题真逗!&quot;</span>&#125;;<br>        ServerSocket serverForClient = <span class="hljs-keyword">null</span>;<br>        Socket socketOnServer = <span class="hljs-keyword">null</span>;<br>        DataOutputStream out = <span class="hljs-keyword">null</span>;<br>        DataInputStream in = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            serverForClient = <span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">2010</span>);<br><br>        &#125; <span class="hljs-keyword">catch</span> (IOException e1) &#123;<br>            System.out.println(e1);<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;等待客户呼叫&quot;</span>);<br>            <span class="hljs-comment">//堵塞状态，除非有客户呼叫</span><br>            socketOnServer = serverForClient.accept();<br>            out = <span class="hljs-keyword">new</span> DataOutputStream(socketOnServer.getOutputStream());<br>            in = <span class="hljs-keyword">new</span> DataInputStream(socketOnServer.getInputStream());<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; answer.length; i++) &#123;<br>                <span class="hljs-comment">// in读取信息，堵塞状态</span><br>                String s = in.readUTF();<br>                System.out.println(<span class="hljs-string">&quot;服务器收到客户的提问:&quot;</span> + s);<br>                out.writeUTF(answer[i]);<br>                Thread.sleep(<span class="hljs-number">500</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">catch</span>(Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;客户已断开&quot;</span>+e);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-使用多线程技术"><a href="#5-使用多线程技术" class="headerlink" title="5. 使用多线程技术"></a>5. 使用多线程技术</h2><ul>
+<li>服务器端收到一个客户的套接字后,就应该启动一个专门为该客户服务的线程.</li>
+<li>使用套接字连接时,可能在另一端数据发送出来之前,就已经开始试着读取了,这时,就会堵塞本线程,直到该读取方法成功读取到信息,本线程才继续执行后续的操作.</li>
+</ul>
+<p>例子中,</p>
+<ul>
+<li>客户输入圆的半径并发送给服务器。</li>
+<li>服务器把计算出的圆的面积返回给客户。</li>
+<li>因此可以将计算量大的工作放在服务器端,客户负责计算量小的工作,实现客户-服务器交互计算,来完成某项任务。</li>
+<li>首先将例子中服务器端的程序编译通过,并运行起来,等待客户的呼叫。</li>
+</ul>
+<p>Client.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.net.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Client</span>  </span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>&#123;<br>      Scanner scanner = <span class="hljs-keyword">new</span> Scanner(System.in);<br>      Socket mysocket=<span class="hljs-keyword">null</span>;<br>      DataInputStream in=<span class="hljs-keyword">null</span>;<br>      DataOutputStream out=<span class="hljs-keyword">null</span>;<br>      Thread readData ; <br>      Read read=<span class="hljs-keyword">null</span>;<br>      <span class="hljs-keyword">try</span>&#123;  mysocket=<span class="hljs-keyword">new</span> Socket();<br>            read = <span class="hljs-keyword">new</span> Read();<br>            readData = <span class="hljs-keyword">new</span> Thread(read);<br>            System.out.print(<span class="hljs-string">&quot;输入服务器的IP:&quot;</span>);<br>            String IP = scanner.nextLine();<br>            System.out.print(<span class="hljs-string">&quot;输入端口号:&quot;</span>);<br>            <span class="hljs-keyword">int</span> port = scanner.nextInt();<br>            <span class="hljs-keyword">if</span>(mysocket.isConnected())&#123;&#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>              InetAddress  address=InetAddress.getByName(IP);<br>              InetSocketAddress socketAddress=<span class="hljs-keyword">new</span> InetSocketAddress(address,port);<br>              mysocket.connect(socketAddress); <br>              in =<span class="hljs-keyword">new</span> DataInputStream(mysocket.getInputStream());<br>              out = <span class="hljs-keyword">new</span> DataOutputStream(mysocket.getOutputStream());<br>              read.setDataInputStream(in);<br>              readData.start();<br>            &#125;<br>       &#125;<br>       <span class="hljs-keyword">catch</span>(Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;服务器已断开&quot;</span>+e);<br>       &#125;<br>       System.out.print(<span class="hljs-string">&quot;输入园的半径(放弃请输入N):&quot;</span>);<br>       <span class="hljs-keyword">while</span>(scanner.hasNext()) &#123;<br>           <span class="hljs-keyword">double</span> radius=<span class="hljs-number">0</span>; <br>           <span class="hljs-keyword">try</span> &#123;<br>               radius = scanner.nextDouble();<br>           &#125;<br>           <span class="hljs-keyword">catch</span>(InputMismatchException exp)&#123;<br>              System.exit(<span class="hljs-number">0</span>);<br>           &#125;   <br>           <span class="hljs-keyword">try</span> &#123; <br>               out.writeDouble(radius);<br>           &#125;<br>           <span class="hljs-keyword">catch</span>(Exception e) &#123;&#125;<br>       &#125; <br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Server.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.net.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Server</span> </span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>&#123;<br>      ServerSocket server=<span class="hljs-keyword">null</span>;<br>      ServerThread thread;<br>      Socket you=<span class="hljs-keyword">null</span>;<br>      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>) &#123;<br>        <span class="hljs-keyword">try</span>&#123;  server=<span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">2010</span>);<br>        &#125;<br>        <span class="hljs-keyword">catch</span>(IOException e1) &#123; <br>              System.out.println(<span class="hljs-string">&quot;正在监听&quot;</span>); <span class="hljs-comment">//ServerSocket对象不能重复创建</span><br>        &#125; <br>        <span class="hljs-keyword">try</span>&#123;  System.out.println(<span class="hljs-string">&quot; 等待客户呼叫&quot;</span>);<br>              you=server.accept();<br>              System.out.println(<span class="hljs-string">&quot;客户的地址:&quot;</span>+you.getInetAddress());<br>        &#125; <br>        <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>              System.out.println(<span class="hljs-string">&quot;正在等待客户&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span>(you!=<span class="hljs-keyword">null</span>) &#123; <br>              <span class="hljs-keyword">new</span> ServerThread(you).start(); <span class="hljs-comment">//为每个客户启动一个专门的线程  </span><br>        &#125;<br>      &#125;<br>   &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> </span>&#123;<br>   Socket socket;<br>   DataOutputStream out=<span class="hljs-keyword">null</span>;<br>   DataInputStream  in=<span class="hljs-keyword">null</span>;<br>   String s=<span class="hljs-keyword">null</span>;<br>   ServerThread(Socket t) &#123;<br>      socket=t;<br>      <span class="hljs-keyword">try</span> &#123;  out=<span class="hljs-keyword">new</span> DataOutputStream(socket.getOutputStream());<br>             in=<span class="hljs-keyword">new</span> DataInputStream(socket.getInputStream());<br>      &#125;<br>      <span class="hljs-keyword">catch</span> (IOException e)&#123;&#125;<br>   &#125;  <br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;        <br>      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>) &#123;<br>         <span class="hljs-keyword">try</span>&#123;  <span class="hljs-keyword">double</span> r=in.readDouble();<span class="hljs-comment">//堵塞状态，除非读取到信息</span><br>               <span class="hljs-keyword">double</span> area=Math.PI*r*r;<br>               out.writeDouble(area);<br>         &#125;<br>         <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>               System.out.println(<span class="hljs-string">&quot;客户离开&quot;</span>);<br>                <span class="hljs-keyword">return</span>;<br>         &#125;<br>      &#125;<br>   &#125; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Read.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Read</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>&#123;<br>    DataInputStream in;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDataInputStream</span><span class="hljs-params">(DataInputStream in)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.in = in;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">double</span> result=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>) &#123;<br>            <span class="hljs-keyword">try</span>&#123; result=in.readDouble();<br>                System.out.println(<span class="hljs-string">&quot;圆的面积:&quot;</span>+result);<br>                System.out.print(<span class="hljs-string">&quot;输入圆的半径(放弃请输入N):&quot;</span>);<br>            &#125;<br>            <span class="hljs-keyword">catch</span>(IOException e) &#123;<br>                System.out.println(<span class="hljs-string">&quot;与服务器已断开&quot;</span>+e);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/SDE01.html">
+                        <span class="hidden-mobile">计算机网络与信息安全</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
