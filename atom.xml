@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2021-12-11T09:26:21.143Z</updated>
+  <updated>2022-01-11T16:41:10.451Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LinuxProblem001</title>
+    <link href="https://www.ckxgzxa.top/LinuxProblem001.html"/>
+    <id>https://www.ckxgzxa.top/LinuxProblem001.html</id>
+    <published>2022-01-11T16:24:38.000Z</published>
+    <updated>2022-01-11T16:41:10.451Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Authentication-required-System-policy-prevents-WiFi-scans"><a href="#Authentication-required-System-policy-prevents-WiFi-scans" class="headerlink" title="Authentication required. System policy prevents WiFi scans"></a>Authentication required. System policy prevents WiFi scans</h1><p>那天装了Ubuntu树莓派的系统，由于没有显示器，于是给树莓派连的网线和VNC，发现打开 WIFI 的时候总是弹出 “Authentication required. System policy prevents WiFi scans” 这样的标识让你输入密码，输完之后还是不能用 WIFI，点击又会不断弹出这样的标识，好像输完密码会自动退出 WIFI 扫描列表的界面吧，写此文的时候没用Ubuntu了，不记得了。于是 Google 找到了类似的问题，记录如下：</p><p>在 <code>/etc/polkit-1/localauthority/50-local-d</code> 目录下新建一个扩展名为 <code>pkla</code> 的文件，在其中写入如下内容：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Allow Wifi Scan]</span><br><span class="hljs-attr">Identity</span>=unix-user:*<br><span class="hljs-attr">Action</span>=org.freedesktop.NetworkManager.wifi.scan<span class="hljs-comment">;org.freedesktop.NetworkManager.enable-disable-wifi;org.freedesktop.NetworkManager.settings.modify.own;org.freedesktop.NetworkManager.settings.modify.system;org.freedesktop.NetworkManager.network-control</span><br><span class="hljs-attr">ResultAny</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">ResultInactive</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">ResultActive</span>=<span class="hljs-literal">yes</span><br></code></pre></td></tr></table></figure><p>不过好像只要加入<code>Action=org.freedesktop.NetworkManager.wifi.scan;</code>就行，其他的不加也无所谓。</p><p>原贴链接:<a href="https://askubuntu.com/questions/1291512/authentication-required-system-policy-prevents-wifi-scans-in-focalfossa">https://askubuntu.com/questions/1291512/authentication-required-system-policy-prevents-wifi-scans-in-focalfossa</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Authentication-required-System-policy-prevents-WiFi-scans&quot;&gt;&lt;a href=&quot;#Authentication-required-System-policy-prevents-WiFi-scans&quot; clas</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://www.ckxgzxa.top/categories/Linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java套接字</title>
@@ -471,34 +493,6 @@
     
     
     <category term="软件工程导论" scheme="https://www.ckxgzxa.top/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>摩尔庄园手游NPC喜好</title>
-    <link href="https://www.ckxgzxa.top/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD.html"/>
-    <id>https://www.ckxgzxa.top/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD%E6%89%8B%E6%B8%B8NPC%E5%96%9C%E5%A5%BD.html</id>
-    <published>2021-06-19T15:42:01.000Z</published>
-    <updated>2021-09-19T10:51:05.142Z</updated>
-    
-    <content type="html"><![CDATA[<table><thead><tr><th align="center"><strong>NPC</strong></th><th align="center"><strong>位置</strong></th><th><strong>喜好</strong></th><th><strong>厌恶</strong></th><th><strong>好友</strong></th></tr></thead><tbody><tr><td align="center">菩提</td><td align="center">神秘湖(阳光沙滩)码头</td><td>清炒毛毛豆、奇异果、星空鱼、香蕉</td><td>荔枝、狗鱼</td><td></td></tr><tr><td align="center">艾尔</td><td align="center">警署</td><td>鸡蛋、满天星、罗汉鱼、牛奶鱼群汤</td><td>大闸蟹、小龙虾</td><td></td></tr><tr><td align="center">艾米</td><td align="center">报社门口</td><td>锦鲤、月亮海螺、棉花糖、胡萝卜盖饭</td><td>水蜘蛛、奇异果</td><td></td></tr><tr><td align="center">杰西</td><td align="center">城堡喷泉广场</td><td>茄子、小丑鱼、小麦牛奶蛋粥、牛奶</td><td>水蛇、章鱼、葡萄</td><td></td></tr><tr><td align="center">彩虹</td><td align="center">宠物店</td><td>胡萝卜、浆果烧饼、小麦牛奶蛋粥、章鱼</td><td>利齿狗鱼、鲶鱼</td><td></td></tr><tr><td align="center">丝尔特</td><td align="center">服装店门口</td><td>苹果、羊毛、甲鱼南瓜盅、蒲兰花</td><td>大闸蟹、章鱼</td><td></td></tr><tr><td align="center">埃里克斯</td><td align="center">家具店门口</td><td>金鱼、铜矿石、红木、棉花糖豆浆</td><td>南瓜、西瓜</td><td></td></tr><tr><td align="center">梅森</td><td align="center">梅森小屋门口</td><td>南瓜、草莓、向日葵、葫芦炒茄子</td><td>鲶鱼、带鱼</td><td></td></tr><tr><td align="center">克劳</td><td align="center">爱心礼堂</td><td>牛奶鱼群汤、冰激凌鼠、百合花</td><td>水蜘蛛、水蛇</td><td></td></tr><tr><td align="center">尼克</td><td align="center">城堡餐厅门口</td><td>白菜、石榴炸冰虾、鲶鱼、河豚</td><td>百合花</td><td></td></tr><tr><td align="center">汤米</td><td align="center">摩尔拉雅山脚</td><td>水蜜桃、铜矿石、解暑冲饮、茄块狗鱼片</td><td>水煮大闸蟹 、章鱼</td><td></td></tr><tr><td align="center">弗礼德</td><td align="center">游戏小屋(白熊游戏屋)</td><td>葫芦、冰川虾、鲶鱼、香煎雪鱼</td><td>鲤鱼、玉米、香蕉</td><td></td></tr><tr><td align="center">花婶</td><td align="center">淘淘乐街</td><td>毛毛花、七色花、葡萄、椰汁水果捞</td><td>金鱼</td><td></td></tr><tr><td align="center">瑞琪</td><td align="center">前哨站</td><td>小丑鱼、抱抱熊、毛毛爆囧菇</td><td>怪怪鱼</td><td></td></tr><tr><td align="center">凯文</td><td align="center">摩尔拉雅山顶</td><td>小丑鱼、抱抱熊、葫芦烧茄子</td><td>水蛇、水蜘蛛、章鱼</td><td></td></tr><tr><td align="center">洛克</td><td align="center">摩尔城堡大门处</td><td>向日葵、星空鱼、浆果浓汤、椰子</td><td>毛毛豆、怪怪鱼、茄块狗鱼片、麻辣小龙虾</td><td></td></tr><tr><td align="center">琦琦</td><td align="center">派对广场</td><td>南瓜、初恋海星、麻辣小龙虾、水蜜桃</td><td>水蛇、水蜘蛛</td><td></td></tr><tr><td align="center">茜茜</td><td align="center">摩尔拉雅山腰</td><td>水蜘蛛、樱花蛇、麻辣小龙虾</td><td>带鱼、苹果</td><td></td></tr><tr><td align="center">尤尤</td><td align="center">阳光牧场</td><td>毛毛花、向日葵，玫瑰海星、奶油玉米浓汤</td><td>蒜头蛙、粑粑海肠、水蜘蛛</td><td></td></tr><tr><td align="center">贝琪</td><td align="center">摩尔拉雅山顶</td><td>玉米、绿鲤鱼、河童、花香金鱼</td><td>胡萝卜盖饭、胡萝卜、奇异果</td><td></td></tr></tbody></table><p><img src="/img/others/%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%ADNPC.jpg" alt="摩尔庄园NPC"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;strong&gt;NPC&lt;/strong&gt;&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;strong&gt;位置&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;喜好&lt;/strong&gt;&lt;/th&gt;
-&lt;</summary>
-      
-    
-    
-    
-    
-    <category term="游戏" scheme="https://www.ckxgzxa.top/tags/%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   

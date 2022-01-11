@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>LinuxProblem001</title>
+    <link href="/LinuxProblem001.html"/>
+    <url>/LinuxProblem001.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="Authentication-required-System-policy-prevents-WiFi-scans"><a href="#Authentication-required-System-policy-prevents-WiFi-scans" class="headerlink" title="Authentication required. System policy prevents WiFi scans"></a>Authentication required. System policy prevents WiFi scans</h1><p>那天装了Ubuntu树莓派的系统，由于没有显示器，于是给树莓派连的网线和VNC，发现打开 WIFI 的时候总是弹出 “Authentication required. System policy prevents WiFi scans” 这样的标识让你输入密码，输完之后还是不能用 WIFI，点击又会不断弹出这样的标识，好像输完密码会自动退出 WIFI 扫描列表的界面吧，写此文的时候没用Ubuntu了，不记得了。于是 Google 找到了类似的问题，记录如下：</p><p>在 <code>/etc/polkit-1/localauthority/50-local-d</code> 目录下新建一个扩展名为 <code>pkla</code> 的文件，在其中写入如下内容：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Allow Wifi Scan]</span><br><span class="hljs-attr">Identity</span>=unix-user:*<br><span class="hljs-attr">Action</span>=org.freedesktop.NetworkManager.wifi.scan<span class="hljs-comment">;org.freedesktop.NetworkManager.enable-disable-wifi;org.freedesktop.NetworkManager.settings.modify.own;org.freedesktop.NetworkManager.settings.modify.system;org.freedesktop.NetworkManager.network-control</span><br><span class="hljs-attr">ResultAny</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">ResultInactive</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">ResultActive</span>=<span class="hljs-literal">yes</span><br></code></pre></td></tr></table></figure><p>不过好像只要加入<code>Action=org.freedesktop.NetworkManager.wifi.scan;</code>就行，其他的不加也无所谓。</p><p>原贴链接:<a href="https://askubuntu.com/questions/1291512/authentication-required-system-policy-prevents-wifi-scans-in-focalfossa">https://askubuntu.com/questions/1291512/authentication-required-system-policy-prevents-wifi-scans-in-focalfossa</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java套接字</title>
     <link href="/ComputerNetworkingSocket.html"/>
     <url>/ComputerNetworkingSocket.html</url>
