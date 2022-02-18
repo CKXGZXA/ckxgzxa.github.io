@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>MCPE 我的世界基岩版leval.dat相关配置修改记录</title>
+    <link href="/mcpe_level_intro.html"/>
+    <url>/mcpe_level_intro.html</url>
+    
+    <content type="html"><![CDATA[<table>    <tr>        <th bgcolor="yellow" align = "center">配置名</th>        <th bgcolor="yellow" align = "center">中文翻译</th>        <th bgcolor="yellow" align = "center">十六进制表示</th>        <th bgcolor="yellow" align = "center">备注</th>    </tr>    <tr>        <td align = "center">showcoordinates</td>        <td>坐标显示</td>        <td>73 68 6F 77 63 6F 6F 72 64 69 6E 61 74 65 73 [00 | 01]</td>        <td>中括号内如果为00, 则坐标显示为关闭, 为01, 坐标显示开</td>    </tr>    <tr>        <td align = "center">Difficulty</td>        <td>难度</td>        <td>44 69 66 66 69 63 75 6C 74 79 [00 | 01 | 02 | 03]</td>        <td>中括号内数字分别对应:和平|简单|普通|困难</td>    </tr>    <tr>        <td align = "center">RandomSeed</td>        <td>种子号码</td>        <td>52 61 6E 64 6F 6D 53 65 65 64 [FF FF FF FF]</td>        <td>括号中4个字节为种子,规则为:若种子十进制为123456789, 化为十六进制07 5B CD 15,则在文件中为15 CD 5B 07</td>    </tr>    <tr>        <td align = "center">LoadedInCreative</td>        <td>曾在创造模式加载</td>        <td>4C 6F 61 64 65 64 49 6E 43 72 65 61 74 69 76 65 [00 | 01]</td>        <td>将此处设置为01将导致游戏无法获得成就,当在游戏中切换到创造模式,此处被置1,同时commandsEnabled也会置1,成就无法获得,需退出游戏将上述两项置0才可恢复成就</td>    </tr>    <tr>        <td align = "center">GameType</td>        <td>游戏模式</td>        <td>47 61 6D 65 54 79 70 65 [00 | 01 | 02]</td>        <td>00 为生存模式, 01 为创造模式, 02 为冒险模式</td>    </tr>    <tr>        <td align = "center">commandsEnabled</td>        <td>启用命令</td>        <td>63 6F 6D 6D 61 6E 64 73 45 6E 61 62 6C 65 64 [00 | 01]</td>        <td>当开启作弊时,此配置和LoadedInCreative将会被置1,成就无法获得,将上述两项重新置为0可以重新开启成就</td>    </tr>    <tr>        <td align = "center">keepinventory</td>        <td>保留物品栏</td>        <td>6B 65 65 70 69 6E 76 65 6E 74 6F 72 79 [00 | 01]</td>        <td>开启死亡不掉落将此项置为1即可</td>    </tr></table>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>游戏</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>软件工程导论复习</title>
+    <link href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA.html"/>
+    <url>/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="软件工程导论"><a href="#软件工程导论" class="headerlink" title="软件工程导论"></a>软件工程导论</h1><h2 id="1-软件工程概论"><a href="#1-软件工程概论" class="headerlink" title="1. 软件工程概论"></a>1. 软件工程概论</h2><h3 id="1-1-软件危机-Soft-Crisis"><a href="#1-1-软件危机-Soft-Crisis" class="headerlink" title="1.1. 软件危机(Soft Crisis)"></a>1.1. 软件危机(Soft Crisis)</h3><ul><li><p>计算机软件的开发和维护过程中遇到的一系列严重问题</p></li><li><p>两方面问题</p><ul><li>如何开发软件,满足对软件日益增长的需求</li><li>如何维护数量不断膨胀的已有软件</li></ul></li><li><p>具体表现</p><ul><li><ol><li>对软件开发成本和进度的估计常常很不准确</li></ol></li><li><ol start="2"><li>用户不满意的现象经常发生</li></ol></li><li><ol start="3"><li>软件产品的质量往往靠不住</li></ol></li><li><ol start="4"><li>软件常常是不可维护的</li></ol></li><li><ol start="5"><li>软件没有适当的文档资料</li></ol></li><li><ol start="6"><li>软件成本在计算机系统总成本占比逐年上升</li></ol></li><li><ol start="7"><li>软件开发生产率提高的速度远不及计算机应用迅速普及深入的趋势</li></ol></li></ul></li><li><p>产生原因</p><ul><li><ol><li>与软件本身特点有关</li></ol><ul><li><p>逻辑部件</p><ul><li>质量难以评价, 管理、开发和维护困难</li></ul></li><li><p>规模庞大</p><ul><li>开发繁琐，多人分工协作，设计技术和管理等问题</li></ul></li></ul></li><li><ol start="2"><li>与软件开发与维护不正确有关</li></ol><ul><li>早期软件开发具有个体化特点</li><li>忽视软件需求分析的重要性</li><li>认为软件开发就是写程序并设法使之运行</li><li>轻视软件维护</li></ul></li></ul></li><li><p>消除途径</p><ul><li>对计算机软件有正确的认识, 消除”软件就是程序”的错误认识. 认识到软件开发是一种组织良好、管理严密、各类人员协同配合、共同完成的工程项目,充分借鉴吸取已有经验</li><li>推广使用在实践中总结出的开发软件的成功技术和方法,并继续研究探索</li><li>开发和使用更好地软件工具</li></ul></li></ul><h3 id="2-1-软件工程"><a href="#2-1-软件工程" class="headerlink" title="2.1 软件工程"></a>2.1 软件工程</h3><ul><li><p>简介</p><ul><li><p>定义</p><ul><li>指导计算机软件开发和维护的一门工程学科, 该学科的目的是生产出能按期交付的、在预算范围内的、满足用户需求的、质量合格的软件产品</li></ul></li><li><p>本质特性</p><ul><li>关注于大型程序的构造</li><li>中心课题是控制复杂性</li><li>软件经常变化</li><li>开发软件效率非常重要</li><li>和谐地合作是开发软件的关键（标准和规程）</li><li>软件必须有效地支持它的用户（满足各方面需求）</li><li>在软件工程领域中通常由具有一种文化的人替具有另一种文化的人开发产品</li></ul></li></ul></li><li><p>基本原理</p><ul><li>用分阶段的生命周期计划严格管理</li><li>坚持进行阶段评审</li><li>实行严格的产品控制</li><li>采用现代程序设计技术</li><li>结果应能清楚地审查</li><li>开发小组的人员应该小而精</li></ul></li><li><p>方法学</p></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>软件工程导论</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Authentication required. System policy prevents WiFi scans</title>
     <link href="/LinuxProblem001.html"/>
     <url>/LinuxProblem001.html</url>
@@ -441,25 +479,6 @@
     <tags>
       
       <tag>OnJava8</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>软件工程导论复习</title>
-    <link href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA.html"/>
-    <url>/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA.html</url>
-    
-    <content type="html"><![CDATA[<h1 id="软件工程导论"><a href="#软件工程导论" class="headerlink" title="软件工程导论"></a>软件工程导论</h1><h2 id="1-软件工程概论"><a href="#1-软件工程概论" class="headerlink" title="1. 软件工程概论"></a>1. 软件工程概论</h2><h3 id="1-1-软件危机-Soft-Crisis"><a href="#1-1-软件危机-Soft-Crisis" class="headerlink" title="1.1. 软件危机(Soft Crisis)"></a>1.1. 软件危机(Soft Crisis)</h3><ul><li><p>计算机软件的开发和维护过程中遇到的一系列严重问题</p></li><li><p>两方面问题</p><ul><li>如何开发软件,满足对软件日益增长的需求</li><li>如何维护数量不断膨胀的已有软件</li></ul></li><li><p>具体表现</p><ul><li><ol><li>对软件开发成本和进度的估计常常很不准确</li></ol></li><li><ol start="2"><li>用户不满意的现象经常发生</li></ol></li><li><ol start="3"><li>软件产品的质量往往靠不住</li></ol></li><li><ol start="4"><li>软件常常是不可维护的</li></ol></li><li><ol start="5"><li>软件没有适当的文档资料</li></ol></li><li><ol start="6"><li>软件成本在计算机系统总成本占比逐年上升</li></ol></li><li><ol start="7"><li>软件开发生产率提高的速度远不及计算机应用迅速普及深入的趋势</li></ol></li></ul></li><li><p>产生原因</p><ul><li><ol><li>与软件本身特点有关</li></ol><ul><li><p>逻辑部件</p><ul><li>质量难以评价, 管理、开发和维护困难</li></ul></li><li><p>规模庞大</p><ul><li>开发繁琐，多人分工协作，设计技术和管理等问题</li></ul></li></ul></li><li><ol start="2"><li>与软件开发与维护不正确有关</li></ol><ul><li>早期软件开发具有个体化特点</li><li>忽视软件需求分析的重要性</li><li>认为软件开发就是写程序并设法使之运行</li><li>轻视软件维护</li></ul></li></ul></li><li><p>消除途径</p><ul><li>对计算机软件有正确的认识, 消除”软件就是程序”的错误认识. 认识到软件开发是一种组织良好、管理严密、各类人员协同配合、共同完成的工程项目,充分借鉴吸取已有经验</li><li>推广使用在实践中总结出的开发软件的成功技术和方法,并继续研究探索</li><li>开发和使用更好地软件工具</li></ul></li></ul><h3 id="2-1-软件工程"><a href="#2-1-软件工程" class="headerlink" title="2.1 软件工程"></a>2.1 软件工程</h3><ul><li><p>简介</p><ul><li><p>定义</p><ul><li>指导计算机软件开发和维护的一门工程学科, 该学科的目的是生产出能按期交付的、在预算范围内的、满足用户需求的、质量合格的软件产品</li></ul></li><li><p>本质特性</p><ul><li>关注于大型程序的构造</li><li>中心课题是控制复杂性</li><li>软件经常变化</li><li>开发软件效率非常重要</li><li>和谐地合作是开发软件的关键（标准和规程）</li><li>软件必须有效地支持它的用户（满足各方面需求）</li><li>在软件工程领域中通常由具有一种文化的人替具有另一种文化的人开发产品</li></ul></li></ul></li><li><p>基本原理</p><ul><li>用分阶段的生命周期计划严格管理</li><li>坚持进行阶段评审</li><li>实行严格的产品控制</li><li>采用现代程序设计技术</li><li>结果应能清楚地审查</li><li>开发小组的人员应该小而精</li></ul></li><li><p>方法学</p></li></ul>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>软件工程导论</tag>
       
     </tags>
     
