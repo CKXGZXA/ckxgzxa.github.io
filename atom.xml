@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2022-02-18T14:58:11.489Z</updated>
+  <updated>2022-02-18T14:58:59.608Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MCPE 我的世界基岩版leval.dat相关配置</title>
+    <title>MCPE 我的世界基岩版level.dat相关配置</title>
     <link href="https://www.ckxgzxa.top/mcpe_level_intro.html"/>
     <id>https://www.ckxgzxa.top/mcpe_level_intro.html</id>
     <published>2022-02-18T13:27:10.000Z</published>
-    <updated>2022-02-18T14:58:11.489Z</updated>
+    <updated>2022-02-18T14:58:59.608Z</updated>
     
     <content type="html"><![CDATA[<table>    <tr>        <th bgcolor="yellow" align = "center">配置名</th>        <th bgcolor="yellow" align = "center">中文翻译</th>        <th bgcolor="yellow" align = "center">十六进制表示</th>        <th bgcolor="yellow" align = "center">备注</th>    </tr>    <tr>        <td align = "center">showcoordinates</td>        <td>坐标显示</td>        <td>73 68 6F 77 63 6F 6F 72 64 69 6E 61 74 65 73 [00 | 01]</td>        <td>中括号内如果为00, 则坐标显示为关闭, 为01, 坐标显示开</td>    </tr>    <tr>        <td align = "center">Difficulty</td>        <td>难度</td>        <td>44 69 66 66 69 63 75 6C 74 79 [00 | 01 | 02 | 03]</td>        <td>中括号内数字分别对应:和平|简单|普通|困难</td>    </tr>    <tr>        <td align = "center">RandomSeed</td>        <td>种子号码</td>        <td>52 61 6E 64 6F 6D 53 65 65 64 [FF FF FF FF]</td>        <td>括号中4个字节为种子,规则为:若种子十进制为123456789, 化为十六进制07 5B CD 15,则在文件中为15 CD 5B 07</td>    </tr>    <tr>        <td align = "center">LoadedInCreative</td>        <td>曾在创造模式加载</td>        <td>4C 6F 61 64 65 64 49 6E 43 72 65 61 74 69 76 65 [00 | 01]</td>        <td>将此处设置为01将导致游戏无法获得成就,当在游戏中切换到创造模式,此处被置1,同时commandsEnabled也会置1,成就无法获得,需退出游戏将上述两项置0才可恢复成就</td>    </tr>    <tr>        <td align = "center">GameType</td>        <td>游戏模式</td>        <td>47 61 6D 65 54 79 70 65 [00 | 01 | 02]</td>        <td>00 为生存模式, 01 为创造模式, 02 为冒险模式</td>    </tr>    <tr>        <td align = "center">commandsEnabled</td>        <td>启用命令</td>        <td>63 6F 6D 6D 61 6E 64 73 45 6E 61 62 6C 65 64 [00 | 01]</td>        <td>当开启作弊时,此配置和LoadedInCreative将会被置1,成就无法获得,将上述两项重新置为0可以重新开启成就</td>    </tr>    <tr>        <td align = "center">keepinventory</td>        <td>保留物品栏</td>        <td>6B 65 65 70 69 6E 76 65 6E 74 6F 72 79 [00 | 01]</td>        <td>开启死亡不掉落将此项置为1即可</td>    </tr></table>]]></content>
     
