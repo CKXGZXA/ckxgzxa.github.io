@@ -246,17 +246,17 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年12月5日 下午
+                  本文最后更新于：2022年3月25日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <ol>
 <li><p>假定有一个通信协议，每个分组都引入100字节的开销用于头和成帧。现在使用这个协议发送 $10^6$ 字节的数据，然而在传送的过程中有一个字节被破坏了，因而包含该字节的那个分组被丢弃。试对于1000字节和20000字节的分组的有效数据大小分别计算“开销+丢失”字节的总数目。分组数据大小的最佳值是多少?</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/IMG_20211027_144348.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/IMG_20211027_144348.png"></p>
 </li>
 <li><p>考虑一个最大距离为2km的局域网，当带宽等于多大时 传播延时（传播速度为$2\times10^8m/s$ )等于100B分组的发送延时?对于512B分组结果又当如何?</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/0571ddc1c8ecc9360933b1968027a05.jpg"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/0571ddc1c8ecc9360933b1968027a05.jpg"></p>
 </li>
 <li><p>在两台计算机之间传输一个文件有两种可行的确认策略。第一种策略把文件截成分组，接收方逐个地确认分组，但就整体而言，文件没有得到确认。第二种策略不确认单个分组，但当文件全部收到后，对整个文件予以确认。请讨论这两种方式的优缺点。</p>
 <blockquote>
@@ -285,12 +285,12 @@
 </blockquote>
 </li>
 <li><p>在上题的分组交换网中，设报文长度和分组长度分别为x和( p+h )比特，其中p为分组的数据部分的长度，而h为每个分组所带的控制信息固定长度，与p的大小无关。通信的两端共经过k段链路。链路的数据传输速率为b比特每秒，但传播时延、结点的排队时延和处理时延均可忽略不计。若打算使总的时延为最小，问分组的数据部分长度p应取为多大?</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/f165ba22bc8debf251158a105358b4d.jpg"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/f165ba22bc8debf251158a105358b4d.jpg"></p>
 </li>
 <li><p>在下列情况下，计算传送1000KB文件所需要的总时间，即从开始传送时起直到文件的最后一位到达目的地为止的时间。假定往返时间RTT为100ms，一个分组是1KB(即1024B)的数据，在开始传送整个文件数据之前进行的起始握手过程需要2RTT的时间。<br>1）带宽是1.5Mb/s，数据分组可连续发送。<br>2）带宽是1.5Mb/s，但在发送完每一个数据分组后，必须等待一个RTT （等待来自接收方的确认）才能发送下一个数据分组。<br>3 )假设带宽是无限大的值，即我们取发送时间为0，并且在等待每个RTT后可以发送多达20个分组。</p>
 </li>
 </ol>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/a25cf59fb4897e1480ab29929476142.jpg"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/a25cf59fb4897e1480ab29929476142.jpg"></p>
 
             </div>
             <hr>

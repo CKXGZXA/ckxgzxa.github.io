@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052231951.png') no-repeat center center;
+         style="background: url('https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052231951.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年12月5日 下午
+                  本文最后更新于：2022年3月25日 晚上
                 
               </p>
             
@@ -256,23 +256,23 @@
 </blockquote>
 <h2 id="1-准备数据集"><a href="#1-准备数据集" class="headerlink" title="1. 准备数据集"></a>1. 准备数据集</h2><p>​        我们在官网下载好TensorFlow官网提供的[花卉数据集](<a target="_blank" rel="noopener" href="https://www.tensorflow.org/datasets/catalog/tf_flowers">tf_flowers  | TensorFlow Datasets</a>)并在我们电脑上解压, </p>
 <p>发现 文件的结构如下所示:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111051955239.png" alt="image-20211105195521063"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111051955239.png" alt="image-20211105195521063"></p>
 <p>flower_photos内共有5个文件夹,分别是雏菊(daisy)，dandelion(蒲公英)， roses(玫瑰)， sunflowers(向日葵)， tulips(郁金香)， 每个文件夹中存放有若干张该分类的图片。</p>
 <h2 id="2-创建OBS桶"><a href="#2-创建OBS桶" class="headerlink" title="2. 创建OBS桶"></a>2. 创建OBS桶</h2><p>用ModelArts训练需要华为的对象存储服务OBS来保存我们的数据，</p>
 <ul>
 <li><p>首先在华为云搜索obs服务，然后点击进入</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052031054.png" alt="image-20211105203119822"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052031054.png" alt="image-20211105203119822"></p>
 </li>
 <li><p>进入之后点击创建桶</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052030323.png" alt="image-20211105203016075"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052030323.png" alt="image-20211105203016075"></p>
 <ul>
 <li><p>然后选择单AZ存储，地区选择离你最近的地区即可，选择好之后点击立即创建：</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052036482.png" alt="image-20211105203646291"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052036482.png" alt="image-20211105203646291"></p>
 </li>
 <li><p>这样我们的OBS桶就创建好了</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052041210.png" alt="image-20211105204107093"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052041210.png" alt="image-20211105204107093"></p>
 </li>
 </ul>
 <h2 id="3-获取访问密钥"><a href="#3-获取访问密钥" class="headerlink" title="3. 获取访问密钥"></a>3. 获取访问密钥</h2><p>需要获取访问密钥然后用访问密钥登录obs-brower来方便的将我们的训练数据上传到OBS桶</p>
@@ -280,83 +280,83 @@
 <li><p>获取OBS密钥</p>
 <ol>
 <li><p>点击我的凭证</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052113742.png" alt="image-20211105211345664"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052113742.png" alt="image-20211105211345664"></p>
 </li>
 <li><p>点击新增访问密钥</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052114923.png" alt="image-20211105211453706"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052114923.png" alt="image-20211105211453706"></p>
 </li>
 <li><p>输入密钥名称就可以下载一个名为credentials.csv的文件，里面存放的就是访问密钥，请不要泄露</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052117971.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052117971.png"></p>
 </li>
 </ol>
 <h2 id="4-获取OBS-Browser-工具"><a href="#4-获取OBS-Browser-工具" class="headerlink" title="4. 获取OBS Browser+ 工具"></a>4. 获取OBS Browser+ 工具</h2><ol>
 <li><p>随后我们进入如下的网址下载 obs browser+ 工具</p>
 <p>下载OBS Browser+：<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html">https://support.huaweicloud.com/browsertg-obs/obs_03_1003.html</a></p>
 <p>下载安装好之后我们打开它之后使用上一步获取到的密钥登录：</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052121218.png" alt="image-20211105212127102"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052121218.png" alt="image-20211105212127102"></p>
 </li>
 <li><p>随后我们在桶内新建4个文件夹(flower_photos, flower_input, flower_output, train_output)用于接下来的实验</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052122159.png" alt="image-20211105212256032"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052122159.png" alt="image-20211105212256032"></p>
 </li>
 </ol>
 </li>
 </ul>
 <h2 id="5-上传数据集"><a href="#5-上传数据集" class="headerlink" title="5. 上传数据集"></a>5. 上传数据集</h2><p>在flower_photos中上传我们解压出来的花卉数据集</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052128053.png" alt="image-20211105212805937"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052128053.png" alt="image-20211105212805937"></p>
 <p>​     </p>
 <h2 id="6-创建数据集"><a href="#6-创建数据集" class="headerlink" title="6. 创建数据集"></a>6. 创建数据集</h2><ul>
 <li><p>进入ModelArts控制台界面，进入数据集管理，然后点击创建数据集</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052131676.png" alt="image-20211105213120461"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052131676.png" alt="image-20211105213120461"></p>
 </li>
 <li><p>选择图像分类标注类型，输入为止和输出位置选择我们刚刚在 obs browser中新建的两个空文件夹</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052133067.png" alt="image-20211105213303824"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052133067.png" alt="image-20211105213303824"></p>
 </li>
 <li><p>随后点击创建数据集即可</p>
 </li>
 <li><p>返回进入此数据集管理界面，点击导入，由于我已经创建过数据集了，因此里面是有标记数据的</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052135413.png" alt="image-20211105213510211"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052135413.png" alt="image-20211105213510211"></p>
 </li>
 <li><p>点击我们刚开始上传花卉数据集的位置确定即可</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052136171.png" alt="image-20211105213608064"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052136171.png" alt="image-20211105213608064"></p>
 </li>
 <li><p>导入完成之后，我们点击发布，设置数据切分训练集比例为0.8即可</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052137278.png" alt="image-20211105213729194"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052138484.png" alt="image-20211105213811387"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052137278.png" alt="image-20211105213729194"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052138484.png" alt="image-20211105213811387"></p>
 </li>
 </ul>
 <h2 id="7-使用算法进行模型训练"><a href="#7-使用算法进行模型训练" class="headerlink" title="7. 使用算法进行模型训练"></a>7. 使用算法进行模型训练</h2><ul>
 <li><p>首先进入如下的网址订阅图像分类算法</p>
 <p><a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0">图像分类-MobileNet_v2链接</a>：<a target="_blank" rel="noopener" href="https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)">https://marketplace.huaweicloud.com/markets/aihub/modelhub/detail/?id=0470e6b1-923b-47a8-ba3e-fe93de5ae2a0)</a></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052139825.png" alt="image-20211105213954489"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052139825.png" alt="image-20211105213954489"></p>
 </li>
 <li><p>订阅完成之后我们返回ModelArts控制台的训练管理界面，点击创建训练作业</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052143872.png" alt="image-20211105214329543"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052143872.png" alt="image-20211105214329543"></p>
 </li>
 <li><p>算法选择刚刚我们刚刚订阅的算法，训练输入选择我们刚刚创建的数据集，训练输出选择我们刚开始创建的输出文件夹即可，下面有免费的GPU资源可以供我们选择。点击提交并等待训练完成。</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052145627.png" alt="image-20211105214541511"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052147929.png" alt="image-20211105214734741"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052145627.png" alt="image-20211105214541511"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052147929.png" alt="image-20211105214734741"></p>
 </li>
 <li><p>模型训练完成大概需要二十多分钟</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052211783.png" alt="image-20211105221118637"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052211783.png" alt="image-20211105221118637"></p>
 </li>
 </ul>
 <h2 id="8-模型的部署和验证"><a href="#8-模型的部署和验证" class="headerlink" title="8. 模型的部署和验证"></a>8. 模型的部署和验证</h2><ul>
 <li><p>点击模型管理，然后进行在线服务的部署，选择免费资源即可</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052153987.png" alt="image-20211105215342790"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052153987.png" alt="image-20211105215342790"></p>
 </li>
 <li><p>部署完成之后点击在线服务的预测</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052156506.png" alt="image-20211105215616340"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052156506.png" alt="image-20211105215616340"></p>
 <p>在这里可以对应用接口进行调试，同样地你也可以利用POSTMAN等工具对它进行调试，官网有详细的文档可以查看</p>
 </li>
 <li><p>我们上传一些花卉图片对它进行测试</p>
 <ol>
-<li><p>这张图片的结果是玫瑰的可能性是1，识别正确。<img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052159806.png" alt="image-20211105215908408"></p>
+<li><p>这张图片的结果是玫瑰的可能性是1，识别正确。<img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052159806.png" alt="image-20211105215908408"></p>
 </li>
 <li><p>这张蒲公英的图片也是识别正确的。</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052202530.png" alt="image-20211105220235211"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052202530.png" alt="image-20211105220235211"></p>
 </li>
 <li><p>这张图片是向日葵的概率也是100%</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/202111052206769.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111052206769.png"></p>
 </li>
 </ol>
 </li>

@@ -246,58 +246,58 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年3月20日 晚上
+                  本文最后更新于：2022年3月25日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="虚拟机搭建Hadoop集群"><a href="#虚拟机搭建Hadoop集群" class="headerlink" title="虚拟机搭建Hadoop集群"></a>虚拟机搭建Hadoop集群</h1><h2 id="1-创建虚拟机"><a href="#1-创建虚拟机" class="headerlink" title="1. 创建虚拟机"></a>1. 创建虚拟机</h2><p>下载VirtualBox或其他虚拟机软件并安装.</p>
 <p>进入管理菜单-&gt;全局设置-&gt;网络-&gt;添加新NAT网络, 勾选启用网络并开启DHCP,确认即可.</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307172344864.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307172344864.png"></p>
 <p>随后点击新建虚拟机, 将名称改为cluster1, 虚拟机类型选择Linux, Red Hat(64位),</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307172741873.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307172741873.png"></p>
 <p>将内存大小改为1536MB,点击下一步</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307172827900.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307172827900.png"></p>
 <p>选择现在创建虚拟硬盘(VHD, 动态分配, 8G), 点击创建即可成功创建虚拟机:</p>
 <p>如下图所示,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307173039991.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307173039991.png"></p>
 <p>进入刚刚新建的虚拟机设置, 在网卡1处连接方式选择NAT网络, 在网卡2处勾选启用网络连接,连接方式设为: 仅主机(Host-Only)网络,点击OK即可,网络信息如下所示,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307173502018.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307173502018.png"></p>
 <p>然后选择存储设置, 加载CentOS7系统镜像到光驱</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307173709989.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307173709989.png"></p>
 <p>确认之后将虚拟机启动,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307173833389.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307173833389.png"></p>
 <p>单击界面,让Virtual Box捕获鼠标(注:右Ctrl键可以接触捕获), 上移光标至Install CentOS 7处按回车键进行系统安装,</p>
 <p>随后单击Continue</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307174203851.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307174203851.png"></p>
 <p>将时区更改为: :earth_asia: Asia, Shanghai</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307174519139.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307174519139.png"></p>
 <p>磁盘分区默认即可,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307175112388.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307175112388.png"></p>
 <p>随后设置用户名和密码, 如果密码不符合安全要求, 会需要点击两次以确认,耐心等待系统安装完成,然后点击重启按钮, 系统即安装完成</p>
 <p>另外创建两台配置一样的虚拟机, 用户名分别为 cluster2 和 cluster3.</p>
 <h2 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2. 准备工作"></a>2. 准备工作</h2><h3 id="2-1-关闭防火墙和-Selinux"><a href="#2-1-关闭防火墙和-Selinux" class="headerlink" title="2.1 关闭防火墙和 Selinux"></a>2.1 关闭防火墙和 Selinux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 关闭防火墙并阻止服务开机启动<br><span class="hljs-comment"># systemctl stop firewalld.service</span><br><span class="hljs-comment"># systemctl disable firewalld.service</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307181250561.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307181250561.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 编辑Selinux配置文件关闭Selinux<br><span class="hljs-comment"># vi /etc/selinux/config</span><br>// 将SELINUX设为disabled<br>// 重启<br><span class="hljs-comment"># reboot</span><br>// 用root用户查看Selinux状态<br><span class="hljs-comment"># getenforce</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307181417466.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220307181459557.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307181417466.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220307181459557.png"></p>
 <p>另两台虚拟机进行同样的操作.</p>
 <h3 id="2-2-检查网卡是否开机自启"><a href="#2-2-检查网卡是否开机自启" class="headerlink" title="2.2 检查网卡是否开机自启"></a>2.2 检查网卡是否开机自启</h3><p>使用<code>ip addr</code>命令查看网卡名称,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308010929988.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308010929988.png"></p>
 <p>可见两张网卡均未启用,</p>
 <p>接下来编辑第一张网卡的配置文件, 修改如下文件<code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code>,将其中的ONBOOT项修改为yes,使网卡能够开机自启,</p>
 <p>随后编辑第二章网卡的配置文件<code>etc/sysconfig/network-scripts/ifcfg-enp0s8</code>, 将BOOTPROTO设置为none, ONBOOT同样改为yes,并新增如下项:</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">IPADDR</span>=<span class="hljs-number">192.168.56.121</span>  # cluster<span class="hljs-number">2</span>为<span class="hljs-number">192.168.56.122</span>, cluster<span class="hljs-number">3</span>为<span class="hljs-number">192.168.56.123</span><br><span class="hljs-attribute">NETMASK</span>=<span class="hljs-number">255.255.255.0</span><br><span class="hljs-attribute">NETWORK</span>=<span class="hljs-number">192.168.56.0</span><br></code></pre></td></tr></table></figure>
 
 <p>保存之后, 重启网络服务发现配置成功</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308011832168.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308011832168.png"></p>
 <p>将另外两台机器也配置完成,进入下一步,</p>
 <p>将网络配置成功之后我们就可以使用SSH工具连接虚拟机了,在这里我使用Finalshell工具进行连接:</p>
 <p>添加如下所示的三个连接就可以连上虚拟机了:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308012637088.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308012706054.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308012637088.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308012706054.png"></p>
 <p>对于文件传输功能, Finalshell有集成功能可以方便的拖拽文件进行上传和下载操作.</p>
 <h3 id="2-3-安装软件"><a href="#2-3-安装软件" class="headerlink" title="2.3 安装软件"></a>2.3 安装软件</h3><p>每台机器上都要安装,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install perl*  ntpdate  libaio  screen -y<br></code></pre></td></tr></table></figure>
@@ -306,7 +306,7 @@
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">10.0.2.8</span> cluster1<br><span class="hljs-number">10.0.2.4</span> cluster2<br><span class="hljs-number">10.0.2.9</span> cluster3<br></code></pre></td></tr></table></figure>
 
 <p>修改之后测试网络连通性, 在cluster1上 ping 另两台机器:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308183616945.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308183616945.png"></p>
 <p>可见hosts文件生效.</p>
 <h3 id="2-5-新建用于维护集群的hadoop用户"><a href="#2-5-新建用于维护集群的hadoop用户" class="headerlink" title="2.5 新建用于维护集群的hadoop用户"></a>2.5 新建用于维护集群的hadoop用户</h3><p>在每台机器上用root用户执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 新建hadoop组</span><br>groupadd hadoop<br><span class="hljs-comment"># 新建hadoop用户</span><br>useradd -s /bin/bash -g hadoop -d /home/hadoop -m hadoop<br><span class="hljs-comment"># 修改 hadoop 这个用户的密码</span><br>passwd hadoop<br></code></pre></td></tr></table></figure>
@@ -318,7 +318,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-copy-id cluster1<br>ssh-copy-id cluster2<br>ssh-copy-id cluster3<br></code></pre></td></tr></table></figure>
 
 <p>密钥分发完毕, 使用cluster1与cluster2和cluster3建立连接均能成功,说明密钥分发无误.</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220308231119122.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308231119122.png"></p>
 <h3 id="2-7-安装NTP服务"><a href="#2-7-安装NTP服务" class="headerlink" title="2.7 安装NTP服务"></a>2.7 安装NTP服务</h3><p>在三台机器上安装ntpdate</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install ntpdate<br></code></pre></td></tr></table></figure>
 
@@ -339,7 +339,7 @@
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> * * * /<span class="hljs-keyword">usr</span>/sbin/ntpdate cluster1&gt;&gt; /root/ntpd.<span class="hljs-keyword">log</span><br></code></pre></td></tr></table></figure>
 
 <p>之后在两台客户机上使用<code>ntpdate cluster1</code>同步时间.</p>
-<h2 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3. 安装MySQL"></a><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309011624607.png">3. 安装MySQL</h2><h3 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h3><p>只需要在cluster2上安装一个MySQL即可</p>
+<h2 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3. 安装MySQL"></a><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309011624607.png">3. 安装MySQL</h2><h3 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h3><p>只需要在cluster2上安装一个MySQL即可</p>
 <p>登录root用户以执行以下命令:</p>
 <p>若安装过MySQL先移除原有MySQL:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove mysql mysql-server mnysql-libs compat-mysql51<br>rm -rf /var/lib/mysql<br>rm -rf /etc/my.cnf<br></code></pre></td></tr></table></figure>
@@ -374,15 +374,15 @@
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> <span class="hljs-operator">*</span>.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;cluster&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION; <br>mysql<span class="hljs-operator">&gt;</span> FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309193809638.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309193809638.png"></p>
 <h3 id="3-2-测试"><a href="#3-2-测试" class="headerlink" title="3.2 测试"></a>3.2 测试</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">create</span> database test_table; <br>mysql<span class="hljs-operator">&gt;</span> use test_table;<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> userinfo(id <span class="hljs-type">int</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>); <br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> userinfo <span class="hljs-keyword">values</span>(<span class="hljs-number">1</span>); <br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> userinfo;<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">drop</span> database test_table;<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">show</span> databases;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309194232911.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309194232911.png"></p>
 <h2 id="4-安装JDK"><a href="#4-安装JDK" class="headerlink" title="4. 安装JDK"></a>4. 安装JDK</h2><p>需要在每台机器上安装JDK,将jdk压缩包传到服务器<code>/usr/local</code>目录下并解压,修改环境变量:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102<br><span class="hljs-built_in">export</span> JRE_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102/jre<br><span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span> <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>配置完成,并使用scp命令将jdk复制到其他节点:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309205340946.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309205340946.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80/ cluster2:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
 
 <p>同样的方式将jdk目录写入环境变量</p>
@@ -397,11 +397,11 @@
 <p>接下来创建zookeeper的数据目录和日志存储目录, 并修改文件夹的权限:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_data/zookeeper<br>mkdir -p /home/hadoop_files/hadoop_logs/zookeeper/dataLog <br>mkdir -p /home/hadoop_files/hadoop_logs/zookeeper/logs<br><br>chown -R hadoop:hadoop /home/hadoop_files<br>chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/zookeeper-3.4.6<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309214332045.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309214332045.png"></p>
 <p>在 cluster1 号服务器的 data 目录中创建一个文件 myid，输入内容为 1, 且myid 应与 zoo.cfg 中的集群节点相匹配, cluster2和cluster3就写2和3</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;1&quot;</span> &gt;&gt; /home/hadoop_files/hadoop_data/zookeeper/myid<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309214553265.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309214553265.png"></p>
 <p>接下来修改zookeeper/目录下相关配置文件</p>
 <p>修改 zookeeper 的日志输出路径(注意CDH 版与原生版配置文件不同)</p>
 <blockquote>
@@ -418,11 +418,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zkServer.sh start<br></code></pre></td></tr></table></figure>
 
 <p>三台机器都把zookeeper启动之后用命令<code>jps</code>查看进程是否启动:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309234544293.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309234544293.png"></p>
 <p>可以看到在每台机器上都能看到一个叫<em>QuorumPeerMain</em>的进程,说明启动成功</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309234950820.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309235011745.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220309235023280.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309234950820.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309235011745.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309235023280.png"></p>
 <p>可以看到三台机器中一台是leader,另两台是follower</p>
 <p>zookeeper的关闭命令是<code>zkServer.sh stop</code></p>
 <h2 id="6-安装Kafka"><a href="#6-安装Kafka" class="headerlink" title="6. 安装Kafka"></a>6. 安装Kafka</h2><h3 id="6-1-安装"><a href="#6-1-安装" class="headerlink" title="6.1 安装"></a>6.1 安装</h3><p>在cluster1上解压kafka到/usr/local</p>
@@ -445,11 +445,11 @@
 <p>查看Topic</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-topics.sh --list --zookeeper cluster1:2181,cluster2:2181,cluster3:2181<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310002701290.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310002701290.png"></p>
 <p>查看详细信息:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-topics.sh --describe --zookeeper cluster1:2181,cluster2:2181,cluster3:2181 <br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310002812404.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310002812404.png"></p>
 <p>在cluster1上执行如下命令用来发送消息:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-console-producer.sh --broker-list localhost:9092 --topic mykafka<br></code></pre></td></tr></table></figure>
 
@@ -462,12 +462,12 @@
 <p>mycluster test</p>
 </blockquote>
 <p>在cluster2上可以成功接收到相应信息</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310003237619.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310003237619.png"></p>
 <p>在每台机器上执行<code>kafka-server-stop.sh</code>命令关闭kafka,随后在每台机器上用screen命令新建窗口在后台跑kafka集群</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">screen -S kafka<br>kafka-server-start.sh <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/kafka_2.10-0.8.2.1/</span>config/server.properties<br></code></pre></td></tr></table></figure>
 
 <p>随后使用Ctrl +  A + D退出新建的screen,用<code>jps</code>命令看到Kafka进程在运行</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310003857453.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310003857453.png"></p>
 <h2 id="7-安装Hadoop"><a href="#7-安装Hadoop" class="headerlink" title="7. 安装Hadoop"></a>7. 安装Hadoop</h2><h3 id="7-1-安装"><a href="#7-1-安装" class="headerlink" title="7.1 安装"></a>7.1 安装</h3><p><strong>在启动Hadoop之前应先启动zookeeper</strong></p>
 <p>以下命令若无特殊说明,均使用 用户hadoop执行</p>
 <p>将 hadoop-2.6.5.tar.gz 解压到 /usr/local/ 目录下</p>
@@ -510,28 +510,28 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hadoop-daemon.sh start journalnode<br></code></pre></td></tr></table></figure>
 
 <p>使用jps可以看到journalnode进程</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310010351641.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310010351641.png"></p>
 <p>在cluster1上执行格式化HDFS命令:<code>hdfs namenode -format, </code></p>
 <p>之后使用<code>hadoop-daemon.sh stop journalnode</code>命令可在节点上关闭journalnode, </p>
 <p>在cluster1上启用HDFS:<code>start-dfs.sh</code>, </p>
 <p>可在cluster1上看到NameNode, DataNode, SecondaryNameNode;</p>
 <p> 在cluster2和cluster3上看到DataNode:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310012508472.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310012522550.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310012508472.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310012522550.png"></p>
 <p>在cluster1上启用YARN:<code>start-yarn.sh</code></p>
 <p>启动后 cluster1 上使用 jps 可以看到NodeManager, ResourceManager, </p>
 <p>cluster2 和 cluster3 上可以看到NodeManager:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310012949160.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310013004848.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310012949160.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310013004848.png"></p>
 <h3 id="7-2-测试"><a href="#7-2-测试" class="headerlink" title="7.2 测试"></a>7.2 测试</h3><p>启动HDFS 后，可以在浏览器中，打开 <a target="_blank" rel="noopener" href="http://192.168.56.121:50070/">http://192.168.56.121:50070</a>，可以看到HDFS 的 web 界面:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310013155182.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310013155182.png"></p>
 <p>上图第一页是当前HDFS 的概况，里面显示了HDFS 的启动时间，版本等信息。</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310013244551.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310013244551.png"></p>
 <p>Datanodes页面显示了当前HDFS 中的可用节点。</p>
 <p>启用YARN后可以通过访问<a target="_blank" rel="noopener" href="http://192.168.56.121:8088/">http://192.168.56.121:8088</a>查看YARN的web界面</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310013421172.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310013421172.png"></p>
 <p>该页面展示了所有提交到 YARN 上的程序，点击左侧的Nodes 可以看到 YARN 的节点:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310090014904.png" alt="image-20220310090014904"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310090014904.png" alt="image-20220310090014904"></p>
 <p>此处每个节点的可用内存 Mem Avail 为 8G，而我们的虚拟机每台内存只有 1.5G，由于没有在 yarn-site.xml 这个文件中对节点的可用内存进行配置出现了此问题，可以增加以下内容进行配置：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 配置 nodemanager 可用的资源内存 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.resource.memory-mb<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>20480<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 配置 nodemanager 可用的资源 CPU --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.resource.cpu-vcores<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>24<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -547,17 +547,17 @@
 <p>保存之后退出</p>
 <p>在 HDFS 的根目录创建 test 目录: <code>hdfs dfs -mkdir /test</code></p>
 <p>查看HDFS 根目录的文件: <code>hdfs dfs -ls /</code></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310014227354.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310014227354.png"></p>
 <p>将测试文件 testfile 上传至 HDFS 根目录下的 test 目录中: <code>hdfs dfs -put testfile /test</code></p>
 <p>在cluster2上,</p>
 <p>首先切换到hadoop用户目录:<code>cd ~/</code></p>
 <p>查看HDFS 根目录: <code>hdfs dfs -ls /</code></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310014513363.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310014513363.png"></p>
 <p>查看HDFS 根目录下的 test 目录，看到刚才在 cluster1 上上传的文件 testfile: <code>hdfs dfs -ls /test</code></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310014603118.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310014603118.png"></p>
 <p>使用<code>hdfs dfs -get /test/testfile</code>将testfile下载到本地,</p>
 <p>再查看当前目录下的文件可以发现testfile,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310014808596.png" alt="image-20220310014808596"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310014808596.png" alt="image-20220310014808596"></p>
 <h2 id="8-安装HBase"><a href="#8-安装HBase" class="headerlink" title="8. 安装HBase"></a>8. 安装HBase</h2><h3 id="8-1-安装"><a href="#8-1-安装" class="headerlink" title="8.1 安装"></a>8.1 安装</h3><p><strong>HBase 启动的先决条件是 zookeeper 和Hadoop 已经启动</strong></p>
 <p>在cluster1上, 将hbase-1.2.6-bin.tar.gz解压到/usr/local/目录下,随后修改<code>/usr/local/hbase-1.2.6/conf/</code>目录下的hbase-env.sh如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置 JDK 安装路径</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80 <br><span class="hljs-comment"># 配置 Hadoop 安装路径</span><br><span class="hljs-built_in">export</span> HADOOP_HOME=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5 <br><span class="hljs-comment"># 设置 HBase 的日志目录</span><br><span class="hljs-built_in">export</span> HBASE_LOG_DIR=/home/hadoop_files/hadoop_logs/hbase/logs <br><span class="hljs-comment"># 使用独立的ZooKeeper 集群</span><br><span class="hljs-built_in">export</span> HBASE_MANAGES_ZK=<span class="hljs-literal">false</span> <br><span class="hljs-comment"># 设置 pid 的路径</span><br><span class="hljs-built_in">export</span> HBASE_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
@@ -585,16 +585,16 @@
 
 <p>启动后在cluster1上使用<code>jps</code>可以看到HMaster和HRegionServer,</p>
 <p>cluster2和cluster3上可以看到HRegionServer</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310085135752.png" alt="image-20220310085135752"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310085202547.png" alt="image-20220310085202547"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310085135752.png" alt="image-20220310085135752"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310085202547.png" alt="image-20220310085202547"></p>
 <h3 id="8-2-测试"><a href="#8-2-测试" class="headerlink" title="8.2 测试"></a>8.2 测试</h3><p>打开<a target="_blank" rel="noopener" href="http://192.168.56.121:60010/">http://192.168.56.121:60010</a>查看Hbase的web界面</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310090107851.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310090107851.png"></p>
 <p>在cluster1上, 输入<code>hbase shell</code> 进入hbase shell.键入以下命令:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">hbase&gt;</span><span class="bash"> create <span class="hljs-string">&#x27;userinfotable&#x27;</span>,&#123;NAME=&gt;<span class="hljs-string">&#x27;username&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;fullname&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;homedir&#x27;</span>&#125;</span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r1&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;vcsa&#x27;</span></span><br><span class="hljs-meta">hbase&gt;</span><span class="bash"> put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r2&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;sasuser&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> scan <span class="hljs-string">&#x27;userinfotable&#x27;</span></span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310091241471.png" alt="image-20220310091241471"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310091241471.png" alt="image-20220310091241471"></p>
 <p>在 web 界面也可以看到刚才建立的表:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310091504388.png" alt="image-20220310091504388"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310091504388.png" alt="image-20220310091504388"></p>
 <p>删除刚才建立的表：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">hbase&gt;</span><span class="bash"> <span class="hljs-built_in">disable</span> <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> drop <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> <span class="hljs-built_in">exit</span></span><br></code></pre></td></tr></table></figure>
 
@@ -619,7 +619,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> flush privileges;<br>mysql<span class="hljs-operator">&gt;</span> exit;<br></code></pre></td></tr></table></figure>
 
 <p>验证hive用户是否正确创建:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310093902048.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310093902048.png"></p>
 <p>接下来修改hive-site.xml</p>
 <p>将提供的hive-site.xml上传到apache-hive-1.1.0-bin/conf/目录下即可</p>
 <p>将mysql-connector-java-5.1.43-bin.jar上传至 /usr/local/apache-hive-1.1.0-bin/lib/,</p>
@@ -635,7 +635,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SCALA_HOME=/usr/<span class="hljs-built_in">local</span>/scala-2.10.6<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SCALA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>刷新环境变量后用<code>scala -version</code>查看Scala版本验证安装:</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310115940338.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310115940338.png"></p>
 <p>复制到所有的服务器上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/scala-2.10.6 cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/scala-2.10.6 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
 
@@ -673,10 +673,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">stop-slaves.sh<br>stop-master.sh<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="11-2-测试"><a href="#11-2-测试" class="headerlink" title="11.2 测试"></a>11.2 测试</h3><p>在 cluster1 上使用 jps 命令可以看到 Master 和 Worker，cluster2 和 3 上可以看到Worker,</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310122903560.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310122926901.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310122903560.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310122926901.png"></p>
 <p>用浏览器访问 &lt;<a target="_blank" rel="noopener" href="http://192.168.56.121:8080/">http://192.168.56.121:8080</a> &gt;可以看到 Spark 的web 界面，可以看到 3 个worker</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310122837660.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310122837660.png"></p>
 <h2 id="12-安装Storm"><a href="#12-安装Storm" class="headerlink" title="12. 安装Storm"></a>12. 安装Storm</h2><p>storm需要Python2.6以上版本</p>
 <p>将apache-storm-1.1.1.tar.gz解压到<code>/usr/local/</code>下,</p>
 <p>环境变量添加:</p>
@@ -711,8 +711,8 @@
 <p>cluster1：nimbus, core, logviewer</p>
 <p>cluster2：Supervisor, logviewer</p>
 <p>cluster3：Supervisor, logviewer</p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310130740038.png"></p>
-<p><img src="https://gitee.com/ckxgzxa/BlogPictures/raw/master/image-20220310130759287.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310130740038.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310130759287.png"></p>
 
             </div>
             <hr>
