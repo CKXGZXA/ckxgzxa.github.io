@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年3月10日 下午
+                  本文最后更新于：2022年3月20日 晚上
                 
               </p>
             
@@ -302,7 +302,7 @@
 <h3 id="2-3-安装软件"><a href="#2-3-安装软件" class="headerlink" title="2.3 安装软件"></a>2.3 安装软件</h3><p>每台机器上都要安装,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install perl*  ntpdate  libaio  screen -y<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-4-修改hosts"><a href="#2-4-修改hosts" class="headerlink" title="2.4 修改hosts"></a>2.4 修改hosts</h3><p>讲每台机器的ip写入每台机器的hosts文件</p>
+<h3 id="2-4-修改hosts"><a href="#2-4-修改hosts" class="headerlink" title="2.4 修改hosts"></a>2.4 修改hosts</h3><p>将每台机器的ip写入每台机器的hosts文件</p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">10.0.2.8</span> cluster1<br><span class="hljs-number">10.0.2.4</span> cluster2<br><span class="hljs-number">10.0.2.9</span> cluster3<br></code></pre></td></tr></table></figure>
 
 <p>修改之后测试网络连通性, 在cluster1上 ping 另两台机器:</p>
@@ -732,6 +732,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/htmllearning.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML常见标签</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
