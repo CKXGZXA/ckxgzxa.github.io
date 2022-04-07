@@ -22,25 +22,9 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>计算机网络与信息安全 - 技术匝记簿</title><meta name="robots" content="noindex">
+  <title>分类 - OS - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -69,7 +53,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -180,46 +164,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="计算机网络与信息安全">
+            <span class="h2" id="subtitle" title="分类 - OS">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-29 00:10" pubdate>
-        2021年11月29日 凌晨
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      288 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      3
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -232,208 +179,40 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2022</p>
+    
+    <a href="/LinuxProblem001.html" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Authentication required. System policy prevents WiFi scans</span>
+      <time style="float: right;">01-12</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">计算机网络与信息安全</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2022年4月7日 晚上
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h1 id="计算机网络与信息安全"><a href="#计算机网络与信息安全" class="headerlink" title="计算机网络与信息安全"></a>计算机网络与信息安全</h1><h2 id="课程内容提要"><a href="#课程内容提要" class="headerlink" title="课程内容提要"></a>课程内容提要</h2><ul>
-<li>开放系统互连参考模型$（\star\star）$</li>
-<li>TCP/IP协议族$\color{red}{（\star\star\star\star）}$</li>
-<li>IP地址与子网划分 $\color{red}{（\star\star\star\star\star）}$</li>
-<li>网络规划与设计$（\star）$</li>
-<li>3G 与 4G 标准 $（\star\star）$</li>
-<li>HTML 语言$（\star\star）$</li>
-</ul>
-<h2 id="一、OSI-RM-七层模型"><a href="#一、OSI-RM-七层模型" class="headerlink" title="一、OSI/RM 七层模型"></a>一、OSI/RM 七层模型</h2><table>
-    <tr>
-        <th bgcolor="yellow" align = "center">层次</th>
-        <th bgcolor="yellow" align = "center">名称</th>
-        <th bgcolor="yellow" align = "center">主要功能</th>
-        <th bgcolor="yellow" align = "center">主要设备及协议</th>
-    </tr>
-    <tr>
-        <td align = "center">7</td>
-        <td>应用层</td>
-        <td>实现具体的应用功能</td>
-        <td rowspan="3">POP3、FTP、Telnet、</br>SMTP</br>DHCP、TFTP、SNMP、DNS</th>
-    </tr>
-    <tr>
-        <td align = "center">6</td>
-        <td>表示层</td>
-        <td>数据的格式与表达、加密、压缩</td>
-    </tr>
-    <tr>
-        <td align = "center">5</td>
-        <td>会话层</td>
-        <td>建立、管理和终止会话</td>
-    </tr>
-    <tr>
-        <td align = "center">4</td>
-        <td>传输层</td>
-        <td>端到端的连接</td>
-        <td>TCP、UDP</td>
-    </tr>
-    <tr>
-        <td align = "center">3</td>
-        <td>网络层</td>
-        <td>分组传输和路由选择</td>
-        <td>三层交换机、路由器</br>ARP、RARP、IP、ICMP、IGMP</td>
-    </tr>
-    <tr>
-        <td align = "center">2</td>
-        <td>数据链路层</td>
-        <td>传送以帧为单位的信息</td>
-        <td>网桥、交换机（多端口网桥）、网卡、PPTP、L2TP、SLIP、PPP</td>
-    </tr>
-    <tr>
-        <td align = "center">1</td>
-        <td>物理层</td>
-        <td>二进制传输</td>
-        <td>中继器、集线器（多端口中继器）</td>
-    </tr>
-</table>
 
-<h2 id="二、TCP-IP协议族"><a href="#二、TCP-IP协议族" class="headerlink" title="二、TCP/IP协议族"></a>二、TCP/IP协议族</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111290054003.png"></p>
-<table>
-    <tr>
-        <th frame=void align="center">TCP/IP 模型</th>
-        <th frame=void align="center">OSI 七层模型</th>
-    </tr>
-    <tr>
-        <td align="center" rowspan=3>应用层</td>
-        <td align="center">应用层</td>
-    </tr>
-    <tr>
-        <td align="center">表示层</td>
-    </tr>
-    <tr>
-        <td align="center">会话层</td>
-    </tr>
-    <tr>
-        <td align="center" bgcolor="yellow">传输层</td>
-        <td align="center" bgcolor="yellow">传输层</td>
-    </tr>   
-    <tr>
-        <td align="center" bgcolor="#9393FF">网际层</td>
-        <td align="center" bgcolor="#9393FF">网络层</td>
-    </tr>
-    <tr>
-        <td align="center" rowspan="2" bgcolor="pink">网络接口层</td>
-        <td align="center" bgcolor="pink">数据链路层</td>
-    </tr>
-    <tr>
-        <td align="center" bgcolor="pink">物理层</td>
-    </tr>
-</table>
 
-<!-- flag of hidden posts -->
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%BD%AF%E8%80%83/">软考</a>
-                    
-                  </div>
-                
-                
+
+
               </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                  
-                
-                
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      var light = 'github-light';
-      var dark = 'github-dark';
-      var schema = document.documentElement.getAttribute('data-user-color-scheme');
-      if (schema === 'dark') {
-        schema = dark;
-      } else {
-        schema = light;
-      }
-      window.UtterancesThemeLight = light;
-      window.UtterancesThemeDark = dark;
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
-      s.setAttribute('issue-term', 'pathname');
-      
-      s.setAttribute('label', 'utterances');
-      
-      s.setAttribute('theme', schema);
-      s.setAttribute('crossorigin', 'anonymous');
-      document.getElementById('comments').appendChild(s);
-    })
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -560,15 +339,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
@@ -610,45 +383,6 @@
 
 
 
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
-      };
-    </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
-
-  
 
 
 
