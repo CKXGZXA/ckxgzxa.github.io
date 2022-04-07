@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2022-04-07T11:06:02.336Z</updated>
+  <updated>2022-04-07T11:14:16.870Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="https://www.ckxgzxa.top/AndroidDistances.html"/>
     <id>https://www.ckxgzxa.top/AndroidDistances.html</id>
     <published>2022-04-07T10:17:47.000Z</published>
-    <updated>2022-04-07T11:06:02.336Z</updated>
+    <updated>2022-04-07T11:14:16.870Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="安卓常见距离单位"><a href="#安卓常见距离单位" class="headerlink" title="安卓常见距离单位"></a>安卓常见距离单位</h1><ul><li>px (像素) : 每个px对应屏幕上的一个点</li><li>dip 或 dp (device independent pixels， 设备独立像素) : 一种屏幕密度的抽象单位。 在每英寸 160 点的显示器上， 1dip = 1px， dip 与 px。 但随着屏幕密度的改变， dip 与 px 的换算会发生改变。</li><li>sp (scaled pixels， 比例像素) : 主要处理字体的大小， 可以根据用户的字体大小首选项进行缩放。</li><li>in (英寸) : 标准长度单位。</li><li>mm (毫米) : 标准长度单位。</li><li>pt (磅) : 标准长度单位。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="安卓常见距离单位"><a href="#安卓常见距离单位" class="headerlink" title="安卓常见距离单位"></a>安卓常见距离单位</h1><ul><li><strong>px (像素)</strong> : 每个px对应屏幕上的一个点</li><li><strong>dip 或 dp (device independent pixels， 设备独立像素)</strong> : 一种屏幕密度的抽象单位。 在每英寸 160 点的显示器上， 1dip = 1px， dip 与 px。 但随着屏幕密度的改变， dip 与 px 的换算会发生改变。</li><li><strong>sp (scaled pixels， 比例像素)</strong> : 主要处理字体的大小， 可以根据用户的字体大小首选项进行缩放。</li><li><strong>in (英寸)</strong> : 标准长度单位。</li><li><strong>mm (毫米)</strong> : 标准长度单位。</li><li><strong>pt (磅)</strong> : 标准长度单位。</li></ul>]]></content>
     
     
       
       
     <summary type="html">&lt;h1 id=&quot;安卓常见距离单位&quot;&gt;&lt;a href=&quot;#安卓常见距离单位&quot; class=&quot;headerlink&quot; title=&quot;安卓常见距离单位&quot;&gt;&lt;/a&gt;安卓常见距离单位&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;px (像素) : 每个px对应屏幕上的一个点&lt;/li&gt;
-&lt;li&gt;dip 或 d</summary>
+&lt;li&gt;&lt;strong&gt;px (像素)&lt;/strong&gt; : 每个px对应屏幕上的一个点</summary>
       
     
     

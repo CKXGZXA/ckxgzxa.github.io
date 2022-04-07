@@ -8,7 +8,7 @@
     <link href="/AndroidDistances.html"/>
     <url>/AndroidDistances.html</url>
     
-    <content type="html"><![CDATA[<h1 id="安卓常见距离单位"><a href="#安卓常见距离单位" class="headerlink" title="安卓常见距离单位"></a>安卓常见距离单位</h1><ul><li>px (像素) : 每个px对应屏幕上的一个点</li><li>dip 或 dp (device independent pixels， 设备独立像素) : 一种屏幕密度的抽象单位。 在每英寸 160 点的显示器上， 1dip = 1px， dip 与 px。 但随着屏幕密度的改变， dip 与 px 的换算会发生改变。</li><li>sp (scaled pixels， 比例像素) : 主要处理字体的大小， 可以根据用户的字体大小首选项进行缩放。</li><li>in (英寸) : 标准长度单位。</li><li>mm (毫米) : 标准长度单位。</li><li>pt (磅) : 标准长度单位。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="安卓常见距离单位"><a href="#安卓常见距离单位" class="headerlink" title="安卓常见距离单位"></a>安卓常见距离单位</h1><ul><li><strong>px (像素)</strong> : 每个px对应屏幕上的一个点</li><li><strong>dip 或 dp (device independent pixels， 设备独立像素)</strong> : 一种屏幕密度的抽象单位。 在每英寸 160 点的显示器上， 1dip = 1px， dip 与 px。 但随着屏幕密度的改变， dip 与 px 的换算会发生改变。</li><li><strong>sp (scaled pixels， 比例像素)</strong> : 主要处理字体的大小， 可以根据用户的字体大小首选项进行缩放。</li><li><strong>in (英寸)</strong> : 标准长度单位。</li><li><strong>mm (毫米)</strong> : 标准长度单位。</li><li><strong>pt (磅)</strong> : 标准长度单位。</li></ul>]]></content>
     
     
     <categories>
