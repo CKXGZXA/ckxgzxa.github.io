@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2022-04-07T10:20:26.834Z</updated>
+  <updated>2022-04-07T10:24:16.921Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.ckxgzxa.top/AndroidDistances.html"/>
     <id>https://www.ckxgzxa.top/AndroidDistances.html</id>
     <published>2022-04-07T10:17:47.000Z</published>
-    <updated>2022-04-07T10:20:26.834Z</updated>
+    <updated>2022-04-07T10:24:16.921Z</updated>
     
     <content type="html"><![CDATA[<h1 id="安卓常见距离单位"><a href="#安卓常见距离单位" class="headerlink" title="安卓常见距离单位"></a>安卓常见距离单位</h1>]]></content>
     
@@ -35,8 +35,12 @@
     
     <category term="学习笔记" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
+    <category term="Android" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Android/"/>
     
-    <category term="-Android -移动开发" scheme="https://www.ckxgzxa.top/tags/Android-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Android" scheme="https://www.ckxgzxa.top/tags/Android/"/>
+    
+    <category term="移动开发" scheme="https://www.ckxgzxa.top/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
