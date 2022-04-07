@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年3月25日 晚上
+                  本文最后更新于：2022年4月6日 晚上
                 
               </p>
             
@@ -379,7 +379,7 @@
 
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309194232911.png"></p>
 <h2 id="4-安装JDK"><a href="#4-安装JDK" class="headerlink" title="4. 安装JDK"></a>4. 安装JDK</h2><p>需要在每台机器上安装JDK,将jdk压缩包传到服务器<code>/usr/local</code>目录下并解压,修改环境变量:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102<br><span class="hljs-built_in">export</span> JRE_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102/jre<br><span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span> <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102<br><span class="hljs-built_in">export</span> JRE_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102/jre<br><span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span> <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>配置完成,并使用scp命令将jdk复制到其他节点:</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309205340946.png"></p>
@@ -650,14 +650,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cp conf/spark-env.sh.template conf/spark-env.sh<br></code></pre></td></tr></table></figure>
 
 <p>并在其中添加以下语句:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80 <span class="hljs-built_in">export</span> SCALA_HOME=/usr/<span class="hljs-built_in">local</span>/scala-2.10.6 <span class="hljs-built_in">export</span> SPARK_MASTER_IP=cluster1<br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/etc/hadoop<br><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/bin/hadoop classpath) <span class="hljs-built_in">export</span> SPARK_CLASSPATH=<span class="hljs-variable">$HIVE_HOME</span>/lib/mysql-connector-java-5.1.43-bin.jar <span class="hljs-built_in">export</span> SPARK_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80 <br><span class="hljs-built_in">export</span> SCALA_HOME=/usr/<span class="hljs-built_in">local</span>/scala-2.10.6 <br><span class="hljs-built_in">export</span> SPARK_MASTER_IP=cluster1<br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/etc/hadoop<br><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/bin/hadoop classpath) <br><span class="hljs-built_in">export</span> SPARK_CLASSPATH=<span class="hljs-variable">$HIVE_HOME</span>/lib/mysql-connector-java-5.1.43-bin.jar <br><span class="hljs-built_in">export</span> SPARK_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
 
 <p>在conf下新建slaves文件,内容为:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">cluster1</span><br>cluster2<br>cluster3<br></code></pre></td></tr></table></figure>
 
 <p>将 hive 目录下 conf 文件夹中的 hive-site.xml 复制到 spark 的 conf 目录下,</p>
 <p>将 hadoop/etc/hadoop 文件中的 hdfs-site.xml 和 core-site.xml 文件复制到 spark 的 conf 目录下,</p>
-<p>将 conf 目录下的 spark-defaults.conf.template 复制一份，改名为 spark-default.conf ,并在最下面加上一行:<code>spark.files file:///usr/local/spark-1.6.3-bin-hadoop2.6/conf/hdfs-site.xml,file:///usr/local/spark-1.6.3-bin- hadoop2.6/conf/core-site.xml</code></p>
+<p>将 conf 目录下的 spark-defaults.conf.template 复制一份，改名为 spark-default.conf ,并在最下面加上一行:<code>spark.files file:///usr/local/spark-1.6.3-bin-hadoop2.6/conf/hdfs-site.xml,file:///usr/local/spark-1.6.3-binhadoop2.6/conf/core-site.xml</code></p>
 <p>复制到所有的服务器上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6 cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
 

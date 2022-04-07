@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      58 字
+      851 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -246,14 +246,55 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年3月26日 上午
+                  本文最后更新于：2022年3月27日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="CSS学习"><a href="#CSS学习" class="headerlink" title="CSS学习"></a>CSS学习</h1><p>CSS全称为“层叠样式表 (Cascading Style Sheets)”，它主要是用于定义HTML内容在浏览器内的显示样式，如文字大小、颜色、字体加粗等。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">p&#123;<br>   font-size:12px;<br>   color:red;<br>   font-weight:bold;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202203271734537.jpeg" alt="img"></p>
+<p><strong>选择符：</strong>又称选择器，指明网页中要应用样式规则的元素，如本例中是网页中所有的段（p）的文字将变成蓝色，而其他的元素（如ol）不会受到影响。</p>
+<p><strong>声明：</strong>在英文大括号“｛｝”中的的就是声明，属性和值之间用英文冒号“：”分隔。当有多条声明时，中间可以英文分号“;”分隔，如下所示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;<span class="hljs-attribute">color</span>:red;&#125;<br></code></pre></td></tr></table></figure>
 
+<p>注意：</p>
+<p>1、最后一条声明可以没有分号，但是为了以后修改方便，一般也加上分号。</p>
+<p>2、为了使用样式更加容易阅读，可以将每条代码写在一个新行内，如下所示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;<br>   <span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;<br>   <span class="hljs-attribute">color</span>:red;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>就像在Html的注释一样，在CSS中也有注释语句：用<code>/*注释语句*/</code>来标明（Html中使用<code>&lt;!--注释语句--&gt;</code>)。就像下面代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>; <span class="hljs-comment">/*设置文字子号为12px*/</span><br>    <span class="hljs-attribute">color</span>: red; <span class="hljs-comment">/*设置文字颜色为红色*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h3><p><em>不要在属性值与单位之间留有空格（如：”margin-left: 20 px” ），正确的写法是 “margin-left: 20px” 。</em></p>
+<h4 id="内联式"><a href="#内联式" class="headerlink" title="内联式"></a>内联式</h4><p>CSS样式可以写在哪些地方呢？从CSS 样式代码插入的形式来看基本可以分为以下3种：内联式、嵌入式和外部式三种。这一小节先来讲解内联式。</p>
+<p><code>内联式</code>css样式表就是把css代码直接写在现有的HTML标签中，如下面代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:red&quot;</span>&gt;</span>这里文字是红色。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>注意要写在元素的开始标签里，下面这种写法是错误的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这里文字是红色。&lt;/p style=&quot;color:red&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>并且css样式代码要写在style=””双引号中，如果有多条css样式代码设置可以写在一起，中间用分号隔开。如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:red;font-size:12px&quot;</span>&gt;</span>这里文字是红色。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="嵌入式-内部"><a href="#嵌入式-内部" class="headerlink" title="嵌入式/内部"></a>嵌入式/内部</h4><p>嵌入式css样式，就是可以把css样式代码写在**<style type="text/css"></style>**标签之间。如下面代码实现把三个<span>标签中的文字设置为红色：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span><br><span class="css"><span class="hljs-selector-tag">span</span>&#123;</span><br><span class="css"><span class="hljs-attribute">color</span>:red;</span><br><span class="css">&#125;</span><br><span class="css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>嵌入式css样式必须写在<code>&lt;style&gt;``&lt;/style&gt;</code>之间，并且一般情况下嵌入式css样式写在<code>&lt;head&gt;``&lt;/head&gt;</code>之间。如右边编辑器中的代码。</p>
+<h4 id="外部式"><a href="#外部式" class="headerlink" title="外部式"></a>外部式</h4><p>外部式css样式(也可称为外联式)就是把css代码写一个单独的外部文件中，这个css样式文件以“<code>.css</code>”为扩展名，在<code>&lt;head&gt;</code>内（不是在<code>&lt;style&gt;</code>标签内）使用<code>&lt;link&gt;</code>标签将css样式文件链接到HTML文件内，如下面代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mystyle.css&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>mystyle.css : </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">hr &#123;<span class="hljs-attribute">color</span>:sienna;&#125;<br><span class="hljs-selector-tag">p</span> &#123;<span class="hljs-attribute">margin-left</span>:<span class="hljs-number">20px</span>;&#125;<br><span class="hljs-selector-tag">body</span> &#123;<span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;/images/back40.gif&quot;</span>);&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li><p>css样式文件名称以有意义的英文字母命名，如 main.css。</p>
+</li>
+<li><p>rel=”stylesheet” type=”text/css” 是固定写法不可修改。</p>
+</li>
+<li><p><code>&lt;link&gt;</code>标签位置一般写在<code>&lt;head&gt;</code>标签之内。</p>
+</li>
+</ol>
 
             </div>
             <hr>
