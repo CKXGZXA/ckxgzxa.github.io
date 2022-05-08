@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年4月20日 下午
+                  本文最后更新于：2022年4月29日 上午
                 
               </p>
             
@@ -319,7 +319,7 @@
 <li>“参数列表”表示方法的参数，其语法与属性的定义相似 ，参数个数是任意的，多个参数之间用逗号” , “隔开 。</li>
 <li>“返回类型”是一个可选性，表示方法的返回值类型，依赖于具体的编程语言，可以是基本数据类型，也可以是用户自定义类型，还可以是空类型(void) ，<em>如果是构造方法， 则无返回类型</em>。</li>
 </ol>
-<h3 id="2-3-类之间的关系"><a href="#2-3-类之间的关系" class="headerlink" title="2.3 类之间的关系"></a>2.3 类之间的关系</h3><p>在软件系统中类并不是孤立存在的 ，类与类之间存在各种关系， 对千不同类型的关系， UML 提供了不同的表示方式。</p>
+<h3 id="2-3-类之间的关系"><a href="#2-3-类之间的关系" class="headerlink" title="2.3 类之间的关系"></a>2.3 类之间的关系</h3><p>在软件系统中类并不是孤立存在的 ，类与类之间存在各种关系， 对于不同类型的关系， UML 提供了不同的表示方式。</p>
 <h4 id="2-3-1-关联关系"><a href="#2-3-1-关联关系" class="headerlink" title="2.3.1 关联关系"></a>2.3.1 关联关系</h4><p><strong>关联(Association)关系</strong>是类与类之间最常用的一种关系，它是一种结构化关系，用于表示一类对象与另一类对象之间有联系， 如汽车和轮胎 、 师傅和徒弟 、 班级和学生等。</p>
 <p>在UML类图中用<strong>实线</strong>连接有关联关系的对象所对应的类，在使用 Java 、 C ＃和 C＋＋等编程语言实现关联关系时，通常将一个类的对象作为另一个类的成员变量。</p>
 <p>在使用类图表示关联关系时可以在关联线上标注角色名，一般使用一个表示两者之间关系的动词或者名词表示角色名（有时该名词为实例对象名） ，关系的两端代表两种不同的角色，因此在一个关联关系中可以包含两个角色名，角色名不是必须的 ，可以根据需要增加 ， 其目的是使类之间的关系更加明确 。</p>
@@ -464,6 +464,7 @@
 <p>对应的Java代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Vehicle</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">move</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ship</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Vehicle</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">move</span><span class="hljs-params">()</span> </span>&#123;<br>        ...<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Vehicle</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">move</span><span class="hljs-params">()</span> </span>&#123;<br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
             </div>
             <hr>
             <div>
@@ -492,12 +493,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/comparasonofJava-Kotlin.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java和Kotlin的对照</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/InterfaceNaming.html">
-                        <span class="hidden-mobile">接口的基本命名规则</span>
+                        <span class="hidden-mobile">java.util.function 接口的基本命名规则</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
