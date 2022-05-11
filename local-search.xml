@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Android常见限定符(自适应不同屏幕的资源)</title>
+    <link href="/AndroidQuilifiers.html"/>
+    <url>/AndroidQuilifiers.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Android中常见的限定符-自适应不同屏幕的资源"><a href="#Android中常见的限定符-自适应不同屏幕的资源" class="headerlink" title="Android中常见的限定符(自适应不同屏幕的资源)"></a>Android中常见的限定符(自适应不同屏幕的资源)</h2><table>    <caption>Android中常见的限定符</caption>    <tr>        <th>屏幕特征</th>        <th>限定符</th>        <th>描述</th>    </tr>    <tr>        <td rowspan=4>大小</td>        <td>small</td>        <td>提供给小屏幕设备的资源</td>    </tr>    <tr>        <td>mormal</td>        <td>提供给中等屏幕设备的资源</td>    </tr>    <tr>        <td>large</td>        <td>提供给大屏幕设备的资源</td>    </tr>    <tr>        <td>xlarge</td>        <td>提供给超大屏幕设备的资源</td>    </tr>    <tr>        <td rowspan=5>分辨率</td>        <td>ldpi</td>        <td>提供给低分辨率设备的资源（120 dpi以下）</td>    </tr>    <tr>        <td>mdpi</td>        <td>提供给中等分辨率设备的资源（120 dpi~160 dpi）</td>    </tr>       <tr>        <td>hdpi</td>        <td>提供给高分辨率设备的资源（160 dpi~240 dpi）</td>    </tr>    <tr>        <td>xhdpi</td>        <td>提供给超高分辨率设备的资源（240 dpi~320 dpi）</td>    </tr>    <tr>        <td>xxhdpi</td>        <td>提供给超超高分辨率设备的资源（320 dpi~480 dpi）</td>    </tr>    <tr>        <td rowspan=2>方向</td>        <td>land</td>        <td>提供给横屏设备的资源</td>    </tr>    <tr>        <td>port</td>        <td>提供给竖屏设备的资源</td>    </tr></table><p>下面是上面4种屏幕尺寸所需的最低尺寸</p><ul><li>xlarge屏幕尺寸至少需要 960dp × 720dp</li><li>large屏幕尺寸至少需要 640dp × 480dp</li><li>normal屏幕尺寸至少需要 470dp × 320dp</li><li>small屏幕尺寸至少需要426dp × 320dp</li></ul><blockquote><p>从Android3.2开始，Android的建议直接使用真实的屏幕尺寸来定义屏幕尺寸。</p><p>Android 3.2 支持在layout、 values 目录后添加 </p><p>sw&lt;N&gt;dp （屏幕尺寸至少宽 N 个 dp 才能使用该资源）、</p><p>w&lt;N&gt;dp（屏幕尺寸可用宽度为N个dp可使用该资源）、</p><p>h&lt;N&gt;dp （屏幕尺寸可用高度为N个dp才能使用该资源）、</p><p>例如可指定layout-sw600dp，表明该设备屏幕的宽度大于或等于600个dp时使用该目录下的布局资源。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Android</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android</tag>
+      
+      <tag>移动开发</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java和Kotlin的对照</title>
     <link href="/comparasonofJava-Kotlin.html"/>
     <url>/comparasonofJava-Kotlin.html</url>

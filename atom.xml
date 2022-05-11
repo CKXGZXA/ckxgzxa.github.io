@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2022-05-08T04:44:49.969Z</updated>
+  <updated>2022-05-11T15:08:16.974Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android常见限定符(自适应不同屏幕的资源)</title>
+    <link href="https://www.ckxgzxa.top/AndroidQuilifiers.html"/>
+    <id>https://www.ckxgzxa.top/AndroidQuilifiers.html</id>
+    <published>2022-05-11T14:37:47.000Z</published>
+    <updated>2022-05-11T15:08:16.974Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Android中常见的限定符-自适应不同屏幕的资源"><a href="#Android中常见的限定符-自适应不同屏幕的资源" class="headerlink" title="Android中常见的限定符(自适应不同屏幕的资源)"></a>Android中常见的限定符(自适应不同屏幕的资源)</h2><table>    <caption>Android中常见的限定符</caption>    <tr>        <th>屏幕特征</th>        <th>限定符</th>        <th>描述</th>    </tr>    <tr>        <td rowspan=4>大小</td>        <td>small</td>        <td>提供给小屏幕设备的资源</td>    </tr>    <tr>        <td>mormal</td>        <td>提供给中等屏幕设备的资源</td>    </tr>    <tr>        <td>large</td>        <td>提供给大屏幕设备的资源</td>    </tr>    <tr>        <td>xlarge</td>        <td>提供给超大屏幕设备的资源</td>    </tr>    <tr>        <td rowspan=5>分辨率</td>        <td>ldpi</td>        <td>提供给低分辨率设备的资源（120 dpi以下）</td>    </tr>    <tr>        <td>mdpi</td>        <td>提供给中等分辨率设备的资源（120 dpi~160 dpi）</td>    </tr>       <tr>        <td>hdpi</td>        <td>提供给高分辨率设备的资源（160 dpi~240 dpi）</td>    </tr>    <tr>        <td>xhdpi</td>        <td>提供给超高分辨率设备的资源（240 dpi~320 dpi）</td>    </tr>    <tr>        <td>xxhdpi</td>        <td>提供给超超高分辨率设备的资源（320 dpi~480 dpi）</td>    </tr>    <tr>        <td rowspan=2>方向</td>        <td>land</td>        <td>提供给横屏设备的资源</td>    </tr>    <tr>        <td>port</td>        <td>提供给竖屏设备的资源</td>    </tr></table><p>下面是上面4种屏幕尺寸所需的最低尺寸</p><ul><li>xlarge屏幕尺寸至少需要 960dp × 720dp</li><li>large屏幕尺寸至少需要 640dp × 480dp</li><li>normal屏幕尺寸至少需要 470dp × 320dp</li><li>small屏幕尺寸至少需要426dp × 320dp</li></ul><blockquote><p>从Android3.2开始，Android的建议直接使用真实的屏幕尺寸来定义屏幕尺寸。</p><p>Android 3.2 支持在layout、 values 目录后添加 </p><p>sw&lt;N&gt;dp （屏幕尺寸至少宽 N 个 dp 才能使用该资源）、</p><p>w&lt;N&gt;dp（屏幕尺寸可用宽度为N个dp可使用该资源）、</p><p>h&lt;N&gt;dp （屏幕尺寸可用高度为N个dp才能使用该资源）、</p><p>例如可指定layout-sw600dp，表明该设备屏幕的宽度大于或等于600个dp时使用该目录下的布局资源。</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Android中常见的限定符-自适应不同屏幕的资源&quot;&gt;&lt;a href=&quot;#Android中常见的限定符-自适应不同屏幕的资源&quot; class=&quot;headerlink&quot; title=&quot;Android中常见的限定符(自适应不同屏幕的资源)&quot;&gt;&lt;/a&gt;Android中常见</summary>
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Android" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Android/"/>
+    
+    
+    <category term="Android" scheme="https://www.ckxgzxa.top/tags/Android/"/>
+    
+    <category term="移动开发" scheme="https://www.ckxgzxa.top/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Java和Kotlin的对照</title>
@@ -478,30 +506,6 @@
     
     <category term="百度高效研发实战训练营" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%99%BE%E5%BA%A6%E9%AB%98%E6%95%88%E7%A0%94%E5%8F%91%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>在服务器上搭建jupyter notebook</title>
-    <link href="https://www.ckxgzxa.top/buildJupyterOnServer.html"/>
-    <id>https://www.ckxgzxa.top/buildJupyterOnServer.html</id>
-    <published>2021-11-08T13:46:21.000Z</published>
-    <updated>2022-03-25T14:25:16.322Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="如何在服务器上搭建jupyter-notebook"><a href="#如何在服务器上搭建jupyter-notebook" class="headerlink" title="如何在服务器上搭建jupyter notebook"></a>如何在服务器上搭建jupyter notebook</h1><h2 id="1-准备一台Linux云服务器"><a href="#1-准备一台Linux云服务器" class="headerlink" title="1. 准备一台Linux云服务器"></a>1. 准备一台Linux云服务器</h2><h2 id="2-新建一个用户"><a href="#2-新建一个用户" class="headerlink" title="2. 新建一个用户"></a>2. 新建一个用户</h2><p>我的习惯是是不在root用户下运行 jupyter notebook 服务,</p><p>因此我建议新建一个<code>jupyter</code>的用户:</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">adduser jupyter</span><br></code></pre></td></tr></table></figure><p>然后切换到此用户</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">su jupyter</span><br></code></pre></td></tr></table></figure><h2 id="3-安装-Anaconda"><a href="#3-安装-Anaconda" class="headerlink" title="3. 安装 Anaconda"></a>3. 安装 Anaconda</h2><p>下载Anaconda最新安装程序 <a href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure><p>运行安装程序:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh Anaconda3-2021.05-Linux-x86_64.sh<br></code></pre></td></tr></table></figure><p>安装过程中敲回车和输入yes同意许可即可</p><p>安装完成重新登录即可</p><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082211398.png" alt="image-20211108221130339"></p><h2 id="4-搭建-Jupyter-Notebook-环境"><a href="#4-搭建-Jupyter-Notebook-环境" class="headerlink" title="4. 搭建 Jupyter Notebook 环境"></a>4. 搭建 Jupyter Notebook 环境</h2><ul><li>安装jupyter包</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install jupyter <br></code></pre></td></tr></table></figure><ul><li>生成默认配置文件</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook --generate-config<br></code></pre></td></tr></table></figure><ul><li>随后我们往配置文件写入一些内容</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 设置可以访问的ip, 默认是localhost, 将其改为 &#x27;*&#x27;</span><br>c.NotebookApp.ip = <span class="hljs-string">&#x27;*&#x27;</span><br><br><span class="hljs-comment"># 笔记本的默认打开目录, 自己设置</span><br>c.NotebookApp.notebook_dir = <span class="hljs-string">&#x27;/home/jupyter/documents/jupyter_notebook&#x27;</span><br><br><span class="hljs-comment"># 笔记本启动后是否打开浏览器, 设为 False即可</span><br>c.NotebookApp.open_browser = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 默认访问端口, 可自己修改</span><br>c.NotebookApp.port = <span class="hljs-number">8888</span><br><br><span class="hljs-comment"># jupyterlab是否显示quit按钮,我设为false以免自己不小心按到把服务停了</span><br>c.NotebookApp.quit_button = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># 如果使用root用户运行,将下列值改为True即可, 运行时也可加参数将其改为True</span><br>c.NotebookApp.allow_root = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure><ul><li>修改好配置文件之后, 运行如下命令启动笔记本</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure><ul><li>第一次运行会给出带token的链接, 复制到浏览器中打开, 点击登出</li></ul><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082241916.png" alt="image-20211108224139818"></p><ul><li><p>随后进入login界面, 输入刚刚链接中的 token值和新密码即可修改密码:</p><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082243891.png" alt="image-20211108224309795"></p></li><li><p>设置好密码之后我们重启jupyter服务, 再次进入,发现就能用我们刚刚设置的密码登录了</p></li></ul><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082245031.png" alt="image-20211108224540995"></p><ul><li>随便上传一个笔记本试试</li></ul><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082326683.png" alt="image-20211108232637635"></p><ul><li>发现已经ok了</li></ul><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/202111082327360.png" alt="image-20211108232733266"></p><h2 id="5-让-jupyter-在服务器上持久运行"><a href="#5-让-jupyter-在服务器上持久运行" class="headerlink" title="5. 让 jupyter 在服务器上持久运行"></a>5. 让 jupyter 在服务器上持久运行</h2><ul><li>发现断开 SSH 连接之后, jupyter服务就会停止运行,我们利用<code>screen</code> 命令让jupyter服务一直运行</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">screen -S notebook<br></code></pre></td></tr></table></figure><ul><li>然后启动jupyter服务</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure><ul><li>随后按 <code>Ctrl + A + D </code>将服务挂到后台即可</li></ul><h2 id="6-End"><a href="#6-End" class="headerlink" title="6. End"></a>6. End</h2><p>本次教程简单记录而已, 如有帮助,本人不胜感激.</p><blockquote><p>如有错误或不当之处, 请在下方评论, 我看到将对其进行修改和改进</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;如何在服务器上搭建jupyter-notebook&quot;&gt;&lt;a href=&quot;#如何在服务器上搭建jupyter-notebook&quot; class=&quot;headerlink&quot; title=&quot;如何在服务器上搭建jupyter notebook&quot;&gt;&lt;/a&gt;如何在服务器上搭建ju</summary>
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="机器学习" scheme="https://www.ckxgzxa.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
