@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Kotlin运算符重载重载函数表</title>
+    <link href="/Kotlin-operator-SyntacticSugar.html"/>
+    <url>/Kotlin-operator-SyntacticSugar.html</url>
+    
+    <content type="html"><![CDATA[<table>    <caption><strong>Kotlin运算符重载语法糖表达式和实际调用函数对照表</strong></caption>    <tr>        <th>语法糖表达式</th>        <th>实际调用函数</th>    </tr>    <tr>        <td>a + b</td>        <td>a.plus(b)</td>    </tr>    <tr>        <td>a - b</td>        <td>a.minus(b)</td>    </tr>    <tr>        <td>a * b</td>        <td>a.times(b)</td>    </tr>    <tr>        <td>a / b</td>        <td>a.div(b)</td>    </tr>    <tr>        <td>a % b</td>        <td>a.rem(b)</td>    </tr>    <tr>        <td>a++</td>        <td>a.inc()</td>    </tr>    <tr>        <td>a--</td>        <td>a.dec()</td>    </tr>    <tr>        <td>+a</td>        <td>a.unaryPlus()</td>    </tr>    <tr>        <td>-a</td>        <td>a.unaryMinus()</td>    </tr>    <tr>        <td>!a</td>        <td>a.not()</td>    </tr>    <tr>        <td>a==b</td>        <td rowspan=4>a.equals(b)</td>    </tr>    <tr>        <td>a == b</td>    </tr>    <tr>        <td>a > b</td>    </tr>    <tr>        <td>a < b</td>    </tr>    <tr>        <td>a >= b</td>    </tr>    <tr>        <td>a <= b</td>        <td>a.compareTo(b)</td>    </tr>       <tr>        <td>a..b</td>        <td>a.rangeTo(b)</td>    </tr>    <tr>        <td>a[b]</td>        <td>a.get(b)</td>    </tr>    <tr>        <td>a[b] = c</td>        <td>a.set(b, c)</td>    </tr>    <tr>        <td>a in b</td>        <td>b.contains(a)</td>    </tr></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>Kotlin</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android常见限定符(自适应不同屏幕的资源)</title>
     <link href="/AndroidQuilifiers.html"/>
     <url>/AndroidQuilifiers.html</url>
