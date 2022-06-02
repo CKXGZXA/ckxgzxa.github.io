@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>npm 常见命令</title>
+    <link href="/npm-common-commands.html"/>
+    <url>/npm-common-commands.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="npm常用命令"><a href="#npm常用命令" class="headerlink" title="npm常用命令"></a>npm常用命令</h2><h3 id="1-构建项目"><a href="#1-构建项目" class="headerlink" title="1. 构建项目"></a>1. 构建项目</h3><p>初始化一个基于node的项目, 会创建一个配置文件<code>package.json</code>(两种方式):</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 1. 一般情况下, 全部enter</span><br>npm init<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 2. 全部使用默认配置</span><br>npm init --yes<br></code></pre></td></tr></table></figure><h3 id="2-安装模块-包"><a href="#2-安装模块-包" class="headerlink" title="2. 安装模块(包)"></a>2. 安装模块(包)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 全局安装</span><br>npm install 模块名 -g<br><span class="hljs-meta">#</span><span class="bash"> 本地安装</span><br>npm install 模块名<br><span class="hljs-meta">#</span><span class="bash"> 一次性安装多个</span><br>npm install 模块名1 模块名2 模块名n --save<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 安装运行时依赖包</span><br>npm install 模块名 --save<br></code></pre></td></tr></table></figure><h3 id="3-查看安装目录"><a href="#3-查看安装目录" class="headerlink" title="3. 查看安装目录"></a>3. 查看安装目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查看本地安装的目录</span><br>npm root<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看全局安装的目录</span><br>npm root -g<br></code></pre></td></tr></table></figure><h3 id="4-卸载模块-包"><a href="#4-卸载模块-包" class="headerlink" title="4. 卸载模块(包)"></a>4. 卸载模块(包)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 卸载本地模块</span><br>npm uninstall 模块名<br><span class="hljs-meta">#</span><span class="bash"> 加载全局模块</span><br>npm uninstall -g 模块名<br></code></pre></td></tr></table></figure><h3 id="5-更新模块-包"><a href="#5-更新模块-包" class="headerlink" title="5. 更新模块(包)"></a>5. 更新模块(包)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm update 模块名<br>npm update 模块名 -g<br></code></pre></td></tr></table></figure><h3 id="6-查看当前安装的模块-包"><a href="#6-查看当前安装的模块-包" class="headerlink" title="6. 查看当前安装的模块(包)"></a>6. 查看当前安装的模块(包)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm ls<br>npm ls -g<br></code></pre></td></tr></table></figure><h3 id="7-命令配置"><a href="#7-命令配置" class="headerlink" title="7. 命令配置"></a>7. 命令配置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-string">&quot;script&quot;</span> : &#123;<br><span class="hljs-attr">&quot;命令&quot;</span> : <span class="hljs-string">&quot;执行代码&quot;</span>,<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>执行配置的命令</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 必须加run</span><br>npm run 命令<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 特殊的命令 start 可不加run</span><br>npm start<br>或<br>npm run start<br></code></pre></td></tr></table></figure><h3 id="8-使用国内npm镜像源"><a href="#8-使用国内npm镜像源" class="headerlink" title="8. 使用国内npm镜像源"></a>8. 使用国内npm镜像源</h3><ol><li><p>使用配置:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm config set registry https://registry.npm.taobao.org<br></code></pre></td></tr></table></figure></li><li><p>使用<code>cnpm</code>:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 先安装cnpm工具</span><br>npm install -g cnpm --registry=https://registry.npm.taobao.org<br><span class="hljs-meta">#</span><span class="bash"> 使用cnpm代替npm</span><br>cnpm install 模块名<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node.js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Kotlin运算符重载重载函数表</title>
     <link href="/Kotlin-operator-SyntacticSugar.html"/>
     <url>/Kotlin-operator-SyntacticSugar.html</url>
