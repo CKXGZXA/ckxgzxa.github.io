@@ -24,22 +24,22 @@
   
   <title>虚拟机搭建Hadoop集群 - 技术匝记簿</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
     
   
 
   
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -64,7 +64,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
 </head>
 
 
@@ -289,7 +289,7 @@
 <p>可见两张网卡均未启用,</p>
 <p>接下来编辑第一张网卡的配置文件, 修改如下文件<code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code>,将其中的ONBOOT项修改为yes,使网卡能够开机自启,</p>
 <p>随后编辑第二章网卡的配置文件<code>etc/sysconfig/network-scripts/ifcfg-enp0s8</code>, 将BOOTPROTO设置为none, ONBOOT同样改为yes,并新增如下项:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">IPADDR</span>=<span class="hljs-number">192.168.56.121</span>  # cluster<span class="hljs-number">2</span>为<span class="hljs-number">192.168.56.122</span>, cluster<span class="hljs-number">3</span>为<span class="hljs-number">192.168.56.123</span><br><span class="hljs-attribute">NETMASK</span>=<span class="hljs-number">255.255.255.0</span><br><span class="hljs-attribute">NETWORK</span>=<span class="hljs-number">192.168.56.0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">IPADDR</span>=<span class="hljs-number">192.168</span>.<span class="hljs-number">56.121</span>  <span class="hljs-comment"># cluster2为192.168.56.122, cluster3为192.168.56.123</span><br><span class="hljs-attr">NETMASK</span>=<span class="hljs-number">255.255</span>.<span class="hljs-number">255.0</span><br><span class="hljs-attr">NETWORK</span>=<span class="hljs-number">192.168</span>.<span class="hljs-number">56.0</span><br></code></pre></td></tr></table></figure>
 
 <p>保存之后, 重启网络服务发现配置成功</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220308011832168.png"></p>
@@ -342,29 +342,29 @@
 <h2 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3. 安装MySQL"></a><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309011624607.png">3. 安装MySQL</h2><h3 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h3><p>只需要在cluster2上安装一个MySQL即可</p>
 <p>登录root用户以执行以下命令:</p>
 <p>若安装过MySQL先移除原有MySQL:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove mysql mysql-server mnysql-libs compat-mysql51<br>rm -rf /var/lib/mysql<br>rm -rf /etc/my.cnf<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove mysql mysql-server mnysql-libs compat-mysql51<br><span class="hljs-built_in">rm</span> -rf /var/lib/mysql<br><span class="hljs-built_in">rm</span> -rf /etc/my.cnf<br></code></pre></td></tr></table></figure>
 
 <p>将mysql-5.6.37-linux-glibc2.12-x86_64.tar.gz上传至cluster2,随后将其解压到/usr/local/目录下,并将解压后的文件目录名改为mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf mysql-5.6.37-linux-glibc2.12-x86_64.tar.gz<br>mv mysql-5.6.37-linux-glibc2.12-x86_64 mysql<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf mysql-5.6.37-linux-glibc2.12-x86_64.tar.gz<br><span class="hljs-built_in">mv</span> mysql-5.6.37-linux-glibc2.12-x86_64 mysql<br></code></pre></td></tr></table></figure>
 
 <p>将MySQL添加进环境变量:在/etc/profile末尾添加:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MYSQL_HOME=/usr/<span class="hljs-built_in">local</span>/mysql <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$MYSQL_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MYSQL_HOME=/usr/local/mysql <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$MYSQL_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>随后用source命令使其生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure>
 
 <p>新建MySQL用户:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">groupadd mysql<br>useradd -r -g mysql -s /bin/<span class="hljs-literal">false</span> mysql<br><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/mysql<br>chown -R mysql:mysql .<br>scripts/mysql_install_db --user=mysql<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">groupadd mysql<br>useradd -r -g mysql -s /bin/false mysql<br><span class="hljs-built_in">cd</span> /usr/local/mysql<br><span class="hljs-built_in">chown</span> -R mysql:mysql .<br>scripts/mysql_install_db --user=mysql<br></code></pre></td></tr></table></figure>
 
 <p>将当前目录的拥有者改为root</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chown -R root<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> -R root<br></code></pre></td></tr></table></figure>
 
 <p>修改当前data目录拥有者为mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">chown -R mysql data<br>bin/mysqld_safe --user=mysql &amp;<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> -R mysql data<br>bin/mysqld_safe --user=mysql &amp;<br></code></pre></td></tr></table></figure>
 
 <p>用<code>bin/mysql</code>命令登录MySQL,成功后使用<code>exit;</code>命令退出即可</p>
 <p>进行修改MySQL的root账户密码操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bin/mysql_secure_installation<br>cp support-files/mysql.server /etc/init.d/mysql.server<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bin/mysql_secure_installation<br><span class="hljs-built_in">cp</span> support-files/mysql.server /etc/init.d/mysql.server<br></code></pre></td></tr></table></figure>
 
 <p>查看MySQL的进程号并kill掉</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps -ef | grep mysql<br></code></pre></td></tr></table></figure>
@@ -379,23 +379,23 @@
 
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309194232911.png"></p>
 <h2 id="4-安装JDK"><a href="#4-安装JDK" class="headerlink" title="4. 安装JDK"></a>4. 安装JDK</h2><p>需要在每台机器上安装JDK,将jdk压缩包传到服务器<code>/usr/local</code>目录下并解压,修改环境变量:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102<br><span class="hljs-built_in">export</span> JRE_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.8.0_102/jre<br><span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span> <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/local/jdk1.8.0_102<br><span class="hljs-built_in">export</span> JRE_HOME=/usr/local/jdk1.8.0_102/jre<br><span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span> <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>配置完成,并使用scp命令将jdk复制到其他节点:</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309205340946.png"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80/ cluster2:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/jdk1.7.0_80/ cluster2:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>同样的方式将jdk目录写入环境变量</p>
 <h2 id="5-安装Zookeeper"><a href="#5-安装Zookeeper" class="headerlink" title="5. 安装Zookeeper"></a>5. 安装Zookeeper</h2><p>最终需要在每一台机器上安装ZooKeeper:</p>
 <p>在cluster1上将zookeeper的压缩包解压到/usr/local目录下,</p>
 <p>并写入环境变量:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> ZOOKEEPER_HOME=/usr/<span class="hljs-built_in">local</span>/zookeeper-3.4.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$ZOOKEEPER_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> ZOOKEEPER_HOME=/usr/local/zookeeper-3.4.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$ZOOKEEPER_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>随后在 /usr/local/zookeeper-3.4.6/conf/zoo.cfg中新建zoo.cfg文件,写入如下内容:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 客户端心跳时间(毫秒)    </span><br><span class="hljs-attr">tickTime</span>=<span class="hljs-number">2000</span><br><span class="hljs-comment"># 允许心跳间隔的最大时间</span><br><span class="hljs-attr">initLimit</span>=<span class="hljs-number">10</span> <br><span class="hljs-comment"># 同步时限</span><br><span class="hljs-attr">syncLimit</span>=<span class="hljs-number">5</span><br><span class="hljs-comment"># 数据存储目录</span><br><span class="hljs-attr">dataDir</span>=/home/hadoop_files/hadoop_data/zookeeper<br><span class="hljs-comment"># 数据日志存储目录</span><br><span class="hljs-attr">dataLogDir</span>=/home/hadoop_files/hadoop_logs/zookeeper/dataLog <br><span class="hljs-comment"># 端口号</span><br><span class="hljs-attr">clientPort</span>=<span class="hljs-number">2181</span><br><span class="hljs-comment"># 集群节点和服务端口配置</span><br><span class="hljs-attr">server.1</span>=cluster1:<span class="hljs-number">2888</span>:<span class="hljs-number">3888</span> <br><span class="hljs-attr">server.2</span>=cluster2:<span class="hljs-number">2888</span>:<span class="hljs-number">3888</span> <br><span class="hljs-attr">server.3</span>=cluster3:<span class="hljs-number">2888</span>:<span class="hljs-number">3888</span><br></code></pre></td></tr></table></figure>
 
 <p>接下来创建zookeeper的数据目录和日志存储目录, 并修改文件夹的权限:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_data/zookeeper<br>mkdir -p /home/hadoop_files/hadoop_logs/zookeeper/dataLog <br>mkdir -p /home/hadoop_files/hadoop_logs/zookeeper/logs<br><br>chown -R hadoop:hadoop /home/hadoop_files<br>chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/zookeeper-3.4.6<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_data/zookeeper<br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_logs/zookeeper/dataLog <br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_logs/zookeeper/logs<br><br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /home/hadoop_files<br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/zookeeper-3.4.6<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220309214332045.png"></p>
 <p>在 cluster1 号服务器的 data 目录中创建一个文件 myid，输入内容为 1, 且myid 应与 zoo.cfg 中的集群节点相匹配, cluster2和cluster3就写2和3</p>
@@ -409,10 +409,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;x<span class="hljs-variable">$&#123;ZOO_LOG_DIR&#125;</span>&quot;</span> = <span class="hljs-string">&quot;x&quot;</span> ]<br><span class="hljs-keyword">then</span><br>ZOO_LOG_DIR=<span class="hljs-string">&quot;/home/hadoop_files/hadoop_logs/zookeeper/logs&quot;</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;x<span class="hljs-variable">$&#123;ZOO_LOG4J_PROP&#125;</span>&quot;</span> = <span class="hljs-string">&quot;x&quot;</span> ]<br><span class="hljs-keyword">then</span><br>ZOO_LOG4J_PROP=<span class="hljs-string">&quot;INFO,ROLLINGFILE&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>然后修改conf/zookeeper的日志配置文件<code>log4j.properties</code>:</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-meta">zookeeper.root.logger</span>=<span class="hljs-string">INFO,ROLLINGFILE log4j.appender.ROLLINGFILE=org.apache.log4j.DailyRollingFileAppender</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">zookeeper.root.logger</span>=<span class="hljs-string">INFO,ROLLINGFILE log4j.appender.ROLLINGFILE=org.apache.log4j.DailyRollingFileAppender</span><br></code></pre></td></tr></table></figure>
 
 <p>将zookeeper-3.4.6的内容复制到其他两个节点上:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/zookeeper-3.4.6 cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/zookeeper-3.4.6 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/zookeeper-3.4.6 cluster2:/usr/local/ <br>scp -r /usr/local/zookeeper-3.4.6 cluster3:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>接下来切换到hadoop用户,使用<code>source /etc/profile</code>刷新环境变量,随后启动zookeeper:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zkServer.sh start<br></code></pre></td></tr></table></figure>
@@ -427,16 +427,16 @@
 <p>zookeeper的关闭命令是<code>zkServer.sh stop</code></p>
 <h2 id="6-安装Kafka"><a href="#6-安装Kafka" class="headerlink" title="6. 安装Kafka"></a>6. 安装Kafka</h2><h3 id="6-1-安装"><a href="#6-1-安装" class="headerlink" title="6.1 安装"></a>6.1 安装</h3><p>在cluster1上解压kafka到/usr/local</p>
 <p>然后添加环境变量:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> KAFKA_HOME=/usr/<span class="hljs-built_in">local</span>/kafka_2.10-0.8.2.1 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$KAFKA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> KAFKA_HOME=/usr/local/kafka_2.10-0.8.2.1 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$KAFKA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>随后修改<code>kafka/config/server.properties</code>文件:</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 1. 将brokers 的 id设为唯一的值,这里就把编号作为它的值, 即1,2,3</span><br><span class="hljs-meta">broker.id</span>=<span class="hljs-string">1</span><br><span class="hljs-comment"># 2. 修改日志路径</span><br><span class="hljs-meta">log.dirs</span>=<span class="hljs-string">/home/hadoop_files/hadoop_logs/kafka</span><br><span class="hljs-comment"># 3. zookeeper集群的ip和端口, 用逗号隔开</span><br><span class="hljs-meta">zookeeper.connect</span>=<span class="hljs-string">cluster1:2181,cluster2:2181,cluster3:2181</span><br><span class="hljs-comment"># 4. 对应机器的ip地址!</span><br><span class="hljs-meta">advertised.host.name</span>=<span class="hljs-string">192.168.56.121</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 1. 将brokers 的 id设为唯一的值,这里就把编号作为它的值, 即1,2,3</span><br><span class="hljs-attr">broker.id</span>=<span class="hljs-string">1</span><br><span class="hljs-comment"># 2. 修改日志路径</span><br><span class="hljs-attr">log.dirs</span>=<span class="hljs-string">/home/hadoop_files/hadoop_logs/kafka</span><br><span class="hljs-comment"># 3. zookeeper集群的ip和端口, 用逗号隔开</span><br><span class="hljs-attr">zookeeper.connect</span>=<span class="hljs-string">cluster1:2181,cluster2:2181,cluster3:2181</span><br><span class="hljs-comment"># 4. 对应机器的ip地址!</span><br><span class="hljs-attr">advertised.host.name</span>=<span class="hljs-string">192.168.56.121</span><br></code></pre></td></tr></table></figure>
 
 <p>创建logs文件夹:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_logs/kafka<br>chown -R hadoop:hadoop /home/hadoop_files<br>chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/kafka_2.10-0.8.2.1<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_logs/kafka<br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /home/hadoop_files<br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/kafka_2.10-0.8.2.1<br></code></pre></td></tr></table></figure>
 
 <p>之后使用 hadoop 用户启动 kafka 集群<br>先启动 zookeeper 集群，然后在 kafka 集群中的每个节点使用,下面是启动命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-server-start.sh /usr/<span class="hljs-built_in">local</span>/kafka_2.10-0.8.2.1/config/server.properties &amp;<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-server-start.sh /usr/local/kafka_2.10-0.8.2.1/config/server.properties &amp;<br></code></pre></td></tr></table></figure>
 
 <h3 id="6-2-测试"><a href="#6-2-测试" class="headerlink" title="6.2 测试"></a>6.2 测试</h3><p>使用hadoop用户执行命令,</p>
 <p>创建topic</p>
@@ -472,10 +472,10 @@
 <p>以下命令若无特殊说明,均使用 用户hadoop执行</p>
 <p>将 hadoop-2.6.5.tar.gz 解压到 /usr/local/ 目录下</p>
 <p>进入hadoop配置文件目录:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/etc/hadoop<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/local/hadoop-2.6.5/etc/hadoop<br></code></pre></td></tr></table></figure>
 
 <p>修改hadoop-env.sh文件:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80<br><span class="hljs-built_in">export</span> HADOOP_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/local/jdk1.7.0_80<br><span class="hljs-built_in">export</span> HADOOP_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
 
 <p>配置mapred-env.sh</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HADOOP_MAPRED_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
@@ -496,14 +496,14 @@
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">cluster1</span><br>cluster2 <br>cluster3<br></code></pre></td></tr></table></figure>
 
 <p>在所有节点上创建如下目录,即上述配置涉及的目录:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_data/hadoop/namenode <br>mkdir -p /home/hadoop_files/hadoop_data/hadoop/datanode<br>mkdir -p /home/hadoop_files/hadoop_tmp/hadoop/data/tmp<br>mkdir -p /home/hadoop_files/hadoop_logs/yarn<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_data/hadoop/namenode <br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_data/hadoop/datanode<br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_tmp/hadoop/data/tmp<br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_logs/yarn<br></code></pre></td></tr></table></figure>
 
 <p>将cluster1的hadoop工作目录同步到集群其他节点:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5 cluster2:/usr/<span class="hljs-built_in">local</span>/<br>scp -r /usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/hadoop-2.6.5 cluster2:/usr/local/<br>scp -r /usr/local/hadoop-2.6.5 cluster3:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>之后保证工作目录所有者为hadoop用户</p>
 <p>每台机器新建环境变量如下, 并使之生效:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HADOOP_HOME=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5<br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$HADOOP_HOME</span>/lib/native<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HADOOP_HOME</span>/bin:<span class="hljs-variable">$HADOOP_HOME</span>/sbin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HADOOP_HOME=/usr/local/hadoop-2.6.5<br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$HADOOP_HOME</span>/lib/native<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HADOOP_HOME</span>/bin:<span class="hljs-variable">$HADOOP_HOME</span>/sbin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>启动zookeeper集群后开始格式化:</p>
 <p>在所有节点上启动journalnode</p>
@@ -560,7 +560,7 @@
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310014808596.png" alt="image-20220310014808596"></p>
 <h2 id="8-安装HBase"><a href="#8-安装HBase" class="headerlink" title="8. 安装HBase"></a>8. 安装HBase</h2><h3 id="8-1-安装"><a href="#8-1-安装" class="headerlink" title="8.1 安装"></a>8.1 安装</h3><p><strong>HBase 启动的先决条件是 zookeeper 和Hadoop 已经启动</strong></p>
 <p>在cluster1上, 将hbase-1.2.6-bin.tar.gz解压到/usr/local/目录下,随后修改<code>/usr/local/hbase-1.2.6/conf/</code>目录下的hbase-env.sh如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置 JDK 安装路径</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80 <br><span class="hljs-comment"># 配置 Hadoop 安装路径</span><br><span class="hljs-built_in">export</span> HADOOP_HOME=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5 <br><span class="hljs-comment"># 设置 HBase 的日志目录</span><br><span class="hljs-built_in">export</span> HBASE_LOG_DIR=/home/hadoop_files/hadoop_logs/hbase/logs <br><span class="hljs-comment"># 使用独立的ZooKeeper 集群</span><br><span class="hljs-built_in">export</span> HBASE_MANAGES_ZK=<span class="hljs-literal">false</span> <br><span class="hljs-comment"># 设置 pid 的路径</span><br><span class="hljs-built_in">export</span> HBASE_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置 JDK 安装路径</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/usr/local/jdk1.7.0_80 <br><span class="hljs-comment"># 配置 Hadoop 安装路径</span><br><span class="hljs-built_in">export</span> HADOOP_HOME=/usr/local/hadoop-2.6.5 <br><span class="hljs-comment"># 设置 HBase 的日志目录</span><br><span class="hljs-built_in">export</span> HBASE_LOG_DIR=/home/hadoop_files/hadoop_logs/hbase/logs <br><span class="hljs-comment"># 使用独立的ZooKeeper 集群</span><br><span class="hljs-built_in">export</span> HBASE_MANAGES_ZK=<span class="hljs-literal">false</span> <br><span class="hljs-comment"># 设置 pid 的路径</span><br><span class="hljs-built_in">export</span> HBASE_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
 
 <p>配置hbase-site.xml</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.rootdir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://cluster1:9000/hbase<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.cluster.distributed<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.master<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>60000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.tmp.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>		    <br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop_files/hadoop_tmp/hbase/tmp<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.zookeeper.quorum<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>cluster1,cluster2,cluster3<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br> 	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.zookeeper.property.dataDir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop_files/hadoop_data/zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br> 	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.zookeeper.property.clientPort<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>2181<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>zookeeper.session.timeout<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>120000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.regionserver.restart.on.zk.expire<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.master.info.port<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>60010<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -569,16 +569,16 @@
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">cluster1</span><br>cluster2<br>cluster3<br></code></pre></td></tr></table></figure>
 
 <p>删除hbase的slf4j-log4j12-1.7.5.jar, 解决hbase和hadoop的LSF4J冲突,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mv /usr/<span class="hljs-built_in">local</span>/hbase-1.2.6/lib/slf4j-log4j12-1.7.5.jar /usr/<span class="hljs-built_in">local</span>/hbase-1.2.6/lib/slf4j-log4j12-1.7.5.jar.bk<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> /usr/local/hbase-1.2.6/lib/slf4j-log4j12-1.7.5.jar /usr/local/hbase-1.2.6/lib/slf4j-log4j12-1.7.5.jar.bk<br></code></pre></td></tr></table></figure>
 
 <p>将 hbase 工作目录同步到集群其它节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/hbase-1.2.6/ cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/hbase-1.2.6/ cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/hbase-1.2.6/ cluster2:/usr/local/ <br>scp -r /usr/local/hbase-1.2.6/ cluster3:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>在所有节点创建 hbase 的缓存文件目录和日志文件目录,并修改相应权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_tmp/hbase/tmp<br>mkdir -p /home/hadoop_files/hadoop_logs/hbase/logs<br>chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/hbase-1.2.6 <br>chown -R hadoop:hadoop /home/hadoop_files<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_tmp/hbase/tmp<br><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_logs/hbase/logs<br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/hbase-1.2.6 <br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /home/hadoop_files<br></code></pre></td></tr></table></figure>
 
 <p>Hbase的环境变量如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HBASE_HOME=/usr/<span class="hljs-built_in">local</span>/hbase-1.2.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HBASE_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HBASE_HOME=/usr/local/hbase-1.2.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HBASE_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>在cluster1上,先启动zookeeper, Hadoop的HDFS和YARN,然后才能启动HBase,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">start-dfs.sh<br>start-yarn.sh<br>start-hbase.sh<br></code></pre></td></tr></table></figure>
@@ -590,18 +590,18 @@
 <h3 id="8-2-测试"><a href="#8-2-测试" class="headerlink" title="8.2 测试"></a>8.2 测试</h3><p>打开<a target="_blank" rel="noopener" href="http://192.168.56.121:60010/">http://192.168.56.121:60010</a>查看Hbase的web界面</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310090107851.png"></p>
 <p>在cluster1上, 输入<code>hbase shell</code> 进入hbase shell.键入以下命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">hbase&gt;</span><span class="bash"> create <span class="hljs-string">&#x27;userinfotable&#x27;</span>,&#123;NAME=&gt;<span class="hljs-string">&#x27;username&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;fullname&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;homedir&#x27;</span>&#125;</span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r1&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;vcsa&#x27;</span></span><br><span class="hljs-meta">hbase&gt;</span><span class="bash"> put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r2&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;sasuser&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> scan <span class="hljs-string">&#x27;userinfotable&#x27;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash">create <span class="hljs-string">&#x27;userinfotable&#x27;</span>,&#123;NAME=&gt;<span class="hljs-string">&#x27;username&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;fullname&#x27;</span>&#125;,&#123;NAME=&gt;<span class="hljs-string">&#x27;homedir&#x27;</span>&#125;</span> <br><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash">put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r1&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;vcsa&#x27;</span></span><br><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash">put <span class="hljs-string">&#x27;userinfotable&#x27;</span>,<span class="hljs-string">&#x27;r2&#x27;</span>,<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;sasuser&#x27;</span></span> <br><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash">scan <span class="hljs-string">&#x27;userinfotable&#x27;</span></span><br></code></pre></td></tr></table></figure>
 
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310091241471.png" alt="image-20220310091241471"></p>
 <p>在 web 界面也可以看到刚才建立的表:</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310091504388.png" alt="image-20220310091504388"></p>
 <p>删除刚才建立的表：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">hbase&gt;</span><span class="bash"> <span class="hljs-built_in">disable</span> <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> drop <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta">hbase&gt;</span><span class="bash"> <span class="hljs-built_in">exit</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash"><span class="hljs-built_in">disable</span> <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash">drop <span class="hljs-string">&#x27;userinfotable&#x27;</span></span> <br><span class="hljs-meta prompt_">hbase&gt; </span><span class="language-bash"><span class="hljs-built_in">exit</span></span><br></code></pre></td></tr></table></figure>
 
 <h2 id="9-安装Hive"><a href="#9-安装Hive" class="headerlink" title="9. 安装Hive"></a>9. 安装Hive</h2><h3 id="9-1-安装"><a href="#9-1-安装" class="headerlink" title="9.1 安装"></a>9.1 安装</h3><p><strong>hive 能启动的先决条件是 MySQL 已经安装并配置完成，而且 HDFS 也要启动之后才能运行 hive</strong></p>
 <p>将apache-hive-1.1.0-bin.tar.gz上传到<code>/usr/local</code>并解压</p>
 <p>添加环境变量:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HIVE_HOME=/usr/<span class="hljs-built_in">local</span>/apache-hive-1.1.0-bin<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HIVE_HOME</span>/bin:<span class="hljs-variable">$HIVE_HOME</span>/conf:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HIVE_HOME=/usr/local/apache-hive-1.1.0-bin<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HIVE_HOME</span>/bin:<span class="hljs-variable">$HIVE_HOME</span>/conf:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>使用root用户登录MySQL:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -u root -p<br></code></pre></td></tr></table></figure>
@@ -632,25 +632,25 @@
 
 <h2 id="10-安装Scala"><a href="#10-安装Scala" class="headerlink" title="10. 安装Scala"></a>10. 安装Scala</h2><p>在cluster1上将scala-2.10.6.tgz解压到/usr/local/目录下,</p>
 <p>环境变量为:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SCALA_HOME=/usr/<span class="hljs-built_in">local</span>/scala-2.10.6<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SCALA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SCALA_HOME=/usr/local/scala-2.10.6<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SCALA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>刷新环境变量后用<code>scala -version</code>查看Scala版本验证安装:</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/BlogPictures/image-20220310115940338.png"></p>
 <p>复制到所有的服务器上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/scala-2.10.6 cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/scala-2.10.6 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/scala-2.10.6 cluster2:/usr/local/ <br>scp -r /usr/local/scala-2.10.6 cluster3:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>之后设置环境变量,并且修改文件夹权限:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/scala-2.10.6<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/scala-2.10.6<br></code></pre></td></tr></table></figure>
 
 <h2 id="11-安装Spark"><a href="#11-安装Spark" class="headerlink" title="11. 安装Spark"></a>11. 安装Spark</h2><h3 id="11-1-安装"><a href="#11-1-安装" class="headerlink" title="11.1 安装"></a>11.1 安装</h3><p>将spark-1.6.3-bin-hadoop2.6.tgz解压到/usr/local</p>
 <p>环境变量为:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SPARK_HOME=/usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SPARK_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-comment"># cluster1作为主节点需要再加一行</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SPARK_HOME</span>/sbin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SPARK_HOME=/usr/local/spark-1.6.3-bin-hadoop2.6 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SPARK_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-comment"># cluster1作为主节点需要再加一行</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$SPARK_HOME</span>/sbin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>在 conf 文件夹里面复制一份 template，改名为 spark-env.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cp conf/spark-env.sh.template conf/spark-env.sh<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> conf/spark-env.sh.template conf/spark-env.sh<br></code></pre></td></tr></table></figure>
 
 <p>并在其中添加以下语句:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/jdk1.7.0_80 <br><span class="hljs-built_in">export</span> SCALA_HOME=/usr/<span class="hljs-built_in">local</span>/scala-2.10.6 <br><span class="hljs-built_in">export</span> SPARK_MASTER_IP=cluster1<br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/etc/hadoop<br><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/usr/<span class="hljs-built_in">local</span>/hadoop-2.6.5/bin/hadoop classpath) <br><span class="hljs-built_in">export</span> SPARK_CLASSPATH=<span class="hljs-variable">$HIVE_HOME</span>/lib/mysql-connector-java-5.1.43-bin.jar <br><span class="hljs-built_in">export</span> SPARK_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/local/jdk1.7.0_80 <br><span class="hljs-built_in">export</span> SCALA_HOME=/usr/local/scala-2.10.6 <br><span class="hljs-built_in">export</span> SPARK_MASTER_IP=cluster1<br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=/usr/local/hadoop-2.6.5/etc/hadoop<br><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/usr/local/hadoop-2.6.5/bin/hadoop classpath) <br><span class="hljs-built_in">export</span> SPARK_CLASSPATH=<span class="hljs-variable">$HIVE_HOME</span>/lib/mysql-connector-java-5.1.43-bin.jar <br><span class="hljs-built_in">export</span> SPARK_PID_DIR=/home/hadoop_files<br></code></pre></td></tr></table></figure>
 
 <p>在conf下新建slaves文件,内容为:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">cluster1</span><br>cluster2<br>cluster3<br></code></pre></td></tr></table></figure>
@@ -659,10 +659,10 @@
 <p>将 hadoop/etc/hadoop 文件中的 hdfs-site.xml 和 core-site.xml 文件复制到 spark 的 conf 目录下,</p>
 <p>将 conf 目录下的 spark-defaults.conf.template 复制一份，改名为 spark-default.conf ,并在最下面加上一行:<code>spark.files file:///usr/local/spark-1.6.3-bin-hadoop2.6/conf/hdfs-site.xml,file:///usr/local/spark-1.6.3-binhadoop2.6/conf/core-site.xml</code></p>
 <p>复制到所有的服务器上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6 cluster2:/usr/<span class="hljs-built_in">local</span>/ <br>scp -r /usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6 cluster3:/usr/<span class="hljs-built_in">local</span>/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp -r /usr/local/spark-1.6.3-bin-hadoop2.6 cluster2:/usr/local/ <br>scp -r /usr/local/spark-1.6.3-bin-hadoop2.6 cluster3:/usr/local/<br></code></pre></td></tr></table></figure>
 
 <p>修改 spark 文件夹的权限（每个 spark 结点）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/spark-1.6.3-bin-hadoop2.6<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/spark-1.6.3-bin-hadoop2.6<br></code></pre></td></tr></table></figure>
 
 <p>在cluster1上运行Spark</p>
 <p>运行 spark 前需启动 hadoop 的HDFS 和 YARN</p>
@@ -680,16 +680,16 @@
 <h2 id="12-安装Storm"><a href="#12-安装Storm" class="headerlink" title="12. 安装Storm"></a>12. 安装Storm</h2><p>storm需要Python2.6以上版本</p>
 <p>将apache-storm-1.1.1.tar.gz解压到<code>/usr/local/</code>下,</p>
 <p>环境变量添加:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> STORM_HOME=/usr/<span class="hljs-built_in">local</span>/apache-storm-1.1.1 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$STORM_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> STORM_HOME=/usr/local/apache-storm-1.1.1 <br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$STORM_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>改一下权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chown -R hadoop:hadoop apache-storm-1.1.1<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> -R hadoop:hadoop apache-storm-1.1.1<br></code></pre></td></tr></table></figure>
 
 <p>更改storm/conf/storm.yaml文件:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">storm.zookeeper.servers :</span><br><span class="hljs-string">-</span>	<span class="hljs-string">“cluster1”</span><br><span class="hljs-string">-</span>	<span class="hljs-string">“cluster2”</span><br><span class="hljs-string">-</span>	<span class="hljs-string">“cluster3”</span><br> <span class="hljs-attr">storm.local.dir :</span> <span class="hljs-string">“/home/hadoop_files/hadoop_tmp/storm/tmp”</span><br></code></pre></td></tr></table></figure>
 
 <p>新建tmp文件夹,改权限:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p /home/hadoop_files/hadoop_tmp/storm/tmp <br>chown -R hadoop:hadoop /home/hadoop_files<br>chown -R hadoop:hadoop /usr/<span class="hljs-built_in">local</span>/apache-storm-1.1.1<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /home/hadoop_files/hadoop_tmp/storm/tmp <br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /home/hadoop_files<br><span class="hljs-built_in">chown</span> -R hadoop:hadoop /usr/local/apache-storm-1.1.1<br></code></pre></td></tr></table></figure>
 
 <p>在cluster1上新建storm-master的虚拟窗口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">screen -S storm-master<br>storm nimbus<br></code></pre></td></tr></table></figure>
@@ -909,8 +909,8 @@
 
   <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  <script  src="https://www.unpkg.com/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://www.unpkg.com/nprogress@0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -921,8 +921,8 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -935,19 +935,19 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
 
@@ -956,7 +956,7 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
@@ -1021,7 +1021,7 @@
       };
     </script>
 
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
   
 

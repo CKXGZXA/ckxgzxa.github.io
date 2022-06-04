@@ -24,22 +24,22 @@
   
   <title>CSS 层叠样式表 - 技术匝记簿</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
     
   
 
   
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -64,7 +64,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
 </head>
 
 
@@ -277,7 +277,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:red;font-size:12px&quot;</span>&gt;</span>这里文字是红色。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="嵌入式-内部"><a href="#嵌入式-内部" class="headerlink" title="嵌入式/内部"></a>嵌入式/内部</h4><p>嵌入式css样式，就是可以把css样式代码写在**<style type="text/css"></style>**标签之间。如下面代码实现把三个<span>标签中的文字设置为红色：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span><br><span class="css"><span class="hljs-selector-tag">span</span>&#123;</span><br><span class="css"><span class="hljs-attribute">color</span>:red;</span><br><span class="css">&#125;</span><br><span class="css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-tag">span</span>&#123;</span><br><span class="language-css"><span class="hljs-attribute">color</span>:red;</span><br><span class="language-css">&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>嵌入式css样式必须写在<code>&lt;style&gt;``&lt;/style&gt;</code>之间，并且一般情况下嵌入式css样式写在<code>&lt;head&gt;``&lt;/head&gt;</code>之间。如右边编辑器中的代码。</p>
 <h4 id="外部式"><a href="#外部式" class="headerlink" title="外部式"></a>外部式</h4><p>外部式css样式(也可称为外联式)就是把css代码写一个单独的外部文件中，这个css样式文件以“<code>.css</code>”为扩展名，在<code>&lt;head&gt;</code>内（不是在<code>&lt;style&gt;</code>标签内）使用<code>&lt;link&gt;</code>标签将css样式文件链接到HTML文件内，如下面代码：</p>
@@ -505,8 +505,8 @@
 
   <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  <script  src="https://www.unpkg.com/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://www.unpkg.com/nprogress@0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -517,8 +517,8 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -531,19 +531,19 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
 
@@ -552,7 +552,7 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
@@ -617,7 +617,7 @@
       };
     </script>
 
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
   
 
