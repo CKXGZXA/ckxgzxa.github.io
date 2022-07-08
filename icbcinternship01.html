@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
+  <meta name="sogou_site_verification" content="2t6zxaPafe" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>icbcinternship01 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="icbcinternship01">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-08 22:42" pubdate>
+        2022年7月8日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">icbcinternship01</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年7月8日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="0708-中国工商银行集团文化介绍笔记"><a href="#0708-中国工商银行集团文化介绍笔记" class="headerlink" title="0708 中国工商银行集团文化介绍笔记"></a>0708 中国工商银行集团文化介绍笔记</h1><h2 id="1-文化传承"><a href="#1-文化传承" class="headerlink" title="1. 文化传承"></a>1. 文化传承</h2><h3 id="1-1-红色金融文化传承"><a href="#1-1-红色金融文化传承" class="headerlink" title="1.1 红色金融文化传承"></a>1.1 红色金融文化传承</h3><ul>
+<li>大革命时期 -&gt; 土地革命时期 -&gt; 抗日战争时期</li>
+<li>扁担银行、马背银行、窑洞银行</li>
+</ul>
+<h3 id="1-2-文化萌芽（1984-1993）"><a href="#1-2-文化萌芽（1984-1993）" class="headerlink" title="1.2 文化萌芽（1984-1993）"></a>1.2 文化萌芽（1984-1993）</h3><p><strong>三铁精神：</strong>铁账本、铁算盘、铁规章</p>
+<p><strong>工行精神：</strong>求实创新、吃苦耐劳、顾全大局、团结奋进</p>
+<p>1983年12月30日，中国工商银行成立大会在北京召开</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207082109157.png" alt="工行总行第一块门牌"></p>
+<h3 id="1-3-文化成长（1994-2005）"><a href="#1-3-文化成长（1994-2005）" class="headerlink" title="1.3 文化成长（1994-2005）"></a>1.3 文化成长（1994-2005）</h3><p><strong>十字方针：</strong> 效益、质量、发展、管理、创新</p>
+<p><strong>五种观念：</strong>稳健的发展观、真实的效益观、全面的质量观、严格的管理观、科学的创新观</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207082118862.png" alt="家喻户晓的宣传语"></p>
+<h3 id="1-4-文化形成（2005-2019）"><a href="#1-4-文化形成（2005-2019）" class="headerlink" title="1.4 文化形成（2005-2019）"></a>1.4 文化形成（2005-2019）</h3><ul>
+<li><p>2005年10月，成立中国工商银行股份有限公司</p>
+</li>
+<li><p>2006年10月，在上海、香港同步上市</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207082122018.png"></p>
+</li>
+<li><p>五项原则</p>
+<ol>
+<li>以<strong>改革</strong>为突破</li>
+<li>以<strong>创新</strong>为突破</li>
+<li>以<strong>服务</strong>为突破</li>
+<li>以转变<strong>发展方式</strong>为主要途径</li>
+<li>以<strong>人</strong>为本</li>
+</ol>
+</li>
+<li><p>股改精神</p>
+<p>勤于<strong>探索</strong> | 勇于<strong>创造</strong></p>
+<p>善于<strong>借鉴</strong> | 敢于<strong>超越</strong></p>
+</li>
+<li><p>一个核心、四个支撑、两个延伸的企业文化建设体系</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207082201856.png"></p>
+<ul>
+<li><p>一个核心：工于至诚，行以致远的价值观</p>
+</li>
+<li><p>四个支撑：</p>
+<p>​    四个子文化：</p>
+<ol>
+<li>廉洁：公开透明、公私分明、自律律他、言行并重</li>
+<li>合规：合规为本、全员有责、风险可控、稳健高效</li>
+<li>服务：客户为尊、服务如意、员工为本、诚信如一</li>
+<li>创新：聚焦本源、因势革故、协同鼎新、永葆生机</li>
+</ol>
+</li>
+<li><p>两个延伸</p>
+<ul>
+<li><p>向重点业务板块拓展的专业文化</p>
+<p>经济本源 | 诚信合规 | 专家治贷</p>
+<p>审慎稳健 | 客户优选 | 责任落实</p>
+</li>
+<li><p>区域特征鲜明的特色文化</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-文化提升（2019-至今）"><a href="#1-5-文化提升（2019-至今）" class="headerlink" title="1.5 文化提升（2019-至今）"></a>1.5 文化提升（2019-至今）</h3><p>为各地脱贫攻坚提供一支强有力的力量</p>
+<h3 id="1-6-文化基因"><a href="#1-6-文化基因" class="headerlink" title="1.6 文化基因"></a>1.6 文化基因</h3><ul>
+<li>党建引领、凝心聚力，是工行的底色</li>
+<li>诚实守信、尽职尽责，是工行的本色</li>
+<li>严谨规范、稳健合规，是工行的特色</li>
+<li>创新进取、追求卓越，是工行的亮色</li>
+<li>吃苦耐劳、敬业奉献，是工行的基色</li>
+</ul>
+<h2 id="2-文化体系和实践"><a href="#2-文化体系和实践" class="headerlink" title="2. 文化体系和实践"></a>2. 文化体系和实践</h2><h3 id="2-1-企业文化之定义"><a href="#2-1-企业文化之定义" class="headerlink" title="2.1 企业文化之定义"></a>2.1 企业文化之定义</h3><p><strong>企业文化</strong>是在长期经营管理实践活动中逐步形成的，被企业员工普遍认同和遵循的经营理念、价值取向、思维方式、规章制度、行为准则以及企业外部形象的总称。</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207082201729.png"></p>
+<h3 id="2-2-工商银行的精神文化"><a href="#2-2-工商银行的精神文化" class="headerlink" title="2.2 工商银行的精神文化"></a>2.2 工商银行的精神文化</h3><h4 id="1-使命"><a href="#1-使命" class="headerlink" title="1. 使命"></a>1. 使命</h4><p>提供卓越金融服务</p>
+<ul>
+<li><strong>服务客户</strong>：就是要不断提高服务能力和质量</li>
+<li><strong>回报股东</strong>：就是要为股东创造最佳价值回报</li>
+<li><strong>成就员工</strong>：就是要为员工提供广阔发展平台</li>
+<li><strong>奉献社会</strong>：就是要主动承担更多企业责任</li>
+</ul>
+<h4 id="2-愿景"><a href="#2-愿景" class="headerlink" title="2. 愿景"></a>2. 愿景</h4><p>全面建设具有全球竞争力的世界一流现代金融企业，成为基业长青的银行</p>
+<ol>
+<li>基本完成现代商业银行布局：于建党100年为起点，直到2023年工商银行成立40周年之际</li>
+<li>完成由传统银行向现代银行的转型：展望2025年，十四五规划完成之际</li>
+<li>成为卓越银行：远眺2035年，我国基本实现社会主义现代化工商银行成立50周年之时</li>
+</ol>
+<h4 id="3-价值观"><a href="#3-价值观" class="headerlink" title="3. 价值观"></a>3. 价值观</h4><p>工于至诚、行以致远</p>
+<p>前提:</p>
+<ul>
+<li><p>工：工行、工匠 -&gt; 表明一种精神和态度</p>
+</li>
+<li><p>诚：诚信、忠诚 -&gt; 表明一种原则和信念</p>
+</li>
+</ul>
+<p>结果:</p>
+<ul>
+<li><p>行：执行、同行 -&gt; 表明一种行为和状态</p>
+</li>
+<li><p>远：长远、高远 -&gt; 表明一种境界和追求</p>
+</li>
+</ul>
+<h4 id="4-先进的文化理念"><a href="#4-先进的文化理念" class="headerlink" title="4. 先进的文化理念"></a>4. 先进的文化理念</h4><p>以坚持党的建设为统领，提升文化引导力</p>
+<p>以社会主义核心价值观为指引，提升文化凝聚力</p>
+<p>以融入经营管理为途径，提升文化渗透力</p>
+<p>以打造品牌活动为抓手，提升文化感染力</p>
+<p>以反应员工心声为着力点，提升文化感召力</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/2022%E6%96%B0%E7%96%86%E5%B7%A5%E8%A1%8C%E6%98%9F%E4%BB%A4%E8%90%A5/">2022新疆工行星令营</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/algorithm_problem01.html">
+                        <span class="hidden-mobile">算法题目01</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
