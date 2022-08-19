@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>0714 可视化思维与表达 - 技术匝记簿</title>
+  <title>0718 Excel表格 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="0714 可视化思维与表达">
+            <span class="h2" id="subtitle" title="0718 Excel表格">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-07-15 12:10" pubdate>
-        2022年7月15日 中午
+      <time datetime="2022-08-09 04:33" pubdate>
+        2022年8月9日 凌晨
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      343 字
+      351 字
     </span>
   
 
@@ -242,44 +242,87 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">0714 可视化思维与表达</h1>
+            <h1 style="display: none">0718 Excel表格</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年7月16日 凌晨
+                  本文最后更新于：2022年8月9日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="0714-可视化思维与表达"><a href="#0714-可视化思维与表达" class="headerlink" title="0714 可视化思维与表达"></a>0714 可视化思维与表达</h1><h2 id="1-可视化思维缘起"><a href="#1-可视化思维缘起" class="headerlink" title="1. 可视化思维缘起"></a>1. 可视化思维缘起</h2><blockquote>
-<p>思维可视化：是指运用一系列图示技术把本来不可视的思维(思考方法和思考路径)呈现出来，使其清晰可见的过。被可视化的”思维”更有利于理解和记忆，因此可以有效提高信息加工及信息传递的效能。</p>
-</blockquote>
-<p>由巴普洛夫实验等相关的实验表明：</p>
-<ul>
-<li><p>学习的宏观本质：<strong>建立联系</strong></p>
+              <h1 id="10个Excel中的小问题"><a href="#10个Excel中的小问题" class="headerlink" title="10个Excel中的小问题"></a>10个Excel中的小问题</h1><h2 id="1-为什么丢数据"><a href="#1-为什么丢数据" class="headerlink" title="1. 为什么丢数据"></a>1. 为什么丢数据</h2><table>
+    <caption>Excel 文件最大存储容量</caption>
+    <tr>
+        <td>文件扩展名</td>
+        <td>.xls</td>
+        <td>.xlsx</td>
+    </tr>
+    <tr>
+        <td>行R</td>
+        <td>65536</td>
+        <td>1048576</td>
+    </tr>
+    <tr>
+        <td>列C</td>
+        <td>256</td>
+        <td>16384</td>
+    </tr>
+    <tr>
+        <td>版本</td>
+        <td>2003以前</td>
+        <td>2007以后</td>
+    </tr>
+</table>
+
+<h2 id="2-大表格如何固定表头"><a href="#2-大表格如何固定表头" class="headerlink" title="2. 大表格如何固定表头"></a>2. 大表格如何固定表头</h2><ul>
+<li><p><strong>查阅</strong>固定表头</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090455764.png"></p>
 </li>
-<li><p>学习的微观本质：<strong>赫布定律</strong></p>
+<li><p>选中</p>
+<p><kbd>Ctrl</kbd> + <kbd>A</kbd> : 选中内容部分任意单元格后，按组合键，全选内容部分</p>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>↑↓←→</kbd>   : 按组合键, 可逐步选择内容</p>
 </li>
 </ul>
-<p>可视化思维：</p>
-<ol>
-<li>知识数量是基础，联结是关键；</li>
-<li>内存有限，需要提供辅助；</li>
-<li>广泛的联结需要更丰富的刺激；</li>
-<li>可以通过练习达成稳定的联结。</li>
-</ol>
-<h2 id="2-可视化工具介绍"><a href="#2-可视化工具介绍" class="headerlink" title="2. 可视化工具介绍"></a>2. 可视化工具介绍</h2><h3 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h3><p>传统笔记缺点：</p>
-<ol>
-<li><strong>关键性信息少</strong>，不超过全部信息的20%;</li>
-<li>笔记的修改整理让人头痛，内容<strong>存在重复</strong>;</li>
-<li>难以看出材料中的内在<strong>逻辑关系</strong>;</li>
-<li>单一的文字信息，让大脑<strong>昏昏欲睡</strong>;</li>
-<li>阅读资料<strong>被动式接受</strong>，信息传递单向性，缺乏互动和创造;</li>
-<li>传统的笔记记录方式容易有疏漏造成<strong>记忆断层</strong>。</li>
-</ol>
-<p>思维导图的原则：</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202207160206835.png"></p>
-<h2 id="3-可视化表达应用"><a href="#3-可视化表达应用" class="headerlink" title="3. 可视化表达应用"></a>3. 可视化表达应用</h2><h3 id="3-1-提升自我"><a href="#3-1-提升自我" class="headerlink" title="3.1 提升自我"></a>3.1 提升自我</h3><h3 id="3-2-分析问题"><a href="#3-2-分析问题" class="headerlink" title="3.2 分析问题"></a>3.2 分析问题</h3><h3 id="3-3-改善团队"><a href="#3-3-改善团队" class="headerlink" title="3.3 改善团队"></a>3.3 改善团队</h3>
+<h2 id="3-快速分离数据"><a href="#3-快速分离数据" class="headerlink" title="3. 快速分离数据"></a>3. 快速分离数据</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090459982.png"></p>
+<ul>
+<li>分列</li>
+</ul>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090500978.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090500747.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090501112.png" alt="image-20220809050122059"></p>
+<h2 id="4-编码中的0怎么不见了"><a href="#4-编码中的0怎么不见了" class="headerlink" title="4. 编码中的0怎么不见了"></a>4. 编码中的0怎么不见了</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090503824.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090503944.png"></p>
+<blockquote>
+<p>知识补充：</p>
+<ul>
+<li><p>单元格默认格式是“常规”，如果输入的数值前面带“0”，系统会自动忽略。</p>
+</li>
+<li><p>文本格式的单元格一般显示为左对齐，左上角有个绿色的小三角形。</p>
+</li>
+<li><p>数值格式一般右对齐。</p>
+</li>
+<li><p>快速输入文本的方法是，首先输入一个英文(半角）状态下的单引号，再输入数字。</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090505681.png"></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="5-身份证号码这是怎么了"><a href="#5-身份证号码这是怎么了" class="headerlink" title="5. 身份证号码这是怎么了"></a>5. 身份证号码这是怎么了</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090507125.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090508412.png"></p>
+<blockquote>
+<p>知识补充：</p>
+<ul>
+<li>Excel中默认数值显示11位，如果超过11位，则用科学计数法显示。</li>
+<li>Excel中默认数值如果超过15位，15位后的非0自动变成0，且不可逆转。</li>
+<li>计算字符串长度的公式是: =LEN(需要计算的单元格)</li>
+</ul>
+</blockquote>
+<h2 id="6-数字为什么不能计算"><a href="#6-数字为什么不能计算" class="headerlink" title="6. 数字为什么不能计算"></a>6. 数字为什么不能计算</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090510998.png"></p>
+<p>文本转数据的三种方法：</p>
+<h3 id="1-直接修改"><a href="#1-直接修改" class="headerlink" title="1. 直接修改"></a>1. 直接修改</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090512098.png"></p>
+<h3 id="2-选择性粘贴"><a href="#2-选择性粘贴" class="headerlink" title="2. 选择性粘贴"></a>2. 选择性粘贴</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090516939.png"></p>
+<h3 id="3-分列"><a href="#3-分列" class="headerlink" title="3. 分列"></a>3. 分列</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208090517260.png"></p>
+<h2 id="7-快速正确输入性别、单位等"><a href="#7-快速正确输入性别、单位等" class="headerlink" title="7. 快速正确输入性别、单位等"></a>7. 快速正确输入性别、单位等</h2>
             </div>
             <hr>
             <div>
@@ -306,9 +349,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/icbcinternship05.html">
+                      <a href="/ELKLogConstruction.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">0718 Excel表格</span>
+                        <span class="hidden-mobile">从零搭建ELK日志分析系统</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -316,8 +359,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/icbcinternship03.html">
-                        <span class="hidden-mobile">0712 结构性思维笔记</span>
+                      <a href="/icbcinternship04.html">
+                        <span class="hidden-mobile">0714 可视化思维与表达</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

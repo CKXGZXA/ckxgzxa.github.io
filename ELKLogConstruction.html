@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
+  <meta name="sogou_site_verification" content="2t6zxaPafe" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>从零搭建ELK日志分析系统 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191349821.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="从零搭建ELK日志分析系统">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-08-19 13:29" pubdate>
+        2022年8月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从零搭建ELK日志分析系统</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月19日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="从零搭建ELK-filebeat-日志分析系统-以Windows为例"><a href="#从零搭建ELK-filebeat-日志分析系统-以Windows为例" class="headerlink" title="从零搭建ELK + filebeat 日志分析系统(以Windows为例)"></a>从零搭建ELK + filebeat 日志分析系统(以Windows为例)</h1><h2 id="1-什么是ELK"><a href="#1-什么是ELK" class="headerlink" title="1. 什么是ELK?"></a>1. 什么是ELK?</h2><p>ELK 是elastic公司提供的一套完整的日志收集以及展示的解决方案，是三个产品的首字母缩写，分别是 ElasticSearch、Logstash 和 Kibana。</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191354749.png"></p>
+<h2 id="2-filebeat"><a href="#2-filebeat" class="headerlink" title="2. filebeat"></a>2. filebeat</h2><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191357605.png" alt="Filebeat工作流程图"></p>
+<p>​        Filebeat是用于转发和集中日志数据的轻量级传送工具。Filebeat监视您指定的日志文件或位置，收集日志事件，并将它们转发到Elasticsearch或 Logstash进行索引。</p>
+<p>　　Filebeat的工作方式如下：启动Filebeat时，它将启动一个或多个输入，这些输入将在为日志数据指定的位置中查找。对于Filebeat所找到的每个日志，Filebeat都会启动收集器。每个收集器都读取单个日志以获取新内容，并将新日志数据发送到libbeat，libbeat将聚集事件，并将聚集的数据发送到为Filebeat配置的输出。</p>
+<h2 id="3-安装ElasticSearch"><a href="#3-安装ElasticSearch" class="headerlink" title="3. 安装ElasticSearch"></a>3. 安装ElasticSearch</h2><h3 id="3-1-ES-单节点搭建"><a href="#3-1-ES-单节点搭建" class="headerlink" title="3.1 ES 单节点搭建"></a>3.1 ES 单节点搭建</h3><ol>
+<li><p>首先在官网下载Windows版本的<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases/elasticsearch-7-8-0">Elasticsearch压缩包</a>, 在任意处解压。</p>
+<p>解压后文件结构如下：</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191840111.png"></p>
+</li>
+<li><p>启动方式：</p>
+<p>进入bin文件目录，在此处打开终端窗口，运行 <code>elasticsearch.bat</code>文件即可</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191844657.png"></p>
+<p>待命令行窗口显示<code>started</code>即为启动成功.</p>
+</li>
+<li><p>此时可以在浏览器访问<a target="_blank" rel="noopener" href="http://localhost:9200/">http://localhost:9200</a>, 可以看到浏览器返回如下信息</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191847965.png"></p>
+</li>
+</ol>
+<h3 id="3-2-ES-集群搭建"><a href="#3-2-ES-集群搭建" class="headerlink" title="3.2 ES 集群搭建"></a>3.2 ES 集群搭建</h3><ol>
+<li><p>创建<code>elasticsearch-cluster</code> 文件夹, 将ES安装包解压出的内容物复制三份分别命名如下：</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191852452.png"></p>
+</li>
+<li><p>配置各节点的配置文件(各节点config文件夹下的<code>elasticsearch.yml</code>文件)</p>
+<p>节点1配置文件配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 节点1的配置信息:</span><br><span class="hljs-comment"># 集群名称, 节点之间要保持一致</span><br><span class="hljs-attr">cluster.name:</span> <span class="hljs-string">my-elasticsearch</span><br><span class="hljs-comment">#节点名称, 集群唯一</span><br><span class="hljs-attr">node.name:</span> <span class="hljs-string">node-1</span><br><span class="hljs-attr">node.master:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">node.data:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># ip地址</span><br><span class="hljs-attr">network.host:</span> <span class="hljs-string">localhost</span><br><span class="hljs-comment"># http端口</span><br><span class="hljs-attr">http.port:</span> <span class="hljs-number">9201</span><br><span class="hljs-comment"># tcp监听端口</span><br><span class="hljs-attr">transport.tcp.port:</span> <span class="hljs-number">9301</span><br><br><span class="hljs-attr">discovery.seed_hosts:</span> [<span class="hljs-string">&quot;localhost:9301&quot;</span>, <span class="hljs-string">&quot;localhost:9302&quot;</span>,<span class="hljs-string">&quot;localhost:9303&quot;</span>]<br><span class="hljs-attr">discovery.zen.fd.ping_timeout:</span> <span class="hljs-string">1m</span><br><span class="hljs-attr">discovery.zen.fd.ping_retries:</span> <span class="hljs-number">5</span><br><br><span class="hljs-comment"># 集群内可被选为主节点的节点列表</span><br><span class="hljs-attr">cluster.initial_master_nodes:</span> [<span class="hljs-string">&quot;node-1&quot;</span>, <span class="hljs-string">&quot;node-2&quot;</span>, <span class="hljs-string">&quot;node-3&quot;</span>]<br><br><span class="hljs-comment"># 跨域配置</span><br><span class="hljs-comment"># action.destructive_requires_name: true</span><br><span class="hljs-attr">http.cors.enabled:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">http.cors.allow-origin:</span> <span class="hljs-string">&quot;*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>节点2配置文件配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 节点 2 的配置信息：</span><br><span class="hljs-comment"># 集群名称，节点之间要保持一致</span><br><span class="hljs-attr">cluster.name:</span> <span class="hljs-string">my-elasticsearch</span><br><span class="hljs-comment"># 节点名称，集群内唯一</span><br><span class="hljs-attr">node.name:</span> <span class="hljs-string">node-2</span><br><span class="hljs-attr">node.master:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">node.data:</span> <span class="hljs-literal">true</span><br><span class="hljs-comment">#ip 地址</span><br><span class="hljs-attr">network.host:</span> <span class="hljs-string">localhost</span><br><span class="hljs-comment"># http端口</span><br><span class="hljs-attr">http.port:</span> <span class="hljs-number">9202</span><br><span class="hljs-comment">#tcp监听端口</span><br><span class="hljs-attr">transport.tcp.port:</span> <span class="hljs-number">9302</span><br><br><span class="hljs-attr">discovery.seed_hosts:</span> [<span class="hljs-string">&quot;localhost:9301&quot;</span>]<br><span class="hljs-attr">discovery.zen.fd.ping_timeout:</span> <span class="hljs-string">1m</span><br><span class="hljs-attr">discovery.zen.fd.ping_retries:</span> <span class="hljs-number">5</span><br><br><span class="hljs-comment"># 集群内可被选为主节点的节点列表</span><br><span class="hljs-attr">cluster.initial_master_nodes:</span> [<span class="hljs-string">&quot;node-1&quot;</span>, <span class="hljs-string">&quot;node-2&quot;</span>, <span class="hljs-string">&quot;node-3&quot;</span>]<br><br><span class="hljs-comment"># 跨域配置</span><br><span class="hljs-comment"># action.destructive_requires_name: true</span><br><span class="hljs-attr">http.cors.enabled:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">http.cors.allow-origin:</span> <span class="hljs-string">&quot;*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>节点3配置文件配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 节点 3 的配置信息：</span><br><span class="hljs-comment"># 集群名称，节点之间要保持一致</span><br><span class="hljs-attr">cluster.name:</span> <span class="hljs-string">my-elasticsearch</span><br><span class="hljs-comment"># 节点名称，集群内要唯一</span><br><span class="hljs-attr">node.name:</span> <span class="hljs-string">node-3</span><br><span class="hljs-attr">node.master:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">node.data:</span> <span class="hljs-literal">true</span><br><span class="hljs-comment">#ip 地址</span><br><span class="hljs-attr">network.host:</span> <span class="hljs-string">localhost</span><br><span class="hljs-comment"># http端口</span><br><span class="hljs-attr">http.port:</span> <span class="hljs-number">9203</span><br><span class="hljs-comment">#tcp监听端口</span><br><span class="hljs-attr">transport.tcp.port:</span> <span class="hljs-number">9303</span><br><br><span class="hljs-attr">discovery.seed_hosts:</span> [<span class="hljs-string">&quot;localhost:9301&quot;</span>, <span class="hljs-string">&quot;localhost:9302&quot;</span>]<br><span class="hljs-attr">discovery.zen.fd.ping_timeout:</span> <span class="hljs-string">1m</span><br><span class="hljs-attr">discovery.zen.fd.ping_retries:</span> <span class="hljs-number">5</span><br><br><span class="hljs-comment"># 集群内可被选为主节点的节点列表</span><br><span class="hljs-attr">cluster.initial_master_nodes:</span> [<span class="hljs-string">&quot;node-1&quot;</span>, <span class="hljs-string">&quot;node-2&quot;</span>, <span class="hljs-string">&quot;node-3&quot;</span>]<br><br><span class="hljs-comment"># 跨域配置</span><br><span class="hljs-comment"># action.destructive_requires_name: true</span><br><span class="hljs-attr">http.cors.enabled:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">http.cors.allow-origin:</span> <span class="hljs-string">&quot;*&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>修改好各节点的配置文件之后, 依次启动各节点即可成功创建ES集群</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim">Multi Elasticsearch Head</a> 插件的安装</p>
+<p>我们可以在如下链接下载此浏览器插件进行安装,浏览器插件安装方式请自行搜索有关资料</p>
+<ul>
+<li>Chrome应用商店直接安装<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim">https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim</a></li>
+<li>Github仓库<a target="_blank" rel="noopener" href="https://github.com/Mu-L/multi-elasticsearch-head-chrome">https://github.com/Mu-L/multi-elasticsearch-head-chrome</a></li>
+</ul>
+<p>安装插件完成之后我们可以点击插件,进入监控 Elasticsearch 状态界面,</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191905241.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191906392.png"></p>
+<p>在此页面我们可以方便地对ES集群进行管理，可以查看到索引所有节点各个分片的健康度等信息，并且能够对索引进行增删改查操作</p>
+</li>
+</ol>
+<h2 id="4-Kibana的安装及启动"><a href="#4-Kibana的安装及启动" class="headerlink" title="4. Kibana的安装及启动"></a>4. Kibana的安装及启动</h2><ol>
+<li><p>在官网下载<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases/kibana-7-8-0">Kibana安装压缩包</a>, 并解压</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191918424.png"></p>
+<ol start="2">
+<li><p>进入bin目录，双击<code>kibana.bat</code>即可启动成功</p>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a>, 查看kibana页面：</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191920483.png"></p>
+<blockquote>
+<p>页面修改为中文需要在 <code>config/kibana.yml</code>中添加 <code>i18n.locale: &quot;zh-CN&quot;</code> 配置</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="5-Logstash-的安装与配置"><a href="#5-Logstash-的安装与配置" class="headerlink" title="5. Logstash 的安装与配置"></a>5. Logstash 的安装与配置</h2><ol>
+<li><p>首先从官网下载<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases/logstash-7-8-0">Logstash的zip压缩包</a>, 随后解压:</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208191928354.png" alt="image-20220819192802301"></p>
+</li>
+<li><p>修改<code>config/logstash.conf</code> 文件如下, 为修改elasticsearch:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Sample Logstash configuration for creating a simple</span><br><span class="hljs-comment"># Beats -&gt; Logstash -&gt; Elasticsearch pipeline.</span><br> <br><span class="hljs-attr">input</span> <span class="hljs-string">&#123;</span><br>  <span class="hljs-attr">beats</span> <span class="hljs-string">&#123;</span><br>    <span class="hljs-attr">port</span> =<span class="hljs-string">&gt; 5044</span><br>  <span class="hljs-attr">&#125;</span><br><span class="hljs-attr">&#125;</span><br> <br><span class="hljs-attr">filter</span> <span class="hljs-string">&#123;</span><br>    <span class="hljs-attr">grok</span> <span class="hljs-string">&#123;</span><br>        <span class="hljs-attr">match</span> =<span class="hljs-string">&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;NGINXACCESS&#125;&quot; &#125;</span><br><br>    <span class="hljs-attr">&#125;</span><br>    <span class="hljs-attr">geoip</span> <span class="hljs-string">&#123;</span><br>      <span class="hljs-attr">source</span> =<span class="hljs-string">&gt; &quot;http_x_forwarded_for&quot;</span><br>      <span class="hljs-attr">target</span> =<span class="hljs-string">&gt; &quot;geoip&quot;</span><br>      <span class="hljs-attr">database</span> =<span class="hljs-string">&gt; &quot;C:\Software\nginx-1.22.0\GeoLiteCity.dat&quot;</span><br>      <span class="hljs-attr">add_field</span> =<span class="hljs-string">&gt; [ &quot;[geoip][coordinates]&quot;, &quot;%&#123;[geoip][longitude]&#125;&quot; ]</span><br>      <span class="hljs-attr">add_field</span> =<span class="hljs-string">&gt; [ &quot;[geoip][coordinates]&quot;, &quot;%&#123;[geoip][latitude]&#125;&quot; ]</span><br>    <span class="hljs-attr">&#125;</span><br><br>    <span class="hljs-attr">mutate</span> <span class="hljs-string">&#123;</span><br>      <span class="hljs-attr">convert</span> =<span class="hljs-string">&gt; [ &quot;[geoip][coordinates]&quot;, &quot;float&quot; ]</span><br>      <span class="hljs-attr">convert</span> =<span class="hljs-string">&gt; [ &quot;response&quot;,&quot;integer&quot; ]</span><br>      <span class="hljs-attr">convert</span> =<span class="hljs-string">&gt; [ &quot;bytes&quot;,&quot;integer&quot; ]</span><br>      <span class="hljs-attr">replace</span> =<span class="hljs-string">&gt; &#123; &quot;type&quot; =&gt; &quot;nginx_access&quot; &#125;</span><br>      <span class="hljs-attr">remove_field</span> =<span class="hljs-string">&gt; &quot;message&quot;</span><br>    <span class="hljs-attr">&#125;</span><br><br>    <span class="hljs-attr">date</span> <span class="hljs-string">&#123;</span><br>      <span class="hljs-attr">match</span> =<span class="hljs-string">&gt; [ &quot;timestamp&quot;,&quot;dd/MMM/yyyy:HH:mm:ss Z&quot;]</span><br><br>    <span class="hljs-attr">&#125;</span><br>    <span class="hljs-attr">mutate</span> <span class="hljs-string">&#123;</span><br>      <span class="hljs-attr">remove_field</span> =<span class="hljs-string">&gt; &quot;timestamp&quot;</span><br><br>    <span class="hljs-attr">&#125;</span><br><br><br><span class="hljs-attr">&#125;</span><br> <br> <br><span class="hljs-attr">output</span> <span class="hljs-string">&#123;	</span><br>	<span class="hljs-attr">elasticsearch</span> <span class="hljs-string">&#123;</span><br>		<span class="hljs-attr">hosts</span> =<span class="hljs-string">&gt;  [&quot;http://localhost:9201&quot;]</span><br>	<span class="hljs-attr">&#125;</span><br> <br> <br>	<span class="hljs-attr">stdout</span> <span class="hljs-string">&#123;</span><br>		<span class="hljs-attr">codec</span> =<span class="hljs-string">&gt; rubydebug</span><br>	<span class="hljs-attr">&#125;</span><br><span class="hljs-attr">&#125;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>启动命令<code>.\bin\logstash.bat -f &lt;配置文件路径(config/logstash.conf)&gt;</code> </p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="6-Filebeat-的安装与配置"><a href="#6-Filebeat-的安装与配置" class="headerlink" title="6. Filebeat 的安装与配置"></a>6. Filebeat 的安装与配置</h2><ol>
+<li><p>从官网下载<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases/filebeat-7-8-0">Filebeat压缩包</a>, 并解压缩<br><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208192136902.png"></p>
+</li>
+<li><p>随后以采集nginx产生的日志为例:</p>
+<p>配置<code>filebeat.yml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">output.logstash:</span><br>  <span class="hljs-comment"># The Logstash hosts</span><br>  <span class="hljs-attr">hosts:</span> [<span class="hljs-string">&quot;localhost:5044&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>运行<code>.\filebeat.exe modules enable nginx</code>,随后更改<code>modules.d\nginx.yml</code>设置nginx日志的输出路径.</p>
+<p>随后使用<code>.\filebeat.exe -e</code>运行filebeat即可</p>
+<p>也或可将filebeat注册到Windows服务启动</p>
+</li>
+</ol>
+<h2 id="7-启动整个日志系统"><a href="#7-启动整个日志系统" class="headerlink" title="7. 启动整个日志系统"></a>7. 启动整个日志系统</h2><p>按顺序(ES(集群)=&gt;logstash=&gt;filebeat=&gt;kibana)依次启动各项服务,随后启动nginx服务,并产生部分日志:</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208192205968.png"></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208192322272.png"></p>
+<p>随后回到kibana界面, 使用logstash-* 新建索引模式</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208192209991.png"></p>
+<p>随后就可看见kibana收集来的nginx日志</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202208192322492.png"></p>
+<p>更多使用方法可以查阅<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elastic-stack/7.8/index.html">Kibana官网文档</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/icbcinternship05.html">
+                        <span class="hidden-mobile">0718 Excel表格</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
