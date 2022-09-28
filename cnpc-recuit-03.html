@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
+  <meta name="sogou_site_verification" content="2t6zxaPafe" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>2023年中国石油招聘笔试03——重点关注 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="2023年中国石油招聘笔试03——重点关注">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-26 23:29" pubdate>
+        2022年9月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2023年中国石油招聘笔试03——重点关注</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年9月28日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="2023年中国石油招聘笔试03——重点关注"><a href="#2023年中国石油招聘笔试03——重点关注" class="headerlink" title="2023年中国石油招聘笔试03——重点关注"></a>2023年中国石油招聘笔试03——重点关注</h1><h2 id="1-常识解决技巧"><a href="#1-常识解决技巧" class="headerlink" title="1. 常识解决技巧"></a>1. 常识解决技巧</h2><p>从知识的偏重性来说，常识判断部分的导向性非常清晰，即加强考生对国情、社情的了解程度。</p>
+<p>此阶段备考重在平时，平时多了解一些国家大事和重大举措，例如两会、政府工作报道、国家主权、法律等知识，平时多留意、多观察、多思考。</p>
+<h2 id="2-判断推理题解题技巧"><a href="#2-判断推理题解题技巧" class="headerlink" title="2. 判断推理题解题技巧"></a>2. 判断推理题解题技巧</h2><h3 id="2-1-图形推理"><a href="#2-1-图形推理" class="headerlink" title="2.1 图形推理"></a>2.1 图形推理</h3><pre><code class=" mermaid">graph LR
+	图形推理 --&gt; A[&quot;一、规律推理&quot;]
+	图形推理 --&gt; B[&quot;二、重构推理&quot;]
+	A --&gt; 1.数量类:点,线,角,面,素
+	A --&gt; 2.样式类
+	2.样式类 --&gt; 遍历
+	2.样式类 --&gt; C[&quot;运算(叠加、相减、求同去同)&quot;]
+	2.样式类 --&gt; D[&quot;属性(对称性、曲直性、封闭性)&quot;]
+	A --&gt; 3.位置类:平移,旋转,翻转
+	B --&gt; 1.空间构成:一个面的特征+两个面的关系
+	B --&gt; 2.平面组成:种类不同数个数,种类相同看时针
+	B --&gt; 3.平面拼合:直线消去法
+	B --&gt; 4.线条组合:对比排除法
+</code></pre>
+
+<h4 id="2-1-1-规律推理-数量类"><a href="#2-1-1-规律推理-数量类" class="headerlink" title="2.1.1 规律推理: 数量类"></a>2.1.1 规律推理: 数量类</h4><p>概要说明:数量指图形中包含某种元素的多少，如含有几条边、含有几种元素等。题目中的每个图形仅代表一个或几个数量。</p>
+<p>识别方法:观察题干中的图形组成元紊是否凌乱，或者部分相同元紊数量上的变化是否明显。如果某道题目组成元素混乱，那么可以判别该题目为数量类规律推理。</p>
+<pre><code class=" mermaid">graph LR
+	A[&quot;数量类&quot;] --&gt; 点
+	A --&gt; 线
+	A --&gt; 角
+	A --&gt; 面
+	A --&gt; 素
+	
+	点 --&gt; 阐述:蕴含交点数的变化.交点数是指线与线之间的交点数,包含交点,切点,割点等.
+	点 --&gt; 识别:一般具有一条明显的割线,可以得到一组清晰的交点数,并且一组中的几幅图外观非常相似.
+	点 --&gt; 引申:对交点的定义思路更开阔,既有圆和直线的交点,又有直线之间的交点,甚至还有线段的起点和终点
+
+	线 --&gt; B1[&quot;线条数:多边形、复杂图形的直线段、曲线段数.常见于一堆线段(包括直线段、曲线段)组成的图形中。&quot;]
+	线 --&gt; B2[&quot;线头数:图形中线段的出头数. 常见于有清晰线头出头的图形中.&quot;]
+	线 --&gt; B3[&quot;笔画数:汉字、英文字母、图形的笔画数。常见于汉字、英文字母中。&quot;]
+	线 --&gt; B4[&quot;一笔画问题：只有所有点为偶点的图形和只两个奇点的图形可一笔画出&quot;]
+	
+	角 --&gt; C1[&quot;阐述:图形包含“边”“角”要素，蕴含边角数的变化.其变化规律常常呈现为常数列和等差数列&quot;]
+	角 --&gt; C2[&quot;识别:常见于多边形及圆组成的图形。构成简洁，图形间无复杂交叉。当出现扇形时，大多属于角数问题，且扇形角数为1。边角数题目要注意计算清楚边数和角数，寻找其中规律。&quot;]
+	角 --&gt; C3[&quot;引申:国考中线数量仅包括线段，圆形及曲线其边数定义为0。而地方考试中圆形及曲线有时为1，有时为0。&quot;]
+	
+	面 --&gt; D1[&quot;阐述:包含有“面”的要素，蕴含着区域数(包括封闭区域和连通区域)的变化。&quot;]
+	面 --&gt; D2[&quot;识别:常见于看似复杂、纵横交错动的图形中。看上去组成元素复杂、不易寻找规律，实则区域区分明显、区域数容易观察。&quot;]
+	面 --&gt; D3[&quot;引申:“面”在近年的考题中内涵不断丰富，既可以定义为内外图形相交得出的部分，也可以定义为面积。&quot;]
+	
+	素 --&gt; E1[&quot;阐述:蕴含着元素种类、数目的变化，既包括图形整体的变化，又包括各组成部分的变化。&quot;]
+	素 --&gt; E2[&quot;识别:每个图形皆由多个单独的小元素组成，常见于由多种元素组成的图形中。要先看元素整体的种类和数目变化有无规律，规律不明显时再看各类元素的数目变化有无规律。&quot;]
+	素 --&gt; E3[&quot;引申:图形中的两类元素发生数量上的一些规律性变化;两种元素在图形中存在等价关系(“一个顶俩”)。&quot;]
+</code></pre>
+
+<ul>
+<li><strong>数量型解题要点总结: 点  线  角  面  素</strong><ol>
+<li>首先从整体数考虑, 识别”点线角面素”, 确定数量规律;</li>
+<li>如果整体不行的话, 可以从部分(分位置或分样式)的角度确定数量, 得出规律.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>元素组成不同, 且无明显属性规律, 考虑数量规律</strong></p>
+<p>例题:</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209280318192.png"></p>
+<p>观察图形可知, 第一个图形是分为2个区域, 第二个图形分为3个区域, 第三个图形分为4个区域…, 以此类推,可以判断第6个图形应该选择可以划分出7个区域的A图形,故选择A    <em>(面)</em></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209280340384.png"></p>
+<p>黑块内部直角数量, B <em>(角)</em></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209280346454.png"></p>
+<p>切点数量分类, ①④⑤/②③⑥, <em>(点)</em></p>
+</blockquote>
+<h4 id="2-1-2-规律推理-样式类"><a href="#2-1-2-规律推理-样式类" class="headerlink" title="2.1.2 规律推理:样式类"></a>2.1.2 规律推理:样式类</h4><p>概要说明:样式是指图形的形状模样, 它表明了某个图形区别于其他图形的本质特征.</p>
+<p>识别方法:观察题干中图形的组成元素是否相似, 相似也就是图形部分元素非实质性残缺. 如果某道题目组成的元素相似, 那么可以判别该题目为样式类规律推理.</p>
+<pre><code class=" mermaid">graph LR
+	样式类 --&gt; A[&quot;遍历&quot;]
+	样式类 --&gt; B[&quot;运算&quot;]
+	样式类 --&gt; C[&quot;属性&quot;]
+	
+	A --&gt; A1[&quot;阐述:每行/列中含有完全相同的若干个样式, 在每行/列中对相同的样式进行不同的排列组合,保证每一种样式在每行(或每列)中都要出现一次&quot;]
+	A --&gt; A2[&quot;识别:主要见于九宫推理，特征是图形元素的变化，观察每行/列图形的组成元素均相同，但每个图形间却不相同，因此整体上看各图都非常相似。&quot;]
+	A --&gt; A3[&quot;引申:如在每行中有超过三种样式的题目，则可以在原图的基础上等效为四列，其中一列隐藏不显示。&quot;]
+	
+	B --&gt; B1[&quot;识别:主要见于九宫推理和对比推理，特征是若干图形的样式观察起来一定有相同之处，但同时又有不同之处。&quot;]
+	B --&gt; 类型
+	类型 --&gt; B21[&quot;叠加:第一幅与第二幅叠加得到第三幅图(近年来也包括进了拼合); 不同图形在同一位置的叠加.&quot;]
+	类型 --&gt; B22[&quot;相减:第一幅减去第二幅得到第三幅图(第一幅图拆分成后面两幅图); 不同图形在同一位置的相减.&quot;]
+	类型 --&gt; B23[&quot;去同:第一幅图和第二幅图去掉共同部分，得到剩余部分即是第三幅图。&quot;]
+	类型 --&gt; B24[&quot;求同:第一幅图和第二幅图取共同的部分得到第三幅图形; 题干给出的若干幅图形存在着某种共同点，而在选项中应当选择一个能够延续这种共同点的选项&quot;]
+	
+	C --&gt; C1[&quot;对称性&quot;]
+	C --&gt; C2[&quot;曲直性&quot;]
+	C --&gt; C3[&quot;封闭性&quot;]
+	C1 --&gt; C11[&quot;轴对称:轴对称是指一幅图形关于自身的中轴对称&quot;]
+	C1 --&gt; C12[&quot;中心对称:指一幅图形关于自身的中心点对称&quot;]
+	C1 --&gt; C13[&quot;整体对称:指若干幅图形关于某个对称轴呈现出整体轴对称或关于某个中心点呈现出整体中心对称&quot;]
+	C2 --&gt; C21[&quot;阐述:指一组图形中,常常呈现曲直性的规律,即有的图形均由曲线组成, 有的均由直线组成;&quot;]
+	C2 --&gt; C22[&quot;识别:当看到一组图形均由直线或曲线组成是,或看到曲线和直线呈间歇出现时&quot;]
+	C3 --&gt; C31[&quot;阐述:指一组图形中, 常常呈现封闭性的规律, 即有的图形是封闭的, 有的图形是非封闭的;&quot;]
+	C3 --&gt; C32[&quot;识别:当看到一组图形均为封闭图形时, 或一组封闭图形与非封闭与非封闭图形间隔出现时,应想到封闭性&quot;]
+</code></pre>
+
+
+
+<ul>
+<li><strong>样式类解题要点总结: 先看样式遍历, 再看加减同异</strong><ol>
+<li>首先观察是否属于样式遍历;</li>
+<li>其次观察是否属于样式运算, 熟练掌握 ”加、减、同、异“四种情况；</li>
+<li>最后再观察其他诸如周期、属性的变化规律</li>
+</ol>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/cnpc-recuit-02.html">
+                        <span class="hidden-mobile">2023年中国石油招聘笔试02——考点归纳</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
