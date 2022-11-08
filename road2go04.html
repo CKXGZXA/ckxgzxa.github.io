@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>2023年中国石油招聘笔试01——综述 - 技术匝记簿</title>
+  <title>Go语言学习04-条件与循环 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2023年中国石油招聘笔试01——综述">
+            <span class="h2" id="subtitle" title="Go语言学习04-条件与循环">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-09-26 00:03" pubdate>
-        2022年9月26日 凌晨
+      <time datetime="2022-11-07 22:45" pubdate>
+        2022年11月7日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      244 字
+      385 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      5
        分钟
     </span>
   
@@ -242,23 +242,45 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2023年中国石油招聘笔试01——综述</h1>
+            <h1 style="display: none">Go语言学习04-条件与循环</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年9月30日 上午
+                  本文最后更新于：2022年11月8日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="2023年中国石油校园招聘笔试01——综述"><a href="#2023年中国石油校园招聘笔试01——综述" class="headerlink" title="2023年中国石油校园招聘笔试01——综述"></a>2023年中国石油校园招聘笔试01——综述</h1><h2 id="1-中国石油招聘流程"><a href="#1-中国石油招聘流程" class="headerlink" title="1. 中国石油招聘流程"></a>1. 中国石油招聘流程</h2><p>一般分为如下四个环节：</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209282132242.svg"></p>
-<p>一般笔试在前， 面试在后，</p>
-<p>大部分分公司考试类型为 <strong>综合能力测试</strong> 或者 <strong>综合能力测试 + 专业题</strong> 的形式，少数分公司考试题型为 <strong>英语测试+综合测试+性格测试</strong>。 面试一般分为初面、专业面等几个环节。。。</p>
-<h2 id="2-中国石油招聘笔试考什么？"><a href="#2-中国石油招聘笔试考什么？" class="headerlink" title="2. 中国石油招聘笔试考什么？"></a>2. 中国石油招聘笔试考什么？</h2><p>大部分中国石油为 <strong>EPI 综合能力测试</strong> 的形式， 有的分公司还会考查英语知识，写作能力等。</p>
-<p>EPI 综合能力测试也就是 <strong>行测题测试</strong> .</p>
-<h2 id="3-中国石油招聘笔试考试时长"><a href="#3-中国石油招聘笔试考试时长" class="headerlink" title="3. 中国石油招聘笔试考试时长"></a>3. 中国石油招聘笔试考试时长</h2><p>据绝大部分考过的考生反馈, 时间很紧张, 根本不够用, 尤其是没搞过行测专业训练的考生.</p>
-<h2 id="4-应对笔试整体方案-关键在于准度、速度、技巧"><a href="#4-应对笔试整体方案-关键在于准度、速度、技巧" class="headerlink" title="4. 应对笔试整体方案: 关键在于准度、速度、技巧"></a>4. 应对笔试整体方案: 关键在于准度、速度、技巧</h2>
+              <h2 id="Go语言学习04-条件与循环"><a href="#Go语言学习04-条件与循环" class="headerlink" title="Go语言学习04-条件与循环"></a>Go语言学习04-条件与循环</h2><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p><font color="Blue">与其他主要编程语言的差异</font></p>
+<p>Go语言仅支持循环关键字 <code>for</code></p>
+<p> <code>for j := 7; j &lt;= 9; j++</code></p>
+<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><p><font color="green">while条件循环 </font></p>
+<p><font color="green">while (n &lt; 5) </font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">n := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> n &lt; <span class="hljs-number">5</span> &#123;<br>    n++<br>    fmt.Println(n)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><font color="green">无限循环 </font></p>
+<p><font color="green">while (true) </font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">n := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> n &lt; <span class="hljs-number">5</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="if条件"><a href="#if条件" class="headerlink" title="if条件"></a>if条件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> condition &#123;<br>    <span class="hljs-comment">// code to be executed if condition is true</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition is false</span><br>&#125;<br><br><span class="hljs-keyword">if</span> condition<span class="hljs-number">-1</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition-1 is true</span><br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> condition<span class="hljs-number">-2</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition-2 is true</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// code to be executed if both condition1 and condition2 are false</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><font color="blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li><p>condition 表达式结果必须为布尔值</p>
+</li>
+<li><p>支持变量赋值:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> <span class="hljs-keyword">var</span> declaration; condition &#123;<br>    <span class="hljs-comment">// code to be executed if conditon is true</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="switch条件"><a href="#switch条件" class="headerlink" title="switch条件"></a>switch条件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">switch</span> os := runtime.GOOS; os &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;darwin&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;OS X.&quot;</span>)<br><span class="hljs-comment">// break</span><br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;linux&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;Linux.&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>	<span class="hljs-comment">// freebsd, openbsd,</span><br>	<span class="hljs-comment">// plan9, windows...</span><br>	fmt.Printf(<span class="hljs-string">&quot;%s.&quot;</span>, os)<br>&#125;<br><br><span class="hljs-keyword">switch</span> &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-number">0</span> &lt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">3</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;0-3&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">4</span> &lt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">6</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;4-6&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">7</span> &gt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">9</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;7-9&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><font color="blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li>条件表达式不限制为常量或者整数;</li>
+<li>单个case中, 可以出现多个结果选项, 使用逗号分隔;</li>
+<li>与C语言等规则相反, Go语言不需要用break来明确退出一个case;</li>
+<li>可以不设定 switch 之后的条件表达式, 在此种情况下, 整个switch结构与多个if…else…的逻辑作用等同</li>
+</ol>
+
             </div>
             <hr>
             <div>
@@ -267,7 +289,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
                   </div>
                 
@@ -275,7 +297,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
+                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
                     
                   </div>
                 
@@ -292,9 +314,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/cnpc-recuit-02.html">
+                      <a href="/road2go05.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年中国石油招聘笔试02——考点归纳</span>
+                        <span class="hidden-mobile">Go语言学习05-数组和切片</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -302,8 +324,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/KMP.html">
-                        <span class="hidden-mobile">对KMP算法的一些认识</span>
+                      <a href="/road2go03.html">
+                        <span class="hidden-mobile">Go语言学习03-数据类型、运算符</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

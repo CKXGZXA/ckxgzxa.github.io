@@ -22,9 +22,25 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>归档 - 技术匝记簿</title>
+  <title>Go语言学习07-Map与工厂模式, 实现Set - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -53,7 +69,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -164,9 +180,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Go语言学习07-Map与工厂模式, 实现Set">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-11-08 11:18" pubdate>
+        2022年11月8日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      142 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -179,40 +232,150 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 60 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/mcpe_level_intro.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MCPE 我的世界基岩版level.dat相关配置</span>
-      <time style="float: right;">02-18</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Go语言学习07-Map与工厂模式, 实现Set</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年11月8日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Go语言学习07-Map与工厂模式-实现Set"><a href="#Go语言学习07-Map与工厂模式-实现Set" class="headerlink" title="Go语言学习07-Map与工厂模式, 实现Set"></a>Go语言学习07-Map与工厂模式, 实现Set</h2><h3 id="实现Set"><a href="#实现Set" class="headerlink" title="实现Set"></a>实现Set</h3><p><strong>Go 的内置集合中没有 Set 实现, 可以map[type]bool</strong></p>
+<ol>
+<li><p><strong>元素的唯一性</strong></p>
+</li>
+<li><p><strong>基本操作</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestMapForSet</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	mySet := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">bool</span>&#123;&#125;<br>	mySet[<span class="hljs-number">1</span>] = <span class="hljs-literal">true</span><br>	n := <span class="hljs-number">3</span><br>	<span class="hljs-keyword">if</span> mySet[n] &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is existing&quot;</span>, n)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is not existing&quot;</span>, n)<br>	&#125;<br>	mySet[<span class="hljs-number">3</span>] = <span class="hljs-literal">true</span><br>	t.Log(<span class="hljs-built_in">len</span>(mySet))<br>	<span class="hljs-built_in">delete</span>(mySet, <span class="hljs-number">1</span>)<br>	n = <span class="hljs-number">1</span><br>	<span class="hljs-keyword">if</span> mySet[n] &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is existing&quot;</span>, n)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is not existing&quot;</span>, n)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<ol>
+<li>添加元素</li>
+<li>判断元素是否存在</li>
+<li>删除元素</li>
+<li>元素个数</li>
+</ol>
+</li>
+</ol>
 
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/road2go08.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Go语言学习08-字符串</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/road2go06.html">
+                        <span class="hidden-mobile">Go语言学习06-Map声明、元素访问及遍历</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -339,9 +502,15 @@
 
 
 
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
@@ -383,6 +552,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 

@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>2023年中国石油招聘笔试01——综述 - 技术匝记簿</title>
+  <title>Go语言学习03-数据类型、运算符 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2023年中国石油招聘笔试01——综述">
+            <span class="h2" id="subtitle" title="Go语言学习03-数据类型、运算符">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-09-26 00:03" pubdate>
-        2022年9月26日 凌晨
+      <time datetime="2022-11-07 21:30" pubdate>
+        2022年11月7日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      244 字
+      859 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      10
        分钟
     </span>
   
@@ -242,23 +242,206 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2023年中国石油招聘笔试01——综述</h1>
+            <h1 style="display: none">Go语言学习03-数据类型、运算符</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年9月30日 上午
+                  本文最后更新于：2022年11月7日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="2023年中国石油校园招聘笔试01——综述"><a href="#2023年中国石油校园招聘笔试01——综述" class="headerlink" title="2023年中国石油校园招聘笔试01——综述"></a>2023年中国石油校园招聘笔试01——综述</h1><h2 id="1-中国石油招聘流程"><a href="#1-中国石油招聘流程" class="headerlink" title="1. 中国石油招聘流程"></a>1. 中国石油招聘流程</h2><p>一般分为如下四个环节：</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209282132242.svg"></p>
-<p>一般笔试在前， 面试在后，</p>
-<p>大部分分公司考试类型为 <strong>综合能力测试</strong> 或者 <strong>综合能力测试 + 专业题</strong> 的形式，少数分公司考试题型为 <strong>英语测试+综合测试+性格测试</strong>。 面试一般分为初面、专业面等几个环节。。。</p>
-<h2 id="2-中国石油招聘笔试考什么？"><a href="#2-中国石油招聘笔试考什么？" class="headerlink" title="2. 中国石油招聘笔试考什么？"></a>2. 中国石油招聘笔试考什么？</h2><p>大部分中国石油为 <strong>EPI 综合能力测试</strong> 的形式， 有的分公司还会考查英语知识，写作能力等。</p>
-<p>EPI 综合能力测试也就是 <strong>行测题测试</strong> .</p>
-<h2 id="3-中国石油招聘笔试考试时长"><a href="#3-中国石油招聘笔试考试时长" class="headerlink" title="3. 中国石油招聘笔试考试时长"></a>3. 中国石油招聘笔试考试时长</h2><p>据绝大部分考过的考生反馈, 时间很紧张, 根本不够用, 尤其是没搞过行测专业训练的考生.</p>
-<h2 id="4-应对笔试整体方案-关键在于准度、速度、技巧"><a href="#4-应对笔试整体方案-关键在于准度、速度、技巧" class="headerlink" title="4. 应对笔试整体方案: 关键在于准度、速度、技巧"></a>4. 应对笔试整体方案: 关键在于准度、速度、技巧</h2>
+              <h2 id="Go语言学习03-数据类型、运算符"><a href="#Go语言学习03-数据类型、运算符" class="headerlink" title="Go语言学习03-数据类型、运算符"></a>Go语言学习03-数据类型、运算符</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><table>
+    <tr>
+        <td>bool</td>
+    </tr>
+    <tr>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>int int8 int16 int32 int64</td>
+    </tr>
+    <tr>
+        <td>uint uint8 uint16 uint32 uint64 uintptr</td>
+    </tr>
+    <tr>
+        <td>byte // alias for uint8</td>
+    </tr>
+    <tr>
+        <td>rune // alias for int32, represents a Unicode code point</td>
+    </tr>
+    <tr>
+        <td>float32 float64</td>
+    </tr>
+    <tr>
+        <td>complex32 complex64</td>
+    </tr>
+</table>
+
+<h3 id="类型的预定义值"><a href="#类型的预定义值" class="headerlink" title="类型的预定义值"></a>类型的预定义值</h3><ol>
+<li>math.MaxInt64</li>
+<li>math.MaxFloat64</li>
+<li>math.MaxUint32</li>
+</ol>
+<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><p>与其他主要编程语言的差异</p>
+<ol>
+<li>不支持指针运算</li>
+<li>string 是值类型, 其默认的初始化值为空字符串, 而不是 nil</li>
+</ol>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>相加</td>
+<td>A + B 输出结果 30</td>
+</tr>
+<tr>
+<td>-</td>
+<td>相减</td>
+<td>A - B 输出结果 -10</td>
+</tr>
+<tr>
+<td>*</td>
+<td>相乘</td>
+<td>A * B 输出结果 200</td>
+</tr>
+<tr>
+<td>/</td>
+<td>相除</td>
+<td>B / A 输出结果 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求余</td>
+<td>B % A 输出结果 0</td>
+</tr>
+<tr>
+<td>++</td>
+<td>自增</td>
+<td>A ++ 输出结果 11</td>
+</tr>
+<tr>
+<td>–</td>
+<td>自减</td>
+<td>A – 输出结果 9</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Go 语言没有前置的 ++, –,  <del>(++a)</del></p>
+</blockquote>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==</td>
+<td>检查两个值是否相等, 如果相等返回 True 否则返回 False</td>
+<td>(A == B) 为 False</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>检查两个值是否不相等, 如果不相等返回 True 否则返回 False</td>
+<td>(A != B) 为 True</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>检查左边值是否大于右边值, 如果是返回 True 否则返回 False</td>
+<td>(A &gt; B) 为 False</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>检查左边值是否小于右边值, 如果是返回 True 否则返回 False</td>
+<td>(A &lt; B) 为 True</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>检查左边值是否大于等于右边值, 如果是返回 True 否则返回 False</td>
+<td>(A &gt;= B) 为 False</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>检查左边值是否小于等于右边值, 如果是返回 True 否则返回 False</td>
+<td>(A &lt;= B) 为True</td>
+</tr>
+</tbody></table>
+<h5 id="用-比较数组"><a href="#用-比较数组" class="headerlink" title="用 == 比较数组"></a>用 == 比较数组</h5><ul>
+<li>相同维数且含有相同个数元素的数组才可以比较</li>
+<li>每个元素都相同的才相等</li>
+</ul>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>逻辑 AND 运算符. 如果两边的操作数都是 True, 则条件 True, 否则为 False.</td>
+<td>(A &amp;&amp; B) 为 False</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑 OR 运算符. 如果两边的操作数有一个 True, 则条件 True, 否则为 False.</td>
+<td>(A || B) 为 True</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑 NOT 运算符. 如果条件为 True, 则逻辑 NOT 条件 False, 否则为 True.</td>
+<td>!(A &amp;&amp; B) 为 True</td>
+</tr>
+</tbody></table>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>按位与运算符 “&amp;” 是双目运算符. 其功能是参与运算的两数各对应的二进位相与.</td>
+<td>(A &amp; B)结果为 12, 二进制为 0000 1100</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位与运算符 “|” 是双目运算符. 其功能是参与运算的两数各对应的二进位相或.</td>
+<td>(A | B) 结果为61, 二进制为 0011 1101</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位与运算符 “^” 是双目运算符. 其功能是参与运算的两数各对应的二进位相异或.</td>
+<td>(A ^ B) 结果为49, 二进制为 0011 1101</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移运算符 “&lt;&lt;” 是双目运算符. 左移 n 位就是乘以 2 的 n 次方. 其功能把 “&lt;&lt;” 左边的运算数的各二进位全部左移若干位, 由 “&lt;&lt;” 右边的数指定移动的位数, 高位丢弃, 低位补0</td>
+<td>A &lt;&lt; 2 结果为 240, 二进制为 1111 0000</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移运算符 “&gt;&gt;” 是双目运算符. 右移 n 位就是除以 2 的 n 次方. 其功能是把 “&gt;&gt;” 左边的运算数的各二进位全部右移若干位, “&gt;&gt;” 右边的数指定移动的位数</td>
+<td>A &gt;&gt; 2 结果为 0000 1111</td>
+</tr>
+</tbody></table>
+<h5 id="与其他主要编程语言的差异"><a href="#与其他主要编程语言的差异" class="headerlink" title="与其他主要编程语言的差异"></a>与其他主要编程语言的差异</h5><p>&amp;^ 按位 置零</p>
+<p>1 &amp;^ 0 – 1</p>
+<p>1 &amp;^ 1 – 0</p>
+<p>0 &amp;^ 1 – 0</p>
+<p>0 &amp;^ 0 – 0</p>
+
             </div>
             <hr>
             <div>
@@ -267,7 +450,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
                   </div>
                 
@@ -275,7 +458,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
+                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
                     
                   </div>
                 
@@ -292,9 +475,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/cnpc-recuit-02.html">
+                      <a href="/road2go04.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年中国石油招聘笔试02——考点归纳</span>
+                        <span class="hidden-mobile">Go语言学习04-条件与循环</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -302,8 +485,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/KMP.html">
-                        <span class="hidden-mobile">对KMP算法的一些认识</span>
+                      <a href="/road2go02.html">
+                        <span class="hidden-mobile">Go语言学习02-变量、常量以及与其他语言的差异</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>2023年中国石油招聘笔试01——综述 - 技术匝记簿</title>
+  <title>Go语言学习05-数组和切片 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2023年中国石油招聘笔试01——综述">
+            <span class="h2" id="subtitle" title="Go语言学习05-数组和切片">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-09-26 00:03" pubdate>
-        2022年9月26日 凌晨
+      <time datetime="2022-11-08 01:32" pubdate>
+        2022年11月8日 凌晨
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      244 字
+      287 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -242,23 +242,31 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2023年中国石油招聘笔试01——综述</h1>
+            <h1 style="display: none">Go语言学习05-数组和切片</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年9月30日 上午
+                  本文最后更新于：2022年11月8日 上午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="2023年中国石油校园招聘笔试01——综述"><a href="#2023年中国石油校园招聘笔试01——综述" class="headerlink" title="2023年中国石油校园招聘笔试01——综述"></a>2023年中国石油校园招聘笔试01——综述</h1><h2 id="1-中国石油招聘流程"><a href="#1-中国石油招聘流程" class="headerlink" title="1. 中国石油招聘流程"></a>1. 中国石油招聘流程</h2><p>一般分为如下四个环节：</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209282132242.svg"></p>
-<p>一般笔试在前， 面试在后，</p>
-<p>大部分分公司考试类型为 <strong>综合能力测试</strong> 或者 <strong>综合能力测试 + 专业题</strong> 的形式，少数分公司考试题型为 <strong>英语测试+综合测试+性格测试</strong>。 面试一般分为初面、专业面等几个环节。。。</p>
-<h2 id="2-中国石油招聘笔试考什么？"><a href="#2-中国石油招聘笔试考什么？" class="headerlink" title="2. 中国石油招聘笔试考什么？"></a>2. 中国石油招聘笔试考什么？</h2><p>大部分中国石油为 <strong>EPI 综合能力测试</strong> 的形式， 有的分公司还会考查英语知识，写作能力等。</p>
-<p>EPI 综合能力测试也就是 <strong>行测题测试</strong> .</p>
-<h2 id="3-中国石油招聘笔试考试时长"><a href="#3-中国石油招聘笔试考试时长" class="headerlink" title="3. 中国石油招聘笔试考试时长"></a>3. 中国石油招聘笔试考试时长</h2><p>据绝大部分考过的考生反馈, 时间很紧张, 根本不够用, 尤其是没搞过行测专业训练的考生.</p>
-<h2 id="4-应对笔试整体方案-关键在于准度、速度、技巧"><a href="#4-应对笔试整体方案-关键在于准度、速度、技巧" class="headerlink" title="4. 应对笔试整体方案: 关键在于准度、速度、技巧"></a>4. 应对笔试整体方案: 关键在于准度、速度、技巧</h2>
+              <h2 id="Go语言学习05-数组和切片"><a href="#Go语言学习05-数组和切片" class="headerlink" title="Go语言学习05-数组和切片"></a>Go语言学习05-数组和切片</h2><h3 id="数组的声明"><a href="#数组的声明" class="headerlink" title="数组的声明"></a>数组的声明</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> a [<span class="hljs-number">3</span>]<span class="hljs-type">int</span> <span class="hljs-comment">//声明并初始化为默认零值</span><br>a[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br><br>b := [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;			<span class="hljs-comment">// 声明同时初始化</span><br>c := [<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]<span class="hljs-type">int</span>&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;	<span class="hljs-comment">// 多位数组初始化</span><br></code></pre></td></tr></table></figure>
+
+<p><font color="Blue">与其他主要编程语言的差异</font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestTravelArray</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    a := [...]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;	<span class="hljs-comment">// 不指定元素个数</span><br>    <span class="hljs-keyword">for</span> idx<span class="hljs-comment">/*索引*/</span>, elem<span class="hljs-comment">/*元素*/</span> := <span class="hljs-keyword">range</span> a &#123;<br>        fmt.Println(idx, elem)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="数组截取"><a href="#数组截取" class="headerlink" title="数组截取"></a>数组截取</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go">a[开始索引(包含)，结束索引(不包含)]<br><br>a := [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>，<span class="hljs-number">5</span>&#125;<br>a[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>] <span class="hljs-comment">//2</span><br>a[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>] <span class="hljs-comment">//2,3</span><br>a[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(a)] <span class="hljs-comment">//2,3,4,5</span><br>a[<span class="hljs-number">1</span>:] <span class="hljs-comment">//2,3,4,5</span><br>a[:<span class="hljs-number">3</span>] <span class="hljs-comment">//1,2,3</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><h4 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211080205152.png"></p>
+<h4 id="切片声明"><a href="#切片声明" class="headerlink" title="切片声明"></a>切片声明</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> s0 []<span class="hljs-type">int</span><br>s0 = <span class="hljs-built_in">append</span>(s0，<span class="hljs-number">1</span>)<br><br>s := []<span class="hljs-type">int</span>&#123;&#125;<br><br>s1 := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>&#125;<br><br>s2 := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>，<span class="hljs-number">2</span>，<span class="hljs-number">4</span>)<br>   <span class="hljs-comment">/* []type, len, cap</span><br><span class="hljs-comment">   其中len个元素会被初始化为默认零值, 未初始化元素不可以访问</span><br><span class="hljs-comment">   */</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="切片共享存储结构"><a href="#切片共享存储结构" class="headerlink" title="切片共享存储结构"></a>切片共享存储结构</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211080216477.png"></p>
+<h3 id="数组-vs-切片"><a href="#数组-vs-切片" class="headerlink" title="数组 vs. 切片"></a>数组 vs. 切片</h3><ol>
+<li>数组容量不可伸缩</li>
+<li>相同维数, 相同长度的数组可以进行比较, 每一个元素都相同, 这两个数组会被认为相同</li>
+</ol>
+
             </div>
             <hr>
             <div>
@@ -267,7 +275,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
                   </div>
                 
@@ -275,7 +283,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
+                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
                     
                   </div>
                 
@@ -292,9 +300,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/cnpc-recuit-02.html">
+                      <a href="/road2go06.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年中国石油招聘笔试02——考点归纳</span>
+                        <span class="hidden-mobile">Go语言学习06-Map声明、元素访问及遍历</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -302,8 +310,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/KMP.html">
-                        <span class="hidden-mobile">对KMP算法的一些认识</span>
+                      <a href="/road2go04.html">
+                        <span class="hidden-mobile">Go语言学习04-条件与循环</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
