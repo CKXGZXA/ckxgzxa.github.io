@@ -199,6 +199,238 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/road2go12.html" target="_self">
+          Go语言学习12-多态
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go12.html" target="_self">
+          
+          
+            
+          
+          Go语言学习12-多态多态
+空接口与断言
+空接口可以表示任何类型
+
+通过断言来将空接口转换为指定类型
+1v, ok := p.(int)   //ok = true 时为转换成功
+
+Go 接口最佳实践
+倾向于使用小的接口定义, 很多接口只包含一个方法
+1234567type Reader interface &#123;    Read(p []byte) (n int, err int)&#12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 18:54" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go11.html" target="_self">
+          Go语言学习11-相关接口
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go11.html" target="_self">
+          
+          
+            
+          
+          Go语言学习11-相关接口接口与依赖classDiagram
+    class A
+    class AImpl
+    class AClient
+     A
+    AImpl ..|> A
+    AClient ..> A
+    AClient ..> AImpl
+
+123456789101112131415161718192021// Programmer.javapublic 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 14:45" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go10.html" target="_self">
+          Go语言学习10-行为的定义和实现
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go10.html" target="_self">
+          
+          
+            
+          
+          Go语言学习10-行为的定义和实现Go语言官方对于Go 语言是否为面向对象编程的描述https://golang.org/doc/faq：
+
+Is Go an object-oriented language?
+Yes and no. Although Go has types and methods and allows an object-oriented style of programmi
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 03:34" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go09.html" target="_self">
+          Go语言学习09-函数
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go09.html" target="_self">
+          
+          
+            
+          
+          Go语言学习09-函数函数是一等公民与其他主要编程语言的差异
+
+可以有多个返回值
+所有参数都是值传递: slice, map, channel 会有传引用的错觉
+函数可以作为变量的值
+函数可以作为参数和返回值
+
+
+学习函数式编程
+
+
+可变参数1234567func sum(ops ...int) int &#123;    s := 0    for _, op := range ops &#12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 03:13" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/road2go08.html" target="_self">
           Go语言学习08-字符串
         </a>
@@ -534,226 +766,11 @@ while (true)
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go02.html" target="_self">
-          Go语言学习02-变量、常量以及与其他语言的差异
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go02.html" target="_self">
-          
-          
-            
-          
-          Go语言学习02-变量、常量以及与其他语言的差异编写测试程序
-源码文件以 _test 结尾: xxx_test.go
-测试方法名以 Test 开头: func TestXXX(t *testing.T) &#123;...&#125;
-
-快速设置连续值123456789const (	Monday = iota + 1    Tuesday    Wednesday    Thursday    
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-07 21:05" pubdate>
-              2022-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go01.html" target="_self">
-          Go语言学习01-编写第一个Go程序
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go01.html" target="_self">
-          
-          
-            
-          
-          Go语言学习01-编写第一个Go程序基本程序结构123456package main // 包, 表明代码所在的模块(包)import &quot;fmt&quot; // 引入代码依赖// 功能实现func main() &#123;    fmt.Println(&quot;Hello World!&quot;)&#125;
-
-应用程序入口
-必须是 main 包: package main
-必
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-07 03:18" pubdate>
-              2022-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/cnpc-recuit-03.html" target="_self">
-          2023年中国石油招聘笔试03——EPI解题技巧
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/cnpc-recuit-03.html" target="_self">
-          
-          
-            
-          
-          2023年中国石油校园招聘笔试03——EPI综合能力测试解题技巧1. 常识解决技巧从知识的偏重性来说，常识判断部分的导向性非常清晰，即加强考生对国情、社情的了解程度。
-此阶段备考重在平时，平时多了解一些国家大事和重大举措，例如两会、政府工作报道、国家主权、法律等知识，平时多留意、多观察、多思考。
-2. 判断推理题解题技巧2.1 图形推理
-2.1.1 规律推理: 数量类概要说明:数量指图形中包含某种
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-26 23:29" pubdate>
-              2022-09-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/cnpc-recuit-02.html" target="_self">
-          2023年中国石油招聘笔试02——考点归纳
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/cnpc-recuit-02.html" target="_self">
-          
-          
-            
-          
-          2023年中国石油校园招聘笔试02——考点归纳1. 中国石油笔试专业题考点一般涉及较少，请扫码关注公众号回复 “中石油专业题考点” ：
-
-2. 中国石油笔试行测题考点
-常识题【考的少】： 包括历史常识、地理常识、文化常识、科技常识、生活常识等，设计范围广泛。考查知识广度
-推理【必考】： 根据给出的一组图形、数字、文字、一段话寻找规律，并据此找到另一组图形、数字、文字、一段话中类似关系。考查对图形的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-26 00:30" pubdate>
-              2022-09-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%A7%8B%E6%8B%9B/">秋招</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

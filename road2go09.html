@@ -22,9 +22,25 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>归档 - 技术匝记簿</title>
+  <title>Go语言学习09-函数 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -53,7 +69,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -164,9 +180,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Go语言学习09-函数">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-11-09 03:13" pubdate>
+        2022年11月9日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      142 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -179,100 +232,150 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 64 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/road2go02.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Go语言学习02-变量、常量以及与其他语言的差异</span>
-      <time style="float: right;">11-07</time>
-    </a>
-  
-    
-    <a href="/road2go01.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Go语言学习01-编写第一个Go程序</span>
-      <time style="float: right;">11-07</time>
-    </a>
-  
-    
-    <a href="/cnpc-recuit-03.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">2023年中国石油招聘笔试03——EPI解题技巧</span>
-      <time style="float: right;">09-26</time>
-    </a>
-  
-    
-    <a href="/cnpc-recuit-02.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">2023年中国石油招聘笔试02——考点归纳</span>
-      <time style="float: right;">09-26</time>
-    </a>
-  
-    
-    <a href="/cnpc-recuit-01.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">2023年中国石油招聘笔试01——综述</span>
-      <time style="float: right;">09-26</time>
-    </a>
-  
-    
-    <a href="/KMP.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">对KMP算法的一些认识</span>
-      <time style="float: right;">08-26</time>
-    </a>
-  
-    
-    <a href="/ELKLogConstruction.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">从零搭建ELK日志分析系统</span>
-      <time style="float: right;">08-19</time>
-    </a>
-  
-    
-    <a href="/icbcinternship05.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0718 Excel表格</span>
-      <time style="float: right;">08-09</time>
-    </a>
-  
-    
-    <a href="/icbcinternship04.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0714 可视化思维与表达</span>
-      <time style="float: right;">07-15</time>
-    </a>
-  
-    
-    <a href="/icbcinternship03.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0712 结构性思维笔记</span>
-      <time style="float: right;">07-14</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Go语言学习09-函数</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年11月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Go语言学习09-函数"><a href="#Go语言学习09-函数" class="headerlink" title="Go语言学习09-函数"></a>Go语言学习09-函数</h2><h3 id="函数是一等公民"><a href="#函数是一等公民" class="headerlink" title="函数是一等公民"></a>函数是一等公民</h3><p><font color="Blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li>可以有多个返回值</li>
+<li>所有参数都是值传递: slice, map, channel 会有传引用的错觉</li>
+<li>函数可以作为变量的值</li>
+<li>函数可以作为参数和返回值</li>
+</ol>
+<blockquote>
+<p>学习函数式编程</p>
+<p><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.4u3dC5EX_oMdrMdvPy4LQgAAAA?pid=ImgDet&rs=1"></p>
+</blockquote>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sum</span><span class="hljs-params">(ops ...<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    s := <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> _, op := <span class="hljs-keyword">range</span> ops &#123;<br>        s += op<br>    &#125;<br>    <span class="hljs-keyword">return</span> s<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="defer-函数"><a href="#defer-函数" class="headerlink" title="defer 函数"></a>defer 函数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDefer</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        t.Log(<span class="hljs-string">&quot;Clear resources&quot;</span>)<br>    &#125;()<br>    t.Log(<span class="hljs-string">&quot;Started&quot;</span>)<br>    <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Fatal error&quot;</span>) <span class="hljs-comment">// defer仍会执行</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/#board">3</a><a class="page-number" href="/archives/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/#board">7</a><a class="extend next" rel="next" href="/archives/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/road2go10.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Go语言学习10-行为的定义和实现</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/road2go08.html">
+                        <span class="hidden-mobile">Go语言学习08-字符串</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -399,9 +502,15 @@
 
 
 
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
@@ -443,6 +552,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 

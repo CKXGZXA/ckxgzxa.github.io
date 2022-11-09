@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>Go语言学习12-多态</title>
+    <link href="/road2go12.html"/>
+    <url>/road2go12.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Go语言学习12-多态"><a href="#Go语言学习12-多态" class="headerlink" title="Go语言学习12-多态"></a>Go语言学习12-多态</h2><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211091856135.png"></p><h3 id="空接口与断言"><a href="#空接口与断言" class="headerlink" title="空接口与断言"></a>空接口与断言</h3><ol><li><p>空接口可以表示任何类型</p></li><li><p>通过断言来将空接口转换为指定类型</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">v, ok := p.(<span class="hljs-type">int</span>)   <span class="hljs-comment">//ok = true 时为转换成功</span><br></code></pre></td></tr></table></figure></li></ol><h3 id="Go-接口最佳实践"><a href="#Go-接口最佳实践" class="headerlink" title="Go 接口最佳实践"></a>Go 接口最佳实践</h3><ul><li><p>倾向于使用小的接口定义, 很多接口只包含一个方法</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Reader <span class="hljs-keyword">interface</span> &#123;<br>    Read(p []<span class="hljs-type">byte</span>) (n <span class="hljs-type">int</span>, err <span class="hljs-type">int</span>)<br>&#125;<br><br><span class="hljs-keyword">type</span> Writer <span class="hljs-keyword">interface</span> &#123;<br>    Write(p []<span class="hljs-type">byte</span>) (n <span class="hljs-type">int</span>, err <span class="hljs-type">int</span>)<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>较大的接口定义, 可以由多个小接口定义组合而成</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> ReadWriter <span class="hljs-keyword">interface</span> &#123;<br>    Reader<br>    Writer<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>只依赖于必要功能的最小接口</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">StoreData</span><span class="hljs-params">(reader Reader)</span></span> <span class="hljs-type">error</span> &#123;<br>...<br>&#125;<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Go语言学习11-相关接口</title>
+    <link href="/road2go11.html"/>
+    <url>/road2go11.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Go语言学习11-相关接口"><a href="#Go语言学习11-相关接口" class="headerlink" title="Go语言学习11-相关接口"></a>Go语言学习11-相关接口</h2><h3 id="接口与依赖"><a href="#接口与依赖" class="headerlink" title="接口与依赖"></a>接口与依赖</h3><pre class="mermaid">classDiagram    class A    class AImpl    class AClient    <<interface>> A    AImpl ..|> A    AClient ..> A    AClient ..> AImpl</pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Programmer.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Programmer</span> &#123;<br>    String <span class="hljs-title function_">WriteCodes</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// GoProgrammer.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GoProgrammer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Programmer</span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">WriteCodes</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;fmt.Println(\&quot;Hello World!\&quot;)&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Task.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Task</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Programmer</span> <span class="hljs-variable">prog</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoProgrammer</span>();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">codes</span> <span class="hljs-operator">=</span> prog.WriteCodes();<br>        System.out.printlv(codes);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="Duck-Type式接口实现"><a href="#Duck-Type式接口实现" class="headerlink" title="Duck Type式接口实现"></a>Duck Type式接口实现</h3><h4 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Programmer <span class="hljs-keyword">interface</span> &#123;<br>    WriteHelloWorld() Code<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> GoProgrammer <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *GoProgrammer)</span></span> WriteHelloWorld() Code &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;fmt.Printlv(\&quot;Hello World!\&quot;)&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure><h3 id="Go-接口"><a href="#Go-接口" class="headerlink" title="Go 接口"></a>Go 接口</h3><p><font color="blue">与其他主要编程语言的差异</font></p><ol><li>接口为非入侵性, 实现不依赖于接口定义</li><li>所以接口的定义可以包含在接口使用者包内</li></ol><h3 id="接口变量"><a href="#接口变量" class="headerlink" title="接口变量"></a>接口变量</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211091513954.png"></p><h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><ol><li><code>type IntConvertionFn func(n int) int</code></li><li><code>type Mypoint int</code></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Go语言学习10-行为的定义和实现</title>
+    <link href="/road2go10.html"/>
+    <url>/road2go10.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Go语言学习10-行为的定义和实现"><a href="#Go语言学习10-行为的定义和实现" class="headerlink" title="Go语言学习10-行为的定义和实现"></a>Go语言学习10-行为的定义和实现</h2><p>Go语言官方对于Go 语言是否为面向对象编程的描述<a href="https://golang.org/doc/faq">https://golang.org/doc/faq</a>：</p><blockquote><p><font color="blue"><strong>Is Go an object-oriented language?</strong></font></p><p><font color="red">Yes and no.</font> Although Go has types and methods and allows an object-oriented style of programming, there is <strong>no type hierarchy. The concept of “interface” in Go provides a different approach that we believe is wasy to use and in some ways more general.</strong></p><p>Also, the lack of a type hierarchy makes “objects” in Go fell much more lightweight than in language such as C++ or Java.</p></blockquote><h3 id="封装数据和行为"><a href="#封装数据和行为" class="headerlink" title="封装数据和行为"></a>封装数据和行为</h3><h4 id="结构体定义"><a href="#结构体定义" class="headerlink" title="结构体定义"></a>结构体定义</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Employee <span class="hljs-keyword">struct</span> &#123;<br>    Id <span class="hljs-type">string</span><br>    Name <span class="hljs-type">string</span><br>    Age <span class="hljs-type">int</span><br>&#125;<br></code></pre></td></tr></table></figure><h4 id="实例创建及初始化"><a href="#实例创建及初始化" class="headerlink" title="实例创建及初始化"></a>实例创建及初始化</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">e := Employee&#123;<span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-number">20</span>&#125;<br>e1 := Employee&#123;Name: <span class="hljs-string">&quot;Mike&quot;</span>, Age:<span class="hljs-number">30</span>&#125;<br>e2 := <span class="hljs-built_in">new</span>(Employee)<span class="hljs-comment">// 注意这里返回的引用/指针, 相当于 e:=&amp;EmployeeP&#123;&#125;</span><br>e2.Id = <span class="hljs-string">&quot;2&quot;</span><span class="hljs-comment">// 与其他编程语言的差异: 通过实例的指针访问成员不需要-&gt;</span><br>e2.Age = <span class="hljs-number">22</span><br>e2.Name = <span class="hljs-string">&quot;Rose&quot;</span><br></code></pre></td></tr></table></figure><h4 id="行为-方法-定义"><a href="#行为-方法-定义" class="headerlink" title="行为 (方法) 定义"></a>行为 (方法) 定义</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 第一种定义方式在实例对应方法被调用时, 实例的成员会进行值复制</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(e Employee)</span></span> String() <span class="hljs-type">string</span> &#123;<br>    <span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;ID:%s-Name:%s-Age:%d&quot;</span>, e.Id, e.Name, e.Age)<br>&#125;<br><br><span class="hljs-comment">// 通常情况下为了避免内存拷贝我们使用第二种定义方式</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(e *Employee)</span></span> String() <span class="hljs-type">string</span> &#123;<br>    <span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;ID:%s-Name:%s-Age:%d&quot;</span>, e.Id, e.Name, e.Age)<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Go语言学习09-函数</title>
+    <link href="/road2go09.html"/>
+    <url>/road2go09.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Go语言学习09-函数"><a href="#Go语言学习09-函数" class="headerlink" title="Go语言学习09-函数"></a>Go语言学习09-函数</h2><h3 id="函数是一等公民"><a href="#函数是一等公民" class="headerlink" title="函数是一等公民"></a>函数是一等公民</h3><p><font color="Blue">与其他主要编程语言的差异</font></p><ol><li>可以有多个返回值</li><li>所有参数都是值传递: slice, map, channel 会有传引用的错觉</li><li>函数可以作为变量的值</li><li>函数可以作为参数和返回值</li></ol><blockquote><p>学习函数式编程</p><p><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.4u3dC5EX_oMdrMdvPy4LQgAAAA?pid=ImgDet&rs=1"></p></blockquote><h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sum</span><span class="hljs-params">(ops ...<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    s := <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> _, op := <span class="hljs-keyword">range</span> ops &#123;<br>        s += op<br>    &#125;<br>    <span class="hljs-keyword">return</span> s<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="defer-函数"><a href="#defer-函数" class="headerlink" title="defer 函数"></a>defer 函数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDefer</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        t.Log(<span class="hljs-string">&quot;Clear resources&quot;</span>)<br>    &#125;()<br>    t.Log(<span class="hljs-string">&quot;Started&quot;</span>)<br>    <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Fatal error&quot;</span>) <span class="hljs-comment">// defer仍会执行</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Go语言学习08-字符串</title>
     <link href="/road2go08.html"/>
     <url>/road2go08.html</url>

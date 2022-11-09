@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>Go语言学习08-字符串 - 技术匝记簿</title>
+  <title>Go语言学习11-相关接口 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习08-字符串">
+            <span class="h2" id="subtitle" title="Go语言学习11-相关接口">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-08 21:14" pubdate>
-        2022年11月8日 晚上
+      <time datetime="2022-11-09 14:45" pubdate>
+        2022年11月9日 下午
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      140 字
+      197 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -242,48 +242,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Go语言学习08-字符串</h1>
+            <h1 style="display: none">Go语言学习11-相关接口</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年11月9日 凌晨
+                  本文最后更新于：2022年11月9日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Go语言学习08-字符串"><a href="#Go语言学习08-字符串" class="headerlink" title="Go语言学习08-字符串"></a>Go语言学习08-字符串</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><font color="Blue">与其他主要编程语言的差异</font></p>
+              <h2 id="Go语言学习11-相关接口"><a href="#Go语言学习11-相关接口" class="headerlink" title="Go语言学习11-相关接口"></a>Go语言学习11-相关接口</h2><h3 id="接口与依赖"><a href="#接口与依赖" class="headerlink" title="接口与依赖"></a>接口与依赖</h3><pre class="mermaid">classDiagram
+    class A
+    class AImpl
+    class AClient
+    <<interface>> A
+    AImpl ..|> A
+    AClient ..> A
+    AClient ..> AImpl</pre>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Programmer.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Programmer</span> &#123;<br>    String <span class="hljs-title function_">WriteCodes</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// GoProgrammer.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GoProgrammer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Programmer</span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">WriteCodes</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;fmt.Println(\&quot;Hello World!\&quot;)&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Task.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Task</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Programmer</span> <span class="hljs-variable">prog</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoProgrammer</span>();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">codes</span> <span class="hljs-operator">=</span> prog.WriteCodes();<br>        System.out.printlv(codes);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Duck-Type式接口实现"><a href="#Duck-Type式接口实现" class="headerlink" title="Duck Type式接口实现"></a>Duck Type式接口实现</h3><h4 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Programmer <span class="hljs-keyword">interface</span> &#123;<br>    WriteHelloWorld() Code<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> GoProgrammer <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *GoProgrammer)</span></span> WriteHelloWorld() Code &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;fmt.Printlv(\&quot;Hello World!\&quot;)&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Go-接口"><a href="#Go-接口" class="headerlink" title="Go 接口"></a>Go 接口</h3><p><font color="blue">与其他主要编程语言的差异</font></p>
 <ol>
-<li>string 是数据类型, 不是引用或指针类型</li>
-<li>string 是只读的 byte slice, len 函数可以返回它所包含的byte数</li>
-<li>string 的byte数组可以存放任何数据</li>
+<li>接口为非入侵性, 实现不依赖于接口定义</li>
+<li>所以接口的定义可以包含在接口使用者包内</li>
 </ol>
-<h3 id="Unicode-UTF8"><a href="#Unicode-UTF8" class="headerlink" title="Unicode UTF8"></a>Unicode UTF8</h3><ol>
-<li>Unicode 是一种字符集(code point)</li>
-<li>UTF8 是 unicode 的存储实现(转换为字节序列的规则)</li>
-</ol>
-<h3 id="编码与存储"><a href="#编码与存储" class="headerlink" title="编码与存储"></a>编码与存储</h3><table>
-<thead>
-<tr>
-<th align="center">字符</th>
-<th align="center">“中”</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Unicode</td>
-<td align="center">0x4E2D</td>
-</tr>
-<tr>
-<td align="center">UTF-8</td>
-<td align="center">0xE4B8AD</td>
-</tr>
-<tr>
-<td align="center">string/[]byte</td>
-<td align="center">[0xE4, 0xB8, 0xAD]</td>
-</tr>
-</tbody></table>
-<h3 id="常用字符串函数"><a href="#常用字符串函数" class="headerlink" title="常用字符串函数"></a>常用字符串函数</h3><ol>
-<li>strings包(<a target="_blank" rel="noopener" href="https://golang.org/pkg/strings">https://golang.org/pkg/strings</a>)</li>
-<li>strconv包(<a target="_blank" rel="noopener" href="https://golang.org/pkg/strconv">https://golang.org/pkg/strconv</a>)</li>
+<h3 id="接口变量"><a href="#接口变量" class="headerlink" title="接口变量"></a>接口变量</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211091513954.png"></p>
+<h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><ol>
+<li><code>type IntConvertionFn func(n int) int</code></li>
+<li><code>type Mypoint int</code></li>
 </ol>
 
             </div>
@@ -319,9 +310,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/road2go09.html">
+                      <a href="/road2go12.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习09-函数</span>
+                        <span class="hidden-mobile">Go语言学习12-多态</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -329,8 +320,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/road2go07.html">
-                        <span class="hidden-mobile">Go语言学习07-Map与工厂模式, 实现Set</span>
+                      <a href="/road2go10.html">
+                        <span class="hidden-mobile">Go语言学习10-行为的定义和实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
