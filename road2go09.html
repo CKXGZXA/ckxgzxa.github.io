@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>Go语言学习09-函数 - 技术匝记簿</title>
+  <title>Go语言学习09-典型并发任务 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习09-函数">
+            <span class="h2" id="subtitle" title="Go语言学习09-典型并发任务">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-09 03:13" pubdate>
-        2022年11月9日 凌晨
+      <time datetime="2022-11-11 01:28" pubdate>
+        2022年11月11日 凌晨
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      142 字
+      444 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -242,29 +242,24 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Go语言学习09-函数</h1>
+            <h1 style="display: none">Go语言学习09-典型并发任务</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年11月9日 凌晨
+                  本文最后更新于：2022年11月11日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Go语言学习09-函数"><a href="#Go语言学习09-函数" class="headerlink" title="Go语言学习09-函数"></a>Go语言学习09-函数</h2><h3 id="函数是一等公民"><a href="#函数是一等公民" class="headerlink" title="函数是一等公民"></a>函数是一等公民</h3><p><font color="Blue">与其他主要编程语言的差异</font></p>
-<ol>
-<li>可以有多个返回值</li>
-<li>所有参数都是值传递: slice, map, channel 会有传引用的错觉</li>
-<li>函数可以作为变量的值</li>
-<li>函数可以作为参数和返回值</li>
-</ol>
-<blockquote>
-<p>学习函数式编程</p>
-<p><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.4u3dC5EX_oMdrMdvPy4LQgAAAA?pid=ImgDet&rs=1"></p>
-</blockquote>
-<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sum</span><span class="hljs-params">(ops ...<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    s := <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> _, op := <span class="hljs-keyword">range</span> ops &#123;<br>        s += op<br>    &#125;<br>    <span class="hljs-keyword">return</span> s<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="Go语言学习09-典型并发任务"><a href="#Go语言学习09-典型并发任务" class="headerlink" title="Go语言学习09-典型并发任务"></a>Go语言学习09-典型并发任务</h2><h3 id="单例模式-懒汉式-线程安全"><a href="#单例模式-懒汉式-线程安全" class="headerlink" title="单例模式(懒汉式, 线程安全)"></a>单例模式(懒汉式, 线程安全)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Singleton <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">var</span> singleInstance *Singleton<br><span class="hljs-keyword">var</span> once sync.Once<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetSingletonObj</span><span class="hljs-params">()</span></span> *Singleton &#123;<br>	once.Do(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		fmt.Println(<span class="hljs-string">&quot;Create Obj&quot;</span>)<br>		singleInstance = <span class="hljs-built_in">new</span>(Singleton)<br>	&#125;)<br>	<span class="hljs-keyword">return</span> singleInstance<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestGetSingletonObj</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	<span class="hljs-keyword">var</span> wg sync.WaitGroup<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>		wg.Add(<span class="hljs-number">1</span>)<br>		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>			obj := GetSingletonObj()<br>			fmt.Println(unsafe.Pointer(obj))<br>			wg.Done()<br>		&#125;()<br>	&#125;<br>	wg.Wait()<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="defer-函数"><a href="#defer-函数" class="headerlink" title="defer 函数"></a>defer 函数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDefer</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        t.Log(<span class="hljs-string">&quot;Clear resources&quot;</span>)<br>    &#125;()<br>    t.Log(<span class="hljs-string">&quot;Started&quot;</span>)<br>    <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Fatal error&quot;</span>) <span class="hljs-comment">// defer仍会执行</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="场景01-仅需任意任务完成"><a href="#场景01-仅需任意任务完成" class="headerlink" title="场景01: 仅需任意任务完成"></a>场景01: 仅需任意任务完成</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">runTask</span><span class="hljs-params">(id <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">string</span> &#123;<br>	time.Sleep(<span class="hljs-number">10</span> * time.Millisecond)<br>	<span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;The result is from %d&quot;</span>, id)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">FirstResponse</span><span class="hljs-params">()</span></span> <span class="hljs-type">string</span> &#123;<br>	numOfRunner := <span class="hljs-number">10</span><br>	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">string</span>, numOfRunner)<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; numOfRunner; i++ &#123;<br>		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i <span class="hljs-type">int</span>)</span></span> &#123;<br>			ret := runTask(i)<br>			ch &lt;- ret<br>		&#125;(i)<br>	&#125;<br>	<span class="hljs-keyword">return</span> &lt;-ch<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestFirstResponse</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	t.Log(<span class="hljs-string">&quot;Before:&quot;</span>, runtime.NumGoroutine())<br>	t.Log(FirstResponse())<br>	time.Sleep(time.Second * <span class="hljs-number">1</span>)<br>	t.Log(<span class="hljs-string">&quot;After:&quot;</span>, runtime.NumGoroutine())<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="场景02-等待所有任务完成"><a href="#场景02-等待所有任务完成" class="headerlink" title="场景02: 等待所有任务完成"></a>场景02: 等待所有任务完成</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">runTask</span><span class="hljs-params">(id <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">string</span> &#123;<br>	time.Sleep(<span class="hljs-number">10</span> * time.Millisecond)<br>	<span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;The result is from %d&quot;</span>, id)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">AllResponse</span><span class="hljs-params">()</span></span> <span class="hljs-type">string</span> &#123;<br>	numOfRunner := <span class="hljs-number">10</span><br>	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">string</span>, numOfRunner)<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; numOfRunner; i++ &#123;<br>		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i <span class="hljs-type">int</span>)</span></span> &#123;<br>			ret := runTask(i)<br>			ch &lt;- ret<br>		&#125;(i)<br>	&#125;<br>	finalRet := <span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; numOfRunner; j++ &#123;<br>		finalRet += &lt;-ch + <span class="hljs-string">&quot;\n&quot;</span><br>	&#125;<br>	<span class="hljs-keyword">return</span> finalRet<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestFirstResponse</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	t.Log(<span class="hljs-string">&quot;Before:&quot;</span>, runtime.NumGoroutine())<br>	t.Log(AllResponse())<br>	time.Sleep(time.Second * <span class="hljs-number">1</span>)<br>	t.Log(<span class="hljs-string">&quot;After:&quot;</span>, runtime.NumGoroutine())<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="实现池化"><a href="#实现池化" class="headerlink" title="实现池化"></a>实现池化</h3><h4 id="使用-buffered-channel-实现对象池"><a href="#使用-buffered-channel-实现对象池" class="headerlink" title="使用 buffered channel 实现对象池"></a>使用 buffered channel 实现对象池</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> ReusableObj <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">type</span> ObjPool <span class="hljs-keyword">struct</span> &#123;<br>	bufChan <span class="hljs-keyword">chan</span> *ReusableObj <span class="hljs-comment">// 用于缓冲可重用对象</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewObjPool</span><span class="hljs-params">(numOfObj <span class="hljs-type">int</span>)</span></span> *ObjPool &#123;<br>	objPool := ObjPool&#123;&#125;<br>	objPool.bufChan = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> *ReusableObj, numOfObj)<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; numOfObj; i++ &#123;<br>		objPool.bufChan &lt;- &amp;ReusableObj&#123;&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> &amp;objPool<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *ObjPool)</span></span> GetObj(timeout time.Duration) (*ReusableObj, <span class="hljs-type">error</span>) &#123;<br>	<span class="hljs-keyword">select</span> &#123;<br>	<span class="hljs-keyword">case</span> ret := &lt;-p.bufChan:<br>		<span class="hljs-keyword">return</span> ret, <span class="hljs-literal">nil</span><br>	<span class="hljs-keyword">case</span> &lt;-time.After(timeout): <span class="hljs-comment">// 超时控制</span><br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.New(<span class="hljs-string">&quot;time out&quot;</span>)<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *ObjPool)</span></span> ReleaseObj(obj *ReusableObj) <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">select</span> &#123;<br>	<span class="hljs-keyword">case</span> p.bufChan &lt;- obj:<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	<span class="hljs-keyword">default</span>:<br>		<span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;overflow&quot;</span>)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 
 
             </div>
@@ -300,9 +295,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/road2go10.html">
+                      <a href="/road2go25.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习10-行为的定义和实现</span>
+                        <span class="hidden-mobile">Go语言学习25-实现池化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -311,7 +306,7 @@
                     
                     
                       <a href="/road2go08.html">
-                        <span class="hidden-mobile">Go语言学习08-字符串</span>
+                        <span class="hidden-mobile">Go语言学习08-并发编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

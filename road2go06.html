@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>Go语言学习06-Map声明、元素访问及遍历 - 技术匝记簿</title>
+  <title>Go语言学习06-错误处理 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习06-Map声明、元素访问及遍历">
+            <span class="h2" id="subtitle" title="Go语言学习06-错误处理">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-08 10:55" pubdate>
-        2022年11月8日 上午
+      <time datetime="2022-11-09 21:45" pubdate>
+        2022年11月9日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      133 字
+      344 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      5
        分钟
     </span>
   
@@ -242,21 +242,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Go语言学习06-Map声明、元素访问及遍历</h1>
+            <h1 style="display: none">Go语言学习06-错误处理</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年11月8日 上午
+                  本文最后更新于：2022年11月11日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Go语言学习06-Map声明、元素访问及遍历"><a href="#Go语言学习06-Map声明、元素访问及遍历" class="headerlink" title="Go语言学习06-Map声明、元素访问及遍历"></a>Go语言学习06-Map声明、元素访问及遍历</h2><h3 id="Map声明"><a href="#Map声明" class="headerlink" title="Map声明"></a>Map声明</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-string">&quot;one&quot;</span>:<span class="hljs-number">1</span>, <span class="hljs-string">&quot;two&quot;</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&quot;three&quot;</span>:<span class="hljs-number">3</span>&#125;<br>m1 := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;&#125;<br>m1[<span class="hljs-string">&quot;one&quot;</span>] = <span class="hljs-number">1</span><br>m2 := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span> <span class="hljs-comment">/*Initial Capacity*/</span>)<br></code></pre></td></tr></table></figure>
+              <h2 id="Go语言学习06-错误处理"><a href="#Go语言学习06-错误处理" class="headerlink" title="Go语言学习06-错误处理"></a>Go语言学习06-错误处理</h2><h3 id="Go的错误机制"><a href="#Go的错误机制" class="headerlink" title="Go的错误机制"></a>Go的错误机制</h3><p><font color="blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li><p>没有异常机制</p>
+</li>
+<li><p><code>error</code>类型实现了error接口</p>
+</li>
+<li><p>可以通过 errors.New 来快速创建错误实例</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> <span class="hljs-type">error</span> <span class="hljs-keyword">interface</span> &#123;<br>    Error() <span class="hljs-type">string</span><br>&#125;<br><br>errors.New(<span class="hljs-string">&quot;n must be in range [0, 10]&quot;</span>)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p><font color="blue">定义不同的错误变量, 以便于判断错误类型</font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> LessThanTwoError = errors.New(<span class="hljs-string">&quot;n should be not less than 2&quot;</span>)<br><span class="hljs-keyword">var</span> LargeThanHundredError = errors.New(<span class="hljs-string">&quot;n should be not larger than 100&quot;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetFibonacci</span><span class="hljs-params">(n <span class="hljs-type">int</span>)</span></span> ([]<span class="hljs-type">int</span>, <span class="hljs-type">error</span>) &#123;<br>	<span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, LessThanTwoError<br>	&#125;<br>	<span class="hljs-keyword">if</span> n &gt; <span class="hljs-number">100</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, LargeThanHundredError<br>	&#125;<br>	fibList := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">1</span>&#125;<br><br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">2</span>; i &lt; n; i++ &#123;<br>		fibList = <span class="hljs-built_in">append</span>(fibList, fibList[i<span class="hljs-number">-2</span>]+fibList[i<span class="hljs-number">-1</span>])<br>	&#125;<br>	<span class="hljs-keyword">return</span> fibList, <span class="hljs-literal">nil</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestGetFibonacci</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	<span class="hljs-keyword">if</span> v, err := GetFibonacci(<span class="hljs-number">-10</span>); err != <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">if</span> err == LessThanTwoError &#123;<br>			fmt.Println(<span class="hljs-string">&quot;It is less.&quot;</span>)<br>		&#125;<br>		t.Error(err)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Log(v)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="Map元素的访问"><a href="#Map元素的访问" class="headerlink" title="Map元素的访问"></a>Map元素的访问</h3><p><font color="Blue">与其他主要编程语言的差异</font></p>
-<p>在访问的Key不存在时, 仍会返回零值, 不能通过返回nil来判断元素是否存在</p>
-<h3 id="Map遍历"><a href="#Map遍历" class="headerlink" title="Map遍历"></a>Map遍历</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-string">&quot;one&quot;</span>:<span class="hljs-number">1</span>, <span class="hljs-string">&quot;two&quot;</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&quot;three&quot;</span>:<span class="hljs-number">3</span>&#125;<br><span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> m &#123;<br>    t.Log(k, v)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><font color="blue"><strong>及早失败, 避免嵌套!</strong></font></p>
+<h3 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h3><ul>
+<li>panic 用于不可恢复的错误</li>
+<li>panic 退出前会执行 defer 指定的内容</li>
+</ul>
+<h4 id="panic-vs-os-Exit"><a href="#panic-vs-os-Exit" class="headerlink" title="panic vs. os.Exit"></a>panic vs. os.Exit</h4><ul>
+<li>os.Exit 退出时不会调用 defer 指定的函数</li>
+<li>os.Exit 退出时不输出当前调用栈信息</li>
+</ul>
+<h3 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 最常见的&quot;错误恢复&quot;</span><br><span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">if</span> err := <span class="hljs-built_in">recover</span>(); err != <span class="hljs-literal">nil</span> &#123;<br>        Log.Error(<span class="hljs-string">&quot;recovered panic&quot;</span>, err)<br>	&#125;<br>&#125;()<br></code></pre></td></tr></table></figure>
 
+<p>缺陷:</p>
+<ul>
+<li>形成僵尸服务进程, 导致 health check 失效</li>
+<li>“Let it Crash!” 往往是我们恢复不确定性错误的最好方法</li>
+</ul>
 
             </div>
             <hr>
@@ -293,7 +315,7 @@
                     
                       <a href="/road2go07.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习07-Map与工厂模式, 实现Set</span>
+                        <span class="hidden-mobile">Go语言学习07-包和依赖管理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -302,7 +324,7 @@
                     
                     
                       <a href="/road2go05.html">
-                        <span class="hidden-mobile">Go语言学习05-数组和切片</span>
+                        <span class="hidden-mobile">Go语言学习05-面向对象编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

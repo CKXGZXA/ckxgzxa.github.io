@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>Go语言学习02-变量、常量以及与其他语言的差异 - 技术匝记簿</title>
+  <title>Go语言学习02-常用集合 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习02-变量、常量以及与其他语言的差异">
+            <span class="h2" id="subtitle" title="Go语言学习02-常用集合">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-07 21:05" pubdate>
-        2022年11月7日 晚上
+      <time datetime="2022-11-08 11:18" pubdate>
+        2022年11月8日 上午
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      76 字
+      928 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      14
        分钟
     </span>
   
@@ -242,23 +242,80 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Go语言学习02-变量、常量以及与其他语言的差异</h1>
+            <h1 style="display: none">Go语言学习02-常用集合</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年11月7日 晚上
+                  本文最后更新于：2022年11月11日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Go语言学习02-变量、常量以及与其他语言的差异"><a href="#Go语言学习02-变量、常量以及与其他语言的差异" class="headerlink" title="Go语言学习02-变量、常量以及与其他语言的差异"></a>Go语言学习02-变量、常量以及与其他语言的差异</h2><h3 id="编写测试程序"><a href="#编写测试程序" class="headerlink" title="编写测试程序"></a>编写测试程序</h3><ol>
-<li>源码文件以 <code>_test</code> 结尾: xxx_test.go</li>
-<li>测试方法名以 <code>Test</code> 开头: <code>func TestXXX(t *testing.T) &#123;...&#125;</code></li>
+              <h2 id="Go语言学习02-常用集合"><a href="#Go语言学习02-常用集合" class="headerlink" title="Go语言学习02-常用集合"></a>Go语言学习02-常用集合</h2><h3 id="条件与循环"><a href="#条件与循环" class="headerlink" title="条件与循环"></a>条件与循环</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><p><font color="Blue">与其他主要编程语言的差异</font></p>
+<p>Go语言仅支持循环关键字 <code>for</code></p>
+<p> <code>for j := 7; j &lt;= 9; j++</code></p>
+<h5 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h5><p><font color="green">while条件循环 </font></p>
+<p><font color="green">while (n &lt; 5) </font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">n := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> n &lt; <span class="hljs-number">5</span> &#123;<br>    n++<br>    fmt.Println(n)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><font color="green">无限循环 </font></p>
+<p><font color="green">while (true) </font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">n := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> n &lt; <span class="hljs-number">5</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="if条件"><a href="#if条件" class="headerlink" title="if条件"></a>if条件</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> condition &#123;<br>    <span class="hljs-comment">// code to be executed if condition is true</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition is false</span><br>&#125;<br><br><span class="hljs-keyword">if</span> condition<span class="hljs-number">-1</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition-1 is true</span><br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> condition<span class="hljs-number">-2</span> &#123;<br>    <span class="hljs-comment">// code to be executed if condition-2 is true</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// code to be executed if both condition1 and condition2 are false</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><font color="blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li><p>condition 表达式结果必须为布尔值</p>
+</li>
+<li><p>支持变量赋值:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> <span class="hljs-keyword">var</span> declaration; condition &#123;<br>    <span class="hljs-comment">// code to be executed if conditon is true</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="快速设置连续值"><a href="#快速设置连续值" class="headerlink" title="快速设置连续值"></a>快速设置连续值</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">const</span> (<br>	Monday = <span class="hljs-literal">iota</span> + <span class="hljs-number">1</span><br>    Tuesday<br>    Wednesday<br>    Thursday<br>    Friday<br>    Saturday<br>    Sunday<br>)<br></code></pre></td></tr></table></figure>
+<h4 id="switch条件"><a href="#switch条件" class="headerlink" title="switch条件"></a>switch条件</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">switch</span> os := runtime.GOOS; os &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;darwin&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;OS X.&quot;</span>)<br><span class="hljs-comment">// break</span><br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;linux&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;Linux.&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>	<span class="hljs-comment">// freebsd, openbsd,</span><br>	<span class="hljs-comment">// plan9, windows...</span><br>	fmt.Printf(<span class="hljs-string">&quot;%s.&quot;</span>, os)<br>&#125;<br><br><span class="hljs-keyword">switch</span> &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-number">0</span> &lt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">3</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;0-3&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">4</span> &lt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">6</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;4-6&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">7</span> &gt;= Num &amp;&amp; Num &lt;= <span class="hljs-number">9</span>:<br>	fmt.Printf(<span class="hljs-string">&quot;7-9&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">const</span> (<br>	Open = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-literal">iota</span><br>    Close<br>    Pending<br>)<br></code></pre></td></tr></table></figure>
+<p><font color="blue">与其他主要编程语言的差异</font></p>
+<ol>
+<li>条件表达式不限制为常量或者整数;</li>
+<li>单个case中, 可以出现多个结果选项, 使用逗号分隔;</li>
+<li>与C语言等规则相反, Go语言不需要用break来明确退出一个case;</li>
+<li>可以不设定 switch 之后的条件表达式, 在此种情况下, 整个switch结构与多个if…else…的逻辑作用等同</li>
+</ol>
+<h3 id="数组与切片"><a href="#数组与切片" class="headerlink" title="数组与切片"></a>数组与切片</h3><h4 id="数组的声明"><a href="#数组的声明" class="headerlink" title="数组的声明"></a>数组的声明</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> a [<span class="hljs-number">3</span>]<span class="hljs-type">int</span> <span class="hljs-comment">//声明并初始化为默认零值</span><br>a[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br><br>b := [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;			<span class="hljs-comment">// 声明同时初始化</span><br>c := [<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]<span class="hljs-type">int</span>&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;	<span class="hljs-comment">// 多位数组初始化</span><br></code></pre></td></tr></table></figure>
 
+<p><font color="Blue">与其他主要编程语言的差异</font></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestTravelArray</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    a := [...]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;	<span class="hljs-comment">// 不指定元素个数</span><br>    <span class="hljs-keyword">for</span> idx<span class="hljs-comment">/*索引*/</span>, elem<span class="hljs-comment">/*元素*/</span> := <span class="hljs-keyword">range</span> a &#123;<br>        fmt.Println(idx, elem)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="数组截取"><a href="#数组截取" class="headerlink" title="数组截取"></a>数组截取</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go">a[开始索引(包含)，结束索引(不包含)]<br><br>a := [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>，<span class="hljs-number">5</span>&#125;<br>a[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>] <span class="hljs-comment">//2</span><br>a[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>] <span class="hljs-comment">//2,3</span><br>a[<span class="hljs-number">1</span>:<span class="hljs-built_in">len</span>(a)] <span class="hljs-comment">//2,3,4,5</span><br>a[<span class="hljs-number">1</span>:] <span class="hljs-comment">//2,3,4,5</span><br>a[:<span class="hljs-number">3</span>] <span class="hljs-comment">//1,2,3</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><h5 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h5><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211080205152.png"></p>
+<h5 id="切片声明"><a href="#切片声明" class="headerlink" title="切片声明"></a>切片声明</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> s0 []<span class="hljs-type">int</span><br>s0 = <span class="hljs-built_in">append</span>(s0，<span class="hljs-number">1</span>)<br><br>s := []<span class="hljs-type">int</span>&#123;&#125;<br><br>s1 := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>&#125;<br><br>s2 := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>，<span class="hljs-number">2</span>，<span class="hljs-number">4</span>)<br>   <span class="hljs-comment">/* []type, len, cap</span><br><span class="hljs-comment">   其中len个元素会被初始化为默认零值, 未初始化元素不可以访问</span><br><span class="hljs-comment">   */</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="切片共享存储结构"><a href="#切片共享存储结构" class="headerlink" title="切片共享存储结构"></a>切片共享存储结构</h5><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211080216477.png"></p>
+<h4 id="数组-vs-切片"><a href="#数组-vs-切片" class="headerlink" title="数组 vs. 切片"></a>数组 vs. 切片</h4><ol>
+<li>数组容量不可伸缩</li>
+<li>相同维数, 相同长度的数组可以进行比较, 每一个元素都相同, 这两个数组会被认为相同</li>
+</ol>
+<h3 id="Map声明、元素访问及遍历"><a href="#Map声明、元素访问及遍历" class="headerlink" title="Map声明、元素访问及遍历"></a>Map声明、元素访问及遍历</h3><h4 id="Map声明"><a href="#Map声明" class="headerlink" title="Map声明"></a>Map声明</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-string">&quot;one&quot;</span>:<span class="hljs-number">1</span>, <span class="hljs-string">&quot;two&quot;</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&quot;three&quot;</span>:<span class="hljs-number">3</span>&#125;<br>m1 := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;&#125;<br>m1[<span class="hljs-string">&quot;one&quot;</span>] = <span class="hljs-number">1</span><br>m2 := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span> <span class="hljs-comment">/*Initial Capacity*/</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Map元素的访问"><a href="#Map元素的访问" class="headerlink" title="Map元素的访问"></a>Map元素的访问</h4><p><font color="Blue">与其他主要编程语言的差异</font></p>
+<p>在访问的Key不存在时, 仍会返回零值, 不能通过返回nil来判断元素是否存在</p>
+<h4 id="Map遍历"><a href="#Map遍历" class="headerlink" title="Map遍历"></a>Map遍历</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-string">&quot;one&quot;</span>:<span class="hljs-number">1</span>, <span class="hljs-string">&quot;two&quot;</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&quot;three&quot;</span>:<span class="hljs-number">3</span>&#125;<br><span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> m &#123;<br>    t.Log(k, v)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="实现Set"><a href="#实现Set" class="headerlink" title="实现Set"></a>实现Set</h3><p><strong>Go 的内置集合中没有 Set 实现, 可以map[type]bool</strong></p>
+<ol>
+<li><p><strong>元素的唯一性</strong></p>
+</li>
+<li><p><strong>基本操作</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestMapForSet</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	mySet := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">bool</span>&#123;&#125;<br>	mySet[<span class="hljs-number">1</span>] = <span class="hljs-literal">true</span><br>	n := <span class="hljs-number">3</span><br>	<span class="hljs-keyword">if</span> mySet[n] &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is existing&quot;</span>, n)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is not existing&quot;</span>, n)<br>	&#125;<br>	mySet[<span class="hljs-number">3</span>] = <span class="hljs-literal">true</span><br>	t.Log(<span class="hljs-built_in">len</span>(mySet))<br>	<span class="hljs-built_in">delete</span>(mySet, <span class="hljs-number">1</span>)<br>	n = <span class="hljs-number">1</span><br>	<span class="hljs-keyword">if</span> mySet[n] &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is existing&quot;</span>, n)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Logf(<span class="hljs-string">&quot;%d is not existing&quot;</span>, n)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>添加元素</li>
+<li>判断元素是否存在</li>
+<li>删除元素</li>
+<li>元素个数</li>
+</ol>
+</li>
+</ol>
 
             </div>
             <hr>
@@ -295,7 +352,7 @@
                     
                       <a href="/road2go03.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习03-数据类型、运算符</span>
+                        <span class="hidden-mobile">Go语言学习03-字符串</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -304,7 +361,7 @@
                     
                     
                       <a href="/road2go01.html">
-                        <span class="hidden-mobile">Go语言学习01-编写第一个Go程序</span>
+                        <span class="hidden-mobile">Go语言学习01-基本程序结构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

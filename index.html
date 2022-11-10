@@ -199,27 +199,18 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go12.html" target="_self">
-          Go语言学习12-多态
+        <a href="/road2go10.html" target="_self">
+          Go语言学习10-sync.Pool对象缓存
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go12.html" target="_self">
+        <a href="/road2go10.html" target="_self">
           
           
             
           
-          Go语言学习12-多态多态
-空接口与断言
-空接口可以表示任何类型
-
-通过断言来将空接口转换为指定类型
-1v, ok := p.(int)   //ok = true 时为转换成功
-
-Go 接口最佳实践
-倾向于使用小的接口定义, 很多接口只包含一个方法
-1234567type Reader interface &#123;    Read(p []byte) (n int, err int)&#12
+          Go语言学习10-sync.Pool对象缓存
         </a>
       </p>
 
@@ -227,7 +218,225 @@ Go 接口最佳实践
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-09 18:54" pubdate>
+            <time datetime="2022-11-11 03:08" pubdate>
+              2022-11-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go25.html" target="_self">
+          Go语言学习25-实现池化
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go25.html" target="_self">
+          
+          
+            
+          
+          Go语言学习25-实现池化使用 buffered channel 实现对象池
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-11 02:06" pubdate>
+              2022-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go09.html" target="_self">
+          Go语言学习09-典型并发任务
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go09.html" target="_self">
+          
+          
+            
+          
+          Go语言学习09-典型并发任务单例模式(懒汉式, 线程安全)1234567891011121314151617181920212223242526type Singleton struct &#123;&#125;var singleInstance *Singletonvar once sync.Oncefunc GetSingletonObj() *Singleton &#123;	once.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-11 01:28" pubdate>
+              2022-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go08.html" target="_self">
+          Go语言学习08-并发编程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go08.html" target="_self">
+          
+          
+            
+          
+          Go语言学习08-并发编程Thread vs. Groutine
+创建时默认的stack的大小
+
+JDK5 以后 Java Thread stack 默认为 1M
+Groutine 的 Stack 初始化大小为 2K
+
+
+和 KSE (Kernel Space Entity) 的对应关系
+
+Java Thread 是 1:1 
+Groutine 是 M:N
+
+
+
+
+
+12345678func Te
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-10 13:08" pubdate>
+              2022-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go07.html" target="_self">
+          Go语言学习07-包和依赖管理
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go07.html" target="_self">
+          
+          
+            
+          
+          Go语言学习07-包和依赖管理package
+基本复用模块单元
+以首字母大写来表明可被包外代码访问
+
+代码的 package 可以和所在的目录不一致
+
+同一目录里的 Go 代码的 package 要保持一致
+
+
+
+
+通过 go get 来获取远程依赖
+go get -u 强制从网络更新远程依赖
+
+注意代码在 GitHub 上的组织形式, 以适应 go get
+直接以代码路径开始, 不要有 src
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 22:42" pubdate>
               2022-11-09
             </time>
           </div>
@@ -258,27 +467,27 @@ Go 接口最佳实践
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go11.html" target="_self">
-          Go语言学习11-相关接口
+        <a href="/road2go06.html" target="_self">
+          Go语言学习06-错误处理
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go11.html" target="_self">
+        <a href="/road2go06.html" target="_self">
           
           
             
           
-          Go语言学习11-相关接口接口与依赖classDiagram
-    class A
-    class AImpl
-    class AClient
-     A
-    AImpl ..|> A
-    AClient ..> A
-    AClient ..> AImpl
+          Go语言学习06-错误处理Go的错误机制与其他主要编程语言的差异
 
-123456789101112131415161718192021// Programmer.javapublic 
+没有异常机制
+
+error类型实现了error接口
+
+可以通过 errors.New 来快速创建错误实例
+12345type error interface &#123;    Error() string&#125;errors.New(&quot;n must be in range [0, 10]&quot;)
+
+最佳实践定
         </a>
       </p>
 
@@ -286,7 +495,7 @@ Go 接口最佳实践
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-09 14:45" pubdate>
+            <time datetime="2022-11-09 21:45" pubdate>
               2022-11-09
             </time>
           </div>
@@ -317,21 +526,21 @@ Go 接口最佳实践
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go10.html" target="_self">
-          Go语言学习10-行为的定义和实现
+        <a href="/road2go05.html" target="_self">
+          Go语言学习05-面向对象编程
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go10.html" target="_self">
+        <a href="/road2go05.html" target="_self">
           
           
             
           
-          Go语言学习10-行为的定义和实现Go语言官方对于Go 语言是否为面向对象编程的描述https://golang.org/doc/faq：
+          Go语言学习05-面向对象编程Go语言官方对于Go 语言是否为面向对象编程的描述https://golang.org/doc/faq：
 
 Is Go an object-oriented language?
-Yes and no. Although Go has types and methods and allows an object-oriented style of programmi
+Yes and no. Although Go has types and methods and allows an object-oriented style of programming
         </a>
       </p>
 
@@ -370,18 +579,18 @@ Yes and no. Although Go has types and methods and allows an object-oriented styl
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go09.html" target="_self">
-          Go语言学习09-函数
+        <a href="/road2go04.html" target="_self">
+          Go语言学习04-函数
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go09.html" target="_self">
+        <a href="/road2go04.html" target="_self">
           
           
             
           
-          Go语言学习09-函数函数是一等公民与其他主要编程语言的差异
+          Go语言学习04-函数函数是一等公民&lt;font color=&quot;Blue&quot;&gt;与其他主要编程语言的差异&lt;/font&gt;
 
 可以有多个返回值
 所有参数都是值传递: slice, map, channel 会有传引用的错觉
@@ -392,7 +601,7 @@ Yes and no. Although Go has types and methods and allows an object-oriented styl
 学习函数式编程
 
 
-可变参数1234567func sum(ops ...int) int &#123;    s := 0    for _, op := range ops &#12
+可变参数1234567func sum(ops ...int) int
         </a>
       </p>
 
@@ -431,18 +640,18 @@ Yes and no. Although Go has types and methods and allows an object-oriented styl
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go08.html" target="_self">
-          Go语言学习08-字符串
+        <a href="/road2go03.html" target="_self">
+          Go语言学习03-字符串
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go08.html" target="_self">
+        <a href="/road2go03.html" target="_self">
           
           
             
           
-          Go语言学习08-字符串字符串与其他主要编程语言的差异
+          Go语言学习03-字符串字符串与其他主要编程语言的差异
 
 string 是数据类型, 不是引用或指针类型
 string 是只读的 byte slice, len 函数可以返回它所包含的byte数
@@ -491,23 +700,27 @@ UTF8 是 unicode 的存储实现(转换为字节序列的规则)
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2go07.html" target="_self">
-          Go语言学习07-Map与工厂模式, 实现Set
+        <a href="/road2go02.html" target="_self">
+          Go语言学习02-常用集合
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2go07.html" target="_self">
+        <a href="/road2go02.html" target="_self">
           
           
             
           
-          Go语言学习07-Map与工厂模式, 实现Set实现SetGo 的内置集合中没有 Set 实现, 可以map[type]bool
+          Go语言学习02-常用集合条件与循环循环与其他主要编程语言的差异
+Go语言仅支持循环关键字 for
+ for j := 7; j &lt;= 9; j++
+代码示例while条件循环 
+while (n &lt; 5) 
+12345n := 0for n &lt; 5 &#123;    n++    fmt.Println(n)&#125;
 
-元素的唯一性
-
-基本操作
-12345678910111213141516171819func TestMapForSet(t *testing.T) &#123;	mySet := map[int]bool&#123;&#125;	mySet[1] = true	n 
+无限循环 
+while (true) 
+1234n 
         </a>
       </p>
 
@@ -517,232 +730,6 @@ UTF8 是 unicode 的存储实现(转换为字节序列的规则)
             <i class="iconfont icon-date"></i>
             <time datetime="2022-11-08 11:18" pubdate>
               2022-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go06.html" target="_self">
-          Go语言学习06-Map声明、元素访问及遍历
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go06.html" target="_self">
-          
-          
-            
-          
-          Go语言学习06-Map声明、元素访问及遍历Map声明1234m := map[string]int&#123;&quot;one&quot;:1, &quot;two&quot;:2, &quot;three&quot;:3&#125;m1 := map[string]int&#123;&#125;m1[&quot;one&quot;] = 1m2 := make(map[string]int,
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-08 10:55" pubdate>
-              2022-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go05.html" target="_self">
-          Go语言学习05-数组和切片
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go05.html" target="_self">
-          
-          
-            
-          
-          Go语言学习05-数组和切片数组的声明12345var a [3]int //声明并初始化为默认零值a[0] = 1b := [3]int&#123;1, 2, 3&#125;			// 声明同时初始化c := [2][2]int&#123;&#123;1,2&#125;, &#123;3, 4&#125;&#125;	// 多位数组初始化
-
-与其他主要编程语言的差异
-123456func Tes
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-08 01:32" pubdate>
-              2022-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go04.html" target="_self">
-          Go语言学习04-条件与循环
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go04.html" target="_self">
-          
-          
-            
-          
-          Go语言学习04-条件与循环循环与其他主要编程语言的差异
-Go语言仅支持循环关键字 for
- for j := 7; j &lt;= 9; j++
-代码示例while条件循环 
-while (n &lt; 5) 
-12345n := 0for n &lt; 5 &#123;    n++    fmt.Println(n)&#125;
-
-无限循环 
-while (true) 
-1234n := 0
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-07 22:45" pubdate>
-              2022-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go03.html" target="_self">
-          Go语言学习03-数据类型、运算符
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go03.html" target="_self">
-          
-          
-            
-          
-          Go语言学习03-数据类型、运算符基本数据类型
-    
-        bool
-    
-    
-        string
-    
-    
-        int int8 int16 int32 int64
-    
-    
-        uint uint8 uint16 uint32 uint64 uintptr
-    
-    
-        byte // alia
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-07 21:30" pubdate>
-              2022-11-07
             </time>
           </div>
         
