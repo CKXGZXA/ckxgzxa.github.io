@@ -17,31 +17,6 @@
   
   
   <entry>
-    <title>Go语言学习25-实现池化</title>
-    <link href="/road2go25.html"/>
-    <url>/road2go25.html</url>
-    
-    <content type="html"><![CDATA[<h2 id="Go语言学习25-实现池化"><a href="#Go语言学习25-实现池化" class="headerlink" title="Go语言学习25-实现池化"></a>Go语言学习25-实现池化</h2><h3 id="使用-buffered-channel-实现对象池"><a href="#使用-buffered-channel-实现对象池" class="headerlink" title="使用 buffered channel 实现对象池"></a>使用 buffered channel 实现对象池</h3>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Go</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Go语言学习09-典型并发任务</title>
     <link href="/road2go09.html"/>
     <url>/road2go09.html</url>
