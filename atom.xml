@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2022-11-10T19:09:11.218Z</updated>
+  <updated>2022-11-10T19:46:50.228Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.ckxgzxa.top/road2go10.html"/>
     <id>https://www.ckxgzxa.top/road2go10.html</id>
     <published>2022-11-10T19:08:16.000Z</published>
-    <updated>2022-11-10T19:09:11.218Z</updated>
+    <updated>2022-11-10T19:46:50.228Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Go语言学习10-sync-Pool对象缓存"><a href="#Go语言学习10-sync-Pool对象缓存" class="headerlink" title="Go语言学习10-sync.Pool对象缓存"></a>Go语言学习10-sync.Pool对象缓存</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="Go语言学习10-sync-Pool对象缓存"><a href="#Go语言学习10-sync-Pool对象缓存" class="headerlink" title="Go语言学习10-sync.Pool对象缓存"></a>Go语言学习10-sync.Pool对象缓存</h2><h3 id="sync-Pool-对象获取"><a href="#sync-Pool-对象获取" class="headerlink" title="sync.Pool 对象获取"></a><code>sync.Pool</code> 对象获取</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211110340058.png"></p><ul><li>尝试从私有对象获取</li><li>私有对象不存在, 尝试从当前 Processor 的共享池获取</li><li>如果当前 Processor 共享池也是空的, name就尝试去其他 Processor 的共享池获取</li><li>如果所有子池都是空的, 最后就用用户指定的 New 函数产生一个新的对象返回</li></ul><h3 id="sync-Pool-对象的放回"><a href="#sync-Pool-对象的放回" class="headerlink" title="sync.Pool 对象的放回"></a><code>sync.Pool</code> 对象的放回</h3><ul><li>如果私有对象不存在则保存为私有对象</li><li>如果私有对象存在, 放入当前 Processor 子池的共享池中</li></ul><h3 id="使用-sync-Pool"><a href="#使用-sync-Pool" class="headerlink" title="使用 sync.Pool"></a>使用 <code>sync.Pool</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go">pool := &amp;sync.Pool&#123;<br>New: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-keyword">interface</span>&#123;&#125; &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>&#125;,<br>&#125;<br><br>arry := pool.Get().(<span class="hljs-type">int</span>)<br>...<br>pool.Put(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure><h3 id="sync-Pool-对象的生命周期"><a href="#sync-Pool-对象的生命周期" class="headerlink" title="sync.Pool 对象的生命周期"></a><code>sync.Pool</code> 对象的生命周期</h3><ul><li>GC 会清除 sync.pool 缓存的对象</li><li>对象的缓存有效期为下一次 GC 之前</li></ul><h3 id="sync-Pool-总结"><a href="#sync-Pool-总结" class="headerlink" title="sync.Pool  总结"></a><code>sync.Pool</code>  总结</h3><ul><li>适合于通过复用, 降低复杂对象的创建 和 GC 代价</li><li>协程安全, <font color="red">会有锁的开销</font></li><li><font color="red">声明周期受 GC 影响, 不适合于做连接池等, 需自己管理声明周期的资源的池化</font></li></ul>]]></content>
     
     
       

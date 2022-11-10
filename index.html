@@ -210,7 +210,15 @@
           
             
           
-          Go语言学习10-sync.Pool对象缓存
+          Go语言学习10-sync.Pool对象缓存sync.Pool 对象获取
+
+尝试从私有对象获取
+私有对象不存在, 尝试从当前 Processor 的共享池获取
+如果当前 Processor 共享池也是空的, name就尝试去其他 Processor 的共享池获取
+如果所有子池都是空的, 最后就用用户指定的 New 函数产生一个新的对象返回
+
+sync.Pool 对象的放回
+如果私有对象不存在则保存
         </a>
       </p>
 
