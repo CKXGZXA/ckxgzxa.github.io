@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>Go语言学习11-测试 - 技术匝记簿</title>
+  <title>Go语言学习14-常见任务 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习11-测试">
+            <span class="h2" id="subtitle" title="Go语言学习14-常见任务">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-11 03:47" pubdate>
-        2022年11月11日 凌晨
+      <time datetime="2022-11-12 00:47" pubdate>
+        2022年11月12日 凌晨
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      430 字
+      739 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      13
        分钟
     </span>
   
@@ -242,46 +242,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Go语言学习11-测试</h1>
+            <h1 style="display: none">Go语言学习14-常见任务</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年11月11日 凌晨
+                  本文最后更新于：2022年11月12日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Go语言学习11-测试"><a href="#Go语言学习11-测试" class="headerlink" title="Go语言学习11-测试"></a>Go语言学习11-测试</h2><h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// functions.go</span><br><span class="hljs-keyword">package</span> testing<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">square</span><span class="hljs-params">(op <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>	<span class="hljs-keyword">return</span> op * op<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="Go语言学习14-常见任务"><a href="#Go语言学习14-常见任务" class="headerlink" title="Go语言学习14-常见任务"></a>Go语言学习14-常见任务</h2><h3 id="内置的-JSON-解析"><a href="#内置的-JSON-解析" class="headerlink" title="内置的 JSON 解析"></a>内置的 JSON 解析</h3><p>利用反射实现, 通过 FieldTag 来标识对应的 json 值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> BasicInfo <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;name&quot;`</span><br>    Age  <span class="hljs-type">int</span>    <span class="hljs-string">`json:&quot;age&quot;`</span><br>&#125;<br><span class="hljs-keyword">type</span> JobInfo <span class="hljs-keyword">struct</span> &#123;<br>    Skills []<span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;skills&quot;`</span><br>&#125;<br><span class="hljs-keyword">type</span> Employee <span class="hljs-keyword">struct</span> &#123;<br>    BasicInfo BasicInfo <span class="hljs-string">`json:&quot;basic_info&quot;`</span><br>    JobInfo   JobInfo   <span class="hljs-string">`json:&quot;job_info&quot;`</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// functions_test.go</span><br><span class="hljs-keyword">package</span> testing<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;github.com/stretchr/testify/assert&quot;</span><br>	<span class="hljs-string">&quot;testing&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestSquare</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	inputs := [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>	expected := [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>&#125;<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(inputs); i++ &#123;<br>		ret := square(inputs[i])<br>		assert.Equal(t, expected[i], ret)<br>		<span class="hljs-comment">//if ret != expected[i] &#123;</span><br>		<span class="hljs-comment">//	t.Errorf(&quot;input is %d, the expcted is %d, the actual %d&quot;,</span><br>		<span class="hljs-comment">//		inputs[i], expected[i], ret)</span><br>		<span class="hljs-comment">//&#125;</span><br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestErrorInCode</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	fmt.Println(<span class="hljs-string">&quot;Start&quot;</span>)<br>	t.Error(<span class="hljs-string">&quot;Error&quot;</span>)<br>	fmt.Println(<span class="hljs-string">&quot;End&quot;</span>)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestFailInCode</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	fmt.Println(<span class="hljs-string">&quot;Start&quot;</span>)<br>	t.Fatal(<span class="hljs-string">&quot;Error&quot;</span>)<br>	fmt.Println(<span class="hljs-string">&quot;End&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// embedded_json_test.go</span><br><span class="hljs-keyword">var</span> jsonStr = <span class="hljs-string">`&#123;</span><br><span class="hljs-string">	&quot;basic_info&quot;:&#123;</span><br><span class="hljs-string">		&quot;name&quot;:&quot;Mike&quot;,</span><br><span class="hljs-string">		&quot;age&quot;:30</span><br><span class="hljs-string">	&#125;,</span><br><span class="hljs-string">	&quot;job_info&quot;:&#123;</span><br><span class="hljs-string">		&quot;skills&quot;: [&quot;Java&quot;, &quot;Go&quot;, &quot;C&quot;]</span><br><span class="hljs-string">	&#125;</span><br><span class="hljs-string">&#125;`</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestEmbeddedJson</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	e := <span class="hljs-built_in">new</span>(Employee)<br>	err := json.Unmarshal([]<span class="hljs-type">byte</span>(jsonStr), e)<br>	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>		t.Error(err)<br>	&#125;<br>	fmt.Println(*e)<br>	<span class="hljs-keyword">if</span> v, err := json.Marshal(e); err == <span class="hljs-literal">nil</span> &#123;<br>		fmt.Println(<span class="hljs-type">string</span>(v))<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		t.Error(err)<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<h4 id="内置单元测试框架"><a href="#内置单元测试框架" class="headerlink" title="内置单元测试框架"></a>内置单元测试框架</h4><ul>
-<li><p>Fail, Error: 该测试失败, 该测试继续, 其他测试继续执行</p>
+<h3 id="更快的-JSON-解析"><a href="#更快的-JSON-解析" class="headerlink" title="更快的 JSON 解析"></a>更快的 JSON 解析</h3><p>EasyJSON 采用代码生成而非反射</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211120143847.png"></p>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">go get -u github.com/mailru/easyjson/...<br></code></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">easyjson -all &lt;结构定义&gt;.go<br></code></pre></td></tr></table></figure>
+
+<h3 id="HTTP-Server"><a href="#HTTP-Server" class="headerlink" title="HTTP Server"></a>HTTP Server</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	http.HandleFunc(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>		fmt.Fprintf(w, <span class="hljs-string">&quot;Hello World!&quot;</span>)<br>	&#125;)<br>	http.HandleFunc(<span class="hljs-string">&quot;/time/&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>		t := time.Now()<br>		timeStr := fmt.Sprintf(<span class="hljs-string">&quot;&#123;\&quot;time\&quot;: \&quot;%s\&quot;&#125;&quot;</span>, t)<br>		w.Write([]<span class="hljs-type">byte</span>(timeStr))<br>	&#125;)<br><br>	http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, <span class="hljs-literal">nil</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="路由规则"><a href="#路由规则" class="headerlink" title="路由规则"></a>路由规则</h4><ul>
+<li><p>URL 分为两种，末尾是 / ：表示一个子树，后面可以跟其他子路径； 末尾不 是 /，表示一个叶子，固定的路径</p>
+<p>以/ 结尾的 URL 可以匹配它的任何子路径，比如 /images 会匹配 /images/cute-cat.jpg</p>
 </li>
-<li><p>FailNow, Fatal: 该测试失败, 该测试中止, 其他测试继续执行</p>
+<li><p>它采用最长匹配原则，如果有多个匹配，一定采用匹配路径最长的那个进行处</p>
+<p>理</p>
 </li>
-<li><p>代码覆盖率</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">go <span class="hljs-built_in">test</span> -v -cover<br></code></pre></td></tr></table></figure></li>
-<li><p>断言<a target="_blank" rel="noopener" href="https://github.com/stretchr/testify">https://github.com/stretchr/testify</a></p>
+<li><p>如果没有找到任何匹配项，会返回 404 错误</p>
 </li>
 </ul>
-<h3 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">BenchmarkConcatStringByAdd</span><span class="hljs-params">(b *testing.B)</span></span> &#123;<br>	<span class="hljs-comment">// 与性能测试无关的代码</span><br>	b.ResetTimer()<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; b.N; i++ &#123;<br>		<span class="hljs-comment">// 测试代码</span><br>	&#125;<br>	b.StopTimer()<br>    <span class="hljs-comment">// 与性能测试无关的代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Default-Router"><a href="#Default-Router" class="headerlink" title="Default Router"></a>Default Router</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(sh serverHandler)</span></span> ServeHTTP(rw ResponseWriter, req *Request) &#123;<br>	handler := sh.srv.Handler<br>	<span class="hljs-keyword">if</span> handler == <span class="hljs-literal">nil</span> &#123;<br>		handler = DefaultServeMux<br>	&#125;<br>	<span class="hljs-keyword">if</span> req.RequestURI == <span class="hljs-string">&quot;*&quot;</span> &amp;&amp; req.Method == <span class="hljs-string">&quot;OPTIONS&quot;</span> &#123;<br>		handler = globalOptionsHandler&#123;&#125;<br>	&#125;<br>	handler.ServeHTTP(rw, req)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="benchmark命令"><a href="#benchmark命令" class="headerlink" title="benchmark命令"></a>benchmark命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">go <span class="hljs-built_in">test</span> -bench=. -benchmem<br></code></pre></td></tr></table></figure>
+<h4 id="构建Restful服务"><a href="#构建Restful服务" class="headerlink" title="构建Restful服务"></a>构建Restful服务</h4><h5 id="更好的Router"><a href="#更好的Router" class="headerlink" title="更好的Router"></a>更好的Router</h5><p><a target="_blank" rel="noopener" href="https://github.com/julienschmidt/httprouter">https://github.com/julienschmidt/httprouter</a></p>
+  <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Hello</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request, ps httprouter.Params)</span></span> &#123;  <br>    fmt.Fprintf(w, <span class="hljs-string">&quot;hello, %s!\n&quot;</span>, ps.ByName(<span class="hljs-string">&quot;name&quot;</span>))<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    router := httprouter.New()  router.GET(<span class="hljs-string">&quot;/&quot;</span>, Index)<br>    router.GET(<span class="hljs-string">&quot;/hello/:name&quot;</span>, Hello)<br><br>	log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, router))<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<p>-bench=&lt;相关benchmark测试&gt;</p>
-<p>Windows下使用<code>go test</code>命令行时, <code>-bench=.</code> 应写为 <code>-bench=&quot;.&quot;</code></p>
-<h3 id="Behavior-Driven-Development"><a href="#Behavior-Driven-Development" class="headerlink" title="Behavior Driven Development"></a>Behavior Driven Development</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211110432503.png" alt="让业务领域的专家参与开发"></p>
-<p><em>“I believe that the hardest part of software projects, the most common source of project failure, is <strong>communication</strong> with the customers and users of that software. By providing a clear yet precise language to deal with domains, a DSL can help improve this communication.” – Martin Fowler.</em></p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211110434362.png" alt="用业务领域的语言来描述"></p>
-<h4 id="BDD-in-Go"><a href="#BDD-in-Go" class="headerlink" title="BDD in Go"></a>BDD in Go</h4><h5 id="项目网站"><a href="#项目网站" class="headerlink" title="项目网站"></a>项目网站</h5><p><a target="_blank" rel="noopener" href="https://github.com/smartystreets/goconvey">https://github.com/smartystreets/goconvey</a></p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">go get -u github.com/smartystreets/goconvey/convey<br></code></pre></td></tr></table></figure>
-
-<h5 id="启动-web-ui"><a href="#启动-web-ui" class="headerlink" title="启动 web ui"></a>启动 web ui</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$GOPATH</span>/bin/goconvey<br></code></pre></td></tr></table></figure>
-
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestSpec</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	<span class="hljs-comment">// Only pass t into top-level Convey calls</span><br>	Convey(<span class="hljs-string">&quot;Given 2 even numbers&quot;</span>, t, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		a := <span class="hljs-number">2</span><br>		b := <span class="hljs-number">4</span><br><br>		Convey(<span class="hljs-string">&quot;When add the two numbers&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>			c := a + b<br><br>			Convey(<span class="hljs-string">&quot;Then the result is still even&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>				So(c%<span class="hljs-number">2</span>, ShouldEqual, <span class="hljs-number">0</span>)<br>			&#125;)<br>		&#125;)<br>	&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+<h4 id="面向资源的架构-Resource-Oriented-Architecture"><a href="#面向资源的架构-Resource-Oriented-Architecture" class="headerlink" title="面向资源的架构(Resource Oriented Architecture)"></a>面向资源的架构(Resource Oriented Architecture)</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211120215896.png"></p>
+<p>In software engineering, a <strong>resource</strong>-<strong>oriented</strong> <strong>architecture</strong> (ROA) is a style of software <strong>architecture</strong> and programming paradigm for supportive designing and developing software in the form of Internetworking of <strong>resources</strong> with “RESTful” interfaces.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Employee <span class="hljs-keyword">struct</span> &#123;<br>	ID   <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;id&quot;`</span><br>	Name <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;name&quot;`</span><br>	Age  <span class="hljs-type">int</span>    <span class="hljs-string">`json:&quot;age&quot;`</span><br>&#125;<br><br><span class="hljs-keyword">var</span> employeeDB <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]*Employee<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> &#123;<br>	employeeDB = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]*Employee&#123;&#125;<br>	employeeDB[<span class="hljs-string">&quot;Mike&quot;</span>] = &amp;Employee&#123;<br>		ID:   <span class="hljs-string">&quot;e-1&quot;</span>,<br>		Name: <span class="hljs-string">&quot;Mike&quot;</span>,<br>		Age:  <span class="hljs-number">35</span>,<br>	&#125;<br>	employeeDB[<span class="hljs-string">&quot;Rose&quot;</span>] = &amp;Employee&#123;<br>		ID:   <span class="hljs-string">&quot;e-2&quot;</span>,<br>		Name: <span class="hljs-string">&quot;Rose&quot;</span>,<br>		Age:  <span class="hljs-number">45</span>,<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Index</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request, _ httprouter.Params)</span></span> &#123;<br>	fmt.Fprint(w, <span class="hljs-string">&quot;Welcome!\n&quot;</span>)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetEmployeeByName</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request, ps httprouter.Params)</span></span> &#123;<br>	qName := ps.ByName(<span class="hljs-string">&quot;name&quot;</span>)<br>	<span class="hljs-keyword">var</span> (<br>		ok       <span class="hljs-type">bool</span><br>		info     *Employee<br>		infoJson []<span class="hljs-type">byte</span><br>		err      <span class="hljs-type">error</span><br>	)<br>	<span class="hljs-keyword">if</span> info, ok = employeeDB[qName]; !ok &#123;<br>		w.Write([]<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;&#123;\&quot;error\&quot;:\&quot;Not Found\&quot;&#125;&quot;</span>))<br>		<span class="hljs-keyword">return</span><br>	&#125;<br>	<span class="hljs-keyword">if</span> infoJson, err = json.Marshal(info); err != <span class="hljs-literal">nil</span> &#123;<br>		w.Write([]<span class="hljs-type">byte</span>(fmt.Sprintf(<span class="hljs-string">&quot;&#123;\&quot;error\&quot;:,\&quot;%s\&quot;&#125;&quot;</span>, err)))<br>		<span class="hljs-keyword">return</span><br>	&#125;<br>	w.Write(infoJson)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	router := httprouter.New()<br>	router.GET(<span class="hljs-string">&quot;/&quot;</span>, Index)<br>	router.GET(<span class="hljs-string">&quot;/employees/:name&quot;</span>, GetEmployeeByName)<br><br>	log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;localhost:8080&quot;</span>, router))<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -317,9 +319,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/road2go12.html">
+                      <a href="/road2go15.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习12-反射和Unsafe</span>
+                        <span class="hidden-mobile">Go语言学习15-性能分析与调优</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -327,8 +329,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/road2go10.html">
-                        <span class="hidden-mobile">Go语言学习10-sync.Pool对象缓存</span>
+                      <a href="/road2go13.html">
+                        <span class="hidden-mobile">Go语言学习13-常见软件架构的实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
