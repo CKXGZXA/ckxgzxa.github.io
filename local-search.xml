@@ -4,44 +4,6 @@
   
   
   <entry>
-    <title>road2go16</title>
-    <link href="/road2go16.html"/>
-    <url>/road2go16.html</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Go语言学习15-性能分析与调优</title>
-    <link href="/road2go15.html"/>
-    <url>/road2go15.html</url>
-    
-    <content type="html"><![CDATA[<h2 id="Go语言学习15-性能分析与调优"><a href="#Go语言学习15-性能分析与调优" class="headerlink" title="Go语言学习15-性能分析与调优"></a>Go语言学习15-性能分析与调优</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//TODO to be implemented</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Go</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Go语言学习14-常见任务</title>
     <link href="/road2go14.html"/>
     <url>/road2go14.html</url>
