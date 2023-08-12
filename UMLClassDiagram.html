@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      2.4k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      27
        分钟
     </span>
   
@@ -256,14 +256,13 @@
 <h2 id="2-类与类的UML表示"><a href="#2-类与类的UML表示" class="headerlink" title="2. 类与类的UML表示"></a>2. 类与类的UML表示</h2><h3 id="2-1-类"><a href="#2-1-类" class="headerlink" title="2.1 类"></a>2.1 类</h3><p>类(Class)封装了数据和行为 ，是面向对象的重要组成部分，它是具有相同属性 、操作、关系的对象集合的总称。</p>
 <p>类图(Class Diagram)使用出现在系统中的不同类来描述系统的静态结构 ，它用来描述 不同的类以及它们之间的关系 。</p>
 <h3 id="2-2-类的UML图示"><a href="#2-2-类的UML图示" class="headerlink" title="2.2 类的UML图示"></a>2.2 类的UML图示</h3><p>在UML中类使用包含类名属性和操作且带有分隔线的长方形来表示:</p>
-<pre><code class=" mermaid">classDiagram
-	class Employee&#123;
-		- name : String
-		- age : int
-		- email : String
-		+ modify() : void
-    &#125;
-</code></pre>
+<pre class="mermaid">classDiagram
+    class Employee{
+        - name : String
+        - age : int
+        - email : String
+        + modify() : void
+    }</pre>
 
 <p>对应的Java代码片段如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> String email;<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">modifyInfo</span><span class="hljs-params">()</span> &#123;<br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -323,13 +322,12 @@
 <h4 id="2-3-1-关联关系"><a href="#2-3-1-关联关系" class="headerlink" title="2.3.1 关联关系"></a>2.3.1 关联关系</h4><p><strong>关联(Association)关系</strong>是类与类之间最常用的一种关系，它是一种结构化关系，用于表示一类对象与另一类对象之间有联系， 如汽车和轮胎 、 师傅和徒弟 、 班级和学生等。</p>
 <p>在UML类图中用<strong>实线</strong>连接有关联关系的对象所对应的类，在使用 Java 、 C ＃和 C＋＋等编程语言实现关联关系时，通常将一个类的对象作为另一个类的成员变量。</p>
 <p>在使用类图表示关联关系时可以在关联线上标注角色名，一般使用一个表示两者之间关系的动词或者名词表示角色名（有时该名词为实例对象名） ，关系的两端代表两种不同的角色，因此在一个关联关系中可以包含两个角色名，角色名不是必须的 ，可以根据需要增加 ， 其目的是使类之间的关系更加明确 。</p>
-<pre><code class=" mermaid">classDiagram
-	class LoginForm &#123;
-		- loginButton : JButton
-	&#125;
+<pre class="mermaid">classDiagram
+    class LoginForm {
+        - loginButton : JButton
+    }
 
-	JButton &lt;-- LoginForm : contains
-</code></pre>
+    JButton <-- LoginForm : contains</pre>
 
 <p>对应的Java代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LoginForm</span> &#123;<br>    <span class="hljs-keyword">private</span> JButton loginButton; <span class="hljs-comment">//定义为成员变量</span><br>    ...<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JButton</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -338,40 +336,37 @@
 <ol>
 <li><p>双向关联</p>
 <p>在默认情况下关联是双向的。例如顾客(Customer)购买商品(Product)并拥有商品，反之，卖出的商品总有某个顾客与之相关联。 因此，Customer 类和 Product 类之间具有双向关联关系， 如下图：</p>
-<pre><code class=" mermaid">classDiagram
-	class Customer &#123;
-		- products : Product[]
-	&#125;
+<pre class="mermaid">   classDiagram
+    class Customer {
+        - products : Product[]
+    }
 
-	class Product &#123;
-		- customer : Customer
-	&#125;
+    class Product {
+        - customer : Customer
+    }
 
-	Customer &quot;purchases&quot; -- &quot;is sold to&quot; Product
-</code></pre>
+    Customer "purchases" -- "is sold to" Product</pre>
 
 <p>对应的Java片段如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span> &#123;<br>    <span class="hljs-keyword">private</span> Productor[] products;<br>    ...<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-keyword">private</span> Customer customer;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>单向关联</p>
 <p>类的关联关系也可以是单向的，单向关联用带箭头的实线表示。例如顾客(Customer)拥有地址 (Address), 则Customer类与Address类具有单向关联关系，如下图：</p>
-<pre><code class=" mermaid">classDiagram
-	Customer --&gt; Address : has
-	class Customer &#123;
-		- address : Address
-	&#125;
-</code></pre>
+<pre class="mermaid">   classDiagram
+    Customer --> Address : has
+    class Customer {
+        - address : Address
+    }</pre>
 
 <p>对应的Java片段如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span> &#123;<br>	<span class="hljs-keyword">private</span> Address address;<br>    ...<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Address</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>自关联</p>
 <p>在系统中可能会存在一些类的属性对象类型为该类本身 ， 这种特殊的关联关系称为自关联。 例如一个结点类(Node)的成员又是结点 Node 类型的对象 ，如下图：</p>
-<pre><code class=" mermaid">classDiagram
-	class Node &#123;
-		- subNode : Node
-	&#125;
+<pre class="mermaid">   classDiagram
+    class Node {
+        - subNode : Node
+    }
 
-	Node --&gt; Node : contains
-</code></pre>
+    Node --> Node : contains</pre>
 
 <p>对应的Java代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>    <span class="hljs-keyword">private</span> Node subNode;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure></li>
@@ -407,40 +402,37 @@
 </table>
 
 <p>例如一个界面(Form)可以拥有零个或多个按钮(Button) ，但是一个按钮只能属于一个界面， 因此一个Form类的对象可以与零个或多个Button类的对象相关联， 但一个Button类的对象只能与一个Form类的对象关联 ，如图所示：</p>
-<pre><code class=" mermaid">classDiagram
-	Form &quot;1. .1&quot; --&gt; &quot;0. .*&quot; Button
-	class Form &#123;
-	- buttons : Button[]
-	&#125;
-</code></pre>
+<pre class="mermaid">   classDiagram
+    Form "1. .1" --> "0. .*" Button
+    class Form {
+    - buttons : Button[]
+    }</pre>
 
 <p>对应的Java代码片段如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Form</span> &#123;<br>	<span class="hljs-keyword">private</span> Button[] button; <span class="hljs-comment">//定义一个集合对象</span><br>    ...<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Button</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>聚合关系</p>
 <p>聚合(Aggregation)关系表示整体与部分的关系 。 在聚合关系中 ，成员对象是整体对象的一部分 ，但是成员对象可以脱离整体对象独立存在。 在UML中 ，聚合关系用带空心菱形的直线表示 。 例如汽车发动机(Engine)是汽车(Car)的组成部分 ，但是汽车发动机可以独立存在 ， 因此汽车和发动机是聚合关系，如图所示：</p>
-<pre><code class=" mermaid">classDiagram
-	class Car &#123;
-		-engine : Engine
-		+Car(Engine engine)
-		+setEngine(Engine engine) void
-	&#125;
+<pre class="mermaid">   classDiagram
+    class Car {
+        -engine : Engine
+        +Car(Engine engine)
+        +setEngine(Engine engine) void
+    }
 
-	Car o--&gt; Engine : cotains
-</code></pre>
+    Car o--> Engine : cotains</pre>
 
 <p>对应的Java代码片段如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> &#123;<br>	<span class="hljs-keyword">private</span> Engine engine;<br>	<span class="hljs-comment">//构造注入</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Car</span><span class="hljs-params">( Engine engine)</span>&#123;<br>		<span class="hljs-built_in">this</span>.engine = engine;<br>	)<br>	<span class="hljs-comment">//设值注入</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setEngine</span><span class="hljs-params">(Engine engine)</span>&#123;<br>		<span class="hljs-built_in">this</span>.engine = engine;<br>	)<br>)<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Engine</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>组合关系</p>
 <p>组合(Composition)关系也表示类之间整体和部分的关系，但是在组合关系中整体对象可以控制成员对象的生命周期，<em>一旦整体对象不存在，成员对象也将不存在，成员对象与整体对象之间具有同生共死的关系</em>。 在UML中，组合关系用带实心菱形的直线表示 。 例如人的头(Head)与嘴巴(Mouth) ， 嘴巴是头的组成部分之一， 而且如果头没了， 嘴巴也就没了，因此头和嘴巴是组合关系，如图所示:</p>
-<pre><code class=" mermaid">classDiagram
-	class Head &#123;
-		-mouth : Mouth
-		+Head()
-	&#125;
-	callback Head &quot;callbackFunction&quot; &quot;This is a tooltip for a callback&quot;
+<pre class="mermaid">   classDiagram
+    class Head {
+        -mouth : Mouth
+        +Head()
+    }
+    callback Head "callbackFunction" "This is a tooltip for a callback"
 
-	Head *--&gt; Mouth : has
-</code></pre>
+    Head *--> Mouth : has</pre>
 
 <p>Java代码片段如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Head</span> &#123;<br>    <span class="hljs-keyword">private</span> Mouth mouth;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Head</span><span class="hljs-params">()</span> &#123;<br>        mouth = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mouth</span>();<span class="hljs-comment">//实例化成员类</span><br>    &#125;<br>	...<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Mouth</span> &#123;<br>	...<br>&#125;<br></code></pre></td></tr></table></figure></li>
