@@ -22,7 +22,7 @@
   <meta name="author" content="残魁斜罡">
   <meta name="keywords" content="">
   
-  <title>01.Docker的安装 - 技术匝记簿</title>
+  <title>02.Docker 镜像 - 技术匝记簿</title>
 
   <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="01.Docker的安装">
+            <span class="h2" id="subtitle" title="02.Docker 镜像">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-14 22:56" pubdate>
-        2022年11月14日 晚上
+      <time datetime="2023-08-12 22:01" pubdate>
+        2023年8月12日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      372 字
+      652 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      8
        分钟
     </span>
   
@@ -242,41 +242,221 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">01.Docker的安装</h1>
+            <h1 style="display: none">02.Docker 镜像</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年8月12日 晚上
+                  本文最后更新于：2023年8月13日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h1><ul>
-<li><p>更新库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt apt-get update<br>sudo apt-get install ca-certificates curl gnupg <br></code></pre></td></tr></table></figure></li>
-<li><p>添加Docker <code>GPG</code> 官方密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo install -m 0755 -d /etc/apt/keyrings<br>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg<br>sudo <span class="hljs-built_in">chmod</span> a+r /etc/apt/keyrings/docker.gpg<br></code></pre></td></tr></table></figure></li>
-<li><p>设置Docker 源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> \<br>  <span class="hljs-string">&quot;deb [arch=&quot;</span>$(dpkg --print-architecture)<span class="hljs-string">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="hljs-string">  &quot;</span>$(. /etc/os-release &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$VERSION_CODENAME</span>&quot;</span>)<span class="hljs-string">&quot; stable&quot;</span> | \<br>  sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null<br></code></pre></td></tr></table></figure></li>
-<li><p>使用 <code>sudo  apt-get update</code>更新库索引</p>
-</li>
-<li><p>安装Docker</p>
-<ul>
-<li><p>最新版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure></li>
-<li><p>特定版本</p>
-<ol>
-<li><p>首先使用 <code>apt-cache madison docker-ce | awk &#39;&#123; print $3 &#125;&#39;</code>命令查看Docker版本列表</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202308121827429.png"></p>
-</li>
-<li><p>选择特定版本并安装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">VERSION_STRING=5:23.0.3-1~ubuntu.20.04~focal<br>sudo apt-get install docker-ce=<span class="hljs-variable">$VERSION_STRING</span> docker-ce-cli=<span class="hljs-variable">$VERSION_STRING</span> containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure></li>
-</ol>
-</li>
+              <h1 id="Docker-镜像"><a href="#Docker-镜像" class="headerlink" title="Docker 镜像"></a>Docker 镜像</h1><h2 id="1-镜像的获取方式"><a href="#1-镜像的获取方式" class="headerlink" title="1. 镜像的获取方式"></a>1. 镜像的获取方式</h2><ul>
+<li>从 <code>registry</code> 拉取(online)<ul>
+<li>public</li>
+<li>private</li>
 </ul>
 </li>
-<li><p>验证Docker被成功安装, 运行实例容器 <code>sudo docker run hello-world</code>, 可见以下输出:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo docker run hello-world<br><br>Hello from Docker!<br>This message shows that your installation appears to be working correctly.<br><br>To generate this message, Docker took the following steps:<br> 1. The Docker client contacted the Docker daemon.<br> 2. The Docker daemon pulled the <span class="hljs-string">&quot;hello-world&quot;</span> image from the Docker Hub.<br>    (amd64)<br> 3. The Docker daemon created a new container from that image <span class="hljs-built_in">which</span> runs the<br>    executable that produces the output you are currently reading.<br> 4. The Docker daemon streamed that output to the Docker client, <span class="hljs-built_in">which</span> sent it<br>    to your terminal.<br><br>To try something more ambitious, you can run an Ubuntu container with:<br> $ docker run -it ubuntu bash<br><br>Share images, automate workflows, and more with a free Docker ID:<br> https://hub.docker.com/<br><br>For more examples and ideas, visit:<br> https://docs.docker.com/get-started/<br></code></pre></td></tr></table></figure></li>
+<li>从 <code>Dockerfile</code> 构建(online)</li>
+<li>从 <code>file</code> 文件导入(offline)</li>
+</ul>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202308122209696.png"></p>
+<h2 id="2-镜像基本操作"><a href="#2-镜像基本操作" class="headerlink" title="2. 镜像基本操作"></a>2. 镜像基本操作</h2><ul>
+<li><p>镜像拉取</p>
+<p>从 <code> registry</code> 下载一个镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image pull NAME[:TAG|@DIGEST]<br></code></pre></td></tr></table></figure></li>
+<li><p>查看镜像列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure></li>
+<li><p>显示一个或多个镜像详细信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image inspect IMAGE [IMAGE...]<br></code></pre></td></tr></table></figure></li>
+<li><p>删除镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image <span class="hljs-built_in">rm</span> [OPTIONS] IMAGE [IMAGE...]<br></code></pre></td></tr></table></figure>
+
+<p><code>-f</code>, 强制删除</p>
+</li>
+<li><p>导出镜像文件</p>
+<p>将一个或多个镜像保存到一个tar归档文件中（默认流式传输到标准输出）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image save [OPTIONS] IMAGE [IMAGE...]<br></code></pre></td></tr></table></figure>
+
+<p><code>--output</code> , <code>-o</code>写入文件, 而不是标准输出</p>
+</li>
+<li><p>导入镜像文件</p>
+<p>从一个tar归档文件或标准输入加载一个镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image load [OPTIONS]<br></code></pre></td></tr></table></figure>
+
+<p>–input , -i 从tar归档文件中读取，而不是从标准输入读取</p>
+</li>
+<li><p>创建新的镜像</p>
+<p>从容器的更改创建新的镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]<br></code></pre></td></tr></table></figure>
+
+<p><code>--author </code>, <code>-a</code>  作者</p>
+<p> <code>--change</code> , <code>-c</code>   将 Dockerfile 指令应用于创建的镜像</p>
+<p><code> --message</code> , <code>-m</code>  提交消息</p>
+<p><code>--pause</code> , <code>-p</code>  默认为true, 在提交过程中暂停容器</p>
+<p>从Dockerfile构建镜像</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">docker image build [OPTIONS] PATH |<span class="hljs-string"> URL </span>|<span class="hljs-string"> -</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>名称，简写</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--add-host</code></td>
+<td></td>
+<td>添加自定义主机到IP映射（主机:IP）</td>
+</tr>
+<tr>
+<td><code>--build-arg</code></td>
+<td></td>
+<td>设置构建时的变量</td>
+</tr>
+<tr>
+<td><code>--cache-from</code></td>
+<td></td>
+<td>要视为缓存源的镜像</td>
+</tr>
+<tr>
+<td><code>--cgroup-parent</code></td>
+<td></td>
+<td>容器的可选父cgroup</td>
+</tr>
+<tr>
+<td><code>--compress</code></td>
+<td></td>
+<td>使用gzip压缩构建上下文</td>
+</tr>
+<tr>
+<td><code>--cpu-period</code></td>
+<td></td>
+<td>限制CPU CFS（完全公平调度程序）周期</td>
+</tr>
+<tr>
+<td><code>--cpu-quota</code></td>
+<td></td>
+<td>限制CPU CFS（完全公平调度程序）配额</td>
+</tr>
+<tr>
+<td><code>--cpu-shares</code>，<code>-c</code></td>
+<td></td>
+<td>CPU份额（相对权重）</td>
+</tr>
+<tr>
+<td><code>--cpuset-cpus</code></td>
+<td></td>
+<td>允许执行的CPU（0-3，0,1）</td>
+</tr>
+<tr>
+<td><code>--cpuset-mems</code></td>
+<td></td>
+<td>允许执行的内存节点（0-3，0,1）</td>
+</tr>
+<tr>
+<td><code>--disable-content-trust</code></td>
+<td><code>true</code></td>
+<td>跳过镜像验证</td>
+</tr>
+<tr>
+<td><code>--file</code>，<code>-f</code></td>
+<td></td>
+<td>Dockerfile的名称（默认为路径/Dockerfile）</td>
+</tr>
+<tr>
+<td><code>--force-rm</code></td>
+<td></td>
+<td>始终删除中间容器</td>
+</tr>
+<tr>
+<td><code>--iidfile</code></td>
+<td></td>
+<td>将镜像ID写入文件</td>
+</tr>
+<tr>
+<td><code>--isolation</code></td>
+<td></td>
+<td>容器隔离技术</td>
+</tr>
+<tr>
+<td><code>--label</code></td>
+<td></td>
+<td>为镜像设置元数据</td>
+</tr>
+<tr>
+<td><code>--memory</code>，<code>-m</code></td>
+<td></td>
+<td>内存限制</td>
+</tr>
+<tr>
+<td><code>--memory-swap</code></td>
+<td></td>
+<td>交换限制等于内存加交换：-1表示启用无限交换</td>
+</tr>
+<tr>
+<td><code>--network</code></td>
+<td></td>
+<td>设置构建期间RUN指令的网络模式</td>
+</tr>
+<tr>
+<td><code>--no-cache</code></td>
+<td></td>
+<td>构建镜像时不使用缓存</td>
+</tr>
+<tr>
+<td><code>--platform</code></td>
+<td></td>
+<td>如果服务器支持多平台，则设置平台</td>
+</tr>
+<tr>
+<td><code>--pull</code></td>
+<td></td>
+<td>始终尝试拉取更新版本的镜像</td>
+</tr>
+<tr>
+<td><code>--quiet</code>，<code>-q</code></td>
+<td></td>
+<td>抑制构建输出，并在成功时打印镜像ID</td>
+</tr>
+<tr>
+<td><code>--rm</code></td>
+<td><code>true</code></td>
+<td>在成功构建后删除中间容器</td>
+</tr>
+<tr>
+<td><code>--security-opt</code></td>
+<td></td>
+<td>安全选项</td>
+</tr>
+<tr>
+<td><code>--shm-size</code></td>
+<td></td>
+<td>/dev/shm的大小</td>
+</tr>
+<tr>
+<td><code>--squash</code></td>
+<td></td>
+<td>实验性（守护程序）将新构建的层压缩为单个新层</td>
+</tr>
+<tr>
+<td><code>--tag</code>，<code>-t</code></td>
+<td></td>
+<td>名称和（可选）标签，格式为name:tag</td>
+</tr>
+<tr>
+<td><code>--target</code></td>
+<td></td>
+<td>设置要构建的目标构建阶段</td>
+</tr>
+<tr>
+<td><code>--ulimit</code></td>
+<td></td>
+<td>Ulimit选项</td>
+</tr>
+</tbody></table>
+</li>
 </ul>
 
             </div>
@@ -314,9 +494,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/road2docker02.html">
+                      <a href="/road2docker03.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">02.Docker 镜像</span>
+                        <span class="hidden-mobile">03.Dockerfile</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -324,8 +504,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/road2go14.html">
-                        <span class="hidden-mobile">Go语言学习14-常见任务</span>
+                      <a href="/road2docker01.html">
+                        <span class="hidden-mobile">01.Docker的安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

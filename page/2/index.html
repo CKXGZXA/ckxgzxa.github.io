@@ -199,6 +199,131 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/road2go07.html" target="_self">
+          Go语言学习07-包和依赖管理
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go07.html" target="_self">
+          
+          
+            
+          
+          Go语言学习07-包和依赖管理package
+基本复用模块单元
+以首字母大写来表明可被包外代码访问
+
+代码的 package 可以和所在的目录不一致
+
+同一目录里的 Go 代码的 package 要保持一致
+
+
+
+
+通过 go get 来获取远程依赖
+go get -u 强制从网络更新远程依赖
+
+注意代码在 GitHub 上的组织形式, 以适应 go get
+直接以代码路径开始, 不要有 src
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 22:42" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2go06.html" target="_self">
+          Go语言学习06-错误处理
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2go06.html" target="_self">
+          
+          
+            
+          
+          Go语言学习06-错误处理Go的错误机制与其他主要编程语言的差异
+
+没有异常机制
+
+error类型实现了error接口
+
+可以通过 errors.New 来快速创建错误实例
+12345type error interface &#123;    Error() string&#125;errors.New(&quot;n must be in range [0, 10]&quot;)
+
+最佳实践定
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 21:45" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/road2go05.html" target="_self">
           Go语言学习05-面向对象编程
         </a>
@@ -636,97 +761,6 @@ while (true)
               <a href="/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/">中石油</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/KMP.html" target="_self">
-          对KMP算法的一些认识
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/KMP.html" target="_self">
-          
-          
-            
-          
-          KMP算法
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-26 14:54" pubdate>
-              2022-08-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
-            
-              <a href="/categories/%E6%A0%A1%E6%8B%9B/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/ELKLogConstruction.html" target="_self">
-          从零搭建ELK日志分析系统
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/ELKLogConstruction.html" target="_self">
-          
-          
-            
-          
-          从零搭建ELK + filebeat 日志分析系统(以Windows为例)1. 什么是ELK?ELK 是elastic公司提供的一套完整的日志收集以及展示的解决方案，是三个产品的首字母缩写，分别是 ElasticSearch、Logstash 和 Kibana。
-
-2. filebeat
-​        Filebeat是用于转发和集中日志数据的轻量级传送工具。Filebeat监视您指定的日志文
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-19 13:29" pubdate>
-              2022-08-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
         
       </div>
     </article>

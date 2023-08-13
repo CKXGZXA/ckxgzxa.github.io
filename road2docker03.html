@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
+  <meta name="sogou_site_verification" content="2t6zxaPafe" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>03.Dockerfile - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="03.Dockerfile">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-08-13 00:06" pubdate>
+        2023年8月13日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">03.Dockerfile</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年8月13日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="1-基础镜像的选择"><a href="#1-基础镜像的选择" class="headerlink" title="1. 基础镜像的选择"></a>1. 基础镜像的选择</h2><p>基本原则:</p>
+<ul>
+<li>官方镜像优于非官方的镜像，如果没有官方镜像，则尽量选择Dockerfile开源的</li>
+<li>固定版本tag而不是每次都使用latest</li>
+<li>尽量选择体积小的镜像</li>
+</ul>
+<h2 id="2-通过RUN执行指令"><a href="#2-通过RUN执行指令" class="headerlink" title="2.通过RUN执行指令"></a>2.通过<code>RUN</code>执行指令</h2><p><code>RUN</code> 主要用于在Image里执行指令, 比如安装软件, 下载文件等. 使用 <code>\</code> 拼接命令防止不必要的分层</p>
+<h2 id="3-文件复制和目录操作"><a href="#3-文件复制和目录操作" class="headerlink" title="3.文件复制和目录操作"></a>3.文件复制和目录操作</h2><p>使用<code>COPY</code> 和 <code>ADD</code> 命令</p>
+<ul>
+<li><p>复制普通文件</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.9</span>.<span class="hljs-number">5</span>-alpine3.<span class="hljs-number">13</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> hello.py /app/hello.py</span><br></code></pre></td></tr></table></figure></li>
+<li><p>复制压缩文件</p>
+<p>使用 <code>ADD</code>  时如果复制的是一个gzip等压缩文件时，ADD会帮助我们自动去解压缩文件。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.9</span>.<span class="hljs-number">5</span>-alpine3.<span class="hljs-number">13</span><br><span class="hljs-keyword">ADD</span><span class="language-bash"> hello.tar.gz /app/</span><br></code></pre></td></tr></table></figure></li>
+<li><p>命令的选择</p>
+<p>在 <code>COPY</code> 和 <code>ADD</code> 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 <code>COPY</code> 指令，仅在需要自动解压缩的场合使用 <code>ADD</code>.</p>
+</li>
+<li><p><code>WORKDIR</code></p>
+<p><code>WORKDIR</code> 指令为 Dockerfile 中紧随其后的 <code>RUN</code>、<code>CMD</code>、<code>ENTRYPOINT</code>、<code>COPY</code> 和 <code>ADD</code> 指令设置工作目录。如果指定的工作目录不存在，即使在后续的 Dockerfile 指令中没有使用，它也会被创建。</p>
+</li>
+</ul>
+<h2 id="4-构建参数和环境变量-ARG-vs-ENV"><a href="#4-构建参数和环境变量-ARG-vs-ENV" class="headerlink" title="4.构建参数和环境变量(ARG vs ENV)"></a>4.构建参数和环境变量(ARG vs ENV)</h2><p>当在 Docker 中构建镜像时，我们经常需要考虑如何传递配置信息和变量到镜像内部。</p>
+<h3 id="构建参数（ARG）"><a href="#构建参数（ARG）" class="headerlink" title="构建参数（ARG）"></a>构建参数（ARG）</h3><p>构建参数（<code>ARG</code>）是在构建镜像时传递给构建过程的变量。它们可以用于在构建过程中进行条件判断、选择不同的分支或在构建过程中传递信息。以下是使用 <code>ARG</code> 的示例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment"># 使用构建参数定义变量</span><br><span class="hljs-keyword">ARG</span> APP_VERSION<br><br><span class="hljs-comment"># 在构建过程中使用构建参数</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Building app version: <span class="hljs-variable">$APP_VERSION</span>&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>在构建过程中，可以通过 <code>--build-arg</code> 选项来传递构建参数的值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build --build-arg APP_VERSION=1.0 -t myapp .<br></code></pre></td></tr></table></figure>
+
+<h3 id="环境变量（ENV）"><a href="#环境变量（ENV）" class="headerlink" title="环境变量（ENV）"></a>环境变量（ENV）</h3><p>环境变量（<code>ENV</code>）是在容器内运行时使用的变量。它们可以用于在容器内部设置配置、传递信息或指定行为。以下是使用 <code>ENV</code> 的示例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment"># 设置环境变量</span><br><span class="hljs-keyword">ENV</span> DB_HOST=localhost<br><span class="hljs-keyword">ENV</span> DB_PORT=<span class="hljs-number">5432</span><br><br><span class="hljs-comment"># 在容器内使用环境变量</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Connecting to database at <span class="hljs-variable">$DB_HOST</span>:<span class="hljs-variable">$DB_PORT</span>&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>使用 <code>-e</code> 选项可以在运行容器时设置环境变量的值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -e DB_HOST=mydbhost -e DB_PORT=5432 myapp<br></code></pre></td></tr></table></figure>
+
+<h3 id="ARG-vs-ENV：选择哪种方式？"><a href="#ARG-vs-ENV：选择哪种方式？" class="headerlink" title="ARG vs ENV：选择哪种方式？"></a>ARG vs ENV：选择哪种方式？</h3><p>在选择使用 <code>ARG</code> 还是 <code>ENV</code> 时，需要考虑以下几点：</p>
+<ul>
+<li><code>ARG</code> 用于构建时，<code>ENV</code> 用于运行时。如果您希望在构建过程中传递变量值，使用 <code>ARG</code>。如果需要在容器运行时设置配置或环境，使用 <code>ENV</code>。</li>
+<li><code>ARG</code> 值只在构建过程中可用，不会在容器内保留。<code>ENV</code> 值将在容器内持续存在。</li>
+<li><code>ENV</code> 更适合在容器内部设置常驻环境变量，如配置信息、路径等。</li>
+</ul>
+<p>综合考虑，根据需要选择适当的方式来管理构建参数和环境变量，以实现更有效的 Docker 镜像管理。</p>
+<h2 id="5-CMD-容器启动命令"><a href="#5-CMD-容器启动命令" class="headerlink" title="5.CMD 容器启动命令"></a>5.<code>CMD</code> 容器启动命令</h2><p>在 Docker 中，<code>CMD</code> 是用于定义容器启动时默认执行的命令或应用程序。这个命令会在容器启动时自动执行，如果在 <code>docker run</code> 命令中没有指定要运行的特定命令。</p>
+<p>以下是关于 <code>CMD</code> 的一些重要信息：</p>
+<ul>
+<li><code>CMD</code> 可以在 Dockerfile 中使用，用于指定在容器启动时要运行的默认命令。这个命令可以是应用程序，也可以是一条脚本。</li>
+<li>如果在 Dockerfile 中有多个 <code>CMD</code> 指令，只有最后一个会生效。</li>
+<li><code>CMD</code> 指令的格式可以是列表形式，也可以是字符串形式。列表形式使用 JSON 数组格式（例如 <code>CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code>），字符串形式则使用标准 shell 命令（例如 <code>CMD executable param1 param2</code>）。</li>
+<li>如果在 <code>docker run</code> 命令中指定了要运行的命令，它将覆盖 <code>CMD</code> 中定义的默认命令。</li>
+<li><code>CMD</code> 中指定的命令不会在容器内创建新的进程，而是替代了容器的默认进程。<strong>这意味着当指定的命令运行结束时，容器也会自动终止。</strong></li>
+</ul>
+<h2 id="6-ENTRYPOINT-容器启动命令"><a href="#6-ENTRYPOINT-容器启动命令" class="headerlink" title="6.ENTRYPOINT 容器启动命令"></a>6.<code>ENTRYPOINT</code> 容器启动命令</h2><p>在 Docker 中，<code>ENTRYPOINT</code> 用于定义容器启动时要执行的主要命令或应用程序。与 <code>CMD</code> 不同，<code>ENTRYPOINT</code> 定义的命令在容器启动时始终执行，无论是否在 <code>docker run</code> 命令中指定了其他命令。</p>
+<p>以下是关于 <code>ENTRYPOINT</code> 的一些重要信息：</p>
+<ul>
+<li><code>ENTRYPOINT</code> 可以在 Dockerfile 中使用，用于指定容器启动时要运行的主要命令。这个命令可以是应用程序，也可以是一条脚本。</li>
+<li>如果在 <code>docker run</code> 命令中指定了要运行的命令，它将被视为 <code>ENTRYPOINT</code> 中命令的参数，而不会覆盖 <code>ENTRYPOINT</code> 定义的默认命令。</li>
+<li>如果需要在容器启动时传递参数，可以将这些参数放在 <code>ENTRYPOINT</code> 后面。例如：<code>ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</code>。</li>
+<li><code>CMD</code> 指令可以与 <code>ENTRYPOINT</code> 一起使用，提供默认的参数。这样可以在运行容器时覆盖 <code>CMD</code> 提供的默认参数，但不会影响 <code>ENTRYPOINT</code> 的命令。</li>
+<li>与 <code>CMD</code> 类似，<code>ENTRYPOINT</code> 中指定的命令也不会在容器内创建新的进程，而是替代了容器的默认进程。这意味着当指定的命令运行结束时，容器也会自动终止。</li>
+</ul>
+<h2 id="7-Shell格式和Exec格式"><a href="#7-Shell格式和Exec格式" class="headerlink" title="7.Shell格式和Exec格式"></a>7.Shell格式和Exec格式</h2><p>在 Docker 的 <code>CMD</code> 和 <code>ENTRYPOINT</code> 指令中，有两种常见的格式：Shell 格式和 Exec 格式。</p>
+<h3 id="Shell-格式"><a href="#Shell-格式" class="headerlink" title="Shell 格式"></a>Shell 格式</h3><p>在 Shell 格式中，<code>CMD</code> 或 <code>ENTRYPOINT</code> 的命令会被解释为在一个 shell 中执行。这意味着你可以使用 shell 的特性，比如通配符和变量替换。</p>
+<p>例如，以下是一个使用 Shell 格式的示例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">CMD</span><span class="language-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello, <span class="hljs-variable">$USER</span>!&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>$USER</code> 是一个 shell 变量，将会在容器启动时被替换成实际的用户名。</p>
+<h3 id="Exec-格式"><a href="#Exec-格式" class="headerlink" title="Exec 格式"></a>Exec 格式</h3><p>在 Exec 格式中，<code>CMD</code> 或 <code>ENTRYPOINT</code> 的命令会被直接执行，不会被解释成 shell 命令。这意味着没有 shell 特性可用，也没有变量替换。</p>
+<p>例如，以下是一个使用 Exec 格式的示例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;echo&quot;</span>, <span class="hljs-string">&quot;Hello, World!&quot;</span>]</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，命令 <code>[&quot;echo&quot;, &quot;Hello, World!&quot;]</code> 会被直接执行，不会进行任何 shell 解释或变量替换。</p>
+<h3 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h3><p>选择使用哪种格式取决于你的需求。如果需要使用 shell 的特性或变量替换，那么可以使用 Shell 格式。但是，Shell 格式可能会引入一些潜在的问题，比如需要处理 shell 的转义和安全性问题。</p>
+<p>Exec 格式通常更安全，因为它避免了 shell 的解释和可能的漏洞。它也更适合于不依赖于 shell 特性的命令。</p>
+<p>总之，根据实际情况选择合适的格式，以满足容器的需求。</p>
+<p>当你想要在 <code>CMD</code> 中使用带有 Shell 变量的命令，你可以使用 Shell 格式，如下所示：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">CMD</span><span class="language-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello, <span class="hljs-variable">$USER</span>!&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>$USER</code> 是一个 shell 变量，将会在容器启动时被替换成实际的用户名。然而，如果你想在 Exec 格式中使用变量，你需要使用 Shell 的执行命令：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;/bin/sh&quot;</span>, <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;echo Hello, <span class="hljs-variable">$USER</span>!&quot;</span>]</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了 <code>/bin/sh</code> 作为执行的 shell，然后使用 <code>-c</code> 选项传递要执行的命令。这样，<code>$USER</code> 变量会在 shell 中被解释和替换。</p>
+<p>请注意，虽然这个例子使用了 Exec 格式，但是它还是在容器内部启动了一个 shell 进程，然后执行了命令。这可能会引入一些不必要的额外开销，因此在选择 Shell 格式和 Exec 格式时，需要根据实际需求进行权衡。</p>
+<h2 id="8-合理使用缓存"><a href="#8-合理使用缓存" class="headerlink" title="8.合理使用缓存"></a>8.合理使用缓存</h2><p>在编写 Dockerfile 时，合理使用缓存是优化构建过程和减少镜像构建时间的重要技巧之一。</p>
+<p>Docker 在构建镜像时会使用缓存，以便重复使用之前的构建步骤。</p>
+<p>以下是一些合理使用缓存的技巧：</p>
+<h3 id="1-优先复用不变的步骤"><a href="#1-优先复用不变的步骤" class="headerlink" title="1. 优先复用不变的步骤"></a>1. 优先复用不变的步骤</h3><p>将不太可能发生变化的步骤放在 Dockerfile 的前面，以便在构建过程中复用缓存。比如，安装基础依赖、复制代码等步骤通常不会频繁变化。</p>
+<h3 id="2-分阶段构建"><a href="#2-分阶段构建" class="headerlink" title="2. 分阶段构建"></a>2. 分阶段构建</h3><p>将 Dockerfile 分成多个阶段（<code>FROM</code>），每个阶段执行特定的任务。这样可以确保只有在前面阶段的内容发生变化时才会重新构建。不变的阶段的缓存会被复用。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment"># 阶段一：构建应用</span><br><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">14</span> AS builder<br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> package*.json ./</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm install</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm build</span><br><br><span class="hljs-comment"># 阶段二：运行应用</span><br><span class="hljs-keyword">FROM</span> nginx:alpine<br><span class="hljs-keyword">COPY</span><span class="language-bash"> --from=builder /app/dist /usr/share/nginx/html</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-使用-no-cache"><a href="#3-使用-no-cache" class="headerlink" title="3. 使用 --no-cache"></a>3. 使用 <code>--no-cache</code></h3><p>有时，为了确保获取最新的依赖或代码，你可以在构建时禁用缓存，以防止旧的缓存内容被使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build --no-cache -t myapp .<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-按需精确刷新缓存"><a href="#4-按需精确刷新缓存" class="headerlink" title="4. 按需精确刷新缓存"></a>4. 按需精确刷新缓存</h3><p>如果你只想刷新特定步骤的缓存，可以在 Dockerfile 中做一些改变，例如修改一个文件的时间戳，以触发后续步骤的重新构建。</p>
+<h3 id="5-使用-dockerignore-文件"><a href="#5-使用-dockerignore-文件" class="headerlink" title="5. 使用 .dockerignore 文件"></a>5. 使用 <code>.dockerignore</code> 文件</h3><p><code>.dockerignore</code> 文件可以用来指定哪些文件不需要被包含在构建上下文中，从而减少构建上下文的大小，提高构建速度。</p>
+<h3 id="6-小心使用-COPY-和-ADD"><a href="#6-小心使用-COPY-和-ADD" class="headerlink" title="6. 小心使用 COPY 和 ADD"></a>6. 小心使用 <code>COPY</code> 和 <code>ADD</code></h3><p><code>COPY</code> 和 <code>ADD</code> 步骤会影响缓存的使用。如果源文件没有变化，那么缓存会被重用。但是如果源文件发生了变化，所有后续步骤都将无法复用缓存。所以，在使用 <code>COPY</code> 和 <code>ADD</code> 时要注意只复制必要的文件。</p>
+<p>总之，合理使用缓存可以显著提高 Docker 镜像的构建效率。通过优化 Dockerfile 的结构和使用缓存技巧，你可以减少构建时间，提高开发效率。</p>
+<h2 id="9-镜像的多阶段构建"><a href="#9-镜像的多阶段构建" class="headerlink" title="9.镜像的多阶段构建"></a>9.镜像的多阶段构建</h2><p>Dockerfile 的多阶段构建是一种强大的技巧，可以在构建镜像时实现更高效的资源利用和减小镜像大小。它适用于需要在构建过程中生成多个临时文件、编译代码或处理多个步骤的场景。以下是关于镜像的多阶段构建的一些技巧：</p>
+<h3 id="1-减小镜像大小"><a href="#1-减小镜像大小" class="headerlink" title="1. 减小镜像大小"></a>1. 减小镜像大小</h3><p>多阶段构建允许你在不同的构建阶段中创建临时镜像，最终仅将需要的文件和结果复制到最终的镜像中。这样可以避免将构建时产生的临时文件和不必要的依赖包含在最终镜像中，从而减小镜像的大小。</p>
+<h3 id="2-分隔构建过程"><a href="#2-分隔构建过程" class="headerlink" title="2. 分隔构建过程"></a>2. 分隔构建过程</h3><p>将不同的构建步骤放在不同的构建阶段中，使得每个阶段专注于一个特定的任务。这有助于保持 Dockerfile 的可读性和维护性，同时也能更好地控制每个步骤的缓存和重新构建。</p>
+<h3 id="3-使用不同的基础镜像"><a href="#3-使用不同的基础镜像" class="headerlink" title="3. 使用不同的基础镜像"></a>3. 使用不同的基础镜像</h3><p>不同的构建阶段可以使用不同的基础镜像，以适应不同的需求。例如，一个阶段可以使用包含编译工具的基础镜像，而另一个阶段可以使用更轻量的生产环境基础镜像。</p>
+<h3 id="4-使用-COPY-from-复制文件"><a href="#4-使用-COPY-from-复制文件" class="headerlink" title="4. 使用 COPY --from 复制文件"></a>4. 使用 <code>COPY --from</code> 复制文件</h3><p>通过使用 <code>COPY --from</code> 语法，你可以从一个构建阶段复制文件到另一个构建阶段，而不必将整个临时镜像中的文件都复制到最终镜像中。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">DockerfileCopy code<span class="hljs-comment"># 第一个阶段：编译</span><br><span class="hljs-keyword">FROM</span> golang:<span class="hljs-number">1.16</span> AS builder<br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> go build -o myapp</span><br><br><span class="hljs-comment"># 第二个阶段：最终镜像</span><br><span class="hljs-keyword">FROM</span> alpine:latest<br><span class="hljs-keyword">COPY</span><span class="language-bash"> --from=builder /app/myapp /usr/bin/</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;myapp&quot;</span>]</span><br></code></pre></td></tr></table></figure>
+
+<p>在上面的示例中，最终镜像只包含了编译后的可执行文件，而不包含编译工具和源代码。</p>
+<h3 id="5-清理不必要的文件"><a href="#5-清理不必要的文件" class="headerlink" title="5. 清理不必要的文件"></a>5. 清理不必要的文件</h3><p>在每个构建阶段的结束时，可以使用 <code>RUN</code> 命令来清理不再需要的临时文件、缓存和依赖项，以进一步减小镜像的大小。</p>
+<p>总之，多阶段构建是一个优秀的技巧，可以创建更小、更高效的 Docker 镜像。通过在不同的阶段处理不同的任务，你可以将构建过程分割为更小的部分，并在最终镜像中仅包含必要的内容。这对于开发、测试和部署都有很大的好处。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/cloud/">cloud</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Docker/">Docker</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/road2docker02.html">
+                        <span class="hidden-mobile">02.Docker 镜像</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

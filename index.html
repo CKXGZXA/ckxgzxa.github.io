@@ -199,13 +199,141 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/road2Docker01.html" target="_self">
+        <a href="/road2docker03.html" target="_self">
+          03.Dockerfile
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2docker03.html" target="_self">
+          
+          
+            
+          
+          Dockerfile1. 基础镜像的选择基本原则:
+
+官方镜像优于非官方的镜像，如果没有官方镜像，则尽量选择Dockerfile开源的
+固定版本tag而不是每次都使用latest
+尽量选择体积小的镜像
+
+2.通过RUN执行指令RUN 主要用于在Image里执行指令, 比如安装软件, 下载文件等. 使用 \ 拼接命令防止不必要的分层
+3.文件复制和目录操作使用COPY 和 ADD 命令
+
+复制普通文
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-13 00:06" pubdate>
+              2023-08-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/cloud/">cloud</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Docker/">Docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2docker02.html" target="_self">
+          02.Docker 镜像
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/road2docker02.html" target="_self">
+          
+          
+            
+          
+          Docker 镜像1. 镜像的获取方式
+从 registry 拉取(online)
+public
+private
+
+
+从 Dockerfile 构建(online)
+从 file 文件导入(offline)
+
+
+2. 镜像基本操作
+镜像拉取
+从  registry 下载一个镜像
+1docker image pull NAME[:TAG|@DIGEST]
+查看镜像列表
+1docker image l
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-12 22:01" pubdate>
+              2023-08-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/cloud/">cloud</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Docker/">Docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/road2docker01.html" target="_self">
           01.Docker的安装
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/road2Docker01.html" target="_self">
+        <a href="/road2docker01.html" target="_self">
           
           
             
@@ -611,131 +739,6 @@ Groutine 是 M:N
             <i class="iconfont icon-date"></i>
             <time datetime="2022-11-10 13:08" pubdate>
               2022-11-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go07.html" target="_self">
-          Go语言学习07-包和依赖管理
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go07.html" target="_self">
-          
-          
-            
-          
-          Go语言学习07-包和依赖管理package
-基本复用模块单元
-以首字母大写来表明可被包外代码访问
-
-代码的 package 可以和所在的目录不一致
-
-同一目录里的 Go 代码的 package 要保持一致
-
-
-
-
-通过 go get 来获取远程依赖
-go get -u 强制从网络更新远程依赖
-
-注意代码在 GitHub 上的组织形式, 以适应 go get
-直接以代码路径开始, 不要有 src
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-09 22:42" pubdate>
-              2022-11-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Go/">Go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/road2go06.html" target="_self">
-          Go语言学习06-错误处理
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/road2go06.html" target="_self">
-          
-          
-            
-          
-          Go语言学习06-错误处理Go的错误机制与其他主要编程语言的差异
-
-没有异常机制
-
-error类型实现了error接口
-
-可以通过 errors.New 来快速创建错误实例
-12345type error interface &#123;    Error() string&#125;errors.New(&quot;n must be in range [0, 10]&quot;)
-
-最佳实践定
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-09 21:45" pubdate>
-              2022-11-09
             </time>
           </div>
         
