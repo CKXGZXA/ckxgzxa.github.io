@@ -6,7 +6,7 @@
   <link href="https://www.ckxgzxa.top/atom.xml" rel="self"/>
   
   <link href="https://www.ckxgzxa.top/"/>
-  <updated>2023-08-13T05:37:24.838Z</updated>
+  <updated>2023-08-13T15:48:49.922Z</updated>
   <id>https://www.ckxgzxa.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>04.Docker Compose</title>
+    <link href="https://www.ckxgzxa.top/road2docker04.html"/>
+    <id>https://www.ckxgzxa.top/road2docker04.html</id>
+    <published>2023-08-13T05:37:38.000Z</published>
+    <updated>2023-08-13T15:48:49.922Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h1><h2 id="1-docker-compose-安装"><a href="#1-docker-compose-安装" class="headerlink" title="1. docker-compose 安装"></a>1. <code>docker-compose</code> 安装</h2><p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a href="https://github.com/docker/compose/releases%E3%80%82">https://github.com/docker/compose/releases。</a></p><p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo curl -L <span class="hljs-string">&quot;https://github.com/docker/compose/releases/download/版本号/docker-compose-<span class="hljs-subst">$(uname -s)</span>-<span class="hljs-subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><p>添加执行权限</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><p>创建软链：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>docker-compose <span class="hljs-regexp">/usr/</span>bin/docker-compose<br></code></pre></td></tr></table></figure><p>测试是否安装成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker compose version <br>Docker Compose version v2.12.2<br></code></pre></td></tr></table></figure><p>也可以使用 <code>pip</code> 安装docker-compose</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install docker-compose<br></code></pre></td></tr></table></figure><h2 id="2-compose文件的结构和版本"><a href="#2-compose文件的结构和版本" class="headerlink" title="2.compose文件的结构和版本"></a>2.compose文件的结构和版本</h2><ul><li><p><strong>基本语法结构</strong></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3.8&quot;</span><br><br><span class="hljs-attr">services:</span> <span class="hljs-comment"># 容器</span><br>  <span class="hljs-attr">servicename:</span> <span class="hljs-comment"># 服务名字，可为内部bridge网络的 DNS name</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-comment"># 镜像的名字</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-comment"># 可选，如果设置，则会覆盖默认镜像里的 CMD命令</span><br>    <span class="hljs-attr">environment:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 --env</span><br>    <span class="hljs-attr">volumes:</span> <span class="hljs-comment"># 可选，相当于docker run里的 -v</span><br>    <span class="hljs-attr">networks:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 --network</span><br>    <span class="hljs-attr">ports:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 -p</span><br>  <span class="hljs-attr">servicename2:</span><br><br><span class="hljs-attr">volumes:</span> <span class="hljs-comment"># 可选，相当于 docker volume create</span><br><br><span class="hljs-attr">networks:</span> <span class="hljs-comment"># 可选，相当于 docker network create</span><br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Docker-Compose&quot;&gt;&lt;a href=&quot;#Docker-Compose&quot; class=&quot;headerlink&quot; title=&quot;Docker Compose&quot;&gt;&lt;/a&gt;Docker Compose&lt;/h1&gt;&lt;h2 id=&quot;1-docker-compose-</summary>
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://www.ckxgzxa.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="cloud" scheme="https://www.ckxgzxa.top/categories/cloud/"/>
+    
+    
+    <category term="Docker" scheme="https://www.ckxgzxa.top/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>03.Dockerfile</title>
@@ -469,30 +495,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;2023年中国石油校园招聘笔试02——考点归纳&quot;&gt;&lt;a href=&quot;#2023年中国石油校园招聘笔试02——考点归纳&quot; class=&quot;headerlink&quot; title=&quot;2023年中国石油校园招聘笔试02——考点归纳&quot;&gt;&lt;/a&gt;2023年中国石油校园招聘笔试02</summary>
-      
-    
-    
-    
-    <category term="秋招" scheme="https://www.ckxgzxa.top/categories/%E7%A7%8B%E6%8B%9B/"/>
-    
-    
-    <category term="中石油" scheme="https://www.ckxgzxa.top/tags/%E4%B8%AD%E7%9F%B3%E6%B2%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2023年中国石油招聘笔试01——综述</title>
-    <link href="https://www.ckxgzxa.top/cnpc-recuit-01.html"/>
-    <id>https://www.ckxgzxa.top/cnpc-recuit-01.html</id>
-    <published>2022-09-25T16:03:25.000Z</published>
-    <updated>2022-09-30T03:27:47.981Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="2023年中国石油校园招聘笔试01——综述"><a href="#2023年中国石油校园招聘笔试01——综述" class="headerlink" title="2023年中国石油校园招聘笔试01——综述"></a>2023年中国石油校园招聘笔试01——综述</h1><h2 id="1-中国石油招聘流程"><a href="#1-中国石油招聘流程" class="headerlink" title="1. 中国石油招聘流程"></a>1. 中国石油招聘流程</h2><p>一般分为如下四个环节：</p><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202209282132242.svg"></p><p>一般笔试在前， 面试在后，</p><p>大部分分公司考试类型为 <strong>综合能力测试</strong> 或者 <strong>综合能力测试 + 专业题</strong> 的形式，少数分公司考试题型为 <strong>英语测试+综合测试+性格测试</strong>。 面试一般分为初面、专业面等几个环节。。。</p><h2 id="2-中国石油招聘笔试考什么？"><a href="#2-中国石油招聘笔试考什么？" class="headerlink" title="2. 中国石油招聘笔试考什么？"></a>2. 中国石油招聘笔试考什么？</h2><p>大部分中国石油为 <strong>EPI 综合能力测试</strong> 的形式， 有的分公司还会考查英语知识，写作能力等。</p><p>EPI 综合能力测试也就是 <strong>行测题测试</strong> .</p><h2 id="3-中国石油招聘笔试考试时长"><a href="#3-中国石油招聘笔试考试时长" class="headerlink" title="3. 中国石油招聘笔试考试时长"></a>3. 中国石油招聘笔试考试时长</h2><p>据绝大部分考过的考生反馈, 时间很紧张, 根本不够用, 尤其是没搞过行测专业训练的考生.</p><h2 id="4-应对笔试整体方案-关键在于准度、速度、技巧"><a href="#4-应对笔试整体方案-关键在于准度、速度、技巧" class="headerlink" title="4. 应对笔试整体方案: 关键在于准度、速度、技巧"></a>4. 应对笔试整体方案: 关键在于准度、速度、技巧</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;2023年中国石油校园招聘笔试01——综述&quot;&gt;&lt;a href=&quot;#2023年中国石油校园招聘笔试01——综述&quot; class=&quot;headerlink&quot; title=&quot;2023年中国石油校园招聘笔试01——综述&quot;&gt;&lt;/a&gt;2023年中国石油校园招聘笔试01——综述&lt;/</summary>
       
     
     

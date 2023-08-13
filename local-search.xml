@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>04.Docker Compose</title>
+    <link href="/road2docker04.html"/>
+    <url>/road2docker04.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h1><h2 id="1-docker-compose-安装"><a href="#1-docker-compose-安装" class="headerlink" title="1. docker-compose 安装"></a>1. <code>docker-compose</code> 安装</h2><p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a href="https://github.com/docker/compose/releases%E3%80%82">https://github.com/docker/compose/releases。</a></p><p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo curl -L <span class="hljs-string">&quot;https://github.com/docker/compose/releases/download/版本号/docker-compose-<span class="hljs-subst">$(uname -s)</span>-<span class="hljs-subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><p>添加执行权限</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><p>创建软链：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>docker-compose <span class="hljs-regexp">/usr/</span>bin/docker-compose<br></code></pre></td></tr></table></figure><p>测试是否安装成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker compose version <br>Docker Compose version v2.12.2<br></code></pre></td></tr></table></figure><p>也可以使用 <code>pip</code> 安装docker-compose</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install docker-compose<br></code></pre></td></tr></table></figure><h2 id="2-compose文件的结构和版本"><a href="#2-compose文件的结构和版本" class="headerlink" title="2.compose文件的结构和版本"></a>2.compose文件的结构和版本</h2><ul><li><p><strong>基本语法结构</strong></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3.8&quot;</span><br><br><span class="hljs-attr">services:</span> <span class="hljs-comment"># 容器</span><br>  <span class="hljs-attr">servicename:</span> <span class="hljs-comment"># 服务名字，可为内部bridge网络的 DNS name</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-comment"># 镜像的名字</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-comment"># 可选，如果设置，则会覆盖默认镜像里的 CMD命令</span><br>    <span class="hljs-attr">environment:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 --env</span><br>    <span class="hljs-attr">volumes:</span> <span class="hljs-comment"># 可选，相当于docker run里的 -v</span><br>    <span class="hljs-attr">networks:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 --network</span><br>    <span class="hljs-attr">ports:</span> <span class="hljs-comment"># 可选，相当于 docker run里的 -p</span><br>  <span class="hljs-attr">servicename2:</span><br><br><span class="hljs-attr">volumes:</span> <span class="hljs-comment"># 可选，相当于 docker volume create</span><br><br><span class="hljs-attr">networks:</span> <span class="hljs-comment"># 可选，相当于 docker network create</span><br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>cloud</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>03.Dockerfile</title>
     <link href="/road2docker03.html"/>
     <url>/road2docker03.html</url>
