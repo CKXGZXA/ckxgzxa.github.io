@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
+  <meta name="sogou_site_verification" content="2t6zxaPafe" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="残魁斜罡">
+  <meta name="keywords" content="">
+  
+  <title>2. Oracle学习笔记-Oracle的体系结构 - 技术匝记簿</title>
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="2. Oracle学习笔记-Oracle的体系结构">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-04 23:04" pubdate>
+        2023年12月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2. Oracle学习笔记-Oracle的体系结构</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年12月4日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="2-Oracle的体系结构概述"><a href="#2-Oracle的体系结构概述" class="headerlink" title="2. Oracle的体系结构概述"></a>2. Oracle的体系结构概述</h2><pre class="mermaid">graph LR
+A[Oracle的体系结构]-->体系结构概述
+A-->逻辑存储结构
+A-->物理存储结构
+A-->服务器结构
+A-->数据字典</pre>
+
+<h3 id="2-1-Oracle体系结构图"><a href="#2-1-Oracle体系结构图" class="headerlink" title="2.1 Oracle体系结构图"></a>2.1 Oracle体系结构图</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042309443.png"></p>
+<h3 id="2-2-用户进程和服务器进程的关系"><a href="#2-2-用户进程和服务器进程的关系" class="headerlink" title="2.2 用户进程和服务器进程的关系"></a>2.2 用户进程和服务器进程的关系</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042312481.png"></p>
+<h3 id="2-3-存储结构分类"><a href="#2-3-存储结构分类" class="headerlink" title="2.3 存储结构分类"></a>2.3 存储结构分类</h3><ul>
+<li><p><strong>逻辑存储结构</strong></p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042313556.png"></p>
+<ul>
+<li><p>数据块</p>
+<ul>
+<li><p>数据块是Oracle逻辑存储结构中的最小的逻辑单位</p>
+</li>
+<li><p>一个数据库对应一个或者多个物理块, 大小由参数 <code>DB_BLOCK_SIZE</code> 决定</p>
+</li>
+<li><p>数据块的结构包括块头和存储区的两个部分</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042318973.png"></p>
+</li>
+</ul>
+</li>
+<li><p>数据区</p>
+<ul>
+<li>数据区是由连续的数据块结合而成的</li>
+<li>数据区是Oracle存储分配的最小单位</li>
+</ul>
+</li>
+<li><p>段</p>
+<ul>
+<li>数据段：存储表中所有数据</li>
+<li>索引段：存储表上最佳查询的所有索引数据</li>
+<li>临时段：存储表排序操作期间建立的临时表的数据</li>
+<li>回滚段：存储修改之前的位置和值</li>
+</ul>
+</li>
+<li><p>表空间</p>
+<ul>
+<li>表空间是数据库的最大逻辑划分区域</li>
+<li>一个表空间由一个或多个数据文件组成，一个数据文件只属于一个表空间</li>
+<li>表空间的大小是它所对应的数据文件大小的总和</li>
+<li>默认创建的表空间<ul>
+<li>系统表空间</li>
+<li>辅助表空间</li>
+<li>撤销表空间</li>
+<li>用户表空间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>物理存储结构</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042321953.png"></p>
+<p>物理结构包含三种数据文件</p>
+<ul>
+<li><p><strong>控制文件</strong></p>
+<ul>
+<li>是数据库中最小的文件同时也是数据库中最<strong>重要</strong>的文件</li>
+</ul>
+</li>
+<li><p>数据文件</p>
+<p>数据文件的种类</p>
+<ul>
+<li>系统数据文件（<code>SYSTEM01.DBF</code> 和 <code>SYSAUX01.DBF</code> ）</li>
+<li>回滚数据文件（<code>UNDOTBS01.DBF</code>）</li>
+<li>用户数据文件（<code>USERS01.DBF</code>）</li>
+<li>临时数据文件（<code>TEMP01.DBF</code>）</li>
+</ul>
+</li>
+<li><p>重做日志文件</p>
+<p>日志文件 <code>.LOG</code></p>
+<ul>
+<li>重做日志文件：记录所有的数据变化、提供恢复机制</li>
+<li>归档日志文件：重做日志文件的历史备份，有归档模式和非归档模式之分</li>
+</ul>
+</li>
+<li><p>其他文件</p>
+<ul>
+<li>服务器参数文件 （<code>orcl.ora</code>）</li>
+<li>密码文件 (<code>PWDorcl.ora</code>)</li>
+<li>警告文件 (<code>alert_orcl.log</code>)</li>
+<li>跟踪文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-Oracle-服务器结构"><a href="#2-4-Oracle-服务器结构" class="headerlink" title="2.4 Oracle 服务器结构"></a>2.4 Oracle 服务器结构</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042332911.png"></p>
+<p>Oracle服务器主要有以下部分组成：</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042334793.png"></p>
+<ul>
+<li><p>系统全局区SGA</p>
+<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042333302.png"></p>
+<ul>
+<li><p>高速数据缓冲区</p>
+<p>作用：用来存放Oracle系统最近访问过的数据块<br>经常或最近被访问的数据块会被放置到高速数据缓冲区的前端，不经常被访问的数据块会被放置到高速数据缓冲区的后端</p>
+</li>
+<li><p>共享池</p>
+<p>作用：存储最近执行过的SQL语句和最近使用过的数据定义<br>共享池包含：库高速缓冲区 和 字典高速缓冲区</p>
+</li>
+</ul>
+</li>
+<li><p>程序全局区（PGA）</p>
+<p>程序全局区PGA又称作用户进程全局区, 可以把代码、全局变量和数据结构都存储在其中, 每个Oracle服务器进程只拥有自己的那部分PGA资源<br>程序全局区由两部分组成：私有SQL区 和 会话区</p>
+</li>
+<li><p>前台进程</p>
+<ul>
+<li>用户进程: 使用SQL Plus连接成功后生成。包含两个重要概念：连接和会话</li>
+<li>服务器进程：处理用户会话过程中的SQL语句和SQL Plus命令</li>
+<li>数据写入进程</li>
+<li>检查点进程</li>
+<li>日志写入进程</li>
+<li>归档进程</li>
+</ul>
+</li>
+<li><p>实例</p>
+</li>
+<li><p>数据库</p>
+</li>
+</ul>
+<h3 id="2-5-数据字典"><a href="#2-5-数据字典" class="headerlink" title="2.5 数据字典"></a>2.5 数据字典</h3><p>数据字典是Oracle存储数据库内部信息的地方，描述了数据库内部的运行和管理情况。<br>Oracle数据字典的名称由前缀和后缀组成，使用下划线“_”连接</p>
+<ul>
+<li>dba_: 包含数据库实例的所有对象信息。_</li>
+<li>v$_：当前实例的动态视图，包含系统管理和系统优化等使用的视图。</li>
+<li>user_：记录用户的对象信息。</li>
+<li>gv_：分布式环境下所有实例的动态视图，包含系统管理和系统优化使用的视图</li>
+<li>all_：记录用户的对象信息及被授权访问的对象信息。</li>
+</ul>
+<h4 id="基本的数据字典"><a href="#基本的数据字典" class="headerlink" title="基本的数据字典"></a>基本的数据字典</h4><table>
+<thead>
+<tr>
+<th>字典名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DBA_TABLES</strong></td>
+<td>所有表的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_COLUMNS</strong></td>
+<td>所有表的列信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_VIEWS</strong></td>
+<td>所有视图的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_COMMENTS</strong></td>
+<td>所有表的注释信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_COL_COMMENTS</strong></td>
+<td>所有列的注释信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_INDEXES</strong></td>
+<td>所有索引的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_IND_COLUMNS</strong></td>
+<td>所有索引列的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_CONSTRAINTS</strong></td>
+<td>所有约束的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_CONS_COLUMNS</strong></td>
+<td>所有约束列的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_PRIVS</strong></td>
+<td>所有表的权限信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_PRIVS_RECD</strong></td>
+<td>所有表的详细权限信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_COLUMNS_STATISTICS</strong></td>
+<td>所有表的列统计信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_MODIFICATIONS</strong></td>
+<td>所有表的最后修改时间信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_PARTITIONS</strong></td>
+<td>所有表的分区信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_SUBPARTITIONS</strong></td>
+<td>所有表的子分区信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TRIGGERS</strong></td>
+<td>所有触发器的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_PROCEDURES</strong></td>
+<td>所有存储过程和函数的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_ARGUMENTS</strong></td>
+<td>所有存储过程和函数参数的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_ERRORS</strong></td>
+<td>所有存储过程、函数和包中的错误信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_STATISTICS</strong></td>
+<td>所有表的统计信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_TAB_PENDING_STATS</strong></td>
+<td>所有表的等待统计信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_SCHEDULER_JOBS</strong></td>
+<td>所有调度任务的信息，包括所有者（用户）</td>
+</tr>
+<tr>
+<td><strong>DBA_SCHEDULER_JOB_RUN_DETAILS</strong></td>
+<td>所有调度任务运行详情信息，包括所有者（用户）</td>
+</tr>
+</tbody></table>
+<h4 id="常用动态性能视图"><a href="#常用动态性能视图" class="headerlink" title="常用动态性能视图"></a>常用动态性能视图</h4><table>
+<thead>
+<tr>
+<th>视图名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>V$SESSION</strong></td>
+<td>提供有关当前会话的信息，如会话 ID、用户名、状态等</td>
+</tr>
+<tr>
+<td><strong>V$SQL</strong></td>
+<td>包含所有当前正在执行的 SQL 语句的信息</td>
+</tr>
+<tr>
+<td><strong>V$SQLAREA</strong></td>
+<td>包含有关 SQL 语句执行计划和性能的信息</td>
+</tr>
+<tr>
+<td><strong>V$SESSION_EVENT</strong></td>
+<td>提供与会话相关的等待事件信息</td>
+</tr>
+<tr>
+<td><strong>V$SYSTEM_EVENT</strong></td>
+<td>提供与系统相关的等待事件信息</td>
+</tr>
+<tr>
+<td><strong>V$SQL_PLAN</strong></td>
+<td>提供 SQL 语句执行计划的信息</td>
+</tr>
+<tr>
+<td><strong>V$SQL_PLAN_STATISTICS</strong></td>
+<td>提供 SQL 语句执行计划的统计信息</td>
+</tr>
+<tr>
+<td><strong>V$INSTANCE</strong></td>
+<td>提供有关数据库实例的信息，如实例名称、状态等</td>
+</tr>
+<tr>
+<td><strong>V$WAITSTAT</strong></td>
+<td>提供有关等待事件统计信息的汇总</td>
+</tr>
+<tr>
+<td><strong>V$LOCK</strong></td>
+<td>提供有关数据库锁的信息</td>
+</tr>
+<tr>
+<td><strong>V$TRANSACTION</strong></td>
+<td>提供有关数据库事务的信息</td>
+</tr>
+<tr>
+<td><strong>V$ROLLSTAT</strong></td>
+<td>提供有关回滚段的信息</td>
+</tr>
+<tr>
+<td><strong>V$SYSSTAT</strong></td>
+<td>提供有关系统级统计信息</td>
+</tr>
+<tr>
+<td><strong>V$SESSION_LONGOPS</strong></td>
+<td>提供有关长时间运行的操作的信息</td>
+</tr>
+<tr>
+<td><strong>V$RESOURCE_LIMIT</strong></td>
+<td>提供有关资源限制和使用情况的信息</td>
+</tr>
+<tr>
+<td><strong>V$DATABASE</strong></td>
+<td>提供有关数据库的全局信息，如数据库名称、状态等</td>
+</tr>
+<tr>
+<td><strong>V$PARAMETER</strong></td>
+<td>提供有关初始化参数的信息</td>
+</tr>
+<tr>
+<td><strong>V$INSTANCE_PARAMETER</strong></td>
+<td>提供有关实例初始化参数的信息</td>
+</tr>
+<tr>
+<td><strong>V$SQLSTATS</strong></td>
+<td>提供 SQL 语句的统计信息，包括执行次数、等待时间等</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/OracleDB01.html">
+                        <span class="hidden-mobile">1.Oracle学习笔记-Oracle 19c概述</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021018734号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" alt="police-icon"/>
+            
+            <span>湘公网安备 43052102000188号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+
+
+
+  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://www.unpkg.com/mermaid@8.9.2/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
