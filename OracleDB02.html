@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      19
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月4日 晚上
+                  本文最后更新于：2023年12月5日 凌晨
                 
               </p>
             
@@ -260,12 +260,8 @@ A-->数据字典</pre>
 
 <h3 id="2-1-Oracle体系结构图"><a href="#2-1-Oracle体系结构图" class="headerlink" title="2.1 Oracle体系结构图"></a>2.1 Oracle体系结构图</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042309443.png"></p>
 <h3 id="2-2-用户进程和服务器进程的关系"><a href="#2-2-用户进程和服务器进程的关系" class="headerlink" title="2.2 用户进程和服务器进程的关系"></a>2.2 用户进程和服务器进程的关系</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042312481.png"></p>
-<h3 id="2-3-存储结构分类"><a href="#2-3-存储结构分类" class="headerlink" title="2.3 存储结构分类"></a>2.3 存储结构分类</h3><ul>
-<li><p><strong>逻辑存储结构</strong></p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042313556.png"></p>
-<ul>
-<li><p>数据块</p>
-<ul>
+<h3 id="2-3-存储结构分类"><a href="#2-3-存储结构分类" class="headerlink" title="2.3 存储结构分类"></a>2.3 存储结构分类</h3><h4 id="2-3-1-逻辑存储结构"><a href="#2-3-1-逻辑存储结构" class="headerlink" title="2.3.1 逻辑存储结构"></a>2.3.1 <strong>逻辑存储结构</strong></h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042313556.png"></p>
+<h5 id="数据块"><a href="#数据块" class="headerlink" title="数据块"></a>数据块</h5><ul>
 <li><p>数据块是Oracle逻辑存储结构中的最小的逻辑单位</p>
 </li>
 <li><p>一个数据库对应一个或者多个物理块, 大小由参数 <code>DB_BLOCK_SIZE</code> 决定</p>
@@ -274,23 +270,17 @@ A-->数据字典</pre>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042318973.png"></p>
 </li>
 </ul>
-</li>
-<li><p>数据区</p>
-<ul>
+<h5 id="数据区"><a href="#数据区" class="headerlink" title="数据区"></a>数据区</h5><ul>
 <li>数据区是由连续的数据块结合而成的</li>
 <li>数据区是Oracle存储分配的最小单位</li>
 </ul>
-</li>
-<li><p>段</p>
-<ul>
+<h5 id="段"><a href="#段" class="headerlink" title="段"></a>段</h5><ul>
 <li>数据段：存储表中所有数据</li>
 <li>索引段：存储表上最佳查询的所有索引数据</li>
 <li>临时段：存储表排序操作期间建立的临时表的数据</li>
 <li>回滚段：存储修改之前的位置和值</li>
 </ul>
-</li>
-<li><p>表空间</p>
-<ul>
+<h5 id="表空间"><a href="#表空间" class="headerlink" title="表空间"></a>表空间</h5><ul>
 <li>表空间是数据库的最大逻辑划分区域</li>
 <li>一个表空间由一个或多个数据文件组成，一个数据文件只属于一个表空间</li>
 <li>表空间的大小是它所对应的数据文件大小的总和</li>
@@ -302,51 +292,33 @@ A-->数据字典</pre>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>物理存储结构</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042321953.png"></p>
+<h4 id="2-3-2-物理存储结构"><a href="#2-3-2-物理存储结构" class="headerlink" title="2.3.2 物理存储结构"></a>2.3.2 物理存储结构</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042321953.png"></p>
 <p>物理结构包含三种数据文件</p>
-<ul>
-<li><p><strong>控制文件</strong></p>
-<ul>
+<h5 id="控制文件"><a href="#控制文件" class="headerlink" title="控制文件"></a><strong>控制文件</strong></h5><ul>
 <li>是数据库中最小的文件同时也是数据库中最<strong>重要</strong>的文件</li>
 </ul>
-</li>
-<li><p>数据文件</p>
-<p>数据文件的种类</p>
+<h5 id="数据文件"><a href="#数据文件" class="headerlink" title="数据文件"></a>数据文件</h5><p>数据文件的种类</p>
 <ul>
 <li>系统数据文件（<code>SYSTEM01.DBF</code> 和 <code>SYSAUX01.DBF</code> ）</li>
 <li>回滚数据文件（<code>UNDOTBS01.DBF</code>）</li>
 <li>用户数据文件（<code>USERS01.DBF</code>）</li>
 <li>临时数据文件（<code>TEMP01.DBF</code>）</li>
 </ul>
-</li>
-<li><p>重做日志文件</p>
-<p>日志文件 <code>.LOG</code></p>
+<h5 id="重做日志文件"><a href="#重做日志文件" class="headerlink" title="重做日志文件"></a>重做日志文件</h5><p>日志文件 <code>.LOG</code></p>
 <ul>
 <li>重做日志文件：记录所有的数据变化、提供恢复机制</li>
 <li>归档日志文件：重做日志文件的历史备份，有归档模式和非归档模式之分</li>
 </ul>
-</li>
-<li><p>其他文件</p>
-<ul>
+<h5 id="其他文件"><a href="#其他文件" class="headerlink" title="其他文件"></a>其他文件</h5><ul>
 <li>服务器参数文件 （<code>orcl.ora</code>）</li>
 <li>密码文件 (<code>PWDorcl.ora</code>)</li>
 <li>警告文件 (<code>alert_orcl.log</code>)</li>
 <li>跟踪文件</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
 <h3 id="2-4-Oracle-服务器结构"><a href="#2-4-Oracle-服务器结构" class="headerlink" title="2.4 Oracle 服务器结构"></a>2.4 Oracle 服务器结构</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042332911.png"></p>
-<p>Oracle服务器主要有以下部分组成：</p>
+<p>Oracle服务器主要由以下部分组成：</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042334793.png"></p>
-<ul>
-<li><p>系统全局区SGA</p>
-<p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042333302.png"></p>
+<h4 id="2-4-1-系统全局区SGA"><a href="#2-4-1-系统全局区SGA" class="headerlink" title="2.4.1 系统全局区SGA"></a>2.4.1 系统全局区SGA</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312042333302.png"></p>
 <ul>
 <li><p>高速数据缓冲区</p>
 <p>作用：用来存放Oracle系统最近访问过的数据块<br>经常或最近被访问的数据块会被放置到高速数据缓冲区的前端，不经常被访问的数据块会被放置到高速数据缓冲区的后端</p>
@@ -355,26 +327,18 @@ A-->数据字典</pre>
 <p>作用：存储最近执行过的SQL语句和最近使用过的数据定义<br>共享池包含：库高速缓冲区 和 字典高速缓冲区</p>
 </li>
 </ul>
-</li>
-<li><p>程序全局区（PGA）</p>
-<p>程序全局区PGA又称作用户进程全局区, 可以把代码、全局变量和数据结构都存储在其中, 每个Oracle服务器进程只拥有自己的那部分PGA资源<br>程序全局区由两部分组成：私有SQL区 和 会话区</p>
-</li>
-<li><p>前台进程</p>
-<ul>
+<h4 id="2-4-2-程序全局区（PGA）"><a href="#2-4-2-程序全局区（PGA）" class="headerlink" title="2.4.2 程序全局区（PGA）"></a>2.4.2 程序全局区（PGA）</h4><p>程序全局区PGA又称作用户进程全局区, 可以把代码、全局变量和数据结构都存储在其中, 每个Oracle服务器进程只拥有自己的那部分PGA资源<br>程序全局区由两部分组成：私有SQL区 和 会话区</p>
+<h4 id="2-4-3-前台进程"><a href="#2-4-3-前台进程" class="headerlink" title="2.4.3 前台进程"></a>2.4.3 前台进程</h4><ul>
 <li>用户进程: 使用SQL Plus连接成功后生成。包含两个重要概念：连接和会话</li>
 <li>服务器进程：处理用户会话过程中的SQL语句和SQL Plus命令</li>
+</ul>
+<h4 id="2-4-4-后台进程"><a href="#2-4-4-后台进程" class="headerlink" title="2.4.4 后台进程"></a>2.4.4 后台进程</h4><ul>
 <li>数据写入进程</li>
 <li>检查点进程</li>
 <li>日志写入进程</li>
 <li>归档进程</li>
 </ul>
-</li>
-<li><p>实例</p>
-</li>
-<li><p>数据库</p>
-</li>
-</ul>
-<h3 id="2-5-数据字典"><a href="#2-5-数据字典" class="headerlink" title="2.5 数据字典"></a>2.5 数据字典</h3><p>数据字典是Oracle存储数据库内部信息的地方，描述了数据库内部的运行和管理情况。<br>Oracle数据字典的名称由前缀和后缀组成，使用下划线“_”连接</p>
+<h4 id="2-4-4-实例"><a href="#2-4-4-实例" class="headerlink" title="2.4.4 实例"></a>2.4.4 实例</h4><h4 id="2-4-5-数据库"><a href="#2-4-5-数据库" class="headerlink" title="2.4.5 数据库"></a>2.4.5 数据库</h4><h3 id="2-5-数据字典"><a href="#2-5-数据字典" class="headerlink" title="2.5 数据字典"></a>2.5 数据字典</h3><p>数据字典是Oracle存储数据库内部信息的地方，描述了数据库内部的运行和管理情况。<br>Oracle数据字典的名称由前缀和后缀组成，使用下划线“_”连接</p>
 <ul>
 <li>dba_: 包含数据库实例的所有对象信息。_</li>
 <li>v$_：当前实例的动态视图，包含系统管理和系统优化等使用的视图。</li>
@@ -382,7 +346,7 @@ A-->数据字典</pre>
 <li>gv_：分布式环境下所有实例的动态视图，包含系统管理和系统优化使用的视图</li>
 <li>all_：记录用户的对象信息及被授权访问的对象信息。</li>
 </ul>
-<h4 id="基本的数据字典"><a href="#基本的数据字典" class="headerlink" title="基本的数据字典"></a>基本的数据字典</h4><table>
+<h4 id="2-5-1-基本的数据字典"><a href="#2-5-1-基本的数据字典" class="headerlink" title="2.5.1 基本的数据字典"></a>2.5.1 基本的数据字典</h4><table>
 <thead>
 <tr>
 <th>字典名称</th>
@@ -482,7 +446,7 @@ A-->数据字典</pre>
 <td>所有调度任务运行详情信息，包括所有者（用户）</td>
 </tr>
 </tbody></table>
-<h4 id="常用动态性能视图"><a href="#常用动态性能视图" class="headerlink" title="常用动态性能视图"></a>常用动态性能视图</h4><table>
+<h4 id="2-5-2-常用动态性能视图"><a href="#2-5-2-常用动态性能视图" class="headerlink" title="2.5.2 常用动态性能视图"></a>2.5.2 常用动态性能视图</h4><table>
 <thead>
 <tr>
 <th>视图名称</th>
