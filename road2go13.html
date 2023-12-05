@@ -1,257 +1,160 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="baidu-site-verification" content="code-HJwAkkohj2" />
-  <meta name="sogou_site_verification" content="2t6zxaPafe" />
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="残魁斜罡">
-  <meta name="keywords" content="">
-  
-  <title>Go语言学习13-常见软件架构的实现 - 技术匝记簿</title>
-
-  <link  rel="stylesheet" href="https://www.unpkg.com/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://www.unpkg.com/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go语言学习13-常见软件架构的实现 | 技术匝记簿</title><meta name="author" content="残魁斜罡"><meta name="copyright" content="残魁斜罡"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Go语言学习13-常见软件架构的实现架构模式An architectural pattern is a general, reusable solution to a commonly occurring problem in software architectural within a given context. ——wikipedia Pipe-Filter 架构 Pipe-Filter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言学习13-常见软件架构的实现">
+<meta property="og:url" content="https://www.ckxgzxa.top/road2go13.html">
+<meta property="og:site_name" content="技术匝记簿">
+<meta property="og:description" content="Go语言学习13-常见软件架构的实现架构模式An architectural pattern is a general, reusable solution to a commonly occurring problem in software architectural within a given context. ——wikipedia Pipe-Filter 架构 Pipe-Filter">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png">
+<meta property="article:published_time" content="2022-11-11T10:45:41.000Z">
+<meta property="article:modified_time" content="2022-11-11T17:17:04.899Z">
+<meta property="article:author" content="残魁斜罡">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.ckxgzxa.top/road2go13.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 残魁斜罡","link":"链接: ","source":"来源: 技术匝记簿","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Go语言学习13-常见软件架构的实现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-12 01:17:04'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-      <link  rel="stylesheet" href="https://www.unpkg.com/highlight.js@10.6.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.ckxgzxa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"01f66cc4caefba46f8cad22b739f765a","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
-</head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>残魁斜罡的小小簿记</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                友链
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/%E9%A3%8E%E6%99%AF.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Go语言学习13-常见软件架构的实现">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-11-11 18:45" pubdate>
-        2022年11月11日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.1k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-      20
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
     
-      
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Go语言学习13-常见软件架构的实现</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2022年11月12日 凌晨
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h2 id="Go语言学习13-常见软件架构的实现"><a href="#Go语言学习13-常见软件架构的实现" class="headerlink" title="Go语言学习13-常见软件架构的实现"></a>Go语言学习13-常见软件架构的实现</h2><h3 id="架构模式"><a href="#架构模式" class="headerlink" title="架构模式"></a>架构模式</h3><p>An <font color="blue">architectural pattern</font> is a general, <strong>reusable solution</strong> to a commonly occurring problem in <font color="blue">software architectural</font> within a given context. ——wikipedia</p>
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="技术匝记簿" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png')"><nav id="nav"><span id="blog-info"><a href="/" title="技术匝记簿"><img class="site-icon" src="/img/favicon.png"/><span class="site-name">技术匝记簿</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Go语言学习13-常见软件架构的实现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T10:45:41.000Z" title="发表于 2022-11-11 18:45:41">2022-11-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-11T17:17:04.899Z" title="更新于 2022-11-12 01:17:04">2022-11-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Go语言学习13-常见软件架构的实现"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Go语言学习13-常见软件架构的实现"><a href="#Go语言学习13-常见软件架构的实现" class="headerlink" title="Go语言学习13-常见软件架构的实现"></a>Go语言学习13-常见软件架构的实现</h2><h3 id="架构模式"><a href="#架构模式" class="headerlink" title="架构模式"></a>架构模式</h3><p>An <font color="blue">architectural pattern</font> is a general, <strong>reusable solution</strong> to a commonly occurring problem in <font color="blue">software architectural</font> within a given context. ——wikipedia</p>
 <h3 id="Pipe-Filter-架构"><a href="#Pipe-Filter-架构" class="headerlink" title="Pipe-Filter 架构"></a>Pipe-Filter 架构</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211111857702.png"></p>
 <h4 id="Pipe-Filter-模式"><a href="#Pipe-Filter-模式" class="headerlink" title="Pipe-Filter 模式"></a>Pipe-Filter 模式</h4><ul>
 <li><p>非常适合于数据处理及数据分析系统</p>
@@ -268,7 +171,7 @@
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211111911920.png"></p>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211111924672.png" style="zoom:25%;" />
 
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// filter.go</span><br><span class="hljs-comment">// Package pipefilter is to define the interfaces</span><br><span class="hljs-comment">// and the structures for pipe-filter style implementation</span><br><span class="hljs-keyword">package</span> pipefilter<br><br><span class="hljs-comment">// Request is the input of the filter</span><br><span class="hljs-keyword">type</span> Request <span class="hljs-keyword">interface</span>&#123;&#125;<br><br><span class="hljs-comment">// Response is the output of the filter</span><br><span class="hljs-keyword">type</span> Response <span class="hljs-keyword">interface</span>&#123;&#125;<br><br><span class="hljs-comment">// Filter interface is the definition of the data processing components</span><br><span class="hljs-comment">// Pipe-Filter structure</span><br><span class="hljs-keyword">type</span> Filter <span class="hljs-keyword">interface</span> &#123;<br>	Process(data Request) (Response, <span class="hljs-type">error</span>)<br>&#125;<br><br><span class="hljs-comment">// split_filter.go</span><br><span class="hljs-keyword">package</span> pipefilter<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;errors&quot;</span><br>	<span class="hljs-string">&quot;strings&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> SplitFilterWrongFormatError = errors.New(<span class="hljs-string">&quot;input data should be string&quot;</span>)<br><br><span class="hljs-keyword">type</span> SplitFilter <span class="hljs-keyword">struct</span> &#123;<br>	delimiter <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewSplitFilter</span><span class="hljs-params">(delimiter <span class="hljs-type">string</span>)</span></span> *SplitFilter &#123;<br>	<span class="hljs-keyword">return</span> &amp;SplitFilter&#123;delimiter&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(sf *SplitFilter)</span></span> Process(data Request) (Response, <span class="hljs-type">error</span>) &#123;<br>	str, ok := data.(<span class="hljs-type">string</span>) <span class="hljs-comment">// 检查数据格式/类型, 是否可以处理</span><br>	<span class="hljs-keyword">if</span> !ok &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, SplitFilterWrongFormatError<br>	&#125;<br>	parts := strings.Split(str, sf.delimiter)<br>	<span class="hljs-keyword">return</span> parts, <span class="hljs-literal">nil</span><br>&#125;<br><br><span class="hljs-comment">// to_int_filter.go</span><br><span class="hljs-keyword">package</span> pipefilter<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;errors&quot;</span><br>	<span class="hljs-string">&quot;strconv&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> ToIntFilterWrongFormatError = errors.New(<span class="hljs-string">&quot;input data should be []string&quot;</span>)<br><br><span class="hljs-keyword">type</span> ToIntFilter <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewToIntFilter</span><span class="hljs-params">()</span></span> *ToIntFilter &#123;<br>	<span class="hljs-keyword">return</span> &amp;ToIntFilter&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(tif *ToIntFilter)</span></span> Process(data Request) (Response, <span class="hljs-type">error</span>) &#123;<br>	parts, ok := data.([]<span class="hljs-type">string</span>)<br>	<span class="hljs-keyword">if</span> !ok &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ToIntFilterWrongFormatError<br>	&#125;<br>	ret := []<span class="hljs-type">int</span>&#123;&#125;<br>	<span class="hljs-keyword">for</span> _, part := <span class="hljs-keyword">range</span> parts &#123;<br>		s, err := strconv.Atoi(part)<br>		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err<br>		&#125;<br>		ret = <span class="hljs-built_in">append</span>(ret, s)<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret, <span class="hljs-literal">nil</span><br>&#125;<br><br><span class="hljs-comment">// sum_filter.go</span><br><span class="hljs-keyword">package</span> pipefilter<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;errors&quot;</span><br><br><span class="hljs-keyword">var</span> SumFilterWrongFormatError = errors.New(<span class="hljs-string">&quot;input data should be []int&quot;</span>)<br><br><span class="hljs-keyword">type</span> SumFilter <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewSumFilter</span><span class="hljs-params">()</span></span> *SumFilter &#123;<br>	<span class="hljs-keyword">return</span> &amp;SumFilter&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(sf *SumFilter)</span></span> Process(data Request) (Response, <span class="hljs-type">error</span>) &#123;<br>	elems, ok := data.([]<span class="hljs-type">int</span>)<br>	<span class="hljs-keyword">if</span> !ok &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, SumFilterWrongFormatError<br>	&#125;<br>	ret := <span class="hljs-number">0</span><br>	<span class="hljs-keyword">for</span> _, elem := <span class="hljs-keyword">range</span> elems &#123;<br>		ret += elem<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret, <span class="hljs-literal">nil</span><br>&#125;<br><br><span class="hljs-comment">// straight_pipeline.go</span><br><span class="hljs-keyword">package</span> pipefilter<br><br><span class="hljs-comment">// StraightPipeline is composed of the filters, and the filters are piled as a straight line.</span><br><span class="hljs-keyword">type</span> StraightPipeline <span class="hljs-keyword">struct</span> &#123;<br>	Name    <span class="hljs-type">string</span><br>	Filters *[]Filter<br>&#125;<br><br><span class="hljs-comment">// NewStraightPipeline create a new StraightPipelineWithWallTime</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewStraightPipeline</span><span class="hljs-params">(name <span class="hljs-type">string</span>, filters ...Filter)</span></span> *StraightPipeline &#123;<br>	<span class="hljs-keyword">return</span> &amp;StraightPipeline&#123;<br>		Name:    name,<br>		Filters: &amp;filters,<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// Process is to process the coming data by the pipeline</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(f *StraightPipeline)</span></span> Process(data Request) (Response, <span class="hljs-type">error</span>) &#123;<br>	<span class="hljs-keyword">var</span> ret <span class="hljs-keyword">interface</span>&#123;&#125;<br>	<span class="hljs-keyword">var</span> err <span class="hljs-type">error</span><br>	<span class="hljs-keyword">for</span> _, filter := <span class="hljs-keyword">range</span> *f.Filters &#123;<br>		ret, err = filter.Process(data)<br>		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">return</span> ret, err<br>		&#125;<br>		data = ret<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret, err<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filter.go</span></span><br><span class="line"><span class="comment">// Package pipefilter is to define the interfaces</span></span><br><span class="line"><span class="comment">// and the structures for pipe-filter style implementation</span></span><br><span class="line"><span class="keyword">package</span> pipefilter</span><br><span class="line"></span><br><span class="line"><span class="comment">// Request is the input of the filter</span></span><br><span class="line"><span class="keyword">type</span> Request <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Response is the output of the filter</span></span><br><span class="line"><span class="keyword">type</span> Response <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Filter interface is the definition of the data processing components</span></span><br><span class="line"><span class="comment">// Pipe-Filter structure</span></span><br><span class="line"><span class="keyword">type</span> Filter <span class="keyword">interface</span> &#123;</span><br><span class="line">	Process(data Request) (Response, <span class="type">error</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// split_filter.go</span></span><br><span class="line"><span class="keyword">package</span> pipefilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;errors&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> SplitFilterWrongFormatError = errors.New(<span class="string">&quot;input data should be string&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SplitFilter <span class="keyword">struct</span> &#123;</span><br><span class="line">	delimiter <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewSplitFilter</span><span class="params">(delimiter <span class="type">string</span>)</span></span> *SplitFilter &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;SplitFilter&#123;delimiter&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sf *SplitFilter)</span></span> Process(data Request) (Response, <span class="type">error</span>) &#123;</span><br><span class="line">	str, ok := data.(<span class="type">string</span>) <span class="comment">// 检查数据格式/类型, 是否可以处理</span></span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, SplitFilterWrongFormatError</span><br><span class="line">	&#125;</span><br><span class="line">	parts := strings.Split(str, sf.delimiter)</span><br><span class="line">	<span class="keyword">return</span> parts, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// to_int_filter.go</span></span><br><span class="line"><span class="keyword">package</span> pipefilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;errors&quot;</span></span><br><span class="line">	<span class="string">&quot;strconv&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ToIntFilterWrongFormatError = errors.New(<span class="string">&quot;input data should be []string&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ToIntFilter <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewToIntFilter</span><span class="params">()</span></span> *ToIntFilter &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;ToIntFilter&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(tif *ToIntFilter)</span></span> Process(data Request) (Response, <span class="type">error</span>) &#123;</span><br><span class="line">	parts, ok := data.([]<span class="type">string</span>)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, ToIntFilterWrongFormatError</span><br><span class="line">	&#125;</span><br><span class="line">	ret := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> _, part := <span class="keyword">range</span> parts &#123;</span><br><span class="line">		s, err := strconv.Atoi(part)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">		&#125;</span><br><span class="line">		ret = <span class="built_in">append</span>(ret, s)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sum_filter.go</span></span><br><span class="line"><span class="keyword">package</span> pipefilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;errors&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> SumFilterWrongFormatError = errors.New(<span class="string">&quot;input data should be []int&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SumFilter <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewSumFilter</span><span class="params">()</span></span> *SumFilter &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;SumFilter&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sf *SumFilter)</span></span> Process(data Request) (Response, <span class="type">error</span>) &#123;</span><br><span class="line">	elems, ok := data.([]<span class="type">int</span>)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, SumFilterWrongFormatError</span><br><span class="line">	&#125;</span><br><span class="line">	ret := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, elem := <span class="keyword">range</span> elems &#123;</span><br><span class="line">		ret += elem</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// straight_pipeline.go</span></span><br><span class="line"><span class="keyword">package</span> pipefilter</span><br><span class="line"></span><br><span class="line"><span class="comment">// StraightPipeline is composed of the filters, and the filters are piled as a straight line.</span></span><br><span class="line"><span class="keyword">type</span> StraightPipeline <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name    <span class="type">string</span></span><br><span class="line">	Filters *[]Filter</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NewStraightPipeline create a new StraightPipelineWithWallTime</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewStraightPipeline</span><span class="params">(name <span class="type">string</span>, filters ...Filter)</span></span> *StraightPipeline &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;StraightPipeline&#123;</span><br><span class="line">		Name:    name,</span><br><span class="line">		Filters: &amp;filters,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process is to process the coming data by the pipeline</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *StraightPipeline)</span></span> Process(data Request) (Response, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> ret <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	<span class="keyword">for</span> _, filter := <span class="keyword">range</span> *f.Filters &#123;</span><br><span class="line">		ret, err = filter.Process(data)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> ret, err</span><br><span class="line">		&#125;</span><br><span class="line">		data = ret</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="Micro-Kernel架构"><a href="#Micro-Kernel架构" class="headerlink" title="Micro Kernel架构"></a>Micro Kernel架构</h3><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211120114863.png"></p>
 <ul>
@@ -287,375 +190,44 @@
 </li>
 </ul>
 <h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202211120116741.png"></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> microkernel<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;context&quot;</span><br>	<span class="hljs-string">&quot;errors&quot;</span><br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;strings&quot;</span><br>	<span class="hljs-string">&quot;sync&quot;</span><br>)<br><br><span class="hljs-keyword">const</span> (<br>	Waiting = <span class="hljs-literal">iota</span><br>	Running<br>)<br><br><span class="hljs-keyword">var</span> WrongStateError = errors.New(<span class="hljs-string">&quot;can not take the operation in the current state&quot;</span>)<br><br><span class="hljs-keyword">type</span> CollectorsError <span class="hljs-keyword">struct</span> &#123;<br>	CollectorsErrors []<span class="hljs-type">error</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ce CollectorsError)</span></span> Error() <span class="hljs-type">string</span> &#123;<br>	<span class="hljs-keyword">var</span> strs []<span class="hljs-type">string</span><br>	<span class="hljs-keyword">for</span> _, err := <span class="hljs-keyword">range</span> ce.CollectorsErrors &#123;<br>		strs = <span class="hljs-built_in">append</span>(strs, err.Error())<br>	&#125;<br>	<span class="hljs-keyword">return</span> strings.Join(strs, <span class="hljs-string">&quot;;&quot;</span>)<br>&#125;<br><br><span class="hljs-keyword">type</span> Event <span class="hljs-keyword">struct</span> &#123;<br>	Source  <span class="hljs-type">string</span><br>	Content <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-keyword">type</span> EventReceiver <span class="hljs-keyword">interface</span> &#123;<br>	OnEvent(evt Event)<br>&#125;<br><br><span class="hljs-keyword">type</span> Collector <span class="hljs-keyword">interface</span> &#123;<br>	Init(evtReceiver EventReceiver) <span class="hljs-type">error</span><br>	Start(agtCtx context.Context) <span class="hljs-type">error</span><br>	Stop() <span class="hljs-type">error</span><br>	Destroy() <span class="hljs-type">error</span><br>&#125;<br><br><span class="hljs-keyword">type</span> Agent <span class="hljs-keyword">struct</span> &#123;<br>	collectors <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]Collector<br>	evtBuf     <span class="hljs-keyword">chan</span> Event<br>	cancel     context.CancelFunc<br>	ctx        context.Context<br>	state      <span class="hljs-type">int</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> EventProcessGroutine() &#123;<br>	<span class="hljs-keyword">var</span> evtSeg [<span class="hljs-number">10</span>]Event<br>	<span class="hljs-keyword">for</span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>			<span class="hljs-keyword">select</span> &#123;<br>			<span class="hljs-keyword">case</span> evtSeg[i] = &lt;-agt.evtBuf:<br>			<span class="hljs-keyword">case</span> &lt;-agt.ctx.Done():<br>				<span class="hljs-keyword">return</span><br>			&#125;<br>		&#125;<br>		fmt.Println(evtSeg)<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewAgent</span><span class="hljs-params">(sizeEvtBuf <span class="hljs-type">int</span>)</span></span> *Agent &#123;<br>	agt := Agent&#123;<br>		collectors: <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]Collector&#123;&#125;,<br>		evtBuf:     <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> Event, sizeEvtBuf),<br>		state:      Waiting,<br>	&#125;<br><br>	<span class="hljs-keyword">return</span> &amp;agt<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> RegisterCollector(name <span class="hljs-type">string</span>, collector Collector) <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">if</span> agt.state != Waiting &#123;<br>		<span class="hljs-keyword">return</span> WrongStateError<br>	&#125;<br>	agt.collectors[name] = collector<br>	<span class="hljs-keyword">return</span> collector.Init(agt)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> startCollectors() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">var</span> err <span class="hljs-type">error</span><br>	<span class="hljs-keyword">var</span> errs CollectorsError<br>	<span class="hljs-keyword">var</span> mutex sync.Mutex<br><br>	<span class="hljs-keyword">for</span> name, collector := <span class="hljs-keyword">range</span> agt.collectors &#123;<br>		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(name <span class="hljs-type">string</span>, collector Collector, ctx context.Context)</span></span> &#123;<br>			<span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>				mutex.Unlock()<br>			&#125;()<br>			err = collector.Start(ctx)<br>			mutex.Lock()<br>			<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>				errs.CollectorsErrors = <span class="hljs-built_in">append</span>(errs.CollectorsErrors,<br>					errors.New(name+<span class="hljs-string">&quot;:&quot;</span>+err.Error()))<br>			&#125;<br>		&#125;(name, collector, agt.ctx)<br>	&#125;<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(errs.CollectorsErrors) == <span class="hljs-number">0</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	&#125;<br>	<span class="hljs-keyword">return</span> errs<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> stopCollectors() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">var</span> err <span class="hljs-type">error</span><br>	<span class="hljs-keyword">var</span> errs CollectorsError<br>	<span class="hljs-keyword">for</span> name, collector := <span class="hljs-keyword">range</span> agt.collectors &#123;<br>		<span class="hljs-keyword">if</span> err = collector.Stop(); err != <span class="hljs-literal">nil</span> &#123;<br>			errs.CollectorsErrors = <span class="hljs-built_in">append</span>(errs.CollectorsErrors,<br>				errors.New(name+<span class="hljs-string">&quot;:&quot;</span>+err.Error()))<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(errs.CollectorsErrors) == <span class="hljs-number">0</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	&#125;<br>	<span class="hljs-keyword">return</span> errs<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> destroyCollectors() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">var</span> err <span class="hljs-type">error</span><br>	<span class="hljs-keyword">var</span> errs CollectorsError<br>	<span class="hljs-keyword">for</span> name, collector := <span class="hljs-keyword">range</span> agt.collectors &#123;<br>		<span class="hljs-keyword">if</span> err = collector.Destroy(); err != <span class="hljs-literal">nil</span> &#123;<br>			errs.CollectorsErrors = <span class="hljs-built_in">append</span>(errs.CollectorsErrors,<br>				errors.New(name+<span class="hljs-string">&quot;:&quot;</span>+err.Error()))<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(errs.CollectorsErrors) == <span class="hljs-number">0</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	&#125;<br>	<span class="hljs-keyword">return</span> errs<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> Start() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">if</span> agt.state != Waiting &#123;<br>		<span class="hljs-keyword">return</span> WrongStateError<br>	&#125;<br>	agt.state = Running<br>	agt.ctx, agt.cancel = context.WithCancel(context.Background())<br>	<span class="hljs-keyword">go</span> agt.EventProcessGroutine()<br>	<span class="hljs-keyword">return</span> agt.startCollectors()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> Stop() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">if</span> agt.state != Running &#123;<br>		<span class="hljs-keyword">return</span> WrongStateError<br>	&#125;<br>	agt.state = Waiting<br>	agt.cancel()<br>	<span class="hljs-keyword">return</span> agt.stopCollectors()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> Destroy() <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">if</span> agt.state != Waiting &#123;<br>		<span class="hljs-keyword">return</span> WrongStateError<br>	&#125;<br>	<span class="hljs-keyword">return</span> agt.destroyCollectors()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(agt *Agent)</span></span> OnEvent(evt Event) &#123;<br>	agt.evtBuf &lt;- evt<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> microkernel</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;errors&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Waiting = <span class="literal">iota</span></span><br><span class="line">	Running</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> WrongStateError = errors.New(<span class="string">&quot;can not take the operation in the current state&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> CollectorsError <span class="keyword">struct</span> &#123;</span><br><span class="line">	CollectorsErrors []<span class="type">error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(ce CollectorsError)</span></span> Error() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> strs []<span class="type">string</span></span><br><span class="line">	<span class="keyword">for</span> _, err := <span class="keyword">range</span> ce.CollectorsErrors &#123;</span><br><span class="line">		strs = <span class="built_in">append</span>(strs, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(strs, <span class="string">&quot;;&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Event <span class="keyword">struct</span> &#123;</span><br><span class="line">	Source  <span class="type">string</span></span><br><span class="line">	Content <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> EventReceiver <span class="keyword">interface</span> &#123;</span><br><span class="line">	OnEvent(evt Event)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Collector <span class="keyword">interface</span> &#123;</span><br><span class="line">	Init(evtReceiver EventReceiver) <span class="type">error</span></span><br><span class="line">	Start(agtCtx context.Context) <span class="type">error</span></span><br><span class="line">	Stop() <span class="type">error</span></span><br><span class="line">	Destroy() <span class="type">error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Agent <span class="keyword">struct</span> &#123;</span><br><span class="line">	collectors <span class="keyword">map</span>[<span class="type">string</span>]Collector</span><br><span class="line">	evtBuf     <span class="keyword">chan</span> Event</span><br><span class="line">	cancel     context.CancelFunc</span><br><span class="line">	ctx        context.Context</span><br><span class="line">	state      <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> EventProcessGroutine() &#123;</span><br><span class="line">	<span class="keyword">var</span> evtSeg [<span class="number">10</span>]Event</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">			<span class="keyword">select</span> &#123;</span><br><span class="line">			<span class="keyword">case</span> evtSeg[i] = &lt;-agt.evtBuf:</span><br><span class="line">			<span class="keyword">case</span> &lt;-agt.ctx.Done():</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(evtSeg)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewAgent</span><span class="params">(sizeEvtBuf <span class="type">int</span>)</span></span> *Agent &#123;</span><br><span class="line">	agt := Agent&#123;</span><br><span class="line">		collectors: <span class="keyword">map</span>[<span class="type">string</span>]Collector&#123;&#125;,</span><br><span class="line">		evtBuf:     <span class="built_in">make</span>(<span class="keyword">chan</span> Event, sizeEvtBuf),</span><br><span class="line">		state:      Waiting,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;agt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> RegisterCollector(name <span class="type">string</span>, collector Collector) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> agt.state != Waiting &#123;</span><br><span class="line">		<span class="keyword">return</span> WrongStateError</span><br><span class="line">	&#125;</span><br><span class="line">	agt.collectors[name] = collector</span><br><span class="line">	<span class="keyword">return</span> collector.Init(agt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> startCollectors() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	<span class="keyword">var</span> errs CollectorsError</span><br><span class="line">	<span class="keyword">var</span> mutex sync.Mutex</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> name, collector := <span class="keyword">range</span> agt.collectors &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(name <span class="type">string</span>, collector Collector, ctx context.Context)</span></span> &#123;</span><br><span class="line">			<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">				mutex.Unlock()</span><br><span class="line">			&#125;()</span><br><span class="line">			err = collector.Start(ctx)</span><br><span class="line">			mutex.Lock()</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				errs.CollectorsErrors = <span class="built_in">append</span>(errs.CollectorsErrors,</span><br><span class="line">					errors.New(name+<span class="string">&quot;:&quot;</span>+err.Error()))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(name, collector, agt.ctx)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(errs.CollectorsErrors) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> errs</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> stopCollectors() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	<span class="keyword">var</span> errs CollectorsError</span><br><span class="line">	<span class="keyword">for</span> name, collector := <span class="keyword">range</span> agt.collectors &#123;</span><br><span class="line">		<span class="keyword">if</span> err = collector.Stop(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			errs.CollectorsErrors = <span class="built_in">append</span>(errs.CollectorsErrors,</span><br><span class="line">				errors.New(name+<span class="string">&quot;:&quot;</span>+err.Error()))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(errs.CollectorsErrors) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> errs</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> destroyCollectors() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	<span class="keyword">var</span> errs CollectorsError</span><br><span class="line">	<span class="keyword">for</span> name, collector := <span class="keyword">range</span> agt.collectors &#123;</span><br><span class="line">		<span class="keyword">if</span> err = collector.Destroy(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			errs.CollectorsErrors = <span class="built_in">append</span>(errs.CollectorsErrors,</span><br><span class="line">				errors.New(name+<span class="string">&quot;:&quot;</span>+err.Error()))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(errs.CollectorsErrors) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> errs</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> Start() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> agt.state != Waiting &#123;</span><br><span class="line">		<span class="keyword">return</span> WrongStateError</span><br><span class="line">	&#125;</span><br><span class="line">	agt.state = Running</span><br><span class="line">	agt.ctx, agt.cancel = context.WithCancel(context.Background())</span><br><span class="line">	<span class="keyword">go</span> agt.EventProcessGroutine()</span><br><span class="line">	<span class="keyword">return</span> agt.startCollectors()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> Stop() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> agt.state != Running &#123;</span><br><span class="line">		<span class="keyword">return</span> WrongStateError</span><br><span class="line">	&#125;</span><br><span class="line">	agt.state = Waiting</span><br><span class="line">	agt.cancel()</span><br><span class="line">	<span class="keyword">return</span> agt.stopCollectors()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> Destroy() <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> agt.state != Waiting &#123;</span><br><span class="line">		<span class="keyword">return</span> WrongStateError</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> agt.destroyCollectors()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(agt *Agent)</span></span> OnEvent(evt Event) &#123;</span><br><span class="line">	agt.evtBuf &lt;- evt</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 
 
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.ckxgzxa.top">残魁斜罡</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.ckxgzxa.top/road2go13.html">https://www.ckxgzxa.top/road2go13.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.ckxgzxa.top" target="_blank">技术匝记簿</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Go/">Go</a></div><div class="post_share"><div class="social-share" data-image="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat_pay.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat_pay.png" alt="微信扫码"/></a><div class="post-qr-code-desc">微信扫码</div></li><li class="reward-item"><a href="https://qr.alipay.com/lpx08506gp8hbu7m1bih892" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="支付宝扫码"/></a><div class="post-qr-code-desc">支付宝扫码</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/road2go14.html" title="Go语言学习14-常见任务"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060214439.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Go语言学习14-常见任务</div></div></a></div><div class="next-post pull-right"><a href="/road2go12.html" title="Go语言学习12-反射和Unsafe"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Go语言学习12-反射和Unsafe</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/road2go04.html" title="Go语言学习04-函数"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060213217.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-09</div><div class="title">Go语言学习04-函数</div></div></a></div><div><a href="/road2go01.html" title="Go语言学习01-基本程序结构"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-07</div><div class="title">Go语言学习01-基本程序结构</div></div></a></div><div><a href="/road2go02.html" title="Go语言学习02-常用集合"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060214439.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-08</div><div class="title">Go语言学习02-常用集合</div></div></a></div><div><a href="/road2go05.html" title="Go语言学习05-面向对象编程"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060210380.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-09</div><div class="title">Go语言学习05-面向对象编程</div></div></a></div><div><a href="/road2go08.html" title="Go语言学习08-并发编程"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-10</div><div class="title">Go语言学习08-并发编程</div></div></a></div><div><a href="/road2go09.html" title="Go语言学习09-典型并发任务"><img class="cover" src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060213217.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-11</div><div class="title">Go语言学习09-典型并发任务</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">残魁斜罡</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ckxgzxa"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ckxgzxa" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:ckxgzxa@ckxgzxa.top" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/ckxgzxa" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #0088cc;"></i></a><a class="social-icon" href="https://twitter.com/ckxgzxabest" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://www.instagram.com/ckxgzxa" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color: #e1306c;"></i></a><a class="social-icon" href="https://weibo.com/u/5657042189" target="_blank" title="Weibo"><i class="fab fa-weibo" style="color: #e6162d;"></i></a><a class="social-icon" href="/img/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" target="_blank" title="Wechat"><i class="fab fa-brands fa-weixin" style="color: #7bb32e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">有朋自远方来，不亦乐乎!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A013-%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">Go语言学习13-常见软件架构的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">架构模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pipe-Filter-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">Pipe-Filter 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pipe-Filter-%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">Pipe-Filter 模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Filter%E5%92%8C%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">Filter和组合模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Micro-Kernel%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">Micro Kernel架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">示例</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/OracleDB02.html" title="2. Oracle学习笔记-Oracle的体系结构"><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060210380.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2. Oracle学习笔记-Oracle的体系结构"/></a><div class="content"><a class="title" href="/OracleDB02.html" title="2. Oracle学习笔记-Oracle的体系结构">2. Oracle学习笔记-Oracle的体系结构</a><time datetime="2023-12-04T15:04:25.000Z" title="发表于 2023-12-04 23:04:25">2023-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/OracleDB01.html" title="1.Oracle学习笔记-Oracle 19c概述"><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060212846.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.Oracle学习笔记-Oracle 19c概述"/></a><div class="content"><a class="title" href="/OracleDB01.html" title="1.Oracle学习笔记-Oracle 19c概述">1.Oracle学习笔记-Oracle 19c概述</a><time datetime="2023-12-02T19:41:37.000Z" title="发表于 2023-12-03 03:41:37">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/road2docker04.html" title="04.Docker Compose"><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060211788.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="04.Docker Compose"/></a><div class="content"><a class="title" href="/road2docker04.html" title="04.Docker Compose">04.Docker Compose</a><time datetime="2023-08-13T05:37:38.000Z" title="发表于 2023-08-13 13:37:38">2023-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/road2docker03.html" title="03.Dockerfile"><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060210380.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="03.Dockerfile"/></a><div class="content"><a class="title" href="/road2docker03.html" title="03.Dockerfile">03.Dockerfile</a><time datetime="2023-08-12T16:06:58.000Z" title="发表于 2023-08-13 00:06:58">2023-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/road2docker02.html" title="02.Docker 镜像"><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202312060213891.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="02.Docker 镜像"/></a><div class="content"><a class="title" href="/road2docker02.html" title="02.Docker 镜像">02.Docker 镜像</a><time datetime="2023-08-12T14:01:23.000Z" title="发表于 2023-08-12 22:01:23">2023-08-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 残魁斜罡</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备2021018734号</a><span class="footer-separator">|</span><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188" target="_blank"><img src="/img/police_beian.png" alt="备案图标"/><span>湘公网安备 43052102000188号</span></a></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadUtterances = () => {
+    let ele = document.createElement('script')
+    ele.id = 'utterances_comment'
+    ele.src = 'https://utteranc.es/client.js'
+    ele.setAttribute('repo', 'CKXGZXA/GitPageComments')
+    ele.setAttribute('issue-term', 'pathname')
+    const nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+    ele.setAttribute('theme', nowTheme)
+    ele.crossOrigin = 'anonymous'
+    ele.async = true
+    document.getElementById('utterances-wrap').appendChild(ele)
+  }
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Go/">Go</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/road2go14.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Go语言学习14-常见任务</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/road2go12.html">
-                        <span class="hidden-mobile">Go语言学习12-反射和Unsafe</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                  
-                
-                
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      var light = 'github-light';
-      var dark = 'github-dark';
-      var schema = document.documentElement.getAttribute('data-user-color-scheme');
-      if (schema === 'dark') {
-        schema = dark;
-      } else {
-        schema = light;
-      }
-      window.UtterancesThemeLight = light;
-      window.UtterancesThemeDark = dark;
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'CKXGZXA/GitPageComments');
-      s.setAttribute('issue-term', 'pathname');
-      
-      s.setAttribute('label', 'utterances');
-      
-      s.setAttribute('theme', schema);
-      s.setAttribute('crossorigin', 'anonymous');
-      document.getElementById('comments').appendChild(s);
-    })
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
-  
-  <!-- 备案信息 -->
-  <div class="beian">
-    <span>
-      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
-        湘ICP备2021018734号
-      </a>
-    </span>
-    
-      
-        <span>
-          <a
-            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052102000188"
-            rel="nofollow noopener"
-            class="beian-police"
-            target="_blank"
-          >
-            
-              <span style="visibility: hidden; width: 0">|</span>
-              <img src="/img/police_beian.png" alt="police-icon"/>
-            
-            <span>湘公网安备 43052102000188号</span>
-          </a>
-        </span>
-      
-    
-  </div>
-
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://www.unpkg.com/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-
-
-  
-
-
-
-  <script  src="https://www.unpkg.com/tocbot@4.12.2/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://www.unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://www.unpkg.com/anchor-js@4.3.0/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://www.unpkg.com/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script defer src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://www.unpkg.com/typed.js@2.0.11/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      $('#local-search-input').on('click', function() {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      });
-      $('#modalSearch').on('shown.bs.modal', function() {
-        $('#local-search-input').focus();
-      });
-    })()
-  </script>
-
-
-
-
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
+  const utterancesTheme = theme => {
+    const iframe = document.querySelector('.utterances-frame')
+    if (iframe) {
+      const theme = theme === 'dark' ? 'photon-dark' : 'github-light'
+      const message = {
+        type: 'set-theme',
+        theme: theme
       };
-    </script>
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+  }
 
-    <script async src="https://www.unpkg.com/mathjax@3.1.2/es5/tex-svg.js" ></script>
+  btf.addGlobalFn('themeChange', utterancesTheme, 'utterances')
 
-  
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?01f66cc4caefba46f8cad22b739f765a";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-</body>
-</html>
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
