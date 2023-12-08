@@ -2558,27 +2558,27 @@ SQL语言基础--&gt;空值的处理
 </code></pre><p>  &lt;/thead&gt;<br>  <tbody></p>
 <pre><code>&lt;tr&gt;
   &lt;td&gt;比较&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;=&lt;/code&gt;, &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;&amp;gt;=&lt;/code&gt;, &lt;code&gt;&amp;lt;=&lt;/code&gt;, &lt;code&gt;!=&lt;/code&gt;, &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;, &lt;code&gt;!&amp;gt;&lt;/code&gt;, &lt;code&gt;!&amp;lt;&lt;/code&gt;; &lt;code&gt;NOT&lt;/code&gt;+上述运算符&lt;/td&gt;
+  &lt;td&gt;=, &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=, !=, &amp;lt;&amp;gt;, !&amp;gt;, !&amp;lt;; NOT+上述运算符&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td&gt;确定范围&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;BETWEEN AND&lt;/code&gt;, &lt;code&gt;NOT BETWEEN AND&lt;/code&gt;&lt;/td&gt;
+  &lt;td&gt;BETWEEN AND, NOT BETWEEN AND&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td&gt;确定集合&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;IN&lt;/code&gt;, &lt;code&gt;NOT IN&lt;/code&gt;&lt;/td&gt;
+  &lt;td&gt;IN, NOT IN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td&gt;字符匹配&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;LIKE&lt;/code&gt;, &lt;code&gt;NOT LIKE&lt;/code&gt;&lt;/td&gt;
+  &lt;td&gt;LIKE, NOT LIKE&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td&gt;空值&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;IS NULL&lt;/code&gt;, &lt;code&gt;IS NOT NULL&lt;/code&gt;&lt;/td&gt;
+  &lt;td&gt;IS NULL, IS NOT NULL&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td&gt;多重条件(逻辑运算)&lt;/td&gt;
-  &lt;td&gt;&lt;code&gt;AND&lt;/code&gt;, &lt;code&gt;OR&lt;/code&gt;, &lt;code&gt;NOT&lt;/code&gt;&lt;/td&gt;
+  &lt;td&gt;AND, OR, NOT&lt;/td&gt;
 &lt;/tr&gt;
 </code></pre><p>  &lt;/tbody&gt;<br>&lt;/table&gt;</p>
 <ol>
