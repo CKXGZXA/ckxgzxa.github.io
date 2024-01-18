@@ -2942,11 +2942,11 @@ SQL语言基础--&gt;空值的处理
     <url>/OracleDB04.html</url>
     <content><![CDATA[<h2 id="PL-SQL编程"><a href="#PL-SQL编程" class="headerlink" title="PL/SQL编程"></a>PL/SQL编程</h2><div class="mermaid-wrap"><pre class="mermaid-src" hidden>
   graph LR
-PL&#x2F;SQL编程--&gt;PL&#x2F;SQL简介
-PL&#x2F;SQL编程--&gt;数据类型、变量和常量
-PL&#x2F;SQL编程--&gt;流程控制语句
-PL&#x2F;SQL编程--&gt;PL&#x2F;SQL游标
-PL&#x2F;SQL编程--&gt;PL&#x2F;SQL异常处理
+A[PL&#x2F;SQL编程]--&gt;B[PL&#x2F;SQL简介]
+A--&gt;C[数据类型、变量和常量]
+A--&gt;D[流程控制语句]
+A--&gt;E[PL&#x2F;SQL游标]
+A--&gt;F[PL&#x2F;SQL异常处理]
   </pre></div>
 <h3 id="1-PL-SQL简介"><a href="#1-PL-SQL简介" class="headerlink" title="1 PL/SQL简介"></a>1 PL/SQL简介</h3><p><code>PL/SQL</code>(Procedural Language/SQL)是 <u>Oracle</u> 在数据库中引入的一种<strong>过程化</strong>编程语言。PL/SQL构建于SQL之上，可以用来编写包含SQL语句的程序。</p>
 <p><code>PL/SQL</code>中可以通过<code>IF</code>语句或<code>LOOP</code>语句控制程序的执行流程，甚至可以定义变量，在语句之间传递数据信息，从而控制程序处理的细节过程。因此能将SQL语句的数据操纵能力、数据查询能力和PL/SQL的过程处理能力结合在一起，达到取长补短的目的。</p>
@@ -3443,11 +3443,11 @@ PL&#x2F;SQL编程--&gt;PL&#x2F;SQL异常处理
 <p>使用游标的步骤如下图: </p>
 <div class="mermaid-wrap"><pre class="mermaid-src" hidden>
   flowchart LR
-    声明游标--&gt;B[打开游标]
-    B --&gt; C[读取游标]
-    C --&gt; A{数据为空}
-    A --&gt; |是|关闭游标
-    A --&gt; |否|C
+声明游标--&gt;B[打开游标]
+B --&gt; C[读取游标]
+C --&gt; A{数据为空}
+A --&gt; |是|关闭游标
+A --&gt; |否|C
   </pre></div>
 <h5 id="4-2-1-声明显式游标"><a href="#4-2-1-声明显式游标" class="headerlink" title="4.2.1 声明显式游标"></a>4.2.1 声明显式游标</h5><p>声明游标定义游标名称和相关的 <code>SELECT</code> 语句。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CURSOR cursor_name IS select_statement;</span><br></pre></td></tr></table></figure>
