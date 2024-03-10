@@ -3693,7 +3693,7 @@ CCNOT=\begin{bmatrix}
 \zeta \\
 \theta \\
 \eta
-\end{bmatrix}</script><p>从上面的表达式可以看出，只有当两个控制比特都处于 |1⟩ 态时，Toffoli门才会对目标比特的状态产生翻转。<a href="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403102013741.png">https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403102013741.png</a></p>
+\end{bmatrix}</script><p>从上面的表达式可以看出，只有当两个控制比特都处于 |1⟩ 态时，Toffoli门才会对目标比特的状态产生翻转。</p>
 <h2 id="测量操作"><a href="#测量操作" class="headerlink" title="测量操作"></a>测量操作</h2><p>我们可以将测量视为一种量子门, <strong>测量</strong>具有改变量子比特状态并确定其到底是0 还是1 的作用. 通过测量, 我们可以由量子比特所处的叠加态得到非0 即1 的经典比特的状态. </p>
 <p>测量操作在线路上的显示如图:</p>
 <p><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403102040700.png" alt=""></p>
