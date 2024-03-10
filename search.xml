@@ -3532,7 +3532,7 @@ SQL语言基础--&gt;空值的处理
     <url>/QuantumGates.html</url>
     <content><![CDATA[<h1 id="量子线路上常见的量子门"><a href="#量子线路上常见的量子门" class="headerlink" title="量子线路上常见的量子门"></a>量子线路上常见的量子门</h1><h2 id="Pauli-X-门"><a href="#Pauli-X-门" class="headerlink" title="Pauli-X 门"></a>Pauli-X 门</h2><p>X 门也称为泡利-X 门（Pauli-X gate）, 它作用在单量子比特上, 与经典计算机上的NOT门等价, 将量子态进行翻转, 量子态变化方式如下: </p>
 <script type="math/tex; mode=display">
-|0\rangle \rightarrow |1\rangle \\
+|0\rangle \rightarrow |1\rangle \qquad
 |0\rangle \rightarrow |1\rangle</script><p>Pauli-X门矩阵形式为泡利矩阵$\sigma_x$, 即:</p>
 <script type="math/tex; mode=display">
 X=\sigma_x=\begin{bmatrix} 0 && 1 \\ 1 && 0 \end{bmatrix}</script><p>量子线路显示如下图:</p>
@@ -3555,7 +3555,7 @@ Z=\sigma_z=\begin{bmatrix} 1 && 0 \\ 0 && -1 \end{bmatrix}</script><p>量子线�
 <script type="math/tex; mode=display">
 |\psi'\rangle=Z|\psi\rangle=\begin{bmatrix} 1 && 0 \\ 0 && -1 \end{bmatrix}\begin{bmatrix}\alpha\\\beta\end{bmatrix}=\begin{bmatrix}\alpha\\-\beta\end{bmatrix}=\alpha|0\rangle-\beta|1\rangle</script><h2 id="Hadamard-H-门"><a href="#Hadamard-H-门" class="headerlink" title="Hadamard (H)门"></a>Hadamard (H)门</h2><p>Hadamard 门是一种可将基态变为叠加态的量子逻辑门, 简称为H门, 它作用在单比特上, 它对量子基态的变化方式如下: </p>
 <script type="math/tex; mode=display">
-|0\rangle \rightarrow \frac{|0\rangle+|1\rangle}{\sqrt{2}} \\
+|0\rangle \rightarrow \frac{|0\rangle+|1\rangle}{\sqrt{2}} \qquad
 |1\rangle \rightarrow \frac{|0\rangle-|1\rangle}{\sqrt{2}}</script><p>Hadamard 门矩阵形式为:</p>
 <script type="math/tex; mode=display">
 H=\frac{1}{\sqrt{2}}\begin{bmatrix}1&&1\\1&&-1\end{bmatrix}</script><p>量子线路显示如下图:</p>
@@ -3564,7 +3564,7 @@ H=\frac{1}{\sqrt{2}}\begin{bmatrix}1&&1\\1&&-1\end{bmatrix}</script><p>量子线
 <script type="math/tex; mode=display">
 |\psi'\rangle=H|\psi\rangle=\frac{1}{\sqrt{2}}\begin{bmatrix}1&&1\\1&&-1\end{bmatrix}\begin{bmatrix}\alpha\\\beta\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}\alpha+\beta\\\alpha-\beta\end{bmatrix}=\frac{\alpha+\beta}{\sqrt{2}}|0\rangle+\frac{\alpha-\beta}{\sqrt{2}}|1\rangle</script><h2 id="S-门"><a href="#S-门" class="headerlink" title="S 门"></a>S 门</h2><p>S 门，也称为相位门，是一种单量子比特量子逻辑门，它主要改变量子态的相位，而不改变状态的概率幅。S 门的作用效果如下：</p>
 <script type="math/tex; mode=display">
-|0\rangle \rightarrow |0\rangle \\
+|0\rangle \rightarrow |0\rangle \qquad
 |1\rangle \rightarrow i|1\rangle</script><p>S 门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 S=\begin{bmatrix}1&&0\\0&&i\end{bmatrix}</script><p>量子线路显示如下图:</p>
@@ -3573,7 +3573,7 @@ S=\begin{bmatrix}1&&0\\0&&i\end{bmatrix}</script><p>量子线路显示如下图:
 |\psi'\rangle=S|\psi\rangle=\begin{bmatrix}1&&0\\0&&i\end{bmatrix}\begin{bmatrix}\alpha\\\beta\end{bmatrix}=\begin{bmatrix}\alpha\\i\beta\end{bmatrix}=\alpha|0\rangle+i\beta|1\rangle</script><p>从上面的表达式可以看出，S 门将量子态 $|1\rangle$ 的相位旋转了 $90^\circ$ 或 $\pi/2$ 弧度，而量子态 $|0\rangle$ 的相位保持不变。</p>
 <h2 id="T-门"><a href="#T-门" class="headerlink" title="T 门"></a>T 门</h2><p>T 门，也称为π/8门，是一种单量子比特量子逻辑门，它在量子计算中用于实现较小的相位旋转。T 门的作用是对量子态的|1⟩分量施加一个相位变换，而|0⟩分量保持不变。T 门的效果如下：</p>
 <script type="math/tex; mode=display">
-|0\rangle \rightarrow |0\rangle \\
+|0\rangle \rightarrow |0\rangle \qquad
 |1\rangle \rightarrow e^{i\pi/4}|1\rangle</script><p>这里 $e^{i\pi/4}$ 是复平面单位圆上的一个点，表示相位旋转π/4。<br>T 门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 T=\begin{bmatrix}1&&0\\0&&e^{i\pi/4}\end{bmatrix}=\begin{bmatrix}1&&0\\0&&\frac{1+i}{\sqrt{2}}\end{bmatrix}</script><p>量子线路显示如下图:：<br><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403101759528.png" alt=""><br>假设 T 门作用在任意量子态 $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$ 上，可得到新的量子态如下：</p>
@@ -3581,40 +3581,48 @@ T=\begin{bmatrix}1&&0\\0&&e^{i\pi/4}\end{bmatrix}=\begin{bmatrix}1&&0\\0&&\frac{
 |\psi'\rangle=T|\psi\rangle=\begin{bmatrix}1&&0\\0&&\frac{1+i}{\sqrt{2}}\end{bmatrix}\begin{bmatrix}\alpha\\\beta\end{bmatrix}=\begin{bmatrix}\alpha\\\frac{1+i}{\sqrt{2}}\beta\end{bmatrix}=\alpha|0\rangle+\frac{1+i}{\sqrt{2}}\beta|1\rangle</script><p>从上面的表达式可以看出，T 门将量子态 $|1\rangle$ 的相位旋转了 $45^\circ$ 或 $\pi/4$ 弧度，而量子态 $|0\rangle$ 的相位保持不变。</p>
 <h2 id="CNOT-Control-NOT-门"><a href="#CNOT-Control-NOT-门" class="headerlink" title="CNOT(Control-NOT) 门"></a>CNOT(Control-NOT) 门</h2><p>CNOT 门，也称为控制非门，是一种双量子比特量子逻辑门，它在量子计算中用于实现量子比特之间的纠缠。CNOT 门有一个控制量子比特和一个目标量子比特。当控制量子比特为 |1⟩ 状态时，它将翻转目标量子比特的状态；如果控制量子比特为 |0⟩，则目标量子比特的状态保持不变。CNOT 门的作用效果如下：</p>
 <script type="math/tex; mode=display">
-|00\rangle \rightarrow |00\rangle \\
+\begin{array}{cc}
+|00\rangle \rightarrow |00\rangle &
 |01\rangle \rightarrow |01\rangle \\
-|10\rangle \rightarrow |11\rangle \\
-|11\rangle \rightarrow |10\rangle</script><p>CNOT 门的矩阵形式为：</p>
+|10\rangle \rightarrow |11\rangle &
+|11\rangle \rightarrow |10\rangle
+\end{array}</script><p>CNOT 门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 CNOT=\begin{bmatrix}1&&0&&0&&0\\0&&1&&0&&0\\0&&0&&0&&1\\0&&0&&1&&0\end{bmatrix}</script><p>量子线路显示如下图:<br><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403101810033.png" alt=""><br>假设 CNOT 门作用在两个量子比特的任意态 $|\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle$ 上，可得到新的量子态如下：</p>
 <script type="math/tex; mode=display">
 |\psi'\rangle=CNOT|\psi\rangle=\begin{bmatrix}1&&0&&0&&0\\0&&1&&0&&0\\0&&0&&0&&1\\0&&0&&1&&0\end{bmatrix}\begin{bmatrix}\alpha\\\beta\\\gamma\\\delta\end{bmatrix}=\begin{bmatrix}\alpha\\\beta\\\delta\\\gamma\end{bmatrix}</script><p>从上面的表达式可以看出，CNOT 门会根据控制量子比特的状态来翻转目标量子比特的状态。</p>
 <h2 id="SWAP-门"><a href="#SWAP-门" class="headerlink" title="SWAP 门"></a>SWAP 门</h2><p>SWAP 门是一种双量子比特量子逻辑门，它在量子计算中用于交换两个量子比特的状态。SWAP 门的作用效果如下：</p>
 <script type="math/tex; mode=display">
-|00\rangle \rightarrow |00\rangle \\
+\begin{array}{cc}
+|00\rangle \rightarrow |00\rangle &
 |01\rangle \rightarrow |10\rangle \\
-|10\rangle \rightarrow |01\rangle \\
-|11\rangle \rightarrow |11\rangle</script><p>SWAP 门的矩阵形式为：</p>
+|10\rangle \rightarrow |01\rangle &
+|11\rangle \rightarrow |11\rangle
+\end{array}</script><p>SWAP 门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 SWAP=\begin{bmatrix}1&&0&&0&&0\\0&&0&&1&&0\\0&&1&&0&&0\\0&&0&&0&&1\end{bmatrix}</script><p>量子线路显示如下图:<br><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403101816894.png" alt=""><br>假设 SWAP 门作用在两个量子比特的任意态 $|\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle$ 上，可得到新的量子态如下：</p>
 <script type="math/tex; mode=display">
 |\psi'\rangle=SWAP|\psi\rangle=\begin{bmatrix}1&&0&&0&&0\\0&&0&&1&&0\\0&&1&&0&&0\\0&&0&&0&&1\end{bmatrix}\begin{bmatrix}\alpha\\\beta\\\gamma\\\delta\end{bmatrix}=\begin{bmatrix}\alpha\\\gamma\\\beta\\\delta\end{bmatrix}</script><p>从上面的表达式可以看出，SWAP 门会交换量子态 |01⟩ 和 |10⟩ 的状态，而量子态 |00⟩ 和 |11⟩ 保持不变。</p>
 <h2 id="iSWAP-门"><a href="#iSWAP-门" class="headerlink" title="iSWAP 门"></a>iSWAP 门</h2><p>iSWAP 门是另一种双量子比特量子逻辑门，它是 SWAP 门的一种变体。iSWAP 门不仅交换两个量子比特的状态，还引入了一个相对相位。iSWAP 门的作用效果如下：</p>
 <script type="math/tex; mode=display">
-|00\rangle \rightarrow |00\rangle \\
+\begin{array}{cc}
+|00\rangle \rightarrow |00\rangle &
 |01\rangle \rightarrow i|10\rangle \\
-|10\rangle \rightarrow i|01\rangle \\
-|11\rangle \rightarrow |11\rangle</script><p>iSWAP 门的矩阵形式为：</p>
+|10\rangle \rightarrow i|01\rangle &
+|11\rangle \rightarrow |11\rangle
+\end{array}</script><p>iSWAP 门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 iSWAP=\begin{bmatrix}1&&0&&0&&0\\0&&0&&i&&0\\0&&i&&0&&0\\0&&0&&0&&1\end{bmatrix}</script><p>量子线路显示如下图:<br><img src="https://zxastaticpages.oss-cn-beijing.aliyuncs.com/blogpictures/202403101826195.png" alt=""><br>假设 iSWAP 门作用在两个量子比特的任意态 $|\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle$ 上，可得到新的量子态如下：</p>
 <script type="math/tex; mode=display">
 |\psi'\rangle=iSWAP|\psi\rangle=\begin{bmatrix}1&&0&&0&&0\\0&&0&&i&&0\\0&&i&&0&&0\\0&&0&&0&&1\end{bmatrix}\begin{bmatrix}\alpha\\\beta\\\gamma\\\delta\end{bmatrix}=\begin{bmatrix}\alpha\\i\gamma\\i\beta\\\delta\end{bmatrix}</script><p>从上面的表达式可以看出，iSWAP 门会交换量子态 |01⟩ 和 |10⟩ 的状态，并在交换过程中引入一个相对相位, 量子态 |00⟩ 和 |11⟩ 保持不变。</p>
 <h2 id="Control-Z-门（CZ门）"><a href="#Control-Z-门（CZ门）" class="headerlink" title="Control-Z 门（CZ门）"></a>Control-Z 门（CZ门）</h2><p>Control-Z 门，也称为CZ门，是量子计算中的一种双量子比特量子逻辑门。CZ门的作用效果如下：</p>
 <script type="math/tex; mode=display">
-|00\rangle \rightarrow |00\rangle \\
+\begin{array}{cc}
+|00\rangle \rightarrow |00\rangle &
 |01\rangle \rightarrow |01\rangle\\
-|10\rangle \rightarrow |10\rangle\\
-|11\rangle \rightarrow -|11\rangle</script><p>CZ门的矩阵形式为：</p>
+|10\rangle \rightarrow |10\rangle&
+|11\rangle \rightarrow -|11\rangle
+\end{array}</script><p>CZ门的矩阵形式为：</p>
 <script type="math/tex; mode=display">
 CZ=\begin{bmatrix}
 1 & 0 & 0 & 0 \\
